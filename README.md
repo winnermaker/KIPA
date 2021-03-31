@@ -1,3 +1,3 @@
 # KIPA
 
-Webanwendung mit Datenbank für das Hilfsprojekt Kinderparadise
+Webanwendung mit Datenbank für das Hilfsprojekt Kinderparadise test
