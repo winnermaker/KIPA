@@ -1,9 +1,9 @@
 create table if not exists ChildrenMain
 (
    ChildrenID			int auto_increment	not null primary key, 
-   FirstName			varchar(100),
-   LastName				varchar(100),
-   CallNames			varchar(100),
+   FirstName			varchar(200),
+   LastName				varchar(200),
+   CallNames			varchar(200),
    DOB					date,
    EDOB					date,
    Gender				char,
