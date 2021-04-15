@@ -76,19 +76,19 @@
 
             <div class="row mt-3">
                 <div class="form-group col-6">
-                    <label for="pictureTaken" class="col-3 col-form-label">PictureTaken</label>
-                    <input class="form-control col-3" type="date" value="2021-04-12" id="pictureTaken">
+                    <label for="pictureTaken" class="form-label">PictureTaken</label>
+                    <input class="form-control" type="date" value="2021-04-12" id="pictureTaken">
                 </div>
 
                 <div class="form-group col-6">
                     <label class="form-label" for="customFile">Upload Picture</label>
                     <input type="file" class="form-control" id="customFile" />
                 </div>
-
-        </div>
+            </div>
 
             <button type="submit" class="btn btn-primary mt-5">Submit</button>
 
+        </div>
     </form>
  
 
