@@ -14,20 +14,20 @@
   <body>
     
     <div class="container">
-      <h1>MedicalMain</h1>
+      <h1 class="mt-3">MedicalMain</h1>
 
       <form action="">
-        <div class="row mt-2">
+        <div class="row mt-3">
           <fieldset class="col-2 ">
               <legend class="col-form-label">NHIReg</legend>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
-                    <label class="form-check-label" for="gridRadios1">Yes</label>
+                    <input class="form-check-input" type="radio" name="gridRadios" id="nhiRadioYes" value="option1">
+                    <label class="form-check-label" for="nhiRadioYes">Yes</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">No</label>
+                    <input class="form-check-input" type="radio" name="gridRadios" id="nhiRadioNo" value="option2">
+                    <label class="form-check-label" for="nhiRadioNo">No</label>
                   </div>
             </fieldset>
 
@@ -64,76 +64,81 @@
             <textarea class="form-control" id="menarche" rows="2"></textarea>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-3 mb-5">
             <fieldset class="col-4">
-              <legend class="col-form-label">Pregnancy History</legend>
-                <div class="">
+              <legend class="col-form-label">HIVPos</legend>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
-                    <label class="form-check-label" for="gridRadios1">Yes</label>
+                    <input class="form-check-input" type="radio" name="gridRadios" id="hivPosRadioYes" value="option1">
+                    <label class="form-check-label" for="hivPosRadioYes">Yes</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">No</label>
+                    <input class="form-check-input" type="radio" name="gridRadios" id="hivPosRadioNo" value="option2">
+                    <label class="form-check-label" for="hivPosRadioNo">No</label>
                   </div>
-                </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="hivPosRadioNotDone" value="option2">
+                    <label class="form-check-label" for="hivPosRadioNotDone">Not done</label>
+                  </div>
             </fieldset>
 
-            <fieldset class="col-4">
-              <legend class="col-form-label">PregnanyTestPos</legend>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
-                  <label class="form-check-label" for="gridRadios1">Yes</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                  <label class="form-check-label" for="gridRadios2">No</label>
-                </div>
-            </fieldset>
-
-            <div class ="form-group col-4">
-                    <label for="pregTestDate" class="form-label">PregnancyTestDate</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="pregTestDate">        
+            <div class ="form-group col-3">
+                    <label for="hivCheckDate" class="form-label">HIV Check Date</label>
+                    <input class="form-control" type="date"  id="pregTestDate">        
             </div>
-          </div>
 
+            <fieldset class="col-2 offset-1">
+              <legend class="col-form-label">HIV treated</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="hivtreatedRadioYes" value="option1">
+                  <label class="form-check-label" for="hivtreatedRadioYes">Yes</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="hivtreatedRadioNo" value="option2">
+                  <label class="form-check-label" for="hivtreatedRadioNo">No</label>
+                </div>
+            </fieldset>
+          </div>
 
           <div class="row mt-3 mb-5">
             <fieldset class="col-4">
-              <legend class="col-form-label">HIV</legend>
+              <legend class="col-form-label">TPos</legend>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="HIV" value="option1">
-                    <label class="form-check-label" for="HIV">Yes</label>
+                    <input class="form-check-input" type="radio" name="gridRadios" id="TPosRadioYes" value="option1">
+                    <label class="form-check-label" for="TPosRadioYes">Yes</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">No</label>
+                    <input class="form-check-input" type="radio" name="gridRadios" id="TPosRadioNo" value="option2">
+                    <label class="form-check-label" for="TPosRadioNo">No</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="TPosRadioNotDone" value="option2">
+                    <label class="form-check-label" for="TPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
-            <fieldset class="col-4">
-              <legend class="col-form-label">HIV treated</legend>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="HIVtreated" value="option1">
-                  <label class="form-check-label" for="HIVtreated">Yes</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                  <label class="form-check-label" for="gridRadios2">No</label>
-                </div>
-            </fieldset>
-
-            <div class ="form-group col-4">
-                    <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="pregTestDate">        
+            <div class ="form-group col-3">
+                    <label for="TposCheckDate" class="form-label">Tpos Check Date</label>
+                    <input class="form-control" type="date"  id="TposCheckDate">        
             </div>
+
+            <fieldset class="col-2 offset-1">
+              <legend class="col-form-label">TPos treated</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="TPosTreatedRadioYes" value="option1">
+                  <label class="form-check-label" for="TPosTreatedRadioYes">Yes</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gridRadios" id="TPosTreatedRadioNo" value="option2">
+                  <label class="form-check-label" for="TPosTreatedRadioNo">No</label>
+                </div>
+            </fieldset>
           </div>
-
-
 
       </form>
     </div>

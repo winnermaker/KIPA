@@ -12,48 +12,60 @@
     <title>Children</title>
 
     <div class="container">
-            <h1>Children</h1>
+            <h1 class="mt-3">Children</h1>
         </div>
   </head>
   <body>
 
-    <form action="">
+    <form action="" class="needs-validation" novalidate>
 
         <div class="container">
-            <div class="row">
+            <div class="row mt-3">
                 <div class ="form-group col-6">
-                    <label for="firstName" class="form-label">FirstName</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Max">  
+                    <label for="firstName" class="form-label">First name</label>
+                    <input type="text" class="form-control" id="firstName" pattern="[A-Za-z]" placeholder="Max" required>
+                    <div class="invalid-feedback">
+                    Please choose a First name/ Only Text will accept
+                    </div>
                 </div>
 
                 <div class="form-group col-6">
-                    <label for="lastName" class="form-label">LastName</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Mustermann"> 
+                    <label for="lastName" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Mustermann" required>
+                    <div class="invalid-feedback">
+                    Please choose a Last name
+                    </div> 
                 </div>
                 
             </div>
 
             <div class="row mt-3">
                 <div class ="form-group col-6">
-                    <label for="callName" class="form-label">CallName</label>
-                    <input type="text" class="form-control" id="callName" placeholder="Mike">  
+                    <label for="callName" class="form-label">Call name</label>
+                    <input type="text" class="form-control" id="callName" placeholder="Mike" >
+                    <div class="invalid-feedback">
+                    Please choose a Call name
+                    </div>  
                 </div>
 
                 <div class="form-group col-6">
                     <label for="gender" class="form-label">Gender</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="m/f"> 
+                    <input type="text" class="form-control" id="lastName" placeholder="m/f" required>
+                    <div class="invalid-feedback">
+                    Please choose a Gender
+                    </div>  
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class ="form-group col-6">
                     <label for="dayofBirth" class="col-2 col-form-label">Day of Birth</label>
-                    <input class="form-control col-4" type="date" value="2021-04-12" id="dayofBirth">        
+                    <input class="form-control col-4" type="date"  id="dayofBirth" required>        
                 </div>
 
                 <div class="form-group col-6">
                     <label for="EDOB" class="col-3 col-form-label">Est. Day of Birth</label>
-                    <input class="form-control col-3" type="date" value="2021-04-12" id="EDOB">
+                    <input class="form-control col-3" type="date" id="EDOB" required>
                 
                 </div>
                 
@@ -63,12 +75,12 @@
             <div class="row mt-3">
                 <div class ="form-group col-6">
                     <label for="admDate" class="col-2 col-form-label">AdmDate</label>
-                    <input class="form-control col-4" type="date" value="2021-04-12" id="admDate">        
+                    <input class="form-control col-4" type="date"  id="admDate" required>        
                 </div>
 
                 <div class="form-group col-6">
                     <label for="disDate" class="col-3 col-form-label">DisDate</label>
-                    <input class="form-control col-3" type="date" value="2021-04-12" id="disDate">
+                    <input class="form-control col-3" type="date"  id="disDate" required>
                 
                 </div>
                 
@@ -77,22 +89,47 @@
             <div class="row mt-3">
                 <div class="form-group col-6">
                     <label for="pictureTaken" class="form-label">PictureTaken</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="pictureTaken">
+                    <input class="form-control" type="date"  id="pictureTaken" required>
                 </div>
 
                 <div class="form-group col-6">
                     <label class="form-label" for="customFile">Upload Picture</label>
-                    <input type="file" class="form-control" id="customFile" />
+                    <input type="file" class="form-control" id="customFile" required />
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary mt-5">Submit</button>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
 
         </div>
     </form>
  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <script>
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
