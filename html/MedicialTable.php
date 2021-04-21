@@ -12,7 +12,7 @@
     <title>Medical Table</title>
   </head>
   <body>
-    <div class="container">
+
         <h1 class="mt-3">Medical Table</h1>
 
         <div class="table-responsive-lg">
@@ -28,8 +28,11 @@
                         <th scope="col">Est. Day of Birth</th>
                         <th scope="col">AdmDate</th>
                         <th scope="col">DisDate</th>
-                        <th scope="col">ChildrenEingabe</th>
-                        <th scope="col">MedicalMain</th>        
+                        <th scope="col">Children</th>
+                        <th scope="col">MedicalMain</th>
+                        <th scope="col">Pexam</th>
+                        <th scope="col">MedicalVisits</th>       
+                        <th scope="col">SocialHistory</th>   
                     </tr>
                 </thead>
 
@@ -46,17 +49,36 @@
                         <td>05.01.2021</td>
                         <td>18.04.2021</td>
                         <td>
-                            <div style="width: 100%; height: 100%;">
-                                <a href="childrenEingabe.php"> <button class="btn btn-primary">Children</button> </a>
+                            <div style="">
+                                <a href="childrenEingabe.php" target="_blank"> <button class="btn btn-primary">Children</button> </a>
                             </div>
                         </td>
-                        <td><a href="medicalMain.php" target="_blank">MedicalMain</a></td>
+                        <td>
+                            <div style="">
+                                <a href="medicalMain.php" target="_blank"> <button class="btn btn-primary">MedicalMain</button> </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="">
+                                <a href="MedicalPexam.php"> <button class="btn btn-primary">Pexam</button> </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="">
+                                <a href="MedicalVisits.php"> <button class="btn btn-primary">MedicalVisits</button> </a>
+                            </div>
+                        </td>
+                        <td>
+                            <div style="">
+                                <a href="SocialHistory.php"> <button class="btn btn-primary">SocialHistory</button> </a>
+                            </div>
+                        </td>
                     </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
-    </div>
+    
      <!-- O  ptional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
