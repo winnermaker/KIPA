@@ -12,7 +12,7 @@
     <title>Medical Table</title>
   </head>
   <body>
-
+    <div class="container">
         <h1 class="mt-3">Medical Table</h1>
 
         <div class="table-responsive-lg">
@@ -78,6 +78,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     
      <!-- O  ptional JavaScript; choose one of the two! -->
 
