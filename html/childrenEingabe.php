@@ -1,7 +1,4 @@
-<!doctype html>
-<html lang="en">
-  <head>
-  <?php
+<?php
 $servername = "localhost";
 $username = "admin";
 $password = "admin";
@@ -16,6 +13,9 @@ if (!$conn) {
 }
 echo "Connected successfully";
 ?>
+<!doctype html>
+<html lang="en">
+  <head>
       <?php require 'navbar.html' ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
