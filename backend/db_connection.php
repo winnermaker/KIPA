@@ -1,10 +1,11 @@
 <?php
-$servername = "127.0.0.1:3306";
-$username = "root";
-$password = "password";
+$servername = "localhost";
+$username = "admin";
+$password = "admin";
+$databasename = "kipa"
 
 // Create connection
-$conn = mysqli_connect($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $password, $databasename);
 
 // Check connection
 if (!$conn) {
