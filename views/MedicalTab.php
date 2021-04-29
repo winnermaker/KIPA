@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <?php require 'navbar.html' ?>
+    <?php require 'navbar.php' ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,7 +50,7 @@
 
     <style>
       body {
-        background-image: url('img/Kinder-Paradise-Logo-web-orange.png');
+        background-image: url('img/med3.png');
       }
   </style>
   </body>
