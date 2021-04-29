@@ -50,7 +50,7 @@
 
     <style>
       body {
-        background-image: url('Kinder-Paradise-Logo-web-orange.png');
+        background-image: url('img/Kinder-Paradise-Logo-web-orange.png');
       }
   </style>
   </body>
