@@ -15,7 +15,7 @@
                   <label for="socialDate" class="form-label">SocialDate</label>
                   <input class="form-control" type="date" value="2021-04-12" id="socialDate">        
             </div>
-            <div class="col-6">
+            <div class="form-group col-6">
             <label for="LivedWithWho" class="form-label">LivedWithWho</label>
             <textarea class="form-control" id="LivedWithWho" rows="1"></textarea>
             </div>

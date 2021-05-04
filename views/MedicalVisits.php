@@ -9,12 +9,12 @@
       <h1 class="mt-3 mb-3">Medical Visits</h1>
 
       <div class="row">
-        <div class ="form-group col-4">
+        <div class ="form-group col-2">
           <label for="VisitDate" class="form-label">VisitDate</label>
           <input class="form-control" type="date" value="2021-04-12" id="VisitDate">        
         </div>
 
-        <div class="form-group col-6">
+        <div class="form-group col-5">
           <label for="dropdownVisitType" class="form-label"> Visit Type</label>
           <select class="form-select" id="dropdownVisitType" aria-label="Default select example">
             <option selected>Choose ! One of this options</option>
@@ -24,16 +24,15 @@
           </select>
         </div>
 
-      </div>
-
-      <div class="form-group row mt-3">
-          <label for="dropdownExlocation" class="form-label">Exlocation</label>
-          <select class="form-select" id="dropdownExlocation" aria-label="Default select example">
-            <option selected>Choose ! One of this options</option>
-            <option value="La Polyclinic">La Polyclinic</option>
-            <option value="LDS">LDS</option>
-            <option value="La General Hospital">La General Hospital</option>
-          </select>
+        <div class="form-group col-5">
+            <label for="dropdownExlocation" class="form-label">Exlocation</label>
+            <select class="form-select" id="dropdownExlocation" aria-label="Default select example">
+              <option selected>Choose ! One of this options</option>
+              <option value="La Polyclinic">La Polyclinic</option>
+              <option value="LDS">LDS</option>
+              <option value="La General Hospital">La General Hospital</option>
+            </select>
+        </div>
       </div>
 
       <div class="form-group row mt-3">
