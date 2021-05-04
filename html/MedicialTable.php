@@ -1,3 +1,9 @@
+<?php
+    $connectionFile = 'C:\xampp\htdocs\kipa\backend\db_connection.php';
+    include($connectionFile);
+    db_connection();
+ ?>
+ 
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,8 +37,8 @@
                         <th scope="col">Children</th>
                         <th scope="col">MedicalMain</th>
                         <th scope="col">Pexam</th>
-                        <th scope="col">MedicalVisits</th>       
-                        <th scope="col">SocialHistory</th>   
+                        <th scope="col">MedicalVisits</th>
+                        <th scope="col">SocialHistory</th>
                     </tr>
                 </thead>
 
@@ -79,7 +85,7 @@
             </table>
         </div>
     </div>
-    
+
      <!-- O  ptional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -1,3 +1,9 @@
+<?php
+    $connectionFile = 'C:\xampp\htdocs\kipa\backend\db_connection.php';
+    include($connectionFile);
+    db_connection();
+ ?>
+ 
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,7 +26,7 @@
           <div class="row">
             <div class ="form-group col-6 ">
                   <label for="socialDate" class="form-label">SocialDate</label>
-                  <input class="form-control" type="date" value="2021-04-12" id="socialDate">        
+                  <input class="form-control" type="date" value="2021-04-12" id="socialDate">
             </div>
             <div class="col-6">
             <label for="LivedWithWho" class="form-label">LivedWithWho</label>
@@ -91,7 +97,7 @@
             <label for="FamilyPlanning" class="form-label">FamilyPlanning</label>
             <textarea class="form-control" id="FamilyPlanning" rows="2"></textarea>
           </div>
-        
+
           <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>
 
       </form>

@@ -1,3 +1,9 @@
+<?php
+    $connectionFile = 'C:\xampp\htdocs\kipa\backend\db_connection.php';
+    include($connectionFile);
+    db_connection();
+ ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +18,7 @@
     <title>MedicalMain</title>
   </head>
   <body>
-    
+
     <div class="container">
       <h1 class="mt-3">MedicalMain</h1>
 
@@ -38,10 +44,10 @@
 
             <div class ="form-group col-5">
                     <label for="reviewDate" class="form-label">ReviewDate</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="reviewDate">        
+                    <input class="form-control" type="date" value="2021-04-12" id="reviewDate">
             </div>
-          
-          
+
+
         </div>
 
         <div class="form-group row mt-3">
@@ -57,7 +63,7 @@
         <div class="form-group row mt-3">
             <label for="plan" >Plan</label>
             <textarea class="form-control" id="plan" rows="2"></textarea>
-        </div> 
+        </div>
 
         <div class="form-group row mt-3">
             <label for="menarche" class="form-label">Menarche</label>
@@ -85,7 +91,7 @@
 
             <div class ="form-group col-3">
                     <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date"  id="pregTestDate">        
+                    <input class="form-control" type="date"  id="pregTestDate">
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -123,7 +129,7 @@
 
             <div class ="form-group col-3">
                     <label for="TposCheckDate" class="form-label">Tpos Check Date</label>
-                    <input class="form-control" type="date"  id="TposCheckDate">        
+                    <input class="form-control" type="date"  id="TposCheckDate">
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -162,7 +168,7 @@
 
             <div class ="form-group col-3">
                     <label for="STDposCheckDate" class="form-label">STDPosCheckDate</label>
-                    <input class="form-control" type="date"  id="STDposCheckDate">        
+                    <input class="form-control" type="date"  id="STDposCheckDate">
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -182,7 +188,7 @@
           <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>
       </form>
     </div>
-   
+
 
 
 

@@ -1,18 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "admin";
-$password = "admin";
-$databasename = "kipa";
+    $connectionFile = 'C:\xampp\htdocs\kipa\backend\db_connection.php';
+    include($connectionFile);
+    db_connection();
+ ?>
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $databasename);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-?>
 <!doctype html>
 <html lang="en">
 <head>

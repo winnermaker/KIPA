@@ -1,17 +1,17 @@
 <?php
-$servername = "localhost";
-$username = "admin";
-$password = "admin";
-$databasename = "kipa";
-function db_connection(){
-  // Create connection
-$conn = mysqli_connect($servername, $username, $password, $databasename);
+  function db_connection(){
+    $servername = "localhost";
+    $username = "admin";
+    $password = "admin";
+    $databasename = "kipa";
 
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
+      // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $databasename);
+    // Check connection
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+    }
+    echo "Connected successfully";
 
-}
+  }
 ?>
