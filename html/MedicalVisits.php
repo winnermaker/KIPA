@@ -1,9 +1,10 @@
 <?php
-    $connectionFile = 'C:\xampp\htdocs\kipa\backend\db_connection.php';
-    include($connectionFile);
-    db_connection();
+  $connectionFile = '..\backend\db_connection.php';
+  $controllerFile = '..\backend\db_controller.php';
+  include($connectionFile);
+  include($controllerFile);
  ?>
- 
+
 <!doctype html>
 <html lang="en">
   <head>
