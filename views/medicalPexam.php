@@ -5,7 +5,7 @@
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3 mb-3">Medical Pexam</h1>
+        <h1 class="mt-3 mb-5">Medical Pexam</h1>
 
         <form action="">
             <div class="row mt-5 col-12">
@@ -30,6 +30,7 @@
                     <label for="nutritcondition" class="form-label">Nutritional Condition</label>
                     <input type="text" placeholder="" class="form-control" id="nutritcondition">
                 </div>
+            </div>
 
             <div class="row mt-3">
                 <div class="form-group col-3">
@@ -463,6 +464,8 @@
                 </div>
 
             </div>
+
+            <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>
 
 
 

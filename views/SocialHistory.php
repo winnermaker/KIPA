@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mb-3 mt-3">Social History</h1>
+      <h1 class="mb-5 mt-3">Social History</h1>
 
       <form action="">
 

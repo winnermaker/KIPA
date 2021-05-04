@@ -10,7 +10,7 @@
       <h1 class="mt-3">MedicalMain</h1>
 
       <form action="">
-        <div class="row mt-3">
+        <div class="row mt-5">
           <fieldset class="col-2 ">
               <legend class="col-form-label">NHIReg</legend>
                   <div class="form-check form-check-inline">
@@ -56,6 +56,49 @@
             <label for="menarche" class="form-label">Menarche</label>
             <textarea class="form-control" id="menarche" rows="2"></textarea>
         </div>
+
+
+        <div class="row mt-3 mb-5">
+            <fieldset class="col-4">
+              <legend class="col-form-label">HepBPos</legend>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1">
+                    <label class="form-check-label" for="HepBPosRadioYes">Yes</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadiosRadioNo" value="option2">
+                    <label class="form-check-label" for="HepBPosRadiosRadioNo">No</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option2">
+                    <label class="form-check-label" for="HepBPosRadioNotDone">Not done</label>
+                  </div>
+            </fieldset>
+
+            <div class ="form-group col-3">
+                    <label for="HepBPosCheckDate" class="form-label">HepB Check Date</label>
+                    <input class="form-control" type="date"  id="pregTestDate">        
+            </div>
+
+            <fieldset class="col-2 offset-1">
+              <legend class="col-form-label">HepB treated</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioYes" value="option1">
+                  <label class="form-check-label" for="HepBtreatedRadioYes">Yes</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioNo" value="option2">
+                  <label class="form-check-label" for="HepBtreatedRadioNo">No</label>
+                </div>
+            </fieldset>
+          </div>
+
+
+
+
 
         <div class="row mt-3 mb-5">
             <fieldset class="col-4">
@@ -170,6 +213,32 @@
                   <label class="form-check-label" for="STDposTreatedRadioNo">No</label>
                 </div>
             </fieldset>
+          </div>
+
+
+          <div class="row">
+            <fieldset class="col-4">
+                <legend class="col-form-label">SickelCellPos</legend>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioYes" value="option1">
+                      <label class="form-check-label" for="SickelCellRadioYes">Yes</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioNo" value="option2">
+                      <label class="form-check-label" for="SickelCellRadioNo">No</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioNotDone" value="option2">
+                      <label class="form-check-label" for="SickelCellRadioNotDone">Not done</label>
+                    </div>
+              </fieldset>
+
+              <div class="form-group col-3">
+                <label for="SickelCellType" class="form-label">SickelCell Type</label>
+                <input type="text" class="form-control" id="SickelCellType">
+              </div>
           </div>
 
           <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>

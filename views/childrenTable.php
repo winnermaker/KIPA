@@ -11,10 +11,10 @@
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3">Medical Table</h1>
+        <h1 class="mt-2">Medical Table</h1>
 
         <div class="table-responsive-lg">
-            <table class="table table-striped table-hover table-bordered mt-4">
+            <table class="table table-striped table-hover table-bordered mt-5">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>

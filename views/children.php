@@ -12,7 +12,7 @@
     <form action="" class="needs-validation" novalidate>
 
         <div class="container">
-            <div class="row mt-3">
+            <div class="row mt-5">
                 <div class ="form-group col-6">
                     <label for="firstName" class="form-label">First name</label>
                     <input type="text" class="form-control" id="firstName" pattern="[A-Za-z]" placeholder="Max" required>

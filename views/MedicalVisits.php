@@ -6,7 +6,7 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mt-3 mb-3">Medical Visits</h1>
+      <h1 class="mt-3 mb-5">Medical Visits</h1>
 
       <div class="row">
         <div class ="form-group col-2">
