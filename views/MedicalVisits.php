@@ -35,17 +35,17 @@
         </div>
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
         <label for="Excause" class="form-label">Excause</label>
         <input type="text" class="form-control" id="Excause" placeholder="" >
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
         <label for="PresComplaint" class="form-label">PresComplaint</label>
         <input type="text" class="form-control" id="PresComplaint" placeholder="" >
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
         <label for="HistPresComplaint" class="form-label">HistPresComplaint</label>
         <input type="text" class="form-control" id="HistPresComplaint" placeholder="" >
       </div>
@@ -62,32 +62,32 @@
       </div>
     </div>
 
-      <div class="form-group row mt-4">
+      <div class="form-group form-row mt-4">
             <label for="PE" class="form-label">PE</label>
             <textarea class="form-control" id="PE" rows="2"></textarea>
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
             <label for="Plan" class="form-label">Plan</label>
             <textarea class="form-control" id="Plan" rows="2"></textarea>
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
             <label for="Medication" class="form-label">Medication</label>
             <textarea class="form-control" id="Medication" rows="2"></textarea>
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
             <label for="Remarks" class="form-label">Remarks</label>
             <textarea class="form-control" id="Remarks" rows="2"></textarea>
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
             <label for="Therapy" class="form-label">Therapy</label>
             <textarea class="form-control" id="Therapy" rows="2"></textarea>
       </div>
 
-      <div class="form-group row mt-3">
+      <div class="form-group form-row mt-3">
             <label for="Diagnosis" class="form-label">Diagnosis</label>
             <textarea class="form-control" id="Diagnosis" rows="2"></textarea>
       </div>

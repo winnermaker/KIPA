@@ -8,7 +8,7 @@
         <h1 class="mt-3 mb-5">Medical Pexam</h1>
 
         <form action="">
-            <div class="row mt-5 col-12">
+            <div class="form-row mt-5 col-12">
                 <div class="form-group">
                     <label for="generalCondition" class="form-label">General Condition</label>
                     <textarea class="form-control" id="generalCondition" rows="2"></textarea>
@@ -26,7 +26,7 @@
                     <input type="text" placeholder="130" class="form-control" id="Height">
                 </div>
 
-                <div class="form-group col-7">
+                <div class="form-group col-8 ">
                     <label for="nutritcondition" class="form-label">Nutritional Condition</label>
                     <input type="text" placeholder="" class="form-control" id="nutritcondition">
                 </div>
