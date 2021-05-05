@@ -1,14 +1,16 @@
+<?php
+  require 'navbar.php';
+  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+  require '..\backend\db_connection.php';
+  require '..\backend\db_controller.php';
+
+  $conn = new db_connection();
+  $conn->connectToDB();
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-
-    <?php 
-    require 'navbar.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-    
-    ?>
-
     <title>Medical Tab</title>
   </head>
   <body>
@@ -29,7 +31,7 @@
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-pexam-tab" data-bs-toggle="pill" data-bs-target="#pills-pexam" type="button" role="tab" aria-controls="pills-pexam" aria-selected="false">Pexam</button>
       </li>
-      
+
     </ul>
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><?php require 'children.php' ?></div>
@@ -41,7 +43,7 @@
         </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
-    
+
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
 
@@ -52,7 +54,7 @@
     -->
 
     <style>
-      
+
   </style>
   </body>
 </html>
