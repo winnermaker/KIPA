@@ -7,14 +7,14 @@
 
     ?>
     <style>
-         body {background-color: #f1f1f1;}
+        
     </style>
 
     <title>Medical Table</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-2">Medical Table</h1>
+        <h1 class="mt-2 ">Medical Table</h1>
 
         <div class="table-responsive-lg">
             <table class="table table-striped table-hover table-bordered mt-5">
