@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <title>MedicalMain</title>
   </head>
@@ -16,7 +10,7 @@
       <h1 class="mt-3">MedicalMain</h1>
 
       <form action="">
-        <div class="row mt-3">
+        <div class="row mt-5">
           <fieldset class="col-2 ">
               <legend class="col-form-label">NHIReg</legend>
                   <div class="form-check form-check-inline">
@@ -62,6 +56,49 @@
             <label for="menarche" class="form-label">Menarche</label>
             <textarea class="form-control" id="menarche" rows="2"></textarea>
         </div>
+
+
+        <div class="row mt-3 mb-5">
+            <fieldset class="col-4">
+              <legend class="col-form-label">HepBPos</legend>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1">
+                    <label class="form-check-label" for="HepBPosRadioYes">Yes</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadiosRadioNo" value="option2">
+                    <label class="form-check-label" for="HepBPosRadiosRadioNo">No</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option2">
+                    <label class="form-check-label" for="HepBPosRadioNotDone">Not done</label>
+                  </div>
+            </fieldset>
+
+            <div class ="form-group col-3">
+                    <label for="HepBPosCheckDate" class="form-label">HepB Check Date</label>
+                    <input class="form-control" type="date"  id="pregTestDate">        
+            </div>
+
+            <fieldset class="col-2 offset-1">
+              <legend class="col-form-label">HepB treated</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioYes" value="option1">
+                  <label class="form-check-label" for="HepBtreatedRadioYes">Yes</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioNo" value="option2">
+                  <label class="form-check-label" for="HepBtreatedRadioNo">No</label>
+                </div>
+            </fieldset>
+          </div>
+
+
+
+
 
         <div class="row mt-3 mb-5">
             <fieldset class="col-4">
@@ -178,22 +215,35 @@
             </fieldset>
           </div>
 
+
+          <div class="row">
+            <fieldset class="col-4">
+                <legend class="col-form-label">SickelCellPos</legend>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioYes" value="option1">
+                      <label class="form-check-label" for="SickelCellRadioYes">Yes</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioNo" value="option2">
+                      <label class="form-check-label" for="SickelCellRadioNo">No</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioNotDone" value="option2">
+                      <label class="form-check-label" for="SickelCellRadioNotDone">Not done</label>
+                    </div>
+              </fieldset>
+
+              <div class="form-group col-3">
+                <label for="SickelCellType" class="form-label">SickelCell Type</label>
+                <input type="text" class="form-control" id="SickelCellType">
+              </div>
+          </div>
+
           <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>
       </form>
     </div>
    
-
-
-
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>
