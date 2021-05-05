@@ -8,6 +8,9 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
     
     ?>
+    <style>
+      body {background-color: #f0f0f0;}
+    </style>
 
     <title>Medical Tab</title>
   </head>
