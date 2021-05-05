@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php 
+  <?php
     require 'navbar.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-    
+
     ?>
 
     <title>Medical Table</title>
@@ -26,9 +26,9 @@
                         <th scope="col">Est. Day of Birth</th>
                         <th scope="col">AdmDate</th>
                         <th scope="col">DisDate</th>
-                        <th scope="col">Rewiev Date</th>
+                        <th scope="col">Review Date</th>
                         <th scope="col">Input Form</th>
-                       
+
                     </tr>
                 </thead>
 
@@ -57,7 +57,7 @@
             </table>
         </div>
     </div>
-    
-  
+
+
   </body>
 </html>
