@@ -11,11 +11,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php
-    require 'navbar.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-
-    ?>
     <style>
         
     </style>
