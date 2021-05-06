@@ -11,11 +11,20 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <?php
+    require 'navbar.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+
+    ?>
+    <style>
+        
+    </style>
+
     <title>Medical Table</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-2">Medical Table</h1>
+        <h1 class="mt-2 ">Medical Table</h1>
 
         <div class="table-responsive-lg">
             <table class="table table-striped table-hover table-bordered mt-5">

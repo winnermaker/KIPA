@@ -37,22 +37,22 @@
           
         </div>
 
-        <div class="form-group row mt-3">
+        <div class="form-group form-row mt-3">
             <label for="conditions" class="form-label">Conditions</label>
             <textarea class="form-control" id="conditions" rows="2"></textarea>
         </div>
 
-        <div class="form-group row mt-3">
+        <div class="form-group form-row mt-3">
             <label for="permMedication" class="form-label">PermMedication</label>
             <textarea class="form-control" id="permMedication" rows="2"></textarea>
         </div>
 
-        <div class="form-group row mt-3">
+        <div class="form-group form-row mt-3">
             <label for="plan" >Plan</label>
             <textarea class="form-control" id="plan" rows="2"></textarea>
         </div> 
 
-        <div class="form-group row mt-3">
+        <div class="form-group form-row mt-3">
             <label for="menarche" class="form-label">Menarche</label>
             <textarea class="form-control" id="menarche" rows="2"></textarea>
         </div>

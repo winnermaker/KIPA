@@ -15,7 +15,7 @@
             <div class="row mt-5">
                 <div class ="form-group col-6">
                     <label for="firstName" class="form-label">First name</label>
-                    <input type="text" class="form-control" id="firstName" pattern="[A-Za-z]" placeholder="Max" required>
+                    <input type="text" class="form-control border border-dark" id="firstName" pattern="[A-Za-z]" placeholder="Max" required>
                     <div class="invalid-feedback">
                     Please choose a First name/ Only Text will accept
                     </div>
@@ -120,5 +120,7 @@
         })()
 
     </script>
+
+
   </body>
 </html>
