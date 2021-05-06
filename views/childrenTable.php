@@ -11,10 +11,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <style>
-        
-    </style>
-
     <title>Medical Table</title>
   </head>
   <body>

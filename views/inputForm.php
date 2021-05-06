@@ -12,8 +12,14 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+
+    <?php
+    require 'navbar.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+
+    ?>
     <style>
-      
+
     </style>
 
     <title>Medical Tab</title>
