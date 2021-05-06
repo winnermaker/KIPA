@@ -12,12 +12,6 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-
-    <?php
-    require 'navbar.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-
-    ?>
     <style>
 
     </style>
@@ -52,25 +46,10 @@
       <div class="tab-pane fade" id="pills-pexam" role="tabpanel" aria-labelledby="pills-pexam-tab"><?php require 'medicalPexam.php' ?></div>
     </div>
         </div>
-
-<<<<<<< HEAD
-    <!-- Optional JavaScript; choose one of the two! -->
-
-=======
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
->>>>>>> 71908cc620e3fce56cffdf8d236fdcc3aa1810c1
-
-
-
-<<<<<<< HEAD
-    <style>
-
-  </style>
-=======
         <script>
         $('input,textarea,select').addClass('border border-dark');
-    </script>
+        </script>
 
->>>>>>> 71908cc620e3fce56cffdf8d236fdcc3aa1810c1
   </body>
 </html>
