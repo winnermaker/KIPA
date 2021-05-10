@@ -24,12 +24,12 @@
                   </div>
             </fieldset>
 
-            <div class="form-group col-5">
+            <div class="form-group offset-1 col-4">
               <label class="form-label" for="NHIReg">NHINr</label>
               <input type="text" class="form-control" placeholder="86245236" id="NHIReg">
             </div>
 
-            <div class ="form-group col-5">
+            <div class ="form-group offset-2 col-3">
                     <label for="reviewDate" class="form-label">ReviewDate</label>
                     <input class="form-control" type="date" value="2021-04-12" id="reviewDate">        
             </div>
@@ -58,7 +58,7 @@
         </div>
 
 
-        <div class="row mt-3 mb-5">
+        <div class="row mt-4 mb-5">
             <fieldset class="col-4">
               <legend class="col-form-label">HepBPos</legend>
                   <div class="form-check form-check-inline">
@@ -241,7 +241,7 @@
               </div>
           </div>
 
-          <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>
+          <button type="submit" class="btn btn-primary mb-3">Submit</button>
       </form>
     </div>
    
