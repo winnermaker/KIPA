@@ -11,7 +11,7 @@
     <style>
     body {background-color: #efefef;}
       .container{
-        width:65%;
+        width:70%;
         border: 2px solid black;
         margin-bottom:10px;
       }
