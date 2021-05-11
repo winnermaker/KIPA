@@ -6,11 +6,11 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mb-5 mt-3">Social History</h1>
+      <h1 class="mt-3">Social History</h1>
 
       <form action="">
 
-          <div class="row">
+          <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="socialDate" class="form-label">SocialDate</label>
                   <input class="form-control" type="date" value="2021-04-12" id="socialDate">        

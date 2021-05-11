@@ -6,9 +6,9 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mt-3 mb-5">Medical Visits</h1>
+      <h1 class="mt-3">Medical Visits</h1>
 
-      <div class="row">
+      <div class="row mt-5">
         <div class ="form-group col-2">
           <label for="VisitDate" class="form-label">VisitDate</label>
           <input class="form-control" type="date" value="2021-04-12" id="VisitDate">        
@@ -37,7 +37,8 @@
         <div class ="form-group col-2">
           <label for="RVD" class="form-label">Review Date</label>
           <input class="form-control" type="date" value="2021-04-12" id="RVD">        
-      </div>
+        </div>
+
       </div>
 
       <div class="form-group form-row mt-3">
@@ -55,7 +56,7 @@
         <input type="text" class="form-control" id="HistPresComplaint" placeholder="" >
       </div>
 
-      <div class="form-group form-row mt-4">
+      <div class="form-group form-row mt-3">
             <label for="PE" class="form-label">PE</label>
             <textarea class="form-control" id="PE" rows="2"></textarea>
       </div>

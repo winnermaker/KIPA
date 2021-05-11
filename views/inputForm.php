@@ -37,7 +37,13 @@
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="pills-pexam-tab" data-bs-toggle="pill" data-bs-target="#pills-pexam" type="button" role="tab" aria-controls="pills-pexam" aria-selected="false">Pexam</button>
       </li>
-      </div>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-pregnancy-tab" data-bs-toggle="pill" data-bs-target="#pills-pregnancy" type="button" role="tab" aria-controls="pills-pregnancy" aria-selected="false">Pregnancy</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-vaccination-tab" data-bs-toggle="pill" data-bs-target="#pills-vaccination" type="button" role="tab" aria-controls="pills-vaccination" aria-selected="false">Vaccination</button>
+      </li>
+    </div>
       
     </ul>
     <div class="tab-content" id="pills-tabContent">
@@ -46,6 +52,8 @@
       <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><?php require 'medicalVisits.php' ?></div>
       <div class="tab-pane fade" id="pills-social" role="tabpanel" aria-labelledby="pills-social-tab"><?php require 'socialHistory.php' ?></div>
       <div class="tab-pane fade" id="pills-pexam" role="tabpanel" aria-labelledby="pills-pexam-tab"><?php require 'medicalPexam.php' ?></div>
+      <div class="tab-pane fade" id="pills-pregnancy" role="tabpanel" aria-labelledby="pills-pregnancy-tab"><?php require 'medicalPregnancy.php' ?></div>
+      <div class="tab-pane fade" id="pills-vaccination" role="tabpanel" aria-labelledby="pills-vaccination-tab"><?php require 'medicalVaccination.php' ?></div>
     </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

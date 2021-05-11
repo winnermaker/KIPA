@@ -62,9 +62,9 @@
             <textarea class="form-control" id="menarche" rows="2"></textarea>
         </div>
 
-        <h3 class="mt-4">Tests</h3>
+        <h3 class="mt-5">Tests</h3>
 
-        <div class="row mt-4 mb-5">
+        <div class="row mt-4">
             <fieldset class="col-4">
               <legend class="col-form-label">HepBPos</legend>
                   <div class="form-check form-check-inline">
@@ -102,7 +102,7 @@
             </fieldset>
           </div>
 
-        <div class="row mt-4 mb-5">
+        <div class="row mt-4">
             <fieldset class="col-4">
               <legend class="col-form-label">HIVPos</legend>
                   <div class="form-check form-check-inline">
@@ -140,7 +140,7 @@
             </fieldset>
           </div>
 
-          <div class="row mt-4 mb-5">
+          <div class="row mt-4">
             <fieldset class="col-4">
               <legend class="col-form-label">TPos</legend>
                   <div class="form-check form-check-inline">
@@ -179,7 +179,7 @@
           </div>
 
 
-          <div class="row mt-4 mb-5">
+          <div class="row mt-4">
             <fieldset class="col-4">
               <legend class="col-form-label">STDPos</legend>
                   <div class="form-check form-check-inline">
@@ -218,7 +218,7 @@
           </div>
 
 
-          <div class="row mt-4 mb-5">
+          <div class="row mt-4">
             <fieldset class="col-4">
               <legend class="col-form-label">PregnanyTestPos</legend>
                   <div class="form-check form-check-inline">
