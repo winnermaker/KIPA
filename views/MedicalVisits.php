@@ -14,7 +14,7 @@
           <input class="form-control" type="date" value="2021-04-12" id="VisitDate">        
         </div>
 
-        <div class="form-group col-5">
+        <div class="form-group col-4">
           <label for="dropdownVisitType" class="form-label"> Visit Type</label>
           <select class="form-select" id="dropdownVisitType" aria-label="Default select example">
             <option selected>Choose ! One of this options</option>
@@ -24,7 +24,7 @@
           </select>
         </div>
 
-        <div class="form-group col-5">
+        <div class="form-group col-4">
             <label for="dropdownExlocation" class="form-label">Exlocation</label>
             <select class="form-select" id="dropdownExlocation" aria-label="Default select example">
               <option selected>Choose ! One of this options</option>
@@ -33,6 +33,11 @@
               <option value="La General Hospital">La General Hospital</option>
             </select>
         </div>
+
+        <div class ="form-group col-2">
+          <label for="RVD" class="form-label">Review Date</label>
+          <input class="form-control" type="date" value="2021-04-12" id="RVD">        
+      </div>
       </div>
 
       <div class="form-group form-row mt-3">
@@ -49,18 +54,6 @@
         <label for="HistPresComplaint" class="form-label">HistPresComplaint</label>
         <input type="text" class="form-control" id="HistPresComplaint" placeholder="" >
       </div>
-
-    <div class="row mt-3">
-      <div class ="form-group col-6">
-          <label for="RVD" class="form-label">RVD</label>
-          <input class="form-control" type="date" value="2021-04-12" id="RVD">        
-      </div>
-
-      <div class ="form-group col-6">
-          <label for="DateAdd" class="form-label">DateAdd</label>
-          <input class="form-control" type="date" value="2021-04-12" id="DateAdd">        
-      </div>
-    </div>
 
       <div class="form-group form-row mt-4">
             <label for="PE" class="form-label">PE</label>

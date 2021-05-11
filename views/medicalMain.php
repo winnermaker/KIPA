@@ -24,14 +24,19 @@
                   </div>
             </fieldset>
 
-            <div class="form-group offset-1 col-4">
+            <div class="form-group col-4">
               <label class="form-label" for="NHIReg">NHINr</label>
               <input type="text" class="form-control" placeholder="86245236" id="NHIReg">
             </div>
 
-            <div class ="form-group offset-2 col-3">
-                    <label for="reviewDate" class="form-label">ReviewDate</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="reviewDate">        
+            <div class ="form-group col-3">
+                    <label for="ReviewOn" class="form-label">Review on</label>
+                    <input class="form-control" type="date" value="2021-04-12" id="ReviewOn">        
+            </div>
+
+            <div class ="form-group col-3">
+                    <label for="NextVaccDate" class="form-label">NextVaccDate</label>
+                    <input class="form-control" type="date"  id="NextVaccDate">        
             </div>
           
           
@@ -57,6 +62,7 @@
             <textarea class="form-control" id="menarche" rows="2"></textarea>
         </div>
 
+        <h3 class="mt-4">Tests</h3>
 
         <div class="row mt-4 mb-5">
             <fieldset class="col-4">
@@ -96,11 +102,7 @@
             </fieldset>
           </div>
 
-
-
-
-
-        <div class="row mt-3 mb-5">
+        <div class="row mt-4 mb-5">
             <fieldset class="col-4">
               <legend class="col-form-label">HIVPos</legend>
                   <div class="form-check form-check-inline">
@@ -138,7 +140,7 @@
             </fieldset>
           </div>
 
-          <div class="row mt-3 mb-5">
+          <div class="row mt-4 mb-5">
             <fieldset class="col-4">
               <legend class="col-form-label">TPos</legend>
                   <div class="form-check form-check-inline">
@@ -177,7 +179,7 @@
           </div>
 
 
-          <div class="row mt-3 mb-5">
+          <div class="row mt-4 mb-5">
             <fieldset class="col-4">
               <legend class="col-form-label">STDPos</legend>
                   <div class="form-check form-check-inline">
@@ -216,7 +218,46 @@
           </div>
 
 
-          <div class="row">
+          <div class="row mt-4 mb-5">
+            <fieldset class="col-4">
+              <legend class="col-form-label">PregnanyTestPos</legend>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioYes" value="option1">
+                    <label class="form-check-label" for="pregPosRadioYes">Yes</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNo" value="option2">
+                    <label class="form-check-label" for="pregPosRadioNo">No</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option2">
+                    <label class="form-check-label" for="pregPosRadioNotDone">Not done</label>
+                  </div>
+            </fieldset>
+
+            <div class ="form-group col-3">
+                    <label for="PregTestDate" class="form-label">PregTestDate</label>
+                    <input class="form-control" type="date"  id="PregTestDate">        
+            </div>
+
+            <fieldset class="col-2 offset-1">
+              <legend class="col-form-label">PregnancyHist</legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioYes" value="option1">
+                  <label class="form-check-label" for="PregnancyHistRadioYes">Yes</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioNo" value="option2">
+                  <label class="form-check-label" for="PregnancyHistRadioNo">No</label>
+                </div>
+            </fieldset>
+          </div>
+
+
+          <div class="row mt-4">
             <fieldset class="col-4">
                 <legend class="col-form-label">SickelCellPos</legend>
                     <div class="form-check form-check-inline">
@@ -241,7 +282,27 @@
               </div>
           </div>
 
-          <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
+          <div class="row mt-4">
+            <fieldset class="col-4">
+                <legend class="col-form-label">G6DP</legend>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioYes" value="option1">
+                      <label class="form-check-label" for="G6DPRadiosRadioYes">Yes</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNo" value="option2">
+                      <label class="form-check-label" for="G6DPRadiosRadioNo">No</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option2">
+                      <label class="form-check-label" for="G6DPRadiosRadioNotDone">Not done</label>
+                    </div>
+              </fieldset>
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-5 mb-3">Submit</button>
       </form>
     </div>
    

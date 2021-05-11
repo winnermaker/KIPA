@@ -11,11 +11,11 @@
       <form action="">
 
           <div class="row">
-            <div class ="form-group col-6 ">
+            <div class ="form-group col-2 ">
                   <label for="socialDate" class="form-label">SocialDate</label>
                   <input class="form-control" type="date" value="2021-04-12" id="socialDate">        
             </div>
-            <div class="form-group col-6">
+            <div class="form-group col">
             <label for="LivedWithWho" class="form-label">LivedWithWho</label>
             <textarea class="form-control" id="LivedWithWho" rows="1"></textarea>
             </div>
