@@ -9,9 +9,13 @@
     
     ?>
     <style>
-    body {background-color: #efefef;}
-      .container{
-        width:70%;
+    body {background-color: #efefef;
+        padding:70px;
+    }
+
+      .container
+      {
+        width:75%;
         border: 2px solid black;
         margin-bottom:10px;
       }
@@ -20,7 +24,7 @@
     <title>Medical Tab</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container ">
         <ul class="nav nav-pills nav-fill mt-2 mb-2 " id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
         <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Children</button>
