@@ -1,21 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid form-row">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item active">
-            <a class=" navbar-brand" href="childrenTable.php"> <img src="img/logo.png" style="max-width:100px; margin-top: -7px;" alt="Logo"></img> </a>
-        </li>
-        <li class="nav-item active">
-            <a class="navbar-brand" href="inputForm.php"> Input Form </a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link text-white" href="childrenTable.php">Children table</a>
+        <a class="nav-link text-white" href="inputForm.php">Forms</a>
+      </div>
     </div>
+  
+      <form class="d-flex float-end" style="width:25%">
+        <div class="input-group input-group-sm border border-dark">
+            <input type="text" aria-label="First name" placeholder="First name" class="form-control">
+            <input type="text" aria-label="Last name"  placeholder="Last name" class="form-control">
+            <input type="text" aria-label="Call name"  placeholder="Call name" class="form-control">
+
+            <button class="btn btn-success ms-2" type="submit">Search</button> 
+       </div>
+        
+      </form>
   </div>
 </nav>
+

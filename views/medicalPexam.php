@@ -5,7 +5,7 @@
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3 mb-5">Medical Pexam</h1>
+        <h1 class="mt-3">Medical Pexam</h1>
 
         <form action="">
             <div class="form-row mt-5 col-12">
@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="row mt-4">
+            <div class="row mt-3">
                 <div class="form-group col-6">
                     <label for="Hydration" class="form-label">Hydration</label>
                     <textarea class="form-control" id="Hydration" rows="2"></textarea>
@@ -465,7 +465,7 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary mt-3 mb-4">Submit</button>
+            <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
 
 
 

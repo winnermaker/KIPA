@@ -1,6 +1,5 @@
 <?php
-  require 'navbar.php';
-  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+
   require '..\backend\db_connection.php';
   require '..\backend\db_controller.php';
 
@@ -10,12 +9,32 @@
   ?>
 <!doctype html>
 <html lang="en">
+
   <head>
-    <title>Medical Table</title>
+  <?php
+    require 'navbar.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+    
+
+    ?>
+    <style>
+         body 
+         {
+             background-color: #efefef; 
+             padding:70px;   
+         }
+
+         .container
+         {
+             width:80%;
+         }
+    </style>
+
+    <title>Children table</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-2 ">Medical Table</h1>
+        <h1 class="mt-3 ">Children table</h1>
 
         <div class="table-responsive-lg">
             <table class="table table-striped table-hover table-bordered mt-5">
