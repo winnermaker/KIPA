@@ -10,14 +10,14 @@
 
       <div class="row mt-5">
         <div class ="form-group col-2">
-          <label for="VisitDate" class="form-label">VisitDate</label>
+          <label for="VisitDate" class="form-label">Visit Date</label>
           <input class="form-control" type="date" value="2021-04-12" id="VisitDate">        
         </div>
 
         <div class="form-group col-4">
           <label for="dropdownVisitType" class="form-label"> Visit Type</label>
           <select class="form-select" id="dropdownVisitType" aria-label="Default select example">
-            <option selected>Choose ! One of this options</option>
+            <option selected>Choose ! One of these options</option>
             <option value="Dentist">Dentist</option>
             <option value="Urologist">Urologist</option>
             <option value="Ultrasound">Ultrasound</option>
@@ -25,9 +25,9 @@
         </div>
 
         <div class="form-group col-4">
-            <label for="dropdownExlocation" class="form-label">Exlocation</label>
+            <label for="dropdownExlocation" class="form-label">Exam. Location</label>
             <select class="form-select" id="dropdownExlocation" aria-label="Default select example">
-              <option selected>Choose ! One of this options</option>
+              <option selected>Choose ! One of these options</option>
               <option value="La Polyclinic">La Polyclinic</option>
               <option value="LDS">LDS</option>
               <option value="La General Hospital">La General Hospital</option>
@@ -42,18 +42,18 @@
       </div>
 
       <div class="form-group form-row mt-3">
-        <label for="Excause" class="form-label">Excause</label>
+        <label for="Excause" class="form-label">Exam. Cause</label>
         <input type="text" class="form-control" id="Excause" placeholder="" >
       </div>
 
       <div class="form-group form-row mt-3">
-        <label for="PresComplaint" class="form-label">PresComplaint</label>
-        <input type="text" class="form-control" id="PresComplaint" placeholder="" >
+        <label for="presentComplaint" class="form-label">Present Complaint</label>
+        <input type="text" class="form-control" id="presentComplaint" placeholder="" >
       </div>
 
       <div class="form-group form-row mt-3">
-        <label for="HistPresComplaint" class="form-label">HistPresComplaint</label>
-        <input type="text" class="form-control" id="HistPresComplaint" placeholder="" >
+            <label for="HxOfPresentComplaint" class="form-label">Hx. of Present Complaint</label>
+            <textarea class="form-control" id="HxOfPresentComplaint" rows="2"></textarea>
       </div>
 
       <div class="form-group form-row mt-3">
@@ -72,18 +72,13 @@
       </div>
 
       <div class="form-group form-row mt-3">
-            <label for="Remarks" class="form-label">Remarks</label>
-            <textarea class="form-control" id="Remarks" rows="2"></textarea>
-      </div>
-
-      <div class="form-group form-row mt-3">
-            <label for="Therapy" class="form-label">Therapy</label>
-            <textarea class="form-control" id="Therapy" rows="2"></textarea>
-      </div>
-
-      <div class="form-group form-row mt-3">
             <label for="Diagnosis" class="form-label">Diagnosis</label>
             <textarea class="form-control" id="Diagnosis" rows="2"></textarea>
+      </div>
+
+      <div class="form-group form-row mt-3">
+            <label for="Remarks" class="form-label">Remarks</label>
+            <textarea class="form-control" id="Remarks" rows="3"></textarea>
       </div>
 
       <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>

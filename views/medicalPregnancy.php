@@ -52,12 +52,12 @@
                 <input type="text" class="form-control" placeholder="" id="gestationalAge">
                 </div>
 
-                <div class ="form-group offset-1 col-3">
+                <div class ="form-group offset-1 col-2">
                     <label for="estimatedDateOfDelivery" class="form-label">Estimated Date of Delivery</label>
                     <input class="form-control" type="date"  id="estimatedDateOfDelivery">        
                 </div>
 
-                <fieldset class="offset-1 col-3">
+                <fieldset class="offset-1 col-4">
                 <legend class="col-form-label">Antenatal Clinic attendance</legend>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioYes" value="option1">
@@ -139,6 +139,19 @@
             </div>
 
             <div class="row mt-3">
+                <fieldset class="col-2">
+                <legend class="col-form-label">Healthy?</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="healthyRadios" id="healthyRadioYes" value="option1">
+                        <label class="form-check-label" for="healthyRadioYes">Yes</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="healthyRadios" id="healthyRadioNo" value="option2">
+                        <label class="form-check-label" for="healthyRadioNo">No</label>
+                    </div>
+                </fieldset>
+
                 <div class="form-group col">
                     <label for="childrenProblems" class="form-label">Problems</label>
                     <textarea class="form-control" id="childrenProblems" rows="2"></textarea>
@@ -148,7 +161,7 @@
             <div class="row mt-3">
                 <div class="form-group col">
                     <label for="Remarks" class="form-label">Remarks</label>
-                    <textarea class="form-control" id="Remarks" rows="3"></textarea>
+                    <textarea class="form-control" id="Remarks" rows="4"></textarea>
                 </div>
             </div>
 
