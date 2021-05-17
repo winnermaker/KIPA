@@ -7,7 +7,9 @@
   <body>
     
     <div class="container">
-      <h1 class="mt-3">Medical Main</h1>
+      <div class="sticky-top row">
+        <h1 class="mt-3 col">Medical Main</h1>
+      </div>
 
       <form action="">
         <div class="row mt-5">

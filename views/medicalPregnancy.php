@@ -10,12 +10,15 @@
         <h1 class="mt-3">Pregnancy</h1>
         
 
-        <form action="">
+        <form action="" class="needs-validation" novalidate>
 
             <div class="row mt-5">
                 <div class ="form-group col-2">
                     <label for="entryDate" class="form-label">Entry Date</label>
-                    <input class="form-control" type="date"  id="entryDate">        
+                    <input class="form-control" type="date"  id="entryDate" required>
+                    <div class="invalid-feedback">
+                    Please enter a Date
+                    </div>       
                 </div>
 
                 <div class="form-group col-2">

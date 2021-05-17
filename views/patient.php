@@ -15,7 +15,7 @@
                 <fieldset>
                 <legend class="col-form-label">Gender</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1">
+                        <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1" required>
                         <label class="form-check-label" for="maleRadio">Male</label>
                     </div>
 
@@ -28,18 +28,20 @@
                         <input class="form-check-input" type="radio" name="genderRadios" id="genderOtherRadio" value="option3">
                         <label class="form-check-label" for="genderOtherRadio">Other</label>
                     </div>
+
+                    <div class="invalid-feedback">
+                    Please choose a Gender
+                    </div>
                 </fieldset>
             </div>
 
             <div class="form-row mt-3">
                 <div class ="form-group col">
                     <label for="firstName" class="form-label">First name</label>
-                    <div>
-                    <input type="text" class="form-control" id="firstName" pattern="[A-Za-z]" placeholder="Max" required>
-                    </div>
+                    <input type="text" class="form-control" id="firstName" placeholder="Max" required>
                     <div class="invalid-feedback">
-                    Please choose a First name/ Only Text will accept
-                    </div>
+                    Please choose a Call name
+                    </div>  
                 </div>
             </div>
 
@@ -56,7 +58,7 @@
             <div class="form-row mt-3">
                 <div class ="form-group col">
                     <label for="callName" class="form-label">Call name</label>
-                    <input type="text" class="form-control" id="callName" placeholder="Mike" >
+                    <input type="text" class="form-control" id="callName" placeholder="Mike" required >
                     <div class="invalid-feedback">
                     Please choose a Call name
                     </div>  
@@ -66,23 +68,23 @@
             <div class="row mt-3">
                 <div class ="form-group col">
                     <label for="dateOfBirth" class="col-form-label">Date of Birth</label>
-                    <input class="form-control " type="date"  id="dateOfBirth" required>        
+                    <input class="form-control " type="date"  id="dateOfBirth">        
                 </div>
 
                 <div class="form-group col">
                     <label for="estDateOfBirth" class="col-form-label">Est. Date of Birth</label>
-                    <input class="form-control " type="date" id="estDateOfBirth" required>
+                    <input class="form-control " type="date" id="estDateOfBirth">
                 
                 </div>
 
                 <div class ="form-group col">
                     <label for="admissionDate" class="col-form-label">Admission Date</label>
-                    <input class="form-control " type="date"  id="admissionDate" required>        
+                    <input class="form-control " type="date"  id="admissionDate">        
                 </div>
 
                 <div class="form-group col">
                     <label for="dischargeDate" class="col-form-label">Discharge Date</label>
-                    <input class="form-control" type="date"  id="dischargeDate" required>
+                    <input class="form-control" type="date"  id="dischargeDate">
                 
                 </div>
                 
@@ -91,12 +93,12 @@
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="pictureTakenOn" class="form-label">Picture taken on</label>
-                    <input class="form-control" type="date"  id="pictureTakenOn" required>
+                    <input class="form-control" type="date"  id="pictureTakenOn">
                 </div>
 
                 <div class="form-group col">
                     <label class="form-label" for="customFile">Upload Picture</label>
-                    <input type="file" class="form-control" id="customFile" required />
+                    <input type="file" class="form-control" id="customFile" />
                 </div>
             </div>
 

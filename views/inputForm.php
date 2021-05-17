@@ -9,22 +9,13 @@
     
     ?>
     <style>
-    body {background-color: #efefef;
-        padding:70px;
-    }
-
-      .container
-      {
-        border: 2px solid black;
-        margin-bottom:10px;
-      }
     </style>
 
     <title>Medical Tab</title>
   </head>
   <body>
     <div class="container ">
-        <ul class="nav nav-pills nav-fill mt-2 mb-2 " id="pills-tab" role="tablist">
+        <ul class="nav nav-pills nav-fill mt-2 mb-2 border border-dark " id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
         <button class="nav-link active" id="pills-patients-tab" data-bs-toggle="pill" data-bs-target="#pills-patients" type="button" role="tab" aria-controls="pills-patients" aria-selected="true">Patients</button>
       </li>

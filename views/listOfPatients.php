@@ -12,7 +12,6 @@
          body 
          {
              background-color: #efefef; 
-             padding:70px;   
          }
     </style>
 
@@ -26,17 +25,17 @@
             <table class="table table-striped table-hover table-bordered mt-5">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Call name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Date of Birth</th>
-                        <th scope="col">Est. Date of Birth</th>
-                        <th scope="col">Admission Date</th>
-                        <th scope="col">Discharge Date</th>
-                        <th scope="col">Review Date</th>
-                        <th scope="col">Input Form</th>
+                        <th scope="col" class="sticky-top">#</th>
+                        <th scope="col" class="sticky-top">First name</th>
+                        <th scope="col" class="sticky-top">Last name</th>
+                        <th scope="col" class="sticky-top">Call name</th>
+                        <th scope="col" class="sticky-top">Gender</th>
+                        <th scope="col" class="sticky-top">Date of Birth</th>
+                        <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                        <th scope="col" class="sticky-top">Admission Date</th>
+                        <th scope="col" class="sticky-top">Discharge Date</th>
+                        <th scope="col" class="sticky-top">Review Date</th>
+                        <th scope="col" class="sticky-top">Input Form</th>
 
                     </tr>
                 </thead>

@@ -8,12 +8,15 @@
     <div class="container">
       <h1 class="mt-3">Social History</h1>
 
-      <form action="">
+      <form action="" class="needs-validation" novalidate>
 
           <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
-                  <input class="form-control" type="date" value="2021-04-12" id="dateOfInvestigation">        
+                  <input class="form-control" type="date" value="2021-04-12" id="dateOfInvestigation" required>
+                  <div class="invalid-feedback">
+                    Please enter a Date
+                    </div>      
             </div>
             <div class="form-group col">
             <label for="LivedWithWho" class="form-label">Lived with who?</label>
