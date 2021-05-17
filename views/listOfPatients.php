@@ -14,18 +14,13 @@
              background-color: #efefef; 
              padding:70px;   
          }
-
-         .container
-         {
-             width:80%;
-         }
     </style>
 
     <title>Children table</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3 ">Children table</h1>
+        <h1 class="mt-3 ">List of Patients</h1>
 
         <div class="table-responsive-lg">
             <table class="table table-striped table-hover table-bordered mt-5">
@@ -36,10 +31,10 @@
                         <th scope="col">Last name</th>
                         <th scope="col">Call name</th>
                         <th scope="col">Gender</th>
-                        <th scope="col">Day of Birth</th>
-                        <th scope="col">Est. Day of Birth</th>
-                        <th scope="col">AdmDate</th>
-                        <th scope="col">DisDate</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Est. Date of Birth</th>
+                        <th scope="col">Admission Date</th>
+                        <th scope="col">Discharge Date</th>
                         <th scope="col">Review Date</th>
                         <th scope="col">Input Form</th>
 

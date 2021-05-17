@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link text-white" href="childrenTable.php">Children table</a>
+        <a class="nav-link text-white" href="listOfPatients.php">List of Patients</a>
         <a class="nav-link text-white" href="inputForm.php">Forms</a>
       </div>
     </div>

@@ -18,15 +18,20 @@
             <div class="row mt-3">
                 <div class="form-group col-2">
                     <label for="Weight" class="form-label">Weight</label>
-                    <input type="text" placeholder="24" class="form-control" id="Weight">
+                    <input type="text" placeholder="" class="form-control" id="Weight">
                 </div>
 
                 <div class="form-group col-2">
                     <label for="Height" class="form-label">Height</label>
-                    <input type="text" placeholder="130" class="form-control" id="Height">
+                    <input type="text" placeholder="" class="form-control" id="Height">
                 </div>
 
-                <div class="form-group col-8 ">
+                <div class="form-group col-2">
+                    <label for="headcircumference" class="form-label">Head circumference</label>
+                    <input type="text" class="form-control" id="headcircumference">
+                </div>
+
+                <div class="form-group col ">
                     <label for="nutritcondition" class="form-label">Nutritional Condition</label>
                     <input type="text" placeholder="" class="form-control" id="nutritcondition">
                 </div>
@@ -35,22 +40,45 @@
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="BMI" class="form-label">BMI</label>
-                    <input type="text" placeholder="14" class="form-control" id="BMI">
+                    <input type="text" placeholder="" class="form-control" id="BMI">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="MUAC" class="form-label">MUAC</label>
-                    <input type="text" placeholder="18.5" class="form-control" id="MUAC">
+                    <input type="text" placeholder="" class="form-control" id="MUAC">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="temp" class="form-label">Temperature</label>
-                    <input type="text" placeholder="19.5" class="form-control" id="temp">
+                    <input type="text" placeholder="" class="form-control" id="temp">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="edema" class="form-label">Edema</label>
-                    <input type="text" placeholder="24" class="form-control" id="edema">
+                    <input type="text" placeholder="" class="form-control" id="edema">
+                </div>
+            </div>
+
+            
+            <div class="row mt-3">
+                <div class="form-group col-3">
+                    <label for="jaundice" class="form-label">Jaundice</label>
+                    <input type="text" placeholder="" class="form-control" id="jaundice">
+                </div>
+
+                <div class="form-group col-3">
+                    <label for="pallor" class="form-label">Pallor</label>
+                    <input type="text" placeholder="" class="form-control" id="pallor">
+                </div>
+
+                <div class="form-group col-3">
+                    <label for="clubbing" class="form-label">Clubbing</label>
+                    <input type="text" placeholder="" class="form-control" id="clubbing">
+                </div>
+
+                <div class="form-group col-3">
+                    <label for="dactylitis" class="form-label">Dactylitis</label>
+                    <input type="text" placeholder="" class="form-control" id="dactylitis">
                 </div>
             </div>
 
@@ -61,47 +89,17 @@
                 </div>
 
                 <div class="form-group col-6">
-                    <label for="Pallor" class="form-label">Pallor</label>
-                    <textarea class="form-control" id="Pallor" rows="2"></textarea>
-                </div>
-
-            </div>
-
-            <div class="row mt-3">
-                <div class="form-group col-6">
-                    <label for="Jaundice" class="form-label">Jaundice</label>
-                    <textarea class="form-control" id="Jaundice" rows="2"></textarea>
-                </div>
-
-                <div class="form-group col-6">
                     <label for="Lymphaden" class="form-label">Lymphadenopathy</label>
                     <textarea class="form-control" id="Lymphaden" rows="2"></textarea>
                 </div>
 
             </div>
 
-            <div class="row mt-3">
-                <div class="form-group col-6">
-                    <label for="Clubbing" class="form-label">Clubbing</label>
-                    <textarea class="form-control" id="Clubbing" rows="2"></textarea>
-                </div>
-
-                <div class="form-group col-6">
-                    <label for="Dactylitis" class="form-label">Dactylitis</label>
-                    <textarea class="form-control" id="Dactylitis" rows="2"></textarea>
-                </div>
-
-            </div>
 
             <div class="row mt-3">
-                <div class="form-group col-6">
+                <div class="form-group col">
                     <label for="Fontanel" class="form-label">Fontanel</label>
                     <textarea class="form-control" id="Fontanel" rows="2"></textarea>
-                </div>
-
-                <div class="form-group col-6">
-                    <label for="headcircumference" class="form-label">Head circumference</label>
-                    <input type="text" class="form-control" id="headcircumference">
                 </div>
             </div>
 
@@ -138,18 +136,6 @@
                 <div class="form-group col-6">
                     <label for="Tonsils" class="form-label">Tonsils</label>
                     <textarea class="form-control" id="Tonsils" rows="2"></textarea>
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                <div class="form-group col-6">
-                    <label for="Oral" class="form-label">Oral</label>
-                    <textarea class="form-control" id="Oral" rows="2"></textarea>
-                </div>
-
-                <div class="form-group col-6">
-                    <label for="Thyroid" class="form-label">Thyroid</label>
-                    <textarea class="form-control" id="Thyroid" rows="2"></textarea>
                 </div>
             </div>
 
@@ -207,8 +193,8 @@
                 </div>
 
                 <div class="form-group col-6">
-                    <label for="chest_subInterCosta" class="form-label">SubInterCosta</label>
-                    <textarea class="form-control" id="chest_subInterCosta" rows="2"></textarea>
+                    <label for="chest_subInterCostalRecession" class="form-label">Sub-/intercostal recession</label>
+                    <textarea class="form-control" id="chest_subInterCostalRecession" rows="2"></textarea>
                 </div>
             </div>
 
@@ -217,20 +203,20 @@
 
             <div class="row mt-3">
                 <div class="form-group col-6">
-                    <label for="cvs_heartrate" class="form-label">Heart rate</label>
-                    <textarea class="form-control" id="cvs_heartrate" rows="2"></textarea>
+                    <label for="cvs_heartrate" class="form-label">Heart Rate</label>
+                    <input type="text" class="form-control" id="cvs_heartrate">
                 </div>
-
+                
                 <div class="form-group col-6">
-                    <label for="cvs_pulse" class="form-label">Pulse</label>
-                    <textarea class="form-control" id="cvs_pulse" rows="2"></textarea>
+                    <label for="cvs_BP" class="form-label">BP</label>
+                    <input type="text" class="form-control" id="cvs_BP">
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class="form-group col-6">
-                    <label for="cvs_HS_1_2" class="form-label">HS I+II</label>
-                    <textarea class="form-control" id="cvs_HS_1_2" rows="2"></textarea>
+                    <label for="cvs_pulse" class="form-label">Pulse</label>
+                    <textarea class="form-control" id="cvs_pulse" rows="2"></textarea>
                 </div>
 
                 <div class="form-group col-6">
@@ -246,8 +232,8 @@
                 </div>
 
                 <div class="form-group col-6">
-                    <label for="cvs_BP" class="form-label">BP</label>
-                    <textarea class="form-control" id="cvs_BP" rows="2"></textarea>
+                    <label for="cvs_HS_1_2" class="form-label">HS I+II</label>
+                    <textarea class="form-control" id="cvs_HS_1_2" rows="2"></textarea>
                 </div>
             </div>
 
@@ -368,46 +354,44 @@
 
             <h3 class="mt-5">Urinary Tract</h3>
 
-
             <div class="row mt-3">
-                <div class="form-group col-4">
-                    <label for="urin_kidneys" class="form-label">Kidneys</label>
-                    <textarea class="form-control" id="urin_kidneys" rows="2"></textarea>
+                <div class="form-group col-3">
+                    <label for="Kidneys" class="form-label">Kidneys</label>
+                    <input type="text" placeholder="" class="form-control" id="Kidneys">
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col-3">
+                    <label for="Haematuria" class="form-label">Haematuria</label>
+                    <input type="text" placeholder="" class="form-control" id="Haematuria">
+                </div>
+
+                <div class="form-group col-3">
+                    <label for="Nycturia" class="form-label">Nycturia</label>
+                    <input type="text" placeholder="" class="form-control" id="Nycturia">
+                </div>
+
+                <div class="form-group col-3">
+                    <label for="Urgency" class="form-label">Urgency</label>
+                    <input type="text" placeholder="" class="form-control" id="Urgency">
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="form-group col">
                     <label for="urin_frequency" class="form-label">Frequency</label>
                     <textarea class="form-control" id="urin_frequency" rows="2"></textarea>
                 </div>
 
-                <div class="form-group col-4">
+                <div class="form-group col">
                     <label for="urin_dysuria" class="form-label">Dysuria</label>
                     <textarea class="form-control" id="urin_dysuria" rows="2"></textarea>
                 </div>
             </div>
 
-
             <div class="row mt-3">
-                <div class="form-group col-6">
-                    <label for="urin_haematuria" class="form-label">Haematuria</label>
-                    <textarea class="form-control" id="urin_haematuria" rows="2"></textarea>
-                </div>
-
-                <div class="form-group col-6">
-                    <label for="urin_nycturia" class="form-label">Nycturia</label>
-                    <textarea class="form-control" id="urin_nycturia" rows="2"></textarea>
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                <div class="form-group col-6">
+                <div class="form-group col">
                     <label for="urin_enuresis" class="form-label">Enuresis</label>
                     <textarea class="form-control" id="urin_enuresis" rows="2"></textarea>
-                </div>
-
-                <div class="form-group col-6">
-                    <label for="urin_urgency" class="form-label">Urgency</label>
-                    <textarea class="form-control" id="urin_urgency" rows="2"></textarea>
                 </div>
             </div>
 
@@ -427,7 +411,7 @@
 
             <div class="row mt-3">
                 <div class="form-group">
-                    <label for="musc_remarks" class="form-label">Musc remarks</label>
+                    <label for="musc_remarks" class="form-label">Remarks</label>
                     <textarea class="form-control" id="musc_remarks" rows="2"></textarea>
                 </div>
             </div>
@@ -449,18 +433,17 @@
 
             <div class="row mt-3">
                 <div class="form-group">
-                    <label for="skin_remarks" class="form-label">Skin remarks</label>
+                    <label for="skin_remarks" class="form-label">Remarks</label>
                     <textarea class="form-control" id="skin_remarks" rows="2"></textarea>
                 </div>
             </div>
 
 
-            <h3 class="mt-5">Generally remarks</h3>
+            <h3 class="mt-5">General Remarks</h3>
 
             <div class="row mt-3 mb-4">
                 <div class="form-group">
-                    <label for="remarks" class="form-label">Remarks</label>
-                    <textarea class="form-control" id="remarks" rows="4"></textarea>
+                    <textarea class="form-control" id="remarks" rows="5"></textarea>
                 </div>
 
             </div>

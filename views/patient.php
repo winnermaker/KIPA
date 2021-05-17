@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Children</title>
+    <title>Patient</title>
   
   </head>
   <body>
@@ -9,19 +9,24 @@
     <form action="" class="needs-validation" novalidate>
 
         <div class="container" >
-            <h1 class="mt-3">Children</h1>
+            <h1 class="mt-3">Patient</h1>
 
             <div class="form-row mt-5">
                 <fieldset>
                 <legend class="col-form-label">Gender</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadios" id="masculineRadio" value="option1">
-                        <label class="form-check-label" for="masculineRadio">Masculine</label>
+                        <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1">
+                        <label class="form-check-label" for="maleRadio">Male</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadios" id="feminineRadio" value="option2">
-                        <label class="form-check-label" for="feminineRadio">Feminine</label>
+                        <input class="form-check-input" type="radio" name="genderRadios" id="femaleRadio" value="option2">
+                        <label class="form-check-label" for="femaleRadio">Female</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderRadios" id="genderOtherRadio" value="option3">
+                        <label class="form-check-label" for="genderOtherRadio">Other</label>
                     </div>
                 </fieldset>
             </div>
@@ -60,24 +65,24 @@
 
             <div class="row mt-3">
                 <div class ="form-group col">
-                    <label for="dayofBirth" class="col-form-label">Day of Birth</label>
-                    <input class="form-control " type="date"  id="dayofBirth" required>        
+                    <label for="dateOfBirth" class="col-form-label">Date of Birth</label>
+                    <input class="form-control " type="date"  id="dateOfBirth" required>        
                 </div>
 
                 <div class="form-group col">
-                    <label for="EDOB" class="col-form-label">Estaminated day of birth</label>
-                    <input class="form-control " type="date" id="EDOB" required>
+                    <label for="estDateOfBirth" class="col-form-label">Est. Date of Birth</label>
+                    <input class="form-control " type="date" id="estDateOfBirth" required>
                 
                 </div>
 
                 <div class ="form-group col">
-                    <label for="admDate" class="col-form-label">AdmDate</label>
-                    <input class="form-control " type="date"  id="admDate" required>        
+                    <label for="admissionDate" class="col-form-label">Admission Date</label>
+                    <input class="form-control " type="date"  id="admissionDate" required>        
                 </div>
 
                 <div class="form-group col">
-                    <label for="disDate" class="col-form-label">DisDate</label>
-                    <input class="form-control" type="date"  id="disDate" required>
+                    <label for="dischargeDate" class="col-form-label">Discharge Date</label>
+                    <input class="form-control" type="date"  id="dischargeDate" required>
                 
                 </div>
                 
@@ -85,8 +90,8 @@
 
             <div class="row mt-3">
                 <div class="form-group col-3">
-                    <label for="pictureTaken" class="form-label">PictureTaken</label>
-                    <input class="form-control" type="date"  id="pictureTaken" required>
+                    <label for="pictureTakenOn" class="form-label">Picture taken on</label>
+                    <input class="form-control" type="date"  id="pictureTakenOn" required>
                 </div>
 
                 <div class="form-group col">
