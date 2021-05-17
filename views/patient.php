@@ -74,7 +74,6 @@
                 <div class="form-group col">
                     <label for="estDateOfBirth" class="col-form-label">Est. Date of Birth</label>
                     <input class="form-control " type="date" id="estDateOfBirth">
-                
                 </div>
 
                 <div class ="form-group col">

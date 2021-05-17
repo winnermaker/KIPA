@@ -1,14 +1,36 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <style>
+  </style>
 
     <title>Medical Main</title>
   </head>
   <body>
     
     <div class="container">
-      <div class="sticky-top row">
-        <h1 class="mt-3 col">Medical Main</h1>
+      <div class="form-row sticky-top mt-4">    
+        <table class="table table-striped table-hover">
+          	<thead class="">
+              <tr>
+                <th scope="col" class="sticky-top"><h1>Medical Main</h1></th>
+                <th scope="col" class="sticky-top">First name</th>
+                <th scope="col" class="sticky-top">Last name</th>
+                <th scope="col" class="sticky-top">Call name</th>
+                <th scope="col" class="sticky-top">Date of Birth</th>
+                <th scope="col" class="sticky-top">Est. Date of Birth</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <td></td>
+              <td>Mustermann</td>
+              <td>Mike</td>
+              <td>Mustermann</td>
+              <td>29.10.1997</td>
+              <td>29.10.1997</td>
+            </tbody> 
+        </table>  
       </div>
 
       <form action="">
