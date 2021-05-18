@@ -14,40 +14,30 @@
     <title>Medical Tab</title>
   </head>
   <body>
-    <div class="container ">
-        <ul class="nav nav-pills nav-fill mt-2 mb-2 border border-dark " id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-patients-tab" data-bs-toggle="pill" data-bs-target="#pills-patients" type="button" role="tab" aria-controls="pills-patients" aria-selected="true">Patients</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Medical Main</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Visits</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-social-tab" data-bs-toggle="pill" data-bs-target="#pills-social" type="button" role="tab" aria-controls="pills-social" aria-selected="false">Social History</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-pexam-tab" data-bs-toggle="pill" data-bs-target="#pills-pexam" type="button" role="tab" aria-controls="pills-pexam" aria-selected="false">Physical Examination</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-pregnancy-tab" data-bs-toggle="pill" data-bs-target="#pills-pregnancy" type="button" role="tab" aria-controls="pills-pregnancy" aria-selected="false">Pregnancy</button>
-      </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-vaccination-tab" data-bs-toggle="pill" data-bs-target="#pills-vaccination" type="button" role="tab" aria-controls="pills-vaccination" aria-selected="false">Vaccination</button>
-      </li>
-    </div>
-      
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-      <div class="tab-pane fade show active" id="pills-patients" role="tabpanel" aria-labelledby="pills-patients-tab"><?php require 'patient.php' ?></div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><?php require 'medicalMain.php' ?></div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><?php require 'medicalVisits.php' ?></div>
-      <div class="tab-pane fade" id="pills-social" role="tabpanel" aria-labelledby="pills-social-tab"><?php require 'socialHistory.php' ?></div>
-      <div class="tab-pane fade" id="pills-pexam" role="tabpanel" aria-labelledby="pills-pexam-tab"><?php require 'medicalPexam.php' ?></div>
-      <div class="tab-pane fade" id="pills-pregnancy" role="tabpanel" aria-labelledby="pills-pregnancy-tab"><?php require 'medicalPregnancy.php' ?></div>
-      <div class="tab-pane fade" id="pills-vaccination" role="tabpanel" aria-labelledby="pills-vaccination-tab"><?php require 'medicalVaccination.php' ?></div>
+    <div class="container">
+      <ul class="nav nav-pills nav-fill mt-2 mb-2 border border-dark " id="pills-tab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" role="tab"  href="patient.php">Patients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  role="tab"  href="medicalMain.php" >Medical Main</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  role="tab"  href="MedicalVisits.php" > Visits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  role="tab"  href="SocialHistory.php" >Social History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  role="tab"  href="medicalPexam.php" >Physical Examination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  role="tab"  href="medicalPregnancy.php" >Pregnancy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  role="tab"  href="medicalVaccination.php" >Vaccination</a>
+        </li>
+      </ul>
     </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

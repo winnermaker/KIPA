@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <?php require 'inputForm.php' ?>
     <title>Patient</title>
   
   </head>
