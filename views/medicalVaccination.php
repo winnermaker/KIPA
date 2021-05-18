@@ -10,14 +10,14 @@
 
         <form action="">
             <div class="row mt-5">
-                <div class="form-group col-3">
-                    <label for="dropdownVaccine" class="form-label">Vaccine</label>
-                    <select class="form-select" id="dropdownVaccine" aria-label="Default select example">
-                        <option selected>Choose one Vaccine !</option>
-                        <option value="CSM">CSM</option>
-                        <option value="ATS">ATS</option>
-                        <option value="BCG">BCG</option>
-                    </select>
+                <div class="form-group col-2">
+                    <label for="vaccineDataList" class="form-label">Vaccine</label>
+                    <input class="form-control" list="vaccinedatalistOptions" id="vaccineDataList" placeholder="Type to search...">
+                    <datalist id="vaccinedatalistOptions">
+                        <option value="CSM">
+                        <option value="ATS">
+                        <option value="BCG">
+                    </datalist>
                 </div>
 
                 <div class ="form-group col-2">

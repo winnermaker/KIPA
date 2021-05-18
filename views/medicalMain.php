@@ -9,14 +9,15 @@
   <body>
     
     <div class="container">
-      <div class="form-row sticky-top mt-4">    
-        <table class="table table-striped table-hover">
+      <div class="form-row sticky-top mt-3">    
+        <table class="table table-striped ">
           	<thead class="">
               <tr>
                 <th scope="col" class="sticky-top"><h1>Medical Main</h1></th>
                 <th scope="col" class="sticky-top">First name</th>
                 <th scope="col" class="sticky-top">Last name</th>
                 <th scope="col" class="sticky-top">Call name</th>
+                <th scope="col" class="sticky-top">Gender</th>
                 <th scope="col" class="sticky-top">Date of Birth</th>
                 <th scope="col" class="sticky-top">Est. Date of Birth</th>
               </tr>
@@ -27,6 +28,7 @@
               <td>Mustermann</td>
               <td>Mike</td>
               <td>Mustermann</td>
+              <td>Male</td>
               <td>29.10.1997</td>
               <td>29.10.1997</td>
             </tbody> 
@@ -36,17 +38,17 @@
       <form action="">
         <div class="row mt-5">
           <fieldset class="col-2">
-              <legend class="col-form-label">NHI Registration</legend>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioYes" value="option1">
-                    <label class="form-check-label" for="nhiRadioYes">Yes</label>
-                  </div>
+            <legend class="col-form-label">NHI Registration</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioYes" value="option1">
+              <label class="form-check-label" for="nhiRadioYes">Yes</label>
+            </div>
 
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioNo" value="option2">
-                    <label class="form-check-label" for="nhiRadioNo">No</label>
-                  </div>
-            </fieldset>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioNo" value="option2">
+              <label class="form-check-label" for="nhiRadioNo">No</label>
+            </div>
+          </fieldset>
 
             <div class="form-group col-4">
               <label class="form-label" for="NHInumber">NHI Number</label>
@@ -60,7 +62,7 @@
 
             <div class ="form-group col">
                     <label for="nextVaccDate" class="form-label">Next Vaccination Date</label>
-                    <input class="form-control" type="date"  id="nextVaccDate">        
+                    <input class="form-control" type="date"  id="nextVaccDate" disabled>        
             </div>
           
           
@@ -83,7 +85,74 @@
 
         <div class="form-group form-row mt-3">
             <label for="otherInformation" class="form-label">Other Information</label>
-            <textarea class="form-control" id="otherInformation" rows="2"></textarea>
+            <textarea class="form-control" id="otherInformation" rows="3"></textarea>
+        </div>
+
+        <div class="row mt-4">
+          <fieldset class="col-2">
+            <legend class="col-form-label">Pregnancy History</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioYes" value="option1">
+              <label class="form-check-label" for="PregnancyHistRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioNo" value="option2">
+              <label class="form-check-label" for="PregnancyHistRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Immuni. compl.</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioYes" value="option1">
+              <label class="form-check-label" for="immuniComplRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioNo" value="option2">
+              <label class="form-check-label" for="immuniComplRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Physical abuse</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="physicalAbuseRadios" id="physicalAbuseRadioYes" value="option1">
+              <label class="form-check-label" for="physicalAbuseRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="physicalAbuseRadios" id="physicalAbuseRadioNo" value="option2">
+              <label class="form-check-label" for="physicalAbuseRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Sexual abuse/active</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexualAbuseRadios" id="sexualAbuseRadioYes" value="option1">
+              <label class="form-check-label" for="sexualAbuseRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexualAbuseRadios" id="sexualAbuseRadioNo" value="option2">
+              <label class="form-check-label" for="sexualAbuseRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Substance abuse</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="substanceAbuseRadios" id="substanceAbuseRadioYes" value="option1">
+              <label class="form-check-label" for="substanceAbuseRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="substanceAbuseRadios" id="substanceAbuseRadioNo" value="option2">
+              <label class="form-check-label" for="substanceAbuseRadioNo">No</label>
+            </div>
+          </fieldset>
         </div>
 
         <h3 class="mt-5">Tests</h3>
@@ -265,19 +334,6 @@
                     <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
                     <input class="form-control" type="date"  id="PregTestDate">        
             </div>
-
-            <fieldset class="col-2 offset-1">
-              <legend class="col-form-label">Pregnancy History</legend>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioYes" value="option1">
-                  <label class="form-check-label" for="PregnancyHistRadioYes">Yes</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioNo" value="option2">
-                  <label class="form-check-label" for="PregnancyHistRadioNo">No</label>
-                </div>
-            </fieldset>
           </div>
 
 

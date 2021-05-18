@@ -1,31 +1,53 @@
 <?php  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; ?>
 
-<ul class="nav nav-pills nav-justified">
-  <li class="nav-item nav-link active"><a data-toggle="tab" href="#Show1">Show1</a></li>
-  <li class="nav-item nav-link"><a data-toggle="tab" href="#Show2">Show2</a></li>
-  <li class="nav-item nav-link"><a data-toggle="tab" href="#Show3">Show3</a></li>
-</ul>
+<html>
+<head>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+<tbody>
+    <tr class="rowlink">
+        <td>
+            <div class="dropdown">
+                <a class="dropdown-toggle rowlink" data-toggle="dropdown" href="#">
+                    Click For Dropdown Menu
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li>
+                        <a tabindex="-1" href="#">
+                            Action
+                        </a>
+                    </li>
+                    <li>
+                        <a tabindex="-1" href="#">
+                            Another action
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            Click For Dropdown Menu
+        </td>    
+    </tr>
+    <tr><td>Cell</td><td>Cell</td></tr>         
+</tbody>
+</table>​
 
-<div class="tab-content">
-  <div id="Show1" class="tab-pane fade in active">
-    <form action="test">
-      <input type="text" name="OnlyMe"/>
-    </form>
-  </div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap-dropdown.js"></script>
 
-  <div id="Show2" class="tab-pane fade">
-    <form action="differentTest">
-      <input type="text" name="MeAnd23Submit"/>        
-      <input type="text" name="23"/>
-      <input type="submit" value="submit"/>
-    </form>
-  </div>
+<script>
+    $(function() {
+        $(this).find('.dropdown-toggle').dropdown();
 
-  <div id="Show3" class="tab-pane fade">
-    <form action="differentTest">
-      <input type="text" name="MeAnd23Submit2"/>    
-      <input type="text" name="23"/>
-      <input type="submit" value="submit"/>
-    </form>
-  </div>
-</div>
+        $('.rowlink').on('click', function(e) {
+            $(this).find('.dropdown').toggleClass('open');
+            e.stopPropagation();
+        });
+    });
+</script>
+
+</body>
+</html>

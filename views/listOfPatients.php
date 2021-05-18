@@ -8,12 +8,6 @@
     
 
     ?>
-    <style>
-         body 
-         {
-             background-color: #efefef; 
-         }
-    </style>
 
     <title>Children table</title>
   </head>

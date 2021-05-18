@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <style>
+    .dropdown{
+    display: inline;
+}
+  </style>
 
     <title>Medical Visits</title>
   </head>
@@ -8,34 +13,95 @@
     <form action="" class="needs-validation" novalidate>
       <div class="container">
         <h1 class="mt-3">Medical Visits</h1>
+        <div class="form-row sticky-top mt-3">   
+          <table class="table table-striped">
+              <thead class="">
+                <tr>
+                  <th scope="col" class="sticky-top">First name</th>
+                  <th scope="col" class="sticky-top">Last name</th>
+                  <th scope="col" class="sticky-top">Call name</th>
+                  <th scope="col" class="sticky-top">Gender</th>
+                  <th scope="col" class="sticky-top">Date of Birth</th>
+                  <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <td>Mustermann</td>
+                <td>Mike</td>
+                <td>Mustermann</td>
+                <td>Male</td>
+                <td>29.10.1997</td>
+                <td>29.10.1997</td>
+              </tbody> 
+          </table>  
+        </div>
+        
+        
 
         <div class="row mt-5">
           <div class ="form-group col-2">
             <label for="VisitDate" class="form-label">Visit Date</label>
-            <input class="form-control" type="date" value="2021-04-12" id="VisitDate" required>
+            <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>"  id="VisitDate" required>
             <div class="invalid-feedback">
                     Please enter a Date
             </div>        
           </div>
 
           <div class="form-group col-4">
-            <label for="dropdownVisitType" class="form-label"> Visit Type</label>
-            <select class="form-select" id="dropdownVisitType" aria-label="Default select example">
-              <option selected>Choose ! One of these options</option>
-              <option value="Dentist">Dentist</option>
-              <option value="Urologist">Urologist</option>
-              <option value="Ultrasound">Ultrasound</option>
-            </select>
+            <label for="visitType" class="form-label">Visit Type</label>
+            <input class="form-control" list="datalistOptions" id="visitType" placeholder="Type to search...">
+            
+            <datalist id="datalistOptions">
+              <option value="Visit">
+              <option value="Investigation">
+              <option value="First examination">
+              <option value="Screening">
+              <option value="Laboratory">
+              <option value="OPD">
+              <option value="Admission">
+              <option value="Psychologist">
+              <option value="Psychiatrist">
+              <option value="Surgical">
+              <option value="Surgery">
+              <option value="ENT">
+              <option value="Dentist">
+              <option value="Dermatology">
+              <option value="Ophthalmology">
+              <option value="Radiology">
+              <option value="Neurology">
+              <option value="Gynecology">
+              <option value="Urology">
+              <option value="Physiotherapy">
+              <option value="Cardiology">
+              <option value="Orthopedy">
+            </datalist>
           </div>
 
+
+
+
           <div class="form-group col-4">
-              <label for="dropdownExlocation" class="form-label">Exam. Location</label>
-              <select class="form-select" id="dropdownExlocation" aria-label="Default select example">
-                <option selected>Choose ! One of these options</option>
-                <option value="La Polyclinic">La Polyclinic</option>
-                <option value="LDS">LDS</option>
-                <option value="La General Hospital">La General Hospital</option>
-              </select>
+            <label for="examLocation" class="form-label">Exam. Location</label>
+            <input class="form-control" list="examLocationdatalistOptions" id="examLocation" placeholder="Type to search...">
+
+            <datalist id="examLocationdatalistOptions">
+              <option value="Accra Psychiatric Hospital">
+              <option value="Crystal Eye Clinic">
+              <option value="Egon German Clinic">
+              <option value="Greenville Hospital">
+              <option value="KBTH">
+              <option value="KBTH Dental School">
+              <option value="KP(m)">
+              <option value="KP(tel.)">
+              <option value="KP(caregiver)">
+              <option value="MDS Lancet">
+              <option value="Synlab">
+              <option value="Police Hospital">
+              <option value="Prampram Polyclinic">
+              <option value="Sunshine">
+              <option value="Trust Hospital">
+            </datalist>
           </div>
 
           <div class ="form-group col-2">
