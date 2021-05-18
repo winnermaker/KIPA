@@ -20,6 +20,8 @@
                 <th scope="col" class="sticky-top">Gender</th>
                 <th scope="col" class="sticky-top">Date of Birth</th>
                 <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                <th scope="col" class="sticky-top">Date of Examination</th>
+                <th scope="col" class="sticky-top">Investigator</th>
               </tr>
             </thead>
             
@@ -31,6 +33,9 @@
               <td>Male</td>
               <td>29.10.1997</td>
               <td>29.10.1997</td>
+              <td><?php echo date('d.m.y'); ?></td>
+              <td>Drechsel-Atta</td>
+              
             </tbody> 
         </table>  
       </div>

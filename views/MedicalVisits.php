@@ -12,7 +12,7 @@
   <body>
     <form action="" class="needs-validation" novalidate>
       <div class="container">
-        <h1 class="mt-3">Medical Visits</h1>
+        <h1 class="mt-3">Visits</h1>
         <div class="form-row sticky-top mt-3">   
           <table class="table table-striped">
               <thead class="">
@@ -23,6 +23,8 @@
                   <th scope="col" class="sticky-top">Gender</th>
                   <th scope="col" class="sticky-top">Date of Birth</th>
                   <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                  <th scope="col" class="sticky-top">Date of Examination</th>
+                  <th scope="col" class="sticky-top">Investigator</th>
                 </tr>
               </thead>
               
@@ -33,6 +35,8 @@
                 <td>Male</td>
                 <td>29.10.1997</td>
                 <td>29.10.1997</td>
+                <td><?php echo date('d.m.y'); ?></td>
+                <td>Drechsel-Atta</td>
               </tbody> 
           </table>  
         </div>

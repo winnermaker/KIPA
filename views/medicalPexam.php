@@ -1,11 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Medical Pexam</title>
+    <title>Physical Examination</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3">Medical Pexam</h1>
+        <h1 class="mt-3">Physical Examination</h1>
+        <div class="form-row sticky-top mt-3">   
+          <table class="table table-striped">
+              <thead class="">
+                <tr>
+                  <th scope="col" class="sticky-top">First name</th>
+                  <th scope="col" class="sticky-top">Last name</th>
+                  <th scope="col" class="sticky-top">Call name</th>
+                  <th scope="col" class="sticky-top">Gender</th>
+                  <th scope="col" class="sticky-top">Date of Birth</th>
+                  <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                  <th scope="col" class="sticky-top">Date of Examination</th>
+                  <th scope="col" class="sticky-top">Investigator</th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                <td>Mustermann</td>
+                <td>Mike</td>
+                <td>Mustermann</td>
+                <td id="gender">Male</td>
+                <td>29.10.1997</td>
+                <td>29.10.1997</td>
+                <td><?php echo date('d.m.y'); ?></td>
+                <td>Drechsel-Atta</td>
+              </tbody> 
+          </table>  
+        </div>
 
         <form action="">
             <div class="form-row mt-5 col-12">
@@ -395,6 +422,119 @@
                 </div>
             </div>
 
+            <div style="display:block" id="maleGenitals">
+                <h3 class="mt-5">Genitals male</h3>
+
+                <div class="row mt-3">
+                    <div class="form-group col-6">
+                        <label for="male_circumcised" class="form-label">Circumcised</label>
+                        <textarea class="form-control" id="male_circumcised" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-group col-6">
+                        <label for="male_tannerStage" class="form-label">Tanner stage</label>
+                        <textarea class="form-control" id="male_tannerStage" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="male_descensusOfTestes" class="form-label">Descensus of testes</label>
+                        <textarea class="form-control" id="male_descensusOfTestes" rows="2"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:block" id="femaleGenitals">
+                <h3 class="mt-5">Genitals female</h3>
+
+                <div class="row mt-3">
+                    <div class="form-group col-6">
+                        <label for="female_circumcised" class="form-label">Circumcised</label>
+                        <textarea class="form-control" id="female_circumcised" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-group col-6">
+                        <label for="female_tannerStage" class="form-label">Tanner stage</label>
+                        <textarea class="form-control" id="female_tannerStage" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_hymen" class="form-label">Hymen</label>
+                        <textarea class="form-control" id="female_hymen" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_introitus" class="form-label">Introitus</label>
+                        <textarea class="form-control" id="female_introitus" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_discharge" class="form-label">Discharge</label>
+                        <textarea class="form-control" id="female_discharge" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_breasts" class="form-label">Breasts</label>
+                        <textarea class="form-control" id="female_breasts" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_mastodynia" class="form-label">Mastodynia</label>
+                        <textarea class="form-control" id="female_mastodynia" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_period" class="form-label">Period</label>
+                        <textarea class="form-control" id="female_period" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_dysmenorrhoea" class="form-label">Dysmenorrhoea</label>
+                        <textarea class="form-control" id="female_dysmenorrhoea" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_dyspareunia" class="form-label">Dyspareunia</label>
+                        <textarea class="form-control" id="female_dyspareunia" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_menarche" class="form-label">Menarche</label>
+                        <textarea class="form-control" id="female_menarche" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="female_pregnancy" class="form-label">Pregnancy</label>
+                        <textarea class="form-control" id="female_pregnancy" rows="2"></textarea>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
             <h3 class="mt-5">Musculosceletal</h3>
 
             <div class="row mt-3">
@@ -454,5 +594,14 @@
 
         </form>
     </div>
+    <script>
+        var gender = document.getElementById( "gender" ).innerText;
+
+        if(gender == "Male"){
+            document.getElementById("maleGenitals").style.display = "block";
+        } else if(gender == "Female"){
+            document.getElementById("femaleGenitals").style.display = "block";
+        }
+    </script>
   </body>
 </html>

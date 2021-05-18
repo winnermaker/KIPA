@@ -96,8 +96,8 @@
                 </div>
 
                 <div class="form-group col">
-                    <label class="form-label" for="customFile">Upload Picture</label>
-                    <input type="file" class="form-control" id="customFile" />
+                    <label class="form-label" for="customFile" >Upload Picture</label>
+                    <input type="file" class="form-control" id="customFile" id="choose-file" />
                 </div>
             </div>
 
@@ -131,7 +131,5 @@
         })()
 
     </script>
-
-
   </body>
 </html>
