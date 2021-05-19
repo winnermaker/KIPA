@@ -9,7 +9,7 @@
   
       <form class="d-flex float-end">
         <div class="input-group">
-          <input class="form-control" list="patientsdatalistOptions" size="40px;" id="exampleDataList" placeholder="Type to search...">
+          <input class="form-control me-2" list="patientsdatalistOptions" size="40px;" id="exampleDataList" placeholder="Type to search...">
           <datalist id="patientsdatalistOptions">
             <option value="Max Mustermann Mike">
             <option value="Maximilian Müller Thomas">

@@ -11,36 +11,39 @@
     
   </head>
   <body>
-    <div class="container">
-      <ul class="nav nav-pills nav-fill mt-2 mb-2 border border-dark " id="pills-tab" role="tablist">
+    <div class="container mt-3">
+      <ul class="nav nav-pills nav-fill border border-dark " id="pills-tab" role="tablist">
         <li class="nav-item">
-          <a  href="patient_view.php" class="nav-link"  role="tab" >Patients</a>
+          <a  href="patient_view.php" class="nav-link text-dark" role="tab" >Patients</a>
         </li>
         <li class="nav-item">
-          <a href="medicalMain_view.php" class="nav-link"  >Medical Main</a>
+          <a href="medicalMain_view.php" class="nav-link text-dark"  role="tab" >Medical Main</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Visits
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item text-dark" href="visitData_view.php">Visit Data</a></li>
+            <li><a class="dropdown-item text-dark" href="visitDiagnostic_view.php">Diagnostic Data</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="socialHistory_view.php" class="nav-link text-dark"  role="tab"  >Social History</a>
         </li>
         <li class="nav-item">
-          <a href="visits_view.php" class="nav-link"  role="tab" > Visits</a>
+          <a href="pexam_view.php" class="nav-link text-dark"  role="tab" >Physical Examination</a>
         </li>
         <li class="nav-item">
-          <a href="socialHistory_view.php" class="nav-link"  role="tab"  >Social History</a>
+          <a href="pregnancy_view.php" class="nav-link text-dark"  role="tab" >Pregnancy</a>
         </li>
         <li class="nav-item">
-          <a href="pexam_view.php" class="nav-link"  role="tab" >Physical Examination</a>
-        </li>
-        <li class="nav-item">
-          <a href="pregnancy_view.php" class="nav-link"  role="tab" >Pregnancy</a>
-        </li>
-        <li class="nav-item">
-          <a href="vaccination_view.php" class="nav-link"  role="tab">Vaccination</a>
+          <a href="vaccination_view.php" class="nav-link text-dark"  role="tab">Vaccination</a>
         </li>
       </ul>
     </div>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        
-        <script>
-          $('input,textarea,select').addClass('border border-dark');
-    </script>
+      
   </body>
 </html>

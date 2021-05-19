@@ -8,12 +8,12 @@
 }
   </style>
 
-    <title>Visits</title>
+    <title>Diagnostic Data</title>
   </head>
   <body>
     <form action="" class="needs-validation" novalidate>
       <div class="container">
-        <h1 class="mt-3">Visits</h1>
+        <h1 class="mt-3">Diagnostic Data</h1>
         <div class="form-row sticky-top mt-3">   
           <table class="table table-striped">
               <thead class="">
