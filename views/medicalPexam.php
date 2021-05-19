@@ -604,5 +604,9 @@
             document.getElementById("femaleGenitals").style.display = "block";
         }
     </script>
+
+    <script>
+        $('input,textarea,select').addClass('border border-dark');
+    </script>
   </body>
 </html>

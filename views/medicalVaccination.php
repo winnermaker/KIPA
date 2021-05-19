@@ -53,4 +53,7 @@
     </div>
 
   </body>
+  <script>
+    $('input,textarea,select').addClass('border border-dark');
+  </script>
 </html>

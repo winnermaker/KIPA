@@ -391,6 +391,10 @@
           <button type="submit" class="btn btn-primary mt-5 mb-3">Submit</button>
       </form>
     </div>
+
+    <script>
+        $('input,textarea,select').addClass('border border-dark');
+    </script>
    
   </body>
 </html>

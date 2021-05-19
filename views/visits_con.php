@@ -1,4 +1,0 @@
-<?php
-require 'medicalVisits.php';
-
-?>
