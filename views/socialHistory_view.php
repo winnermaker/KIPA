@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'inputForm.php' ?>
+  <?php require 'formsNavbar.php' ?>
 
     <title>Social History</title>
   </head>
@@ -14,7 +14,7 @@
           <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
-                  <input class="form-control" type="date" value="2021-04-12" id="dateOfInvestigation" required>
+                  <input class="form-control" type="date"  id="dateOfInvestigation" required>
                   <div class="invalid-feedback">
                     Please enter a Date
                     </div>      
@@ -82,6 +82,30 @@
       </form>
 
     </div>
+
+    <script>
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+    </script>
 
     <script>
         $('input,textarea,select').addClass('border border-dark');

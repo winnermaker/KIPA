@@ -49,7 +49,7 @@
                         <td><b>18.04.2021</b></td>
                         <td>
                             <div style="">
-                                <a href="inputForm.php" target="_blank"> <button class="btn btn-primary">Input Form</button> </a>
+                                <a href="patient_view.php" target="_blank"> <button class="btn btn-primary">Input Form</button> </a>
                             </div>
                         </td>
                         </td>

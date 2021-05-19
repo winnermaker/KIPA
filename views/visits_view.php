@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php require 'inputForm.php' ?>
+    <?php require 'formsNavbar.php' ?>
   <style>
     .dropdown{
     display: inline;
 }
   </style>
 
-    <title>Medical Visits</title>
+    <title>Visits</title>
   </head>
   <body>
     <form action="" class="needs-validation" novalidate>
@@ -118,7 +118,7 @@
 
         <div class="form-group form-row mt-3">
           <label for="Excause" class="form-label">Exam. Cause</label>
-          <input type="text" class="form-control" id="Excause" placeholder="" >
+          <input type="text" class="form-control" id="Excause" placeholder="" required>
           <div class="invalid-feedback">
                     Please enter a Exam. Cause
             </div> 
@@ -163,6 +163,28 @@
 
       </div>
     </form>
+
+    <script>
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+    </script>
 
     <script>
         $('input,textarea,select').addClass('border border-dark');

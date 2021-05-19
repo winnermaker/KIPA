@@ -8,34 +8,31 @@
     require 'navbar.php';
     
     ?>
-    <style>
-    </style>
-
-    <title>Medical Tab</title>
+    
   </head>
   <body>
     <div class="container">
       <ul class="nav nav-pills nav-fill mt-2 mb-2 border border-dark " id="pills-tab" role="tablist">
         <li class="nav-item">
-          <a  href="patient.php" class="nav-link"  role="tab" >Patients</a>
+          <a  href="patient_view.php" class="nav-link"  role="tab" >Patients</a>
         </li>
         <li class="nav-item">
-          <a href="medicalMain.php" class="nav-link"  >Medical Main</a>
+          <a href="medicalMain_view.php" class="nav-link"  >Medical Main</a>
         </li>
         <li class="nav-item">
-          <a href="MedicalVisits.php" class="nav-link"  role="tab" > Visits</a>
+          <a href="visits_view.php" class="nav-link"  role="tab" > Visits</a>
         </li>
         <li class="nav-item">
-          <a href="SocialHistory.php" class="nav-link"  role="tab"  >Social History</a>
+          <a href="socialHistory_view.php" class="nav-link"  role="tab"  >Social History</a>
         </li>
         <li class="nav-item">
-          <a href="medicalPexam.php" class="nav-link"  role="tab" >Physical Examination</a>
+          <a href="pexam_view.php" class="nav-link"  role="tab" >Physical Examination</a>
         </li>
         <li class="nav-item">
-          <a href="medicalPregnancy.php" class="nav-link"  role="tab" >Pregnancy</a>
+          <a href="pregnancy_view.php" class="nav-link"  role="tab" >Pregnancy</a>
         </li>
         <li class="nav-item">
-          <a href="medicalVaccination.php" class="nav-link"  role="tab">Vaccination</a>
+          <a href="vaccination_view.php" class="nav-link"  role="tab">Vaccination</a>
         </li>
       </ul>
     </div>

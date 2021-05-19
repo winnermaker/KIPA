@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'inputForm.php' ?>
+  <?php require 'formsNavbar.php' ?>
   <style>
   </style>
 
