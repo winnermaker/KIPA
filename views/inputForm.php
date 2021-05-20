@@ -1,21 +1,12 @@
-<?php
-
-  require '..\backend\db_connection.php';
-  require '..\backend\db_controller.php';
-
-  $conn = new db_connection();
-  $conn->connectToDB();
-
-?>
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
 
-    <?php 
+    <?php
     require 'navbar.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; 
-    
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+
     ?>
     <style>
     body {background-color: #efefef;
@@ -57,7 +48,7 @@
         <button class="nav-link" id="pills-vaccination-tab" data-bs-toggle="pill" data-bs-target="#pills-vaccination" type="button" role="tab" aria-controls="pills-vaccination" aria-selected="false">Vaccination</button>
       </li>
     </div>
-      
+
     </ul>
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><?php require 'children.php' ?></div>

@@ -1,12 +1,3 @@
-<?php
-
-  require '..\backend\db_connection.php';
-  require '..\backend\db_controller.php';
-
-  $conn = new db_connection();
-  $conn->connectToDB();
-
-  ?>
 <!doctype html>
 <html lang="en">
 
@@ -14,14 +5,14 @@
   <?php
     require 'navbar.php';
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-    
+
 
     ?>
     <style>
-         body 
+         body
          {
-             background-color: #efefef; 
-             padding:70px;   
+             background-color: #efefef;
+             padding:70px;
          }
 
          .container
