@@ -1,18 +1,14 @@
-<?php  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; ?>
-
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+<?php 
+    require 'navbar.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; 
     
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    ?>
+
+<div class=navbar navbar-light bg-faded>
+  <ul class=nav navbar-nav>
+    <a class=nav-item nav-link active data-toggle=tab href="patient_view.php">Start</a>
+    <a class=nav-item nav-link data-toggle=tab href="medicalMain_view.php">Form</a>
+    <a class=nav-item nav-link data-toggle=tab href=#status>Status</a>
+    <a class=nav-item nav-link data-toggle=tab href=#reports>Reports</a>
+  </ul>
+</div>

@@ -8,40 +8,28 @@
 
 
     ?>
-    <style>
-         body
-         {
-             background-color: #efefef;
-             padding:70px;
-         }
-
-         .container
-         {
-             width:80%;
-         }
-    </style>
 
     <title>Children table</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3 ">Children table</h1>
+        <h1 class="mt-3 ">List of Patients</h1>
 
         <div class="table-responsive-lg">
             <table class="table table-striped table-hover table-bordered mt-5">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Call name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Day of Birth</th>
-                        <th scope="col">Est. Day of Birth</th>
-                        <th scope="col">AdmDate</th>
-                        <th scope="col">DisDate</th>
-                        <th scope="col">Review Date</th>
-                        <th scope="col">Input Form</th>
+                        <th scope="col" class="sticky-top">#</th>
+                        <th scope="col" class="sticky-top">First name</th>
+                        <th scope="col" class="sticky-top">Last name</th>
+                        <th scope="col" class="sticky-top">Call name</th>
+                        <th scope="col" class="sticky-top">Gender</th>
+                        <th scope="col" class="sticky-top">Date of Birth</th>
+                        <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                        <th scope="col" class="sticky-top">Admission Date</th>
+                        <th scope="col" class="sticky-top">Discharge Date</th>
+                        <th scope="col" class="sticky-top">Review Date</th>
+                        <th scope="col" class="sticky-top">Input Form</th>
 
                     </tr>
                 </thead>
@@ -61,7 +49,7 @@
                         <td><b>18.04.2021</b></td>
                         <td>
                             <div style="">
-                                <a href="inputForm.php" target="_blank"> <button class="btn btn-primary">Input Form</button> </a>
+                                <a href="patient_view.php" target="_blank"> <button class="btn btn-primary">Input Form</button> </a>
                             </div>
                         </td>
                         </td>

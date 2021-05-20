@@ -1,42 +1,74 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <?php require 'formsNavbar.php' ?>
+  <style>
+  </style>
 
-    <title>MedicalMain</title>
+    <title>Medical Main</title>
   </head>
   <body>
     
     <div class="container">
-      <h1 class="mt-3">MedicalMain</h1>
+      <div class="form-row sticky-top mt-3">    
+        <table class="table table-striped ">
+          	<thead class="">
+              <tr>
+                <th scope="col" class="sticky-top"><h1>Medical Main</h1></th>
+                <th scope="col" class="sticky-top">First name</th>
+                <th scope="col" class="sticky-top">Last name</th>
+                <th scope="col" class="sticky-top">Call name</th>
+                <th scope="col" class="sticky-top">Gender</th>
+                <th scope="col" class="sticky-top">Date of Birth</th>
+                <th scope="col" class="sticky-top">Est. Date of Birth</th>
+                <th scope="col" class="sticky-top">Date of Examination</th>
+                <th scope="col" class="sticky-top">Investigator</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <td></td>
+              <td>Mustermann</td>
+              <td>Mike</td>
+              <td>Mustermann</td>
+              <td>Male</td>
+              <td>29.10.1997</td>
+              <td>29.10.1997</td>
+              <td><?php echo date('d.m.y'); ?></td>
+              <td>Drechsel-Atta</td>
+              
+            </tbody> 
+        </table>  
+      </div>
 
       <form action="">
         <div class="row mt-5">
-          <fieldset class="col-2 ">
-              <legend class="col-form-label">NHIReg</legend>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioYes" value="option1">
-                    <label class="form-check-label" for="nhiRadioYes">Yes</label>
-                  </div>
+          <fieldset class="col-2">
+            <legend class="col-form-label">NHI Registration</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioYes" value="option1">
+              <label class="form-check-label" for="nhiRadioYes">Yes</label>
+            </div>
 
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioNo" value="option2">
-                    <label class="form-check-label" for="nhiRadioNo">No</label>
-                  </div>
-            </fieldset>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="nhiRadios" id="nhiRadioNo" value="option2">
+              <label class="form-check-label" for="nhiRadioNo">No</label>
+            </div>
+          </fieldset>
 
             <div class="form-group col-4">
-              <label class="form-label" for="NHIReg">NHINr</label>
-              <input type="text" class="form-control" placeholder="86245236" id="NHIReg">
+              <label class="form-label" for="NHInumber">NHI Number</label>
+              <input type="text" class="form-control" placeholder="86245236" id="NHInumber">
             </div>
 
-            <div class ="form-group col-3">
-                    <label for="ReviewOn" class="form-label">Review on</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="ReviewOn">        
+            <div class ="form-group col">
+                    <label for="reviewOn" class="form-label">Review on</label>
+                    <input class="form-control" type="date" value="2021-04-12" id="reviewOn">        
             </div>
 
-            <div class ="form-group col-3">
-                    <label for="NextVaccDate" class="form-label">NextVaccDate</label>
-                    <input class="form-control" type="date"  id="NextVaccDate">        
+            <div class ="form-group col">
+                    <label for="nextVaccDate" class="form-label">Next Vaccination Date</label>
+                    <input class="form-control" type="date"  id="nextVaccDate" disabled>        
             </div>
           
           
@@ -48,8 +80,8 @@
         </div>
 
         <div class="form-group form-row mt-3">
-            <label for="permMedication" class="form-label">PermMedication</label>
-            <textarea class="form-control" id="permMedication" rows="2"></textarea>
+            <label for="permanentPrescription" class="form-label">Permanent Prescription</label>
+            <textarea class="form-control" id="permanentPrescription" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
@@ -58,15 +90,82 @@
         </div> 
 
         <div class="form-group form-row mt-3">
-            <label for="menarche" class="form-label">Menarche</label>
-            <textarea class="form-control" id="menarche" rows="2"></textarea>
+            <label for="otherInformation" class="form-label">Other Information</label>
+            <textarea class="form-control" id="otherInformation" rows="3"></textarea>
+        </div>
+
+        <div class="row mt-4">
+          <fieldset class="col-2">
+            <legend class="col-form-label">Pregnancy History</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioYes" value="option1">
+              <label class="form-check-label" for="PregnancyHistRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioNo" value="option2">
+              <label class="form-check-label" for="PregnancyHistRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Immuni. compl.</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioYes" value="option1">
+              <label class="form-check-label" for="immuniComplRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioNo" value="option2">
+              <label class="form-check-label" for="immuniComplRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Physical abuse</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="physicalAbuseRadios" id="physicalAbuseRadioYes" value="option1">
+              <label class="form-check-label" for="physicalAbuseRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="physicalAbuseRadios" id="physicalAbuseRadioNo" value="option2">
+              <label class="form-check-label" for="physicalAbuseRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Sexual abuse/active</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexualAbuseRadios" id="sexualAbuseRadioYes" value="option1">
+              <label class="form-check-label" for="sexualAbuseRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexualAbuseRadios" id="sexualAbuseRadioNo" value="option2">
+              <label class="form-check-label" for="sexualAbuseRadioNo">No</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="col-2">
+            <legend class="col-form-label">Substance abuse</legend>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="substanceAbuseRadios" id="substanceAbuseRadioYes" value="option1">
+              <label class="form-check-label" for="substanceAbuseRadioYes">Yes</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="substanceAbuseRadios" id="substanceAbuseRadioNo" value="option2">
+              <label class="form-check-label" for="substanceAbuseRadioNo">No</label>
+            </div>
+          </fieldset>
         </div>
 
         <h3 class="mt-5">Tests</h3>
 
         <div class="row mt-4">
             <fieldset class="col-4">
-              <legend class="col-form-label">HepBPos</legend>
+              <legend class="col-form-label">Hep.B pos.</legend>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1">
                     <label class="form-check-label" for="HepBPosRadioYes">Yes</label>
@@ -84,12 +183,12 @@
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="HepBPosCheckDate" class="form-label">HepB Check Date</label>
+                    <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>
                     <input class="form-control" type="date"  id="pregTestDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
-              <legend class="col-form-label">HepB treated</legend>
+              <legend class="col-form-label">Hep.B treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioYes" value="option1">
                   <label class="form-check-label" for="HepBtreatedRadioYes">Yes</label>
@@ -104,7 +203,7 @@
 
         <div class="row mt-4">
             <fieldset class="col-4">
-              <legend class="col-form-label">HIVPos</legend>
+              <legend class="col-form-label">HIV pos.</legend>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioYes" value="option1">
                     <label class="form-check-label" for="hivPosRadioYes">Yes</label>
@@ -142,30 +241,30 @@
 
           <div class="row mt-4">
             <fieldset class="col-4">
-              <legend class="col-form-label">TPos</legend>
+              <legend class="col-form-label">Tb pos.</legend>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="TposRadios" id="TPosRadioYes" value="option1">
-                    <label class="form-check-label" for="TPosRadioYes">Yes</label>
+                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioYes" value="option1">
+                    <label class="form-check-label" for="TbPosRadioYes">Yes</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="TposRadios" id="TPosRadioNo" value="option2">
-                    <label class="form-check-label" for="TPosRadioNo">No</label>
+                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNo" value="option2">
+                    <label class="form-check-label" for="TbPosRadioNo">No</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="TposRadios" id="TPosRadioNotDone" value="option2">
-                    <label class="form-check-label" for="TPosRadioNotDone">Not done</label>
+                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option2">
+                    <label class="form-check-label" for="TbPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="TposCheckDate" class="form-label">Tpos Check Date</label>
+                    <label for="TposCheckDate" class="form-label">Tb Check Date</label>
                     <input class="form-control" type="date"  id="TposCheckDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
-              <legend class="col-form-label">TPos treated</legend>
+              <legend class="col-form-label">Tb treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="TposTreatedRadios" id="TPosTreatedRadioYes" value="option1">
                   <label class="form-check-label" for="TPosTreatedRadioYes">Yes</label>
@@ -181,7 +280,7 @@
 
           <div class="row mt-4">
             <fieldset class="col-4">
-              <legend class="col-form-label">STDPos</legend>
+              <legend class="col-form-label">STD pos.</legend>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioYes" value="option1">
                     <label class="form-check-label" for="STDposRadioYes">Yes</label>
@@ -199,12 +298,12 @@
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="STDposCheckDate" class="form-label">STDPosCheckDate</label>
+                    <label for="STDposCheckDate" class="form-label">STD Check Date</label>
                     <input class="form-control" type="date"  id="STDposCheckDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
-              <legend class="col-form-label">STDPosTreated</legend>
+              <legend class="col-form-label">STD treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="STDPosTreatedRadios" id="STDposTreatedRadioYes" value="option1">
                   <label class="form-check-label" for="STDposTreatedRadioYes">Yes</label>
@@ -220,7 +319,7 @@
 
           <div class="row mt-4">
             <fieldset class="col-4">
-              <legend class="col-form-label">PregnanyTestPos</legend>
+              <legend class="col-form-label">Pregnancy Test pos.</legend>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioYes" value="option1">
                     <label class="form-check-label" for="pregPosRadioYes">Yes</label>
@@ -238,53 +337,40 @@
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="PregTestDate" class="form-label">PregTestDate</label>
+                    <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
                     <input class="form-control" type="date"  id="PregTestDate">        
             </div>
-
-            <fieldset class="col-2 offset-1">
-              <legend class="col-form-label">PregnancyHist</legend>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioYes" value="option1">
-                  <label class="form-check-label" for="PregnancyHistRadioYes">Yes</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioNo" value="option2">
-                  <label class="form-check-label" for="PregnancyHistRadioNo">No</label>
-                </div>
-            </fieldset>
           </div>
 
 
           <div class="row mt-4">
             <fieldset class="col-4">
-                <legend class="col-form-label">SickelCellPos</legend>
+                <legend class="col-form-label">Sickle Cell pos.</legend>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioYes" value="option1">
-                      <label class="form-check-label" for="SickelCellRadioYes">Yes</label>
+                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioYes" value="option1">
+                      <label class="form-check-label" for="SickleCellRadioYes">Yes</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioNo" value="option2">
-                      <label class="form-check-label" for="SickelCellRadioNo">No</label>
+                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNo" value="option2">
+                      <label class="form-check-label" for="SickleCellRadioNo">No</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="SickelCellPosRadios" id="SickelCellRadioNotDone" value="option2">
-                      <label class="form-check-label" for="SickelCellRadioNotDone">Not done</label>
+                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option2">
+                      <label class="form-check-label" for="SickleCellRadioNotDone">Not done</label>
                     </div>
               </fieldset>
 
               <div class="form-group col-3">
-                <label for="SickelCellType" class="form-label">SickelCell Type</label>
+                <label for="SickelCellType" class="form-label">Sickle Cell Type</label>
                 <input type="text" class="form-control" id="SickelCellType">
               </div>
           </div>
 
           <div class="row mt-4">
             <fieldset class="col-4">
-                <legend class="col-form-label">G6DP</legend>
+                <legend class="col-form-label">G6P Deficiency</legend>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioYes" value="option1">
                       <label class="form-check-label" for="G6DPRadiosRadioYes">Yes</label>
@@ -305,6 +391,10 @@
           <button type="submit" class="btn btn-primary mt-5 mb-3">Submit</button>
       </form>
     </div>
+
+    <script>
+        $('input,textarea,select').addClass('border border-dark');
+    </script>
    
   </body>
 </html>
