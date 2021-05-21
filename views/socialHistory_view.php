@@ -40,11 +40,11 @@
           </div>
   
           <div class="form-group form-row mt-3">
-            <label for="ProfessSourceIncome" class="form-label">ProfessSourceIncome</label>
-            <textarea class="form-control" id="ProfessSourceIncome" rows="2"></textarea>
+            <label for="amountAndSourceOfIncome" class="form-label">Amount and Source of Income?</label>
+            <textarea class="form-control" id="amountAndSourceOfIncome" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="IncomeForHowMany" class="form-label">Income for how many</label>
+            <label for="IncomeForHowMany" class="form-label">Income for how many?</label>
             <textarea class="form-control" id="IncomeForHowMany" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
@@ -52,28 +52,28 @@
             <textarea class="form-control" id="HowManySiblings" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="SiblingsGender" class="form-label">Siblings Gender</label>
+            <label for="SiblingsGender" class="form-label">Siblings Gender?</label>
             <textarea class="form-control" id="SiblingsGender" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="SiblingsAge" class="form-label">Siblings Age</label>
+            <label for="SiblingsAge" class="form-label">Siblings Age?</label>
             <textarea class="form-control" id="SiblingsAge" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="SibAliveHealthy" class="form-label">Siblings Alive Healthy</label>
+            <label for="SibAliveHealthy" class="form-label">Siblings Alive Healthy?</label>
             <textarea class="form-control" id="SibAliveHealthy" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="OneFatherOneMother" class="form-label">One Father one Mother</label>
+            <label for="OneFatherOneMother" class="form-label">One Father one Mother?</label>
             <textarea class="form-control" id="OneFatherOneMother" rows="2"></textarea>
           </div>
       
           <div class="form-group form-row mt-3">
-            <label for="Abuse" class="form-label">Abuse</label>
+            <label for="Abuse" class="form-label">Abuse?</label>
             <textarea class="form-control" id="Abuse" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="SexuallyActive" class="form-label">Sexually Active</label>
+            <label for="SexuallyActive" class="form-label">Sexually Active?</label>
             <textarea class="form-control" id="SexuallyActive" rows="2"></textarea>
           </div>
         

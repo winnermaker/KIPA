@@ -29,7 +29,8 @@
                         <th scope="col" class="sticky-top">Admission Date</th>
                         <th scope="col" class="sticky-top">Discharge Date</th>
                         <th scope="col" class="sticky-top">Review Date</th>
-                        <th scope="col" class="sticky-top">Input Form</th>
+                        <th scope="col" class="sticky-top">Next Vaccination Date</th>
+                        <th scope="col" class="sticky-top">Forms</th>
 
                     </tr>
                 </thead>
@@ -47,9 +48,10 @@
                         <td>05.01.2021</td>
                         <td>18.04.2021</td>
                         <td><b>18.04.2021</b></td>
+                        <td><b>30.05.2021</b></td>
                         <td>
                             <div style="">
-                                <a href="patient_view.php" target="_blank"> <button class="btn btn-primary">Input Form</button> </a>
+                                <a href="patient_view.php" target="_blank"> <button class="btn btn-primary">Forms</button> </a>
                             </div>
                         </td>
                         </td>

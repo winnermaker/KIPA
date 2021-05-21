@@ -3,6 +3,9 @@
   <head>
   <?php require 'formsNavbar.php' ?>
   <style>
+    .table{
+    
+    }
   </style>
 
     <title>Medical Main</title>
@@ -10,7 +13,7 @@
   <body>
     
     <div class="container">
-      <div class="form-row sticky-top mt-3">    
+      <div class="form-row mt-3">    
         <table class="table table-striped ">
           	<thead class="">
               <tr>
@@ -31,7 +34,7 @@
               <td>Mustermann</td>
               <td>Mike</td>
               <td>Mustermann</td>
-              <td>Male</td>
+              <td id="gender">Male</td>
               <td>29.10.1997</td>
               <td>29.10.1997</td>
               <td><?php echo date('d.m.y'); ?></td>
@@ -94,8 +97,8 @@
             <textarea class="form-control" id="otherInformation" rows="3"></textarea>
         </div>
 
-        <div class="row mt-4">
-          <fieldset class="col-2">
+        <div class="row mt-5">
+          <fieldset class="col">
             <legend class="col-form-label">Pregnancy History</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="PregnancyHistRadios" id="PregnancyHistRadioYes" value="option1">
@@ -108,7 +111,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="col-2">
+          <fieldset class="col">
             <legend class="col-form-label">Immuni. compl.</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioYes" value="option1">
@@ -121,7 +124,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="col-2">
+          <fieldset class="col">
             <legend class="col-form-label">Physical abuse</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="physicalAbuseRadios" id="physicalAbuseRadioYes" value="option1">
@@ -134,7 +137,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="col-2">
+          <fieldset class="col">
             <legend class="col-form-label">Sexual abuse/active</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="sexualAbuseRadios" id="sexualAbuseRadioYes" value="option1">
@@ -147,7 +150,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="col-2">
+          <fieldset class="col">
             <legend class="col-form-label">Substance abuse</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="substanceAbuseRadios" id="substanceAbuseRadioYes" value="option1">
@@ -159,6 +162,12 @@
               <label class="form-check-label" for="substanceAbuseRadioNo">No</label>
             </div>
           </fieldset>
+
+          <div class="form-group col-3">
+              <label class="form-label" for="menstrualHistory">Menstrual History</label>
+              <input type="text" class="form-control" placeholder="" id="menstrualHistory">
+          </div>
+
         </div>
 
         <h3 class="mt-5">Tests</h3>
@@ -394,6 +403,13 @@
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
+
+        var gender = document.getElementById( "gender" ).innerText;
+        if(gender == "Male"){
+            document.getElementById("menstrualHistory").disabled = true;
+        } else if(gender == "Female"){
+            document.getElementById("menstrualHistory").disabled = false;
+        }
     </script>
    
   </body>
