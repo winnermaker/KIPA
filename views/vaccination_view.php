@@ -9,12 +9,12 @@
   <div class="container">
         <h1 class="mt-3 ">Vaccination</h1>
 
-        <div class="form-row sticky-top mt-3">   
+        <div class="table-responsive-lg">
             <table class="table table-striped table-hover table-bordered mt-5">
               <thead class="table-dark">
                 <tr>
                   <th scope="col" class="sticky-top">Vaccine</th>
-                  <th scope="col" class="sticky-top">Date</th>
+                  <th scope="col" class="sticky-top">Vaccination Date</th>
                   <th scope="col" class="sticky-top">Add Date</th>
                   <th scope="col" class="sticky-top">Next vaccination Date</th>
                   <th scope="col" class="sticky-top">Add new row</th>
@@ -22,7 +22,7 @@
               </thead>
               
               <tbody>
-                <td><input class="form-control" list="vaccinedatalistOptions" id="vaccineDataList" placeholder="Type to search...">
+                <td><input class="form-control" list="vaccinedatalistOptions" value="<?php echo "Der text ist hier"?>" id="vaccineDataList" placeholder="Type to search...">
                     <datalist id="vaccinedatalistOptions">
                         <option value="CSM">
                         <option value="ATS">
@@ -35,16 +35,16 @@
                 <td><input type="button" value="Add row" class="AddNew btn btn-primary"></td>
               </tbody> 
           </table>
+        </div>
 
           <div class="row mt-3">
                 <div class="form-group form-row">
                     <label for="VaccRemarks" class="form-label">Vaccination Remarks</label>
                     <textarea class="form-control" id="VaccRemarks" rows="3"></textarea>
                 </div>
-            </div>
+          </div>
 
             <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
-        </div>
     </div>
 
         <script>

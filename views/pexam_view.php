@@ -7,33 +7,8 @@
   <body>
     <div class="container">
         <h1 class="mt-3">Physical Examination</h1>
-        <div class="form-row sticky-top mt-3">   
-          <table class="table table-striped">
-              <thead class="">
-                <tr>
-                  <th scope="col" class="sticky-top">First name</th>
-                  <th scope="col" class="sticky-top">Last name</th>
-                  <th scope="col" class="sticky-top">Call name</th>
-                  <th scope="col" class="sticky-top">Gender</th>
-                  <th scope="col" class="sticky-top">Date of Birth</th>
-                  <th scope="col" class="sticky-top">Est. Date of Birth</th>
-                  <th scope="col" class="sticky-top">Date of Examination</th>
-                  <th scope="col" class="sticky-top">Investigator</th>
-                </tr>
-              </thead>
-              
-              <tbody>
-                <td>Mustermann</td>
-                <td>Mike</td>
-                <td>Mustermann</td>
-                <td id="gender">Male</td>
-                <td>29.10.1997</td>
-                <td>29.10.1997</td>
-                <td><?php echo date('d.m.y'); ?></td>
-                <td>Drechsel-Atta</td>
-              </tbody> 
-          </table>  
-        </div>
+        <?php require 'formsHeadline.php' ?>
+        
 
         <form action="">
             <div class="form-row mt-5 col-12">
@@ -45,17 +20,17 @@
 
             <div class="row mt-3">
                 <div class="form-group col-2">
-                    <label for="Weight" class="form-label">Weight</label>
+                    <label for="Weight" class="form-label">Weight (kg)</label>
                     <input type="text" placeholder="" class="form-control" id="Weight">
                 </div>
 
                 <div class="form-group col-2">
-                    <label for="Height" class="form-label">Height</label>
+                    <label for="Height" class="form-label">Height (cm)</label>
                     <input type="text" placeholder="" class="form-control" id="Height">
                 </div>
 
                 <div class="form-group col-2">
-                    <label for="headcircumference" class="form-label">Head circumference</label>
+                    <label for="headcircumference" class="form-label">Head circumference (cm)</label>
                     <input type="text" class="form-control" id="headcircumference">
                 </div>
 
@@ -72,12 +47,12 @@
                 </div>
 
                 <div class="form-group col-3">
-                    <label for="MUAC" class="form-label">MUAC</label>
+                    <label for="MUAC" class="form-label">MUAC (cm)</label>
                     <input type="text" placeholder="" class="form-control" id="MUAC">
                 </div>
 
                 <div class="form-group col-3">
-                    <label for="temp" class="form-label">Temperature</label>
+                    <label for="temp" class="form-label">Temperature (Celsius)</label>
                     <input type="text" placeholder="" class="form-control" id="temp">
                 </div>
 
@@ -236,7 +211,7 @@
                 </div>
                 
                 <div class="form-group col-6">
-                    <label for="cvs_BP" class="form-label">BP</label>
+                    <label for="cvs_BP" class="form-label">BP (mmHg)</label>
                     <input type="text" class="form-control" id="cvs_BP">
                 </div>
             </div>
@@ -427,14 +402,22 @@
                 <h3 class="mt-5">Genitals male</h3>
 
                 <div class="row mt-3">
-                    <div class="form-group col-6">
-                        <label for="male_circumcised" class="form-label">Circumcised</label>
-                        <textarea class="form-control" id="male_circumcised" rows="2"></textarea>
-                    </div>
+                    <fieldset class="col-2">
+                        <legend class="col-form-label">Circumcised</legend>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="circumcisedRadios" id="circumcisedRadioYes" value="option1">
+                            <label class="form-check-label" for="circumcisedRadioYes">Yes</label>
+                        </div>
 
-                    <div class="form-group col-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="circumcisedRadios" id="circumcisedRadioNo" value="option2">
+                            <label class="form-check-label" for="circumcisedRadioNo">No</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group offset-1 col">
                         <label for="male_tannerStage" class="form-label">Tanner stage</label>
-                        <textarea class="form-control" id="male_tannerStage" rows="2"></textarea>
+                        <input type="text" class="form-control" id="male_tannerStage">
                     </div>
                 </div>
 
@@ -444,20 +427,35 @@
                         <textarea class="form-control" id="male_descensusOfTestes" rows="2"></textarea>
                     </div>
                 </div>
+
+                <div class="row mt-3">
+                    <div class="form-group">
+                        <label for="male_remarks" class="form-label">Remarks</label>
+                        <textarea class="form-control" id="male_remarks" rows="3"></textarea>
+                    </div>
+                </div>
             </div>
 
             <div style="display:block" id="femaleGenitals">
                 <h3 class="mt-5">Genitals female</h3>
 
                 <div class="row mt-3">
-                    <div class="form-group col-6">
-                        <label for="female_circumcised" class="form-label">Circumcised</label>
-                        <textarea class="form-control" id="female_circumcised" rows="2"></textarea>
-                    </div>
+                    <fieldset class="col-2">
+                        <legend class="col-form-label">Circumcised</legend>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="femalecircumcisedRadios" id="femalecircumcisedRadioYes" value="option1">
+                            <label class="form-check-label" for="femalecircumcisedRadioYes">Yes</label>
+                        </div>
 
-                    <div class="form-group col-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="femalecircumcisedRadios" id="femalecircumcisedRadioNo" value="option2">
+                            <label class="form-check-label" for="femalecircumcisedRadioNo">No</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group offset-1 col">
                         <label for="female_tannerStage" class="form-label">Tanner stage</label>
-                        <textarea class="form-control" id="female_tannerStage" rows="2"></textarea>
+                        <input type="text" class="form-control" id="female_tannerStage">
                     </div>
                 </div>
 
