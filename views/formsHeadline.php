@@ -8,7 +8,7 @@
   </head>
   <body>
   <div class="form-row sticky-top mt-3">
-          <table class="table bg-secondary table-striped">
+          <table class="table table-striped">
               <thead class="">
                 <tr>
                   <th scope="col" class="">First name</th>

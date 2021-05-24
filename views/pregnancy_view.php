@@ -169,8 +169,11 @@
                     </div>
                 </div>
 
-                <button type="button" onClick="duplicate()" class="btn btn-secondary mt-4">Add a new children</button>
+                <button type="button" id="addChild" class="btn btn-secondary mt-4">Add a new children</button>
                 
+            </div>
+
+            <div id="newChild">
             </div>
 
 
@@ -204,15 +207,14 @@
     </script>
 
     <script>
-        var i = 0;
-        var original = document.getElementById('childs');
+       var cloneId = 0;
+        $("#addChild").click( function()
+           {
+       $("#childs").clone(true,true).appendTo("#newChild").find("input,textarea").prop("name", "optionsRadios" + cloneId).val("");
+            cloneID++;
+    }
+        );
 
-        function duplicate() {
-            var clone = original.cloneNode(true); // "deep" clone
-            clone.id = "childs" + ++i;
-            // or clone.id = ""; if the divs don't need an ID
-            original.parentNode.appendChild(clone);
-}
     </script>
 
     <script>
