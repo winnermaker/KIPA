@@ -9,6 +9,7 @@
   <body>
     <div class="container">
         <h1 class="mt-3 ">Visit Data</h1>
+        <?php require 'formsHeadline.php' ?>
 
         <div class="form-row sticky-top mt-3">   
             <table class="table table-striped table-hover table-bordered mt-5" id="table">

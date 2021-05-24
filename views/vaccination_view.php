@@ -8,6 +8,7 @@
   <body>
   <div class="container">
         <h1 class="mt-3 ">Vaccination</h1>
+        <?php require 'formsHeadline.php' ?>
 
         <div class="">
             <table class="table table-striped table-hover table-bordered mt-5" id="table">

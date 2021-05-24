@@ -14,33 +14,7 @@
     <form action="" class="needs-validation" novalidate>
       <div class="container">
         <h1 class="mt-3">Diagnostic Data</h1>
-        <div class="form-row sticky-top mt-3">   
-          <table class="table table-striped">
-              <thead class="">
-                <tr>
-                  <th scope="col" class="sticky-top">First name</th>
-                  <th scope="col" class="sticky-top">Last name</th>
-                  <th scope="col" class="sticky-top">Call name</th>
-                  <th scope="col" class="sticky-top">Gender</th>
-                  <th scope="col" class="sticky-top">Date of Birth</th>
-                  <th scope="col" class="sticky-top">Est. Date of Birth</th>
-                  <th scope="col" class="sticky-top">Date of Examination</th>
-                  <th scope="col" class="sticky-top">Investigator</th>
-                </tr>
-              </thead>
-              
-              <tbody>
-                <td>Mustermann</td>
-                <td>Mike</td>
-                <td>Mustermann</td>
-                <td>Male</td>
-                <td>29.10.1997</td>
-                <td>29.10.1997</td>
-                <td><?php echo date('d.m.y'); ?></td>
-                <td>Drechsel-Atta</td>
-              </tbody> 
-          </table>  
-        </div>
+        <?php require 'formsHeadline.php' ?>
         
         
 
