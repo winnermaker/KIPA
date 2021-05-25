@@ -33,7 +33,7 @@
                 <td><input type="date" class="form-control"></td>
                 <td><input type="text" class="form-control"></td>
                 <td><a href="visitDiagnostic_view.php"> <button class="btn btn-success">Diagnostic</button> </a></td>
-                <td><input type="button" onclick="deleteRow(this)" value="Remove row" class="AddNew btn btn-danger"></td>
+                <td></td>
               </tbody> 
           </table>  
         </div>

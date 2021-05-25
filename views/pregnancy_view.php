@@ -209,12 +209,35 @@
 
     <script>
        var cloneId = 0;
-        $("#addChild").click( function()
-           {
-       $("#childs").clone(true,true).appendTo("#newChild").find("input,textarea").prop("name", "optionsRadios" + cloneId).val("");
-            cloneID++;
-    }
-        );
+
+        $(document).ready(function()
+        {
+            $("#addChild").click(function()
+            {
+                var clone = $("#childs").clone(true);
+                clone.find("input[name=genderpregnancyRadios]").prop("name", "newgnderRadioName" + cloneId);
+                clone.find("input[id=malepregnancyRadio]").prop("id", "malepregnancyRadio" + cloneId);
+                clone.find("label[for=malepregnancyRadio]").prop("for", "malepregnancyRadio" + cloneId);
+
+                clone.find("input[id=femalepregnancyRadio]").prop("id", "femalepregnancyRadio" + cloneId);
+                clone.find("label[for=femalepregnancyRadio]").prop("for", "femalepregnancyRadio" + cloneId);
+
+                clone.find("input[id=otherpregnancyRadio]").prop("id", "otherpregnancyRadio" + cloneId);
+                clone.find("label[for=otherpregnancyRadio]").prop("for", "otherpregnancyRadio" + cloneId);
+
+                clone.find("input[name=healthyRadios]").prop("name", "healthyRadios" + cloneId);
+                clone.find("input[id=healthyRadioYes]").prop("id", "healthyRadioYes" + cloneId);
+                clone.find("label[for=healthyRadioYes]").prop("for", "healthyRadioYes" + cloneId);
+
+                clone.find("input[id=healthyRadioNo]").prop("id", "healthyRadioNo" + cloneId);
+                clone.find("label[for=healthyRadioNo]").prop("for", "healthyRadioNo" + cloneId);
+
+                
+                clone.find("input,textarea").val("");
+                cloneId++;
+                clone.appendTo("#newChild");
+            });
+        });
 
     </script>
 

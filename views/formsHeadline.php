@@ -1,8 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; ?>
+
   <style>
-    
+    .table {
+      background: rgba(252, 252, 252, 1) !important;
+    }
   </style>
     
   </head>
