@@ -236,8 +236,20 @@
                 clone.find("input,textarea").val("");
                 cloneId++;
                 clone.appendTo("#newChild");
+
+                $("#newChild").append("<input type='button' id='removeButton' value='Remove Child' class='btn btn-danger'>");
+               
             });
+
+           
+           
         });
+
+        $(document).on("click", "#removeButton", function() {
+            alert("hallo");
+            $(this).closest("#childs").remove();
+        });
+
 
     </script>
 

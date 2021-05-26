@@ -70,9 +70,10 @@
         }
 
         function createCell(row){ 
-          var i=row.parentNode.parentNode.rowIndex;
-          var x = document.getElementById("table").insertCell(-1);
-          x.innerHTML = '<input type="date" class="form-control" name="nextVaccinationDate[]">';
+          var row = document.getElementById("table");
+          var TD = document.createElement('td'); //Create new cell
+          TD.innerHTML = 'This is a new cell added'; //Set some thing
+          row.appendChild (TD); //Add it to row
         }
 
           function deleteRow(row)

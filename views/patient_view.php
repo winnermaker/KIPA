@@ -7,7 +7,7 @@
   </head>
   <body>
 
-    <form action="" class="needs-validation" novalidate>
+    <form action="test.php" class="needs-validation" novalidate>
 
         <div class="container" >
             <h1 class="mt-3">Patient</h1>
