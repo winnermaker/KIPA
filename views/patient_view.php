@@ -6,11 +6,13 @@
   
   </head>
   <body>
-
-    <form action="test.php" class="needs-validation" novalidate>
+    
+    <form action="medicalMain_view.php"  method="post" class="needs-validation" novalidate>
 
         <div class="container" >
             <h1 class="mt-3">Patient</h1>
+            
+            <input type="text" id="childID" hidden>
 
             <div class="form-row mt-5">
                 <fieldset>

@@ -7,7 +7,8 @@
       </div>
     </div>
   
-      <form class="d-flex float-end">
+
+      <form class="d-flex float-end" action="<?php substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  ?>">
         <div class="input-group">
           <input class="form-control me-2" list="patientsdatalistOptions" size="40px;" id="exampleDataList" placeholder="Type to search...">
           <datalist id="patientsdatalistOptions">
