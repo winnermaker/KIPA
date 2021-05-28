@@ -6,7 +6,7 @@
 
     <title>Visit Data</title>
   </head>
-  <body>
+  <body onload="removeCssClass();">
     <div class="container">
         <h1 class="mt-3 ">Visit Data</h1>
         <?php require 'formsHeadline.php' ?>
@@ -67,6 +67,12 @@
               var i=row.parentNode.parentNode.rowIndex;
               document.getElementById('table').deleteRow(i);
           }
+
+          function removeCssClass() 
+        {
+          var element = document.getElementById("formsTable");
+          element.classList.remove("sticky-top");
+        }
         </script>
 
 

@@ -11,7 +11,7 @@
     
   </head>
   <body>
-  <div class="form-row sticky-top mt-3">
+  <div id="formsTable" class="form-row sticky-top mt-3">
           <table class="table table-striped">
               <thead class="">
                 <tr>
