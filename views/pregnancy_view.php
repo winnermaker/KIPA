@@ -6,7 +6,7 @@
 
     <title>Pregnancy</title>
   </head>
-  <body>
+  <body onload="createButton()">
     <div class="container">
         <h1 class="mt-3">Pregnancy</h1>
         <?php require 'formsHeadline.php' ?>
@@ -170,7 +170,10 @@
                     </div>
                 </div>
 
-                <button type="button" id="addChild" class="btn btn-secondary mt-4">Add a new children</button>
+                <div class="row mt-4">
+                    <button type="button" id="addChild" class="btn btn-secondary col-2 me-2">Add new Child</button>
+                    <button type="button" id='removeButton' class='remove btn btn-danger col-2'>Remove Child</button>
+                </div>
                 
             </div>
 
@@ -236,25 +239,23 @@
                 clone.find("input,textarea").val("");
                 cloneId++;
                 clone.appendTo("#newChild");
-
-                $("#newChild").append("<input type='button' id='removeButton' value='Remove Child' class='btn btn-danger'>");
                
             });
 
-           
-           
+            $( "body" ).on('click', '.remove', function(){
+                var elements = document.getElementsByClassName("remove");
+                if(elements.length > 1){
+                    $(this).closest('#childs').remove();
+                }
+            });
         });
-
-        $(document).on("click", "#removeButton", function() {
-            alert("hallo");
-            $(this).closest("#childs").remove();
-        });
-
-
     </script>
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
+
+        document.getElementById("investigator").hidden = true;
+        document.getElementById("investigatorName").hidden = true;
     </script>
 
   </body>

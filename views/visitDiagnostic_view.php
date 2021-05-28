@@ -162,6 +162,9 @@
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
+        
+        document.getElementById("investigator").hidden = true;
+        document.getElementById("investigatorName").hidden = true; 
     </script>
   </body>
 </html>

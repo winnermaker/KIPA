@@ -392,6 +392,9 @@
             }
         });
     });
+
+      document.getElementById("investigator").hidden = true;
+      document.getElementById("investigatorName").hidden = true;
     </script>
    
   </body>

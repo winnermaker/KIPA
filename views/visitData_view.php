@@ -73,6 +73,9 @@
           var element = document.getElementById("formsTable");
           element.classList.remove("sticky-top");
         }
+
+        document.getElementById("investigator").hidden = true;
+        document.getElementById("investigatorName").hidden = true;
         </script>
 
 

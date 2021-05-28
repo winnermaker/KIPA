@@ -22,7 +22,7 @@
                   <th scope="col" class="">Date of Birth</th>
                   <th scope="col" class="">Est. Date of Birth</th>
                   <th scope="col" class="">Date of Examination</th>
-                  <th scope="col" class="">Investigator</th>
+                  <th id="investigator" scope="col" class="">Investigator</th>
                 </tr>
               </thead>
               
@@ -34,7 +34,7 @@
                 <td>29.10.1997</td>
                 <td>29.10.1997</td>
                 <td><?php echo date('d.m.y'); ?></td>
-                <td>Drechsel-Atta</td>
+                <td id="investigatorName">Drechsel-Atta</td>
               </tbody> 
           </table>  
         </div>
