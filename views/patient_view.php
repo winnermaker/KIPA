@@ -45,7 +45,7 @@
             <div class="form-row mt-3">
                 <div class ="form-group col">
                     <label for="firstName" class="form-label">First name</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="Max" required>
+                    <input type="text" class="form-control"  name="firstName" id="firstName" placeholder="Max" required>
                     <div class="invalid-feedback">
                     Please choose a Call name
                     </div>  
@@ -55,7 +55,7 @@
             <div class="form-row mt-3">
                 <div class="form-group col">
                     <label for="lastName" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="lastName" placeholder="Mustermann" required>
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Mustermann" required>
                     <div class="invalid-feedback">
                     Please choose a Last name
                     </div> 
@@ -65,7 +65,7 @@
             <div class="form-row mt-3">
                 <div class ="form-group col">
                     <label for="callName" class="form-label">Call name</label>
-                    <input type="text" class="form-control" id="callName" placeholder="Mike" required >
+                    <input type="text" class="form-control" name="callName" id="callName" placeholder="Mike" required >
                     <div class="invalid-feedback">
                     Please choose a Call name
                     </div>  
@@ -75,22 +75,22 @@
             <div class="row mt-3">
                 <div class ="form-group col">
                     <label for="dateOfBirth" class="col-form-label">Date of Birth</label>
-                    <input class="form-control " type="date"  id="dateOfBirth">        
+                    <input class="form-control " type="date" name="dateOfBirth" id="dateOfBirth">        
                 </div>
 
                 <div class="form-group col">
                     <label for="estDateOfBirth" class="col-form-label">Est. Date of Birth</label>
-                    <input class="form-control " type="date" id="estDateOfBirth">
+                    <input class="form-control " type="date" name="estDateOfBirth" id="estDateOfBirth">
                 </div>
 
                 <div class ="form-group col">
                     <label for="admissionDate" class="col-form-label">Admission Date</label>
-                    <input class="form-control " type="date"  id="admissionDate">        
+                    <input class="form-control " type="date" name="admissionDate" id="admissionDate">        
                 </div>
 
                 <div class="form-group col">
                     <label for="dischargeDate" class="col-form-label">Discharge Date</label>
-                    <input class="form-control" type="date"  id="dischargeDate">
+                    <input class="form-control" type="date" name="dischargeDate"  id="dischargeDate">
                 
                 </div>
                 
@@ -99,12 +99,12 @@
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="pictureTakenOn" class="form-label">Picture taken on</label>
-                    <input class="form-control" type="date"  id="pictureTakenOn">
+                    <input class="form-control" type="date" name="pictureTakenOn" id="pictureTakenOn">
                 </div>
 
                 <div class="form-group col">
                     <label class="form-label" for="customFile" >Upload Picture</label>
-                    <input type="file" class="form-control" id="customFile" id="choose-file" />
+                    <input type="file" class="form-control" name="customFile" id="customFile" />
                 </div>
             </div>
 
