@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'formsNavbar.php' ?>
     <title>Patient</title>
   
   </head>
   <body>
     
-    <form action="medicalMain_view.php"  method="post" class="needs-validation" novalidate>
+    <form action="patient_con.php"  method="post" class="needs-validation" novalidate>
 
         <div class="container" >
             <h1 class="mt-3">Patient</h1>

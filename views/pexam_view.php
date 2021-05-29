@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'formsNavbar.php' ?>
     <title>Physical Examination</title>
   </head>
   <body>

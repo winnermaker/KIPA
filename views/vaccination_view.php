@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <?php require 'formsNavbar.php' ?>
-    
+  <head> 
     <title>Vaccination</title>
   </head>
   <body onload="removeCssClass();">

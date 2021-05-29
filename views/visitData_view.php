@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="en">
-
   <head>
-    <?php require 'formsNavbar.php' ?>
-
     <title>Visit Data</title>
   </head>
   <body onload="removeCssClass();">
