@@ -20,7 +20,7 @@
       <h1 class="mt-3">Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
 
-      <form action="">
+      <form action="medicalMain_con" method="post">
         <div class="row mt-5">
           <fieldset class="col-2">
             <legend class="col-form-label">NHI Registration</legend>

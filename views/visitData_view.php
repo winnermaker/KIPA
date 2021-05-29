@@ -34,7 +34,7 @@
                 <td><input type="text" class="form-control"></td>
                 <td><input type="date" class="form-control"></td>
                 <td><input type="text" class="form-control"></td>
-                <td><a href="visitDiagnostic_view.php"> <button class="btn btn-success">Diagnostic</button> </a></td>
+                <td><a href="visitDiagnostic_con.php"> <button class="btn btn-success">Diagnostic</button> </a></td>
                 <td></td>
               </tbody> 
           </table>  
