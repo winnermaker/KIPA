@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <?php 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
+    ?>
     <title>Social History</title>
   </head>
   <body>

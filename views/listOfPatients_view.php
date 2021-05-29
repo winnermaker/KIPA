@@ -2,7 +2,10 @@
 <html lang="en">
 
   <head>
-  <?php require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; ?>
+    <?php 
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+    ?>
 
     <title>Children table</title>
   </head>

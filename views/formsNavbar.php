@@ -1,15 +1,5 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-
-    <?php 
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html"; 
-    require 'navbar.php';
-    
-    ?>
-    
-  </head>
   <body>
     <div class="container mt-3">
       <ul class="nav nav-pills nav-fill border border-dark " id="pills-tab" role="tablist">

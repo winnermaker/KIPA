@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
-  <head> 
+  <head>
+    <?php 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php"; 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
+    ?>
     <title>Vaccination</title>
   </head>
   <body onload="removeCssClass();">

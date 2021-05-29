@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <style>
-    .dropdown{
-    display: inline;
-}
-  </style>
+    <?php 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
+     ?>
+
+    <style>
+      .dropdown{ display: inline;}
+    </style>
 
     <title>Diagnostic Data</title>
   </head>
