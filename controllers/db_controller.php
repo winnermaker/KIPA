@@ -25,12 +25,12 @@
     function getAllChildernReviewSoon(){
         $sql = "SELECT ChildernMain.Name FROM ChildernMain NATURAL JOIN MedicalMain WHERE MedicalMain.reviewOn BETWEEN ? AND ?";
         $stmt = $pdo->query($sql);
-        while ($row = $stmt->fetch()) {
+        /*while ($row = $stmt->fetch()) {
           echo $row['name']."<br />\n";
-        }
+        }*/
     }
 
-    function getChildDate (childern child){
+    function getChildData (childern child){
       $id = child.ChilderenID;
       $sql = "SELECT * FROM ChildernMain WHERE ChilderenID = ?";
       $pdo->prepare($sql)->execute([$id]);
