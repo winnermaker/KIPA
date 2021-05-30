@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+
   <style>
-    
+    .table {
+      background: rgba(252, 252, 252, 1) !important;
+    }
   </style>
     
   </head>
   <body>
-  <div class="form-row sticky-top mt-3">
-          <table class="table bg-secondary table-striped">
+  <div id="formsTable" class="form-row sticky-top mt-3">
+          <table class="table table-striped">
               <thead class="">
                 <tr>
                   <th scope="col" class="">First name</th>
@@ -18,7 +21,7 @@
                   <th scope="col" class="">Date of Birth</th>
                   <th scope="col" class="">Est. Date of Birth</th>
                   <th scope="col" class="">Date of Examination</th>
-                  <th scope="col" class="">Investigator</th>
+                  <th id="investigator" scope="col" class="">Investigator</th>
                 </tr>
               </thead>
               
@@ -30,7 +33,7 @@
                 <td>29.10.1997</td>
                 <td>29.10.1997</td>
                 <td><?php echo date('d.m.y'); ?></td>
-                <td>Drechsel-Atta</td>
+                <td id="investigatorName">Drechsel-Atta</td>
               </tbody> 
           </table>  
         </div>

@@ -2,11 +2,9 @@
 <html lang="en">
 
   <head>
-  <?php
-    require 'navbar.php';
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-
-
+    <?php 
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
     ?>
 
     <title>Children table</title>
@@ -51,7 +49,7 @@
                         <td><b>30.05.2021</b></td>
                         <td>
                             <div style="">
-                                <a href="patient_view.php" target="_blank"> <button class="btn btn-primary">Forms</button> </a>
+                                <a href="patient_con.php"  target="_blank"> <button class="btn btn-primary">Forms</button> </a>
                             </div>
                         </td>
                         </td>

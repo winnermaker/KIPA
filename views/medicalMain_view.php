@@ -1,7 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'formsNavbar.php' ?>
+    <?php 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
+      ?>
   <style>
     .table{
     
@@ -13,38 +17,10 @@
   <body>
     
     <div class="container">
-      <div class="form-row mt-3">    
-        <table class="table table-striped ">
-          	<thead class="">
-              <tr>
-                <th scope="col" class="sticky-top"><h1>Medical Main</h1></th>
-                <th scope="col" class="sticky-top">First name</th>
-                <th scope="col" class="sticky-top">Last name</th>
-                <th scope="col" class="sticky-top">Call name</th>
-                <th scope="col" class="sticky-top">Gender</th>
-                <th scope="col" class="sticky-top">Date of Birth</th>
-                <th scope="col" class="sticky-top">Est. Date of Birth</th>
-                <th scope="col" class="sticky-top">Date of Examination</th>
-                <th scope="col" class="sticky-top">Investigator</th>
-              </tr>
-            </thead>
-            
-            <tbody>
-              <td></td>
-              <td>Mustermann</td>
-              <td>Mike</td>
-              <td>Mustermann</td>
-              <td id="gender">Male</td>
-              <td>29.10.1997</td>
-              <td>29.10.1997</td>
-              <td><?php echo date('d.m.y'); ?></td>
-              <td>Drechsel-Atta</td>
-              
-            </tbody> 
-        </table>  
-      </div>
+      <h1 class="mt-3">Medical Main</h1>
+      <?php require 'formsHeadline.php' ?>
 
-      <form action="">
+      <form action="medicalMain_con" method="post">
         <div class="row mt-5">
           <fieldset class="col-2">
             <legend class="col-form-label">NHI Registration</legend>
@@ -61,7 +37,7 @@
 
             <div class="form-group col-4">
               <label class="form-label" for="NHInumber">NHI Number</label>
-              <input type="text" class="form-control" placeholder="86245236" id="NHInumber">
+              <input type="text" class="form-control" placeholder="" id="NHInumber">
             </div>
 
             <div class ="form-group col">
@@ -410,6 +386,19 @@
         } else if(gender == "Female"){
             document.getElementById("menstrualHistory").disabled = false;
         }
+
+        $(function () {
+        $("input[name='nhiRadios']").click(function () {
+            if ($("#nhiRadioYes").is(":checked")) {
+                $("#NHInumber").removeAttr("disabled");
+            } else {
+                $("#NHInumber").attr("disabled", "disabled");
+            }
+        });
+    });
+
+      document.getElementById("investigator").hidden = true;
+      document.getElementById("investigatorName").hidden = true;
     </script>
    
   </body>

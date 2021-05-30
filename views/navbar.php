@@ -2,12 +2,13 @@
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link text-white" href="listOfPatients_view.php">List of Patients</a>
-        <a class="nav-link text-white" href="patient_view.php">Forms</a>
+        <a class="nav-link text-white" href="listOfPatients_con.php">List of Patients</a>
+        <a class="nav-link text-white" href="patient_con.php">Forms</a>
       </div>
     </div>
   
-      <form class="d-flex float-end">
+
+      <form class="d-flex float-end" action="<?php substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  ?>">
         <div class="input-group">
           <input class="form-control me-2" list="patientsdatalistOptions" size="40px;" id="exampleDataList" placeholder="Type to search...">
           <datalist id="patientsdatalistOptions">

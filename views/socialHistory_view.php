@@ -1,13 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'formsNavbar.php' ?>
-
+    <?php 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
+    ?>
     <title>Social History</title>
   </head>
   <body>
     <div class="container">
       <h1 class="mt-3">Social History</h1>
+      <?php require 'formsHeadline.php' ?>
 
       <form action="" class="needs-validation" novalidate>
 

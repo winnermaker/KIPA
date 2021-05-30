@@ -1,14 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php require 'formsNavbar.php' ?>
-  
-
+    <?php 
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
+    ?>
     <title>Pregnancy</title>
   </head>
-  <body>
+  <body onload="createButton()">
     <div class="container">
         <h1 class="mt-3">Pregnancy</h1>
+        <?php require 'formsHeadline.php' ?>
         
 
         <form action="" class="needs-validation" novalidate>
@@ -169,8 +172,14 @@
                     </div>
                 </div>
 
-                <button type="button" onClick="duplicate()" class="btn btn-secondary mt-4">Add a new children</button>
+                <div class="row mt-4">
+                    <button type="button" id="addChild" class="btn btn-secondary col-2 me-2">Add new Child</button>
+                    <button type="button" id='removeButton' class='remove btn btn-danger col-2'>Remove Child</button>
+                </div>
                 
+            </div>
+
+            <div id="newChild">
             </div>
 
 
@@ -204,19 +213,51 @@
     </script>
 
     <script>
-        var i = 0;
-        var original = document.getElementById('childs');
+       var cloneId = 0;
 
-        function duplicate() {
-            var clone = original.cloneNode(true); // "deep" clone
-            clone.id = "childs" + ++i;
-            // or clone.id = ""; if the divs don't need an ID
-            original.parentNode.appendChild(clone);
-}
+        $(document).ready(function()
+        {
+            $("#addChild").click(function()
+            {
+                var clone = $("#childs").clone(true);
+                clone.find("input[name=genderpregnancyRadios]").prop("name", "newgnderRadioName" + cloneId);
+                clone.find("input[id=malepregnancyRadio]").prop("id", "malepregnancyRadio" + cloneId);
+                clone.find("label[for=malepregnancyRadio]").prop("for", "malepregnancyRadio" + cloneId);
+
+                clone.find("input[id=femalepregnancyRadio]").prop("id", "femalepregnancyRadio" + cloneId);
+                clone.find("label[for=femalepregnancyRadio]").prop("for", "femalepregnancyRadio" + cloneId);
+
+                clone.find("input[id=otherpregnancyRadio]").prop("id", "otherpregnancyRadio" + cloneId);
+                clone.find("label[for=otherpregnancyRadio]").prop("for", "otherpregnancyRadio" + cloneId);
+
+                clone.find("input[name=healthyRadios]").prop("name", "healthyRadios" + cloneId);
+                clone.find("input[id=healthyRadioYes]").prop("id", "healthyRadioYes" + cloneId);
+                clone.find("label[for=healthyRadioYes]").prop("for", "healthyRadioYes" + cloneId);
+
+                clone.find("input[id=healthyRadioNo]").prop("id", "healthyRadioNo" + cloneId);
+                clone.find("label[for=healthyRadioNo]").prop("for", "healthyRadioNo" + cloneId);
+
+                
+                clone.find("input,textarea").val("");
+                cloneId++;
+                clone.appendTo("#newChild");
+               
+            });
+
+            $( "body" ).on('click', '.remove', function(){
+                var elements = document.getElementsByClassName("remove");
+                if(elements.length > 1){
+                    $(this).closest('#childs').remove();
+                }
+            });
+        });
     </script>
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
+
+        document.getElementById("investigator").hidden = true;
+        document.getElementById("investigatorName").hidden = true;
     </script>
 
   </body>
