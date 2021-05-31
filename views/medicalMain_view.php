@@ -88,7 +88,7 @@
           </fieldset>
 
           <fieldset class="col">
-            <legend class="col-form-label">Immuni. compl.</legend>
+            <legend class="col-form-label">Immunis. completed</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioYes" value="option1">
               <label class="form-check-label" for="immuniComplRadioYes">Yes</label>

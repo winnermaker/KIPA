@@ -51,26 +51,7 @@
             <label for="IncomeForHowMany" class="form-label">Income for how many?</label>
             <textarea class="form-control" id="IncomeForHowMany" rows="2"></textarea>
           </div>
-          <div class="form-group form-row mt-3">
-            <label for="HowManySiblings" class="form-label">How many Siblings?</label>
-            <textarea class="form-control" id="HowManySiblings" rows="2"></textarea>
-          </div>
-          <div class="form-group form-row mt-3">
-            <label for="SiblingsGender" class="form-label">Siblings Gender?</label>
-            <textarea class="form-control" id="SiblingsGender" rows="2"></textarea>
-          </div>
-          <div class="form-group form-row mt-3">
-            <label for="SiblingsAge" class="form-label">Siblings Age?</label>
-            <textarea class="form-control" id="SiblingsAge" rows="2"></textarea>
-          </div>
-          <div class="form-group form-row mt-3">
-            <label for="SibAliveHealthy" class="form-label">Siblings Alive Healthy?</label>
-            <textarea class="form-control" id="SibAliveHealthy" rows="2"></textarea>
-          </div>
-          <div class="form-group form-row mt-3">
-            <label for="OneFatherOneMother" class="form-label">One Father one Mother?</label>
-            <textarea class="form-control" id="OneFatherOneMother" rows="2"></textarea>
-          </div>
+         
       
           <div class="form-group form-row mt-3">
             <label for="Abuse" class="form-label">Abuse?</label>
@@ -79,6 +60,48 @@
           <div class="form-group form-row mt-3">
             <label for="SexuallyActive" class="form-label">Sexually Active?</label>
             <textarea class="form-control" id="SexuallyActive" rows="2"></textarea>
+          </div>
+
+          <div class="row mt-3">
+            <fieldset class="col-2">
+              <legend class="col-form-label">Siblings?</legend>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1">
+                <label class="form-check-label" for="siblingsYes">Yes</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2">
+                <label class="form-check-label" for="siblingsNo">No</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="form-row sticky-top mt-3" style="display:none" id="siblingsTable">   
+            <table class="table table-striped table-hover table-bordered mt-5" id="table">
+              <thead class="table-dark">
+                <tr>
+                  
+                  <th scope="col" class="sticky-top">Sibling</th>
+                  <th scope="col" class="sticky-top">m/f</th>
+                  <th scope="col" class="sticky-top">Age</th>
+                  <th scope="col" class="sticky-top">Healthy?</th>
+                  <th scope="col" class="sticky-top">Alive?</th>
+                  <th scope="col" class="sticky-top">Same father/mother?</th>
+                  <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
+                </tr>
+              </thead>
+              
+              <tbody id="tableBody">
+                <td>1</td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="text" class="form-control"></td>
+                <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
+              </tbody> 
+            </table>  
           </div>
         
           <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
@@ -112,7 +135,53 @@
     </script>
 
     <script>
-        $('input,textarea,select').addClass('border border-dark');
+      $(document).ready(function() {
+          $('input[name="siblings"]').click(function() {
+          if($(this).attr('value') == 'option1') {
+                $('#siblingsTable').show();           
+          }
+          else {
+                $('#siblingsTable').hide();   
+          }
+        });
+      });
+
+        function createRow(){
+              var table = document.getElementById("tableBody");
+              var row = table.insertRow(-1);
+
+              var cell1 = row.insertCell(0);
+              var cell2 = row.insertCell(1);  
+              var cell3 = row.insertCell(2);
+              var cell4 = row.insertCell(3); 
+              var cell5 = row.insertCell(4);
+              var cell6 = row.insertCell(5);
+              var cell7 = row.insertCell(6);
+
+              cell1.innerHTML = row.rowIndex;
+              cell2.innerHTML = '<input type="text" class="form-control bg-black" name="visitType[]">';
+              cell3.innerHTML = '<input type="text" class="form-control" name="examLocation[]">';
+              cell4.innerHTML = '<input type="text" class="form-control" name="reviewDate[]">';
+              cell5.innerHTML = '<input type="text" class="form-control" name="examCause[]">';
+              cell6.innerHTML = '<input type="text" class="form-control" name="visitType[]">';
+              cell7.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
+
+              $('input').addClass('border border-dark');
+
+        }
+
+        function deleteRow(row)
+          {   
+              var table = document.getElementById("table");
+              var i=row.parentNode.parentNode.rowIndex;
+              document.getElementById('table').deleteRow(i);
+
+              for (var i = 1; i< table.rows.length; i++){
+                table.rows[i].cells[0].innerHTML = i;
+            } 
+          }
+        
+          $('input,textarea,select').addClass('border border-dark');
     </script>
   </body>
 </html>

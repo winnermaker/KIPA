@@ -28,7 +28,7 @@
                 </tr>
               </thead>
               
-              <tbody>
+              <tbody id="tableBody">
               <tr id="row">
                 <td><input style="width:160px;" class="form-control" list="vaccinedatalistOptions"  id="vaccineDataList" placeholder="Type to search...">
                     <datalist id="vaccinedatalistOptions">
@@ -43,7 +43,7 @@
                 <td><input style="width:150px;" class="form-control" type="date" value="" id="VaccDate4"></td>
                 <td><input style="width:150px;" class="form-control" type="date" value="" id="VaccDate5"></td>
                 <td><input style="width:150px;" class="form-control" type="date" value="" id="VaccDate6"></td>
-                <td></td>
+                <td><input type="button" style="width:110px;" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
                
               </tr>
               </tbody> 
@@ -63,7 +63,7 @@
         <script>
 
             function createRow(){
-              var table = document.getElementById("table");
+              var table = document.getElementById("tableBody");
               var row = table.insertRow(-1);
               
               var cell1 = row.insertCell(0);
@@ -82,7 +82,9 @@
               cell5.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccinationDate[]"> ';
               cell6.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccinationDate[]"> ';
               cell7.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="nextVaccinationDate[]">';
-              cell8.innerHTML = '<input type="button" style="width:110px;" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';          
+              cell8.innerHTML = '<input type="button" style="width:110px;" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
+
+              $('input').addClass('border border-dark'); 
         }
 
         function createCell(row){ 

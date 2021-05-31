@@ -15,7 +15,29 @@
         
 
         <form action="">
-            <div class="form-row mt-5 col-12">
+            <div class="row mt-5">
+                <div class ="form-group col">
+                    <label for="examinationDate" class="form-label">Examination Date</label>
+                    <input class="form-control" type="date"  id="examinationDate">
+                </div>
+
+                <div class="form-group col">
+                    <label for="Weight" class="form-label">Weight (kg)</label>
+                    <input type="text" placeholder="" class="form-control" id="Weight">
+                </div>
+
+                <div class="form-group col">
+                    <label for="Height" class="form-label">Height (cm)</label>
+                    <input type="text" placeholder="" class="form-control" id="Height">
+                </div>
+
+                <div class="form-group col">
+                    <label for="headcircumference" class="form-label">Head circumference (cm)</label>
+                    <input type="text" class="form-control" id="headcircumference">
+                </div>
+            </div>
+
+            <div class="form-row mt-3 col-12">
                 <div class="form-group">
                     <label for="generalCondition" class="form-label">General Condition</label>
                     <textarea class="form-control" id="generalCondition" rows="2"></textarea>
@@ -23,20 +45,6 @@
             </div>
 
             <div class="row mt-3">
-                <div class="form-group col-2">
-                    <label for="Weight" class="form-label">Weight (kg)</label>
-                    <input type="text" placeholder="" class="form-control" id="Weight">
-                </div>
-
-                <div class="form-group col-2">
-                    <label for="Height" class="form-label">Height (cm)</label>
-                    <input type="text" placeholder="" class="form-control" id="Height">
-                </div>
-
-                <div class="form-group col-2">
-                    <label for="headcircumference" class="form-label">Head circumference (cm)</label>
-                    <input type="text" class="form-control" id="headcircumference">
-                </div>
 
                 <div class="form-group col ">
                     <label for="nutritcondition" class="form-label">Nutritional Condition</label>
@@ -368,8 +376,8 @@
                 </div>
 
                 <div class="form-group col-3">
-                    <label for="Haematuria" class="form-label">Haematuria</label>
-                    <input type="text" placeholder="" class="form-control" id="Haematuria">
+                    <label for="urin_frequency" class="form-label">Frequency</label>
+                    <input type="text" placeholder="" class="form-control" id="urin_frequency">
                 </div>
 
                 <div class="form-group col-3">
@@ -385,8 +393,8 @@
 
             <div class="row mt-3">
                 <div class="form-group col">
-                    <label for="urin_frequency" class="form-label">Frequency</label>
-                    <textarea class="form-control" id="urin_frequency" rows="2"></textarea>
+                    <label for="Haematuria" class="form-label">Haematuria</label>
+                    <textarea class="form-control" id="Haematuria" rows="2"></textarea>
                 </div>
 
                 <div class="form-group col">
