@@ -13,53 +13,53 @@
       <h1 class="mt-3">Social History</h1>
       <?php require 'formsHeadline.php' ?>
 
-      <form action="" class="needs-validation" novalidate>
+      <form action="socialHistory_con.php" class="needs-validation" novalidate>
 
           <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
-                  <input class="form-control" type="date"  id="dateOfInvestigation" required>
+                  <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" required>
                   <div class="invalid-feedback">
                     Please enter a Date
                     </div>      
             </div>
             <div class="form-group col">
-            <label for="LivedWithWho" class="form-label">Lived with who?</label>
-            <textarea class="form-control" id="LivedWithWho" rows="1"></textarea>
+            <label for="livedWithWho" class="form-label">Lived with who?</label>
+            <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="1"></textarea>
             </div>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="LivedWhere" class="form-label">Lived where?</label>
-            <textarea class="form-control" id="LivedWhere" rows="2"></textarea>
+            <label for="livedWhere" class="form-label">Lived where?</label>
+            <textarea class="form-control" name="livedWhere" id="livedWhere" rows="2"></textarea>
           </div>
 
           <div class="form-group form-row mt-3">
-            <label for="parentsAliveDiedWhen" class="form-label">Parents alive? Died when?</label>
-            <textarea class="form-control" id="parentsAliveDiedWhen" rows="2"></textarea>
+            <label for="parentsAlive" class="form-label">Parents alive? Died when?</label>
+            <textarea class="form-control" name="parentsAlive" id="parentsAlive" rows="2"></textarea>
           </div>
 
           <div class="form-group form-row mt-3">
-            <label for="parentslivetogetherPeacefully" class="form-label">Parents live together? Peacefully?</label>
-            <textarea class="form-control" id="parentslivetogetherPeacefully" rows="2"></textarea>
+            <label for="parentslivetogether" class="form-label">Parents live together? Peacefully?</label>
+            <textarea class="form-control" name="parentslivetogether" id="parentslivetogether" rows="2"></textarea>
           </div>
   
           <div class="form-group form-row mt-3">
             <label for="amountAndSourceOfIncome" class="form-label">Amount and Source of Income?</label>
-            <textarea class="form-control" id="amountAndSourceOfIncome" rows="2"></textarea>
+            <textarea class="form-control" name="amountAndSourceOfIncome" id="amountAndSourceOfIncome" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="IncomeForHowMany" class="form-label">Income for how many?</label>
-            <textarea class="form-control" id="IncomeForHowMany" rows="2"></textarea>
+            <label for="incomeForHowMany" class="form-label">Income for how many?</label>
+            <textarea class="form-control" name="incomeForHowMany" id="incomeForHowMany" rows="2"></textarea>
           </div>
          
       
           <div class="form-group form-row mt-3">
-            <label for="Abuse" class="form-label">Abuse?</label>
-            <textarea class="form-control" id="Abuse" rows="2"></textarea>
+            <label for="abuse" class="form-label">Abuse?</label>
+            <textarea class="form-control" name="abuse" id="abuse" rows="2"></textarea>
           </div>
           <div class="form-group form-row mt-3">
-            <label for="SexuallyActive" class="form-label">Sexually Active?</label>
-            <textarea class="form-control" id="SexuallyActive" rows="2"></textarea>
+            <label for="sexuallyActive" class="form-label">Sexually Active?</label>
+            <textarea class="form-control" name="sexuallyActive" id="sexuallyActive" rows="2"></textarea>
           </div>
 
           <div class="row mt-3">
@@ -83,7 +83,7 @@
                 <tr>
                   
                   <th scope="col" class="sticky-top">Sibling</th>
-                  <th scope="col" class="sticky-top">m/f</th>
+                  <th scope="col" class="sticky-top">Gender</th>
                   <th scope="col" class="sticky-top">Age</th>
                   <th scope="col" class="sticky-top">Healthy?</th>
                   <th scope="col" class="sticky-top">Alive?</th>
@@ -94,11 +94,11 @@
               
               <tbody id="tableBody">
                 <td>1</td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
+                <td name="gender"><input type="text" class="form-control"></td>
+                <td name="age"><input type="text" class="form-control"></td>
+                <td name="healthy"><input type="text" class="form-control"></td>
+                <td name="alive"><input type="text" class="form-control"></td>
+                <td name="sameFatherMother"><input type="text" class="form-control"></td>
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
               </tbody> 
             </table>  
