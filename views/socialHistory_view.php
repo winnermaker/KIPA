@@ -13,7 +13,7 @@
       <h1 class="mt-3">Social History</h1>
       <?php require 'formsHeadline.php' ?>
 
-      <form action="socialHistory_con.php" class="needs-validation" novalidate>
+      <form action="socialHistory_con.php" method="post" class="needs-validation" novalidate>
 
           <div class="row mt-5">
             <div class ="form-group col-2 ">
@@ -78,7 +78,7 @@
           </div>
 
           <div class="form-row sticky-top mt-3" style="display:none" id="siblingsTable">   
-            <table class="table table-striped table-hover table-bordered mt-5" id="table">
+            <table class="table table-striped table-hover table-bordered mt-5" name="table" id="table">
               <thead class="table-dark">
                 <tr>
                   
@@ -92,13 +92,13 @@
                 </tr>
               </thead>
               
-              <tbody id="tableBody">
+              <tbody name="tableBody" id="tableBody">
                 <td>1</td>
-                <td name="gender"><input type="text" class="form-control"></td>
-                <td name="age"><input type="text" class="form-control"></td>
-                <td name="healthy"><input type="text" class="form-control"></td>
-                <td name="alive"><input type="text" class="form-control"></td>
-                <td name="sameFatherMother"><input type="text" class="form-control"></td>
+                <td><input type="text" name="gender[]" class="form-control"></td>
+                <td><input type="text" name="age[]" class="form-control"></td>
+                <td><input type="text" name="healthy[]" class="form-control"></td>
+                <td><input type="text" name="alive[]" class="form-control"></td>
+                <td><input type="text" name="sameFatherMother[]" class="form-control"></td>
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
               </tbody> 
             </table>  
@@ -159,11 +159,11 @@
               var cell7 = row.insertCell(6);
 
               cell1.innerHTML = row.rowIndex;
-              cell2.innerHTML = '<input type="text" class="form-control bg-black" name="visitType[]">';
-              cell3.innerHTML = '<input type="text" class="form-control" name="examLocation[]">';
-              cell4.innerHTML = '<input type="text" class="form-control" name="reviewDate[]">';
-              cell5.innerHTML = '<input type="text" class="form-control" name="examCause[]">';
-              cell6.innerHTML = '<input type="text" class="form-control" name="visitType[]">';
+              cell2.innerHTML = '<input type="text" class="form-control bg-black" name="gender[]">';
+              cell3.innerHTML = '<input type="text" class="form-control" name="age[]">';
+              cell4.innerHTML = '<input type="text" class="form-control" name="healthy[]">';
+              cell5.innerHTML = '<input type="text" class="form-control" name="alive[]">';
+              cell6.innerHTML = '<input type="text" class="form-control" name="sameFatherMother[]">';
               cell7.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
 
               $('input').addClass('border border-dark');

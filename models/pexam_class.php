@@ -1,0 +1,168 @@
+<?php
+
+    class pexam{
+        
+        private $examinationDate;
+        private $weight;
+        private $height;
+        private $headcircumference;
+        private $generalCondition;
+        private $nutritcondition;
+        private $bmi;
+        private $muac;
+        private $temperature;
+        private $edema;
+        private $jaundice;
+        private $pallor;
+        private $clubbing;
+        private $dactylitis;
+        private $hydration;
+        private $lymphaden;
+        private $fontanel;
+        private $eyes;
+        private $pupilreact;
+        private $ears;
+        private $eardrums;
+        private $pharynx;
+        private $tonsils;
+        private $Oral;
+        private $thyroid;
+        private $chest_RR;
+        private $chest_AE;
+        private $chest_BS;
+        private $chest_AS;
+        private $chest_Percussion;
+        private $chest_Flaring;
+        private $chest_subInterCostal;
+        private $cvs_heartrate;
+        private $cvs_BP;
+        private $cvs_pulse;
+        private $cvs_Murmurs;
+        private $cvs_ApexBeat;
+        private $cvs_HSII;
+        private $cns_cgs;
+        private $cns_neck;
+        private $cns_reflexes;
+        private $cns_orientation;
+        private $cns_speech;
+        private $cns_sensation;
+        private $cns_milestones;
+        private $gas_tenderness;
+        private $gas_rebound;
+        private $gas_hernia;
+        private $gas_distension;
+        private $gas_bowelsounds;
+        private $gas_liver;
+        private $gas_spleen;
+        private $gas_bm;
+        private $gas_stool;
+        private $gas_anus;
+        private $gas_sphincter;
+        private $urin_kidneys;
+        private $urin_frequency;
+        private $urin_nycturia;
+        private $urin_urgency;
+        private $urin_haematuria;
+        private $urin_dysuria;
+        private $urin_enuresis;
+        private $male_CircumsisedRadio;
+        private $male_tannerStage;
+        private $male_descensusOfTestes;
+        private $male_remarks;
+        private $female_circumcisedRadios;
+        private $female_tannerStage;
+        private $female_hymen;
+        private $female_introitus;
+        private $female_discharge;
+        private $female_breasts;
+        private $female_mastodynia;
+        private $female_period;
+        private $female_dysmenorrhoea;
+        private $female_dyspareunia;
+        private $female_menarche;
+        private $female_pregnancy;
+        private $musc_tone;
+        private $musc_gait;
+        private $musc_remarks;
+        private $skin_turgor;
+        private $skin_scars;
+        private $skin_remarks;
+        private $generalRemarks;
+
+
+        public function __construct(){
+            $this->examinationDate = isset($_POST['examinationDate']) ? $_POST['examinationDate'] : null;
+            $this->weight = isset($_POST['weight']) ? $_POST['weight'] : null;
+            $this->height = isset($_POST['height']) ? $_POST['height'] : null;
+            $this->headcircumference = isset($_POST['headcircumference']) ? $_POST['headcircumference'] : null;
+            $this->generalCondition = isset($_POST['generalCondition']) ? $_POST['generalCondition'] : null;
+            $this->nutritcondition = isset($_POST['nutritcondition']) ? $_POST['nutritcondition'] : null;
+            $this->bmi = isset($_POST['bmi']) ? $_POST['bmi'] : null;
+            $this->muac = isset($_POST['muac']) ? $_POST['muac'] : null;
+            $this->temperature = isset($_POST['temperature']) ? $_POST['temperature'] : null;
+            $this->edema = isset($_POST['edema']) ? $_POST['edema'] : null;
+            $this->jaundice = isset($_POST['jaundice']) ? $_POST['jaundice'] : null;
+            $this->pallor = isset($_POST['pallor']) ? $_POST['pallor'] : null;
+            $this->clubbing = isset($_POST['clubbing']) ? $_POST['clubbing'] : null;
+            $this->dactylitis = isset($_POST['dactylitis']) ? $_POST['dactylitis'] : null;
+            $this->hydration = isset($_POST['hydration']) ? $_POST['hydration'] : null;
+            $this->lymphaden = isset($_POST['lymphaden']) ? $_POST['lymphaden'] : null;
+            $this->fontanel = isset($_POST['fontanel']) ? $_POST['fontanel'] : null;
+            $this->eyes = isset($_POST['eyes']) ? $_POST['eyes'] : null;
+            $this->pupilreact = isset($_POST['pupilreact']) ? $_POST['pupilreact'] : null;
+            $this->ears = isset($_POST['ears']) ? $_POST['ears'] : null;
+            $this->eardrums = isset($_POST['eardrums']) ? $_POST['eardrums'] : null;
+            $this->pharynx = isset($_POST['pharynx']) ? $_POST['pharynx'] : null;
+            $this->tonsils = isset($_POST['tonsils']) ? $_POST['tonsils'] : null;
+            $this->Oral = isset($_POST['Oral']) ? $_POST['Oral'] : null;
+            $this->thyroid = isset($_POST['thyroid']) ? $_POST['thyroid'] : null;
+            $this->chest_RR = isset($_POST['chest_RR']) ? $_POST['chest_RR'] : null;
+            $this->chest_AE = isset($_POST['chest_AE']) ? $_POST['chest_AE'] : null;
+            $this->chest_BS = isset($_POST['chest_BS']) ? $_POST['chest_BS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_Percussion = isset($_POST['chest_Percussion']) ? $_POST['chest_Percussion'] : null;
+            $this->chest_Flaring = isset($_POST['chest_Flaring']) ? $_POST['chest_Flaring'] : null;
+            $this->chest_subInterCostal = isset($_POST['chest_subInterCostal']) ? $_POST['chest_subInterCostal'] : null;
+            $this->cvs_heartrate = isset($_POST['cvs_heartrate']) ? $_POST['cvs_heartrate'] : null;
+            $this->cvs_BP = isset($_POST['cvs_BP']) ? $_POST['cvs_BP'] : null;
+            $this->cvs_pulse = isset($_POST['cvs_pulse']) ? $_POST['cvs_pulse'] : null;
+            $this->cvs_Murmurs = isset($_POST['cvs_Murmurs']) ? $_POST['cvs_Murmurs'] : null;
+            $this->cvs_ApexBeat = isset($_POST['cvs_ApexBeat']) ? $_POST['cvs_ApexBeat'] : null;
+            $this->cvs_HSII = isset($_POST['cvs_HSII']) ? $_POST['cvs_HSII'] : null;
+            $this->cns_cgs = isset($_POST['cns_cgs']) ? $_POST['cns_cgs'] : null;
+            $this->cns_neck = isset($_POST['cns_neck']) ? $_POST['cns_neck'] : null;
+            $this->cns_reflexes = isset($_POST['cns_reflexes']) ? $_POST['cns_reflexes'] : null;
+            $this->cns_orientation = isset($_POST['cns_orientation']) ? $_POST['cns_orientation'] : null;
+            $this->cns_speech = isset($_POST['cns_speech']) ? $_POST['cns_speech'] : null;
+            $this->cns_sensation = isset($_POST['cns_sensation']) ? $_POST['cns_sensation'] : null;
+            $this->cns_milestones = isset($_POST['cns_milestones']) ? $_POST['cns_milestones'] : null;
+            $this->gas_tenderness = isset($_POST['gas_tenderness']) ? $_POST['gas_tenderness'] : null;
+            $this->gas_rebound = isset($_POST['gas_rebound']) ? $_POST['gas_rebound'] : null;
+            $this->gas_hernia = isset($_POST['gas_hernia']) ? $_POST['gas_hernia'] : null;
+            $this->gas_distension = isset($_POST['gas_distension']) ? $_POST['gas_distension'] : null;
+            $this->gas_bowelsounds = isset($_POST['gas_bowelsounds']) ? $_POST['gas_bowelsounds'] : null;
+            $this->gas_liver = isset($_POST['gas_liver']) ? $_POST['gas_liver'] : null;
+            $this->gas_spleen = isset($_POST['gas_spleen']) ? $_POST['gas_spleen'] : null;
+            $this->gas_bm = isset($_POST['gas_bm']) ? $_POST['gas_bm'] : null;
+            $this->gas_stool = isset($_POST['gas_stool']) ? $_POST['gas_stool'] : null;
+            $this->gas_anus = isset($_POST['gas_anus']) ? $_POST['gas_anus'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+            $this->chest_AS = isset($_POST['chest_AS']) ? $_POST['chest_AS'] : null;
+
+
+
+        }
+
+    }
+
+?>

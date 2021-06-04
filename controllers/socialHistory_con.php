@@ -3,8 +3,12 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/socialHistory_class.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        $socialhxObj = new socialhistory();
-        $socialhxObj->printParams();
+        $socialHistoryObj = new socialhistory();
+        $socialHistoryObj->printParams();
         
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "GET"){
+      
     }
 ?>
