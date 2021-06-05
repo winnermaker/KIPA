@@ -179,13 +179,13 @@
                 
             </div>
 
-            <div id="newChild">
+            <div name="newChild" id="newChild">
             </div>
 
 
             <button type="submit" class="btn btn-primary mt-5 mb-3">Submit</button>
 
-        </form>
+        </forqm>
     </div>
 
     <script>

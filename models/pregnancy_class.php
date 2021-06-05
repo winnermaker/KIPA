@@ -35,18 +35,47 @@
             $this->gestationalAge = isset($_POST['gestationalAge']) ? $_POST['gestationalAge'] : null;
             $this->estimatedDateOfDelivery = isset($_POST['estimatedDateOfDelivery']) ? $_POST['estimatedDateOfDelivery'] : null;
             $this->antenatalClinikAttendanceRadios = isset($_POST['antenatalClinikAttendanceRadios']) ? $_POST['antenatalClinikAttendanceRadios'] : null;
+            $this->getRadioValue($this->antenatalClinikAttendanceRadios);
+
             $this->problems = isset($_POST['problems']) ? $_POST['problems'] : null;
             $this->pregnancyRemarks = isset($_POST['pregnancyRemarks']) ? $_POST['pregnancyRemarks'] : null;
             $this->genderpregnancyRadios = isset($_POST['genderpregnancyRadios']) ? $_POST['genderpregnancyRadios'] : null;
+            $this->getGenderRadioValue($this->genderpregnancyRadios);
+
             $this->name = isset($_POST['name']) ? $_POST['name'] : null;
             $this->dateofBirth = isset($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
             $this->eventsDuringPregnancy = isset($_POST['eventsDuringPregnancy']) ? $_POST['eventsDuringPregnancy'] : null;
             $this->durationOfLabor = isset($_POST['durationOfLabor']) ? $_POST['durationOfLabor'] : null;
             $this->spont_CS_forceps = isset($_POST['spont_CS_forceps']) ? $_POST['spont_CS_forceps'] : null;
             $this->healthyRadios = isset($_POST['healthyRadios']) ? $_POST['healthyRadios'] : null;
+            $this->getRadioValue($this->healthyRadios);
             $this->childrenProblems = isset($_POST['childrenProblems']) ? $_POST['childrenProblems'] : null;
             $this->Remarks = isset($_POST['Remarks']) ? $_POST['Remarks'] : null;
 
+            $this->paramsToArray();
+
+        }
+
+        private function getGenderRadioValue(&$radioValue){
+            if($radioValue === "option1"){
+                $radioValue = "Male";
+            } elseif($radioValue === "option2"){
+                $radioValue = "Female";
+            } elseif($radioValue === "option3")
+                $radioValue = "Others";
+            else{
+                $radioValue = null;
+            }
+        }
+
+        private function getRadioValue(&$radioValue){
+            if($radioValue === "option1"){
+                $radioValue = "Yes";
+            } elseif($radioValue === "option2"){
+                $radioValue = "No";
+            } else{
+                $radioValue = null;
+            }
         }
 
         public function paramsToArray(){
