@@ -14,40 +14,40 @@
         <?php require 'formsHeadline.php' ?>
         
 
-        <form action="" class="needs-validation" novalidate>
+        <form action="pregnancy_con.php" method="post" class="needs-validation" novalidate>
 
             <div class="row mt-5">
                 <div class ="form-group col-2">
                     <label for="entryDate" class="form-label">Entry Date</label>
-                    <input class="form-control" type="date"  id="entryDate" required>
+                    <input class="form-control" type="date" name="entryDate" id="entryDate" required>
                     <div class="invalid-feedback">
                     Please enter a Date
                     </div>       
                 </div>
 
                 <div class="form-group col-2">
-                    <label class="form-label" for="Gravida">Gravida</label>
-                    <input type="number" class="form-control" placeholder="" id="Gravida">
+                    <label class="form-label" for="gravida">Gravida</label>
+                    <input type="number" class="form-control" name="gravida" id="gravida">
                 </div>
 
                 <div class="form-group col-2">
-                    <label class="form-label" for="Para">Para</label>
-                    <input type="number" class="form-control" placeholder="" id="Para">
+                    <label class="form-label" for="para">Para</label>
+                    <input type="number" class="form-control" name="para" id="para">
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="alive">Alive</label>
-                    <input type="number" class="form-control" placeholder="" id="alive">
+                    <input type="number" class="form-control" name="alive" id="alive">
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="dead">Dead</label>
-                    <input type="number" class="form-control" placeholder="" id="dead">
+                    <input type="number" class="form-control" name="dead" id="dead">
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="top">TOP</label>
-                    <input type="number" class="form-control" placeholder="" id="top">
+                    <input type="number" class="form-control" name="top" id="top">
                 </div>
             </div>
 
@@ -56,12 +56,12 @@
             <div class="row mt-4">
                 <div class="form-group col-3">
                 <label class="form-label" for="gestationalAge">Gestational Age</label>
-                <input type="text" class="form-control" placeholder="" id="gestationalAge">
+                <input type="text" class="form-control" name="gestationalAge" id="gestationalAge">
                 </div>
 
                 <div class ="form-group offset-1 col-2">
                     <label for="estimatedDateOfDelivery" class="form-label">Estimated Date of Delivery</label>
-                    <input class="form-control" type="date"  id="estimatedDateOfDelivery">        
+                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery">        
                 </div>
 
                 <fieldset class="offset-1 col-4">
@@ -81,13 +81,13 @@
 
             
             <div class="form-group form-row mt-3">
-                <label for="Problems" class="form-label">Any problems during this pregnancy ?</label>
-                <textarea class="form-control" id="Problems" rows="2"></textarea>
+                <label for="problems" class="form-label">Any problems during this pregnancy ?</label>
+                <textarea class="form-control" name="problems" id="problems" rows="2"></textarea>
             </div>
 
             <div class="form-group form-row mt-3">
                 <label for="pregnancyRemarks" class="form-label">Remarks</label>
-                <textarea class="form-control" id="pregnancyRemarks" rows="3"></textarea>
+                <textarea class="form-control" name="pregnancyRemarks" id="pregnancyRemarks" rows="3"></textarea>
             </div>
 
 
@@ -115,13 +115,13 @@
 
                     
                         <div class="form-group col">
-                            <label class="form-label" for="Name">Name</label>
-                            <input type="text" class="form-control" placeholder="Max" id="Name">
+                            <label class="form-label" for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name">
                         </div>
 
                         <div class ="form-group col-3">
                             <label for="dateofBirth" class="form-label">Date of Birth</label>
-                            <input class="form-control " type="text"  id="dateofBirth">        
+                            <input class="form-control " type="text" name="dateofBirth"  id="dateofBirth">        
                         </div>
 
                 </div>
@@ -129,19 +129,19 @@
                 <div class="row mt-3">
                     <div class="form-group col">
                         <label for="eventsDuringPregnancy" class="form-label">Events during pregnancy ?</label>
-                        <textarea class="form-control" id="eventsDuringPregnancy" rows="2"></textarea>
+                        <textarea class="form-control" name="eventsDuringPregnancy" id="eventsDuringPregnancy" rows="2"></textarea>
                     </div>
 
                     <div class="form-group col">
                         <label for="durationOfLabor" class="form-label">Duration of labor ?</label>
-                        <textarea class="form-control" id="durationOfLabor" rows="2"></textarea>
+                        <textarea class="form-control" name="durationOfLabor" id="durationOfLabor" rows="2"></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group col">
                         <label for="spont_CS_forceps" class="form-label">Spontaneous/CS/forceps ?</label>
-                        <textarea class="form-control" id="spont_CS_forceps" rows="2"></textarea>
+                        <textarea class="form-control" name="spont_CS_forceps" id="spont_CS_forceps" rows="2"></textarea>
                     </div>
                 </div>
 
@@ -161,14 +161,14 @@
 
                     <div class="form-group col">
                         <label for="childrenProblems" class="form-label">Problems</label>
-                        <textarea class="form-control" id="childrenProblems" rows="2"></textarea>
+                        <textarea class="form-control" name="childrenProblems" id="childrenProblems" rows="2"></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group col">
                         <label for="Remarks" class="form-label">Remarks</label>
-                        <textarea class="form-control" id="Remarks" rows="4"></textarea>
+                        <textarea class="form-control" name="Remarks" id="Remarks" rows="4"></textarea>
                     </div>
                 </div>
 
