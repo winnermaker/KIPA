@@ -1,6 +1,6 @@
 create table if not exists ChildrenMain
 (
-   ChildrenID			int auto_increment	not null primary key, 
+   ChildrenID			int auto_increment	not null primary key,
    FirstName			varchar(200),
    LastName				varchar(200),
    CallNames			varchar(200),
@@ -12,7 +12,7 @@ create table if not exists ChildrenMain
    PicTaken				date,
    Picture				text -- evtl BLOB
    );
-   
+
 create table if not exists SocialHistory
 (
 	SocialID			int auto_increment	not null primary key,
@@ -37,9 +37,9 @@ create table if not exists SocialHistory
     FamilyPlanning		text,
     foreign key (fk_ChildrenID) references childrenmain(ChildrenID) on delete no action
     );
-    
+
 create table if not exists MedicalMain
- ( 
+ (
 	MedicalID			int auto_increment	not null primary key,
     fk_CHildrenID		int,
     ImmuniCompl			boolean,
@@ -71,12 +71,13 @@ create table if not exists MedicalMain
     PermMedication		text,
     NextVaccDate		date,
     ReviewOn			date,
-    Menarche			text,
+    OtherInfo   text,
+    MenarcheHist			text,
 	foreign key (fk_CHildrenID) references ChildrenMain(ChildrenID) on delete no action
     );
-    
+
 create table if not exists MedicalVisits
- ( 
+ (
 	VisitID				int auto_increment	not null primary key,
     fk_MedicalID		int,
     VisitDate			date,
@@ -92,10 +93,9 @@ create table if not exists MedicalVisits
     Remarks				text,
     Therapy				text,
     Diagnosis			text,
-    DateAdd				date,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
-    );  
-  
+    );
+
 create table if not exists MedicalVacc
 (
   VaccID				int auto_increment	not null primary key,
@@ -103,7 +103,7 @@ create table if not exists MedicalVacc
   VaccRemarks			text,
   Vaccine				varchar(100),
   nxtVaccDate			date,
-  foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action  
+  foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
   );
 
 create table if not exists MedicalVaccDate
@@ -113,7 +113,7 @@ create table if not exists MedicalVaccDate
 	VaccDate			date,
     foreign key (fk_VaccID) references MedicalVacc(VaccID) on delete no action
     );
-    
+
  create table if not exists MedicalPregnancyMain
  (
 	MotherID			int auto_increment 	not null primary key,
@@ -185,7 +185,7 @@ create table if not exists MedicalPEXAM
     tonsils 			text,
     oral 				text,
     thyroid 			text,
-    
+
     chest_RR 			text,
     chest_AE 			text,
     chest_BS 			text,
@@ -193,22 +193,22 @@ create table if not exists MedicalPEXAM
     chest_percussion	text,
     chest_flaring 		text,
     chest_subInterCosta	text,
-    
+
     cvs_heartrate		text,
     cvs_pulse			text,
     cvs_HS_1_2			text,
     cvs_Murmurs			text,
     cvs_ApexBeat		text,
     cvs_BP				text,
-    
+
     cns_gcs				text,
-    cns_neck			text, 
+    cns_neck			text,
     cns_reflexes		text,
     cns_oriental 		text,
     cns_speech  		text,
     cns_sensation 		text,
     cns_milestone 		text,
-    
+
     gas_tenderness 		text,
     gas_rebound 		text,
     gas_hernia			text,
@@ -220,7 +220,7 @@ create table if not exists MedicalPEXAM
     gas_stool  			text,
     anus				text,
     sphincter			text,
-    
+
     urin_kidneys 		text,
     urin_frequency		text,
     urin_dysuria		text,
@@ -228,15 +228,15 @@ create table if not exists MedicalPEXAM
     urin_nycturia 		text,
     urin_enuresis		text,
     urin_urgency 		text,
-    
+
     musc_tone			text,
     musc_gait			text,
     musc_remarks		text,
-    
+
     skin_turgor 		text,
     skin_scars 			text,
     skin_remarks		text,
-    
+
     remarks				text,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
     );
