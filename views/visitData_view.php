@@ -45,6 +45,7 @@
         <script>
             function createRow(){
               var table = document.getElementById("tableBody");
+            
               var row = table.insertRow(-1);
 
               var cell1 = row.insertCell(0);
@@ -55,12 +56,12 @@
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
 
-              cell1.innerHTML = '<input type="date" class="form-control" name="visitDate[]">';
-              cell2.innerHTML = '<input type="text" class="form-control" name="visitType[]">';
-              cell3.innerHTML = '<input type="text" class="form-control" name="examLocation[]">';
-              cell4.innerHTML = '<input type="text" class="form-control" name="examCause[]">'; 
-              cell5.innerHTML = '<input type="date" class="form-control" name="reviewDate[]">';
-              cell6.innerHTML = '<a href="visitDiagnostic_view.php"> <button class="btn btn-success">Diagnostic</button> </a>'; 
+              cell1.innerHTML = '<input type="date" class="form-control" name="visitDate">';
+              cell2.innerHTML = '<input type="text" class="form-control" name="visitType">';
+              cell3.innerHTML = '<input type="text" class="form-control" name="examLocation">';
+              cell4.innerHTML = '<input type="text" class="form-control" name="examCause">'; 
+              cell5.innerHTML = '<input type="date" class="form-control" name="reviewDate">';
+              cell6.innerHTML = '<a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a>'; 
               cell7.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
 
               $('input,textarea,select').addClass('border border-dark');

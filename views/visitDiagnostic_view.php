@@ -24,7 +24,7 @@
         <div class="row mt-5">
           <div class ="form-group col-2">
             <label for="VisitDate" class="form-label">Visit Date</label>
-            <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>"  id="VisitDate" required>
+            <input class="form-control" type="date" value=""  id="VisitDate" required>
             <div class="invalid-feedback">
                     Please enter a Date
             </div>        
@@ -87,8 +87,8 @@
           </div>
 
           <div class ="form-group col-2">
-            <label for="RVD" class="form-label">Review Date</label>
-            <input class="form-control" type="date" value="2021-04-12" id="RVD">        
+            <label for="reviewDate" class="form-label">Review Date</label>
+            <input class="form-control" type="date" value="2021-04-12" id="reviewDate">        
           </div>
 
         </div>
@@ -167,7 +167,37 @@
         $('input,textarea,select').addClass('border border-dark');
         
         document.getElementById("investigator").hidden = true;
-        document.getElementById("investigatorName").hidden = true; 
+        document.getElementById("investigatorName").hidden = true;
+
+        function GetUrlParameter(sParam)
+        {
+            var sPageURL = window.location.search.substring(1);
+
+            var sURLVariables = sPageURL.split('&');
+
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] == sParam)
+
+                {
+                    return sParameterName[1];
+                }
+            }
+        }
+/*
+        var visitDate = GetUrlParameter('visitDate');
+        var visitType = GetUrlParameter('visitType');
+        var examLocation = GetUrlParameter('examLocation');
+        var examCause = GetUrlParameter('examCause');
+        var reviewDate = GetUrlParameter('reviewDate');
+        document.getElementById("visitType").value = visitType;
+        document.getElementById("examLocation").value = examLocation;
+        document.getElementById("Excause").value = examCause;
+        document.getElementById("reviewDate").value = reviewDate;
+*/
+        
     </script>
   </body>
 </html>
