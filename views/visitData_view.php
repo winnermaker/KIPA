@@ -16,8 +16,7 @@
         <div class="form-row sticky-top mt-3">   
             <table class="table table-striped table-hover table-bordered mt-5" id="table">
               <thead class="table-dark">
-                <tr>
-                  
+                <tr> 
                   <th scope="col" class="sticky-top">Visit Date</th>
                   <th scope="col" class="sticky-top">Visit Type</th>
                   <th scope="col" class="sticky-top">Exam. Location</th>
@@ -29,13 +28,15 @@
               </thead>
               
               <tbody id="tableBody">
-                <td><input type="date" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="text" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
-                <td><a href="visitDiagnostic_con.php"> <button class="btn btn-success">Diagnostic</button> </a></td>
-                <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
+                <tr>
+                  <td><input type="date" class="form-control" name="visitDate"></input></td>
+                  <td><input type="text" class="form-control" name="visitType"></input></td>
+                  <td><input type="text" class="form-control" name="examLocation"></td>
+                  <td><input type="text" class="form-control" name="examCause"></td>
+                  <td><input type="date" class="form-control" name="reviewDate"></td>
+                  <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a></td>
+                  <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  
+                </tr>
               </tbody> 
           </table>  
         </div>
@@ -77,6 +78,24 @@
           var element = document.getElementById("formsTable");
           element.classList.remove("sticky-top");
         }
+
+        
+          function addParamsToUrl(element)
+          {
+            
+            $(element).attr('href', function() {
+              var visitDate = $(this).closest("tr").find('input[name=visitDate]').val();
+              var visitType = $(this).closest("tr").find('input[name=visitType]').val();
+              var examLocation = $(this).closest("tr").find('input[name=examLocation]').val();
+              var examCause =  $(this).closest("tr").find('input[name=examCause]').val();
+              var reviewDate = $(this).closest("tr").find('input[name=reviewDate]').val();
+              return this.href + '?visitDate=' + visitDate + '&visitType=' + visitType + '&examLocation=' + examLocation + '&examCause=' + examCause + '&reviewDate=' + reviewDate;
+            });
+          }
+      
+
+
+
 
         document.getElementById("investigator").hidden = true;
         document.getElementById("investigatorName").hidden = true;
