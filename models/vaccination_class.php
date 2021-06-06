@@ -22,24 +22,31 @@
             $this->fourthVaccDate = isset($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
             $this->fifthVaccDate = isset($_POST['vaccDate5']) ? $_POST['vaccDate5'] : null;
             $this->nextVaccDate = isset($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
-            $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
+            $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null; 
+            
 
             for ($i=0; $i < count($this->vaccineDataList); $i++) {
-                array_push($this->allVaccination,$this->vaccineDataList[$i]);
-                array_push($this->allVaccination,$this->firstVaccDate[$i]);
-                array_push($this->allVaccination,$this->secondVaccDate[$i]);
-                array_push($this->allVaccination,$this->thirdVaccDate[$i]);
-                array_push($this->allVaccination,$this->fourthVaccDate[$i]);
-                array_push($this->allVaccination,$this->fifthVaccDate[$i]);
-                array_push($this->allVaccination,$this->nextVaccDate[$i]);
-
-
+                $this->allVaccination[$i] = [
+                    'vaccine' => $this->vaccineDataList[$i], 
+                    'firstVaccDate' => $this->firstVaccDate[$i],
+                    'secondvaccDate' => $this->secondVaccDate[$i],
+                    'thirdVaccDate' => $this->thirdVaccDate[$i],
+                    'fourthVaccDate' => $this->fourthVaccDate[$i],
+                    'fifthVaccDate' => $this->fifthVaccDate[$i],
+                    'nextVaccDate' => $this->nextVaccDate[$i],
+                    'Remarks' => $this->vaccinationRemarks
+                ]; 
             }
-
-            var_dump($this->allVaccination);
-
 
         }
 
+        public function printParams(){
+            foreach($this->allVaccination as $index => $row){
+                foreach ($row as $key => $value) {
+                    echo $key . ": " . $value . "</br>";
+                }
+                echo "</br>";
+            }
+        }
     }
 ?>
