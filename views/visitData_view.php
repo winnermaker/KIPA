@@ -21,21 +21,21 @@
                   <th scope="col" class="sticky-top">Visit Date</th>
                   <th scope="col" class="sticky-top">Visit Type</th>
                   <th scope="col" class="sticky-top">Exam. Location</th>
-                  <th scope="col" class="sticky-top">Review Date</th>
                   <th scope="col" class="sticky-top">Exam. Cause</th>
+                  <th scope="col" class="sticky-top">Review Date</th>
                   <th scope="col" class="sticky-top">Forms</th>
                   <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
                 </tr>
               </thead>
               
-              <tbody>
+              <tbody id="tableBody">
                 <td><input type="date" class="form-control"></td>
                 <td><input type="text" class="form-control"></td>
                 <td><input type="text" class="form-control"></td>
-                <td><input type="date" class="form-control"></td>
                 <td><input type="text" class="form-control"></td>
+                <td><input type="date" class="form-control"></td>
                 <td><a href="visitDiagnostic_con.php"> <button class="btn btn-success">Diagnostic</button> </a></td>
-                <td></td>
+                <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
               </tbody> 
           </table>  
         </div>
@@ -43,7 +43,7 @@
 
         <script>
             function createRow(){
-              var table = document.getElementById("table");
+              var table = document.getElementById("tableBody");
               var row = table.insertRow(-1);
 
               var cell1 = row.insertCell(0);
@@ -57,10 +57,12 @@
               cell1.innerHTML = '<input type="date" class="form-control" name="visitDate[]">';
               cell2.innerHTML = '<input type="text" class="form-control" name="visitType[]">';
               cell3.innerHTML = '<input type="text" class="form-control" name="examLocation[]">';
-              cell4.innerHTML = '<input type="date" class="form-control" name="reviewDate[]">';
-              cell5.innerHTML = '<input type="text" class="form-control" name="examCause[]">';
+              cell4.innerHTML = '<input type="text" class="form-control" name="examCause[]">'; 
+              cell5.innerHTML = '<input type="date" class="form-control" name="reviewDate[]">';
               cell6.innerHTML = '<a href="visitDiagnostic_view.php"> <button class="btn btn-success">Diagnostic</button> </a>'; 
               cell7.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
+
+              $('input,textarea,select').addClass('border border-dark');
 
         }
 
@@ -78,6 +80,8 @@
 
         document.getElementById("investigator").hidden = true;
         document.getElementById("investigatorName").hidden = true;
+
+        $('input,textarea,select').addClass('border border-dark');
         </script>
 
 

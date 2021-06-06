@@ -20,7 +20,7 @@
       <h1 class="mt-3">Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
 
-      <form action="medicalMain_con" method="post">
+      <form action="medicalMain_con.php" method="post">
         <div class="row mt-5">
           <fieldset class="col-2">
             <legend class="col-form-label">NHI Registration</legend>
@@ -36,13 +36,13 @@
           </fieldset>
 
             <div class="form-group col-4">
-              <label class="form-label" for="NHInumber">NHI Number</label>
-              <input type="text" class="form-control" placeholder="" id="NHInumber">
+              <label class="form-label" for="nhiNumber">NHI Number</label>
+              <input type="text" class="form-control" name="nhiNumber" id="nhiNumber">
             </div>
 
             <div class ="form-group col">
                     <label for="reviewOn" class="form-label">Review on</label>
-                    <input class="form-control" type="date" value="2021-04-12" id="reviewOn">        
+                    <input class="form-control" type="date" name="reviewOn" id="reviewOn">        
             </div>
 
             <div class ="form-group col">
@@ -55,22 +55,22 @@
 
         <div class="form-group form-row mt-3">
             <label for="conditions" class="form-label">Conditions</label>
-            <textarea class="form-control" id="conditions" rows="2"></textarea>
+            <textarea class="form-control" name="conditions" id="conditions" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
             <label for="permanentPrescription" class="form-label">Permanent Prescription</label>
-            <textarea class="form-control" id="permanentPrescription" rows="2"></textarea>
+            <textarea class="form-control" name="permanentPrescription" id="permanentPrescription" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
             <label for="plan" >Plan</label>
-            <textarea class="form-control" id="plan" rows="2"></textarea>
+            <textarea class="form-control" name="plan" id="plan" rows="2"></textarea>
         </div> 
 
         <div class="form-group form-row mt-3">
             <label for="otherInformation" class="form-label">Other Information</label>
-            <textarea class="form-control" id="otherInformation" rows="3"></textarea>
+            <textarea class="form-control" name="otherInformation" id="otherInformation" rows="3"></textarea>
         </div>
 
         <div class="row mt-5">
@@ -88,7 +88,7 @@
           </fieldset>
 
           <fieldset class="col">
-            <legend class="col-form-label">Immuni. compl.</legend>
+            <legend class="col-form-label">Immunis. completed</legend>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="immuniComplRadios" id="immuniComplRadioYes" value="option1">
               <label class="form-check-label" for="immuniComplRadioYes">Yes</label>
@@ -141,7 +141,7 @@
 
           <div class="form-group col-3">
               <label class="form-label" for="menstrualHistory">Menstrual History</label>
-              <input type="text" class="form-control" placeholder="" id="menstrualHistory">
+              <input type="text" class="form-control" name="menstrualHistory" id="menstrualHistory">
           </div>
 
         </div>
@@ -162,14 +162,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option2">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option3">
                     <label class="form-check-label" for="HepBPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>
-                    <input class="form-control" type="date"  id="pregTestDate">        
+                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -200,14 +200,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioNotDone" value="option2">
+                    <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioNotDone" value="option3">
                     <label class="form-check-label" for="hivPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date"  id="pregTestDate">        
+                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -238,14 +238,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option2">
+                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option3">
                     <label class="form-check-label" for="TbPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="TposCheckDate" class="form-label">Tb Check Date</label>
-                    <input class="form-control" type="date"  id="TposCheckDate">        
+                    <label for="TbposCheckDate" class="form-label">Tb Check Date</label>
+                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -277,14 +277,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioNotDone" value="option2">
+                    <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioNotDone" value="option3">
                     <label class="form-check-label" for="STDposRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="STDposCheckDate" class="form-label">STD Check Date</label>
-                    <input class="form-control" type="date"  id="STDposCheckDate">        
+                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate">        
             </div>
 
             <fieldset class="col-2 offset-1">
@@ -316,14 +316,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option2">
+                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option3">
                     <label class="form-check-label" for="pregPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
-                    <input class="form-control" type="date"  id="PregTestDate">        
+                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate">        
             </div>
           </div>
 
@@ -342,14 +342,14 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option2">
+                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option3">
                       <label class="form-check-label" for="SickleCellRadioNotDone">Not done</label>
                     </div>
               </fieldset>
 
               <div class="form-group col-3">
-                <label for="SickelCellType" class="form-label">Sickle Cell Type</label>
-                <input type="text" class="form-control" id="SickelCellType">
+                <label for="sickleCellType" class="form-label">Sickle Cell Type</label>
+                <input type="text" class="form-control" name="sickleCellType" id="sickleCellType">
               </div>
           </div>
 
@@ -367,7 +367,7 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option2">
+                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option3">
                       <label class="form-check-label" for="G6DPRadiosRadioNotDone">Not done</label>
                     </div>
               </fieldset>
@@ -390,9 +390,9 @@
         $(function () {
         $("input[name='nhiRadios']").click(function () {
             if ($("#nhiRadioYes").is(":checked")) {
-                $("#NHInumber").removeAttr("disabled");
+                $("#nhiNumber").removeAttr("disabled");
             } else {
-                $("#NHInumber").attr("disabled", "disabled");
+                $("#nhiNumber").attr("disabled", "disabled");
             }
         });
     });
