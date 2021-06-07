@@ -1,6 +1,7 @@
 <?php
     class vaccination{
 
+        private $vaccinationID;
         private $vaccineDataList = array();
         private $firstVaccDate = array();
         private $secondVaccDate = array();
@@ -15,6 +16,7 @@
 
 
         public function __construct(){
+            $this->vaccinationID = isset($_POST['vaccinationID']) ? $_POST['vaccinationID'] : null;
             $this->vaccineDataList = isset($_POST['vaccineDataList']) ? $_POST['vaccineDataList'] : null;
             $this->firstVaccDate = isset($_POST['vaccDate1']) ? $_POST['vaccDate1'] : null;
             $this->secondVaccDate = isset($_POST['vaccDate2']) ? $_POST['vaccDate2'] : null;
@@ -46,6 +48,14 @@
                     echo $key . ": " . $value . "</br>";
                 }
                 echo "</br>";
+            }
+        }
+
+        public function checkVaccinationID(){
+            if($this->vaccinationID === ""){
+                return false;
+            } else {
+                return true;
             }
         }
     }

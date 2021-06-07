@@ -1,5 +1,6 @@
 <?php
     class patient{
+        private $patientID;
         private $gender;
         private $firstName;
         private $lastName;
@@ -14,16 +15,9 @@
 
 
         public function __construct() {
+            $this->patientID = isset($_POST['patientID']) ? $_POST['patientID'] : null;
             $this->gender = isset($_POST['genderRadios']) ? $_POST['genderRadios'] : null;
-            if($this->gender === "option1"){
-                $this->gender = "m";
-            } elseif($this->gender === "option2"){
-                $this->gender = "f";
-            } elseif($this->gender === "option3"){
-                $this->gender = "x";
-            } else{
-                $this->gender = null;
-            }
+            $this->getGenderRadioValue($this->gender);
 
             $this->firstName = isset($_POST['firstName']) ? $_POST['firstName'] : null;
             $this->lastName =  isset($_POST['lastName']) ? $_POST['lastName'] : null;
@@ -38,7 +32,20 @@
             $this->paramsToArray();
         }
 
+        private function getGenderRadioValue(&$radioValue){
+            if($radioValue === "option1"){
+                $radioValue = "m";
+            } elseif($radioValue === "option2"){
+                $radioValue = "f";
+            } elseif($radioValue === "option3")
+                $radioValue = "x";
+            else{
+                $radioValue = null;
+            }
+        }
+
         public function paramsToArray(){
+            $this->arrayChild['patientID'] = $this->patientID;
             $this->arrayChild['gender'] = $this->gender;
             $this->arrayChild['First Name'] = $this->firstName;
             $this->arrayChild['Last Name'] =  $this->lastName;
@@ -59,6 +66,14 @@
 
         public function getParams(){
             return $this->arrayChild;
+        }
+
+        public function checkPatientID(){
+            if($this->patientID === ""){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 ?>

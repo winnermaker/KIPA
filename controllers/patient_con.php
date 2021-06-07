@@ -5,6 +5,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $patientObj = new patient();
         $patientObj->printParams();
+        var_dump($patientObj->checkPatientID());
         
     }
 

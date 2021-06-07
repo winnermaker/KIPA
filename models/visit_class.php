@@ -1,5 +1,6 @@
 <?php
     class visit{
+        private $visitID;
         private $visitDate;
         private $visitType;
         private $reviewDate;
@@ -14,6 +15,7 @@
         public  $arrayVisit = array();
 
         public function __construct(){
+            $this->visitID = isset($_POST['visitID']) ? $_POST['visitID'] : null;
             $this->visitDate = isset($_POST['visitDate']) ? $_POST['visitDate'] : null;
             $this->visitType = isset($_POST['visitType']) ? $_POST['visitType'] : null;
             $this->reviewDate = isset($_POST['reviewDate']) ? $_POST['reviewDate'] : null;
@@ -31,6 +33,7 @@
         }
 
         public function paramsToArray(){
+            $this->arrayVisit['visitID'] = $this->visitID;
             $this->arrayVisit['visitDate'] = $this->visitDate;
             $this->arrayVisit['visitType'] = $this->visitType;
             $this->arrayVisit['reviewDate'] = $this->reviewDate;
@@ -52,6 +55,14 @@
 
         public function getParams(){
             return $this->arrayVisit;
+        }
+
+        public function checkVisitID(){
+            if($this->visitID === ""){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 ?>

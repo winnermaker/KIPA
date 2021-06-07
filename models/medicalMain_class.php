@@ -1,6 +1,7 @@
 <?php
     class medicalmain{
 
+        private $medicalMainID;
         private $nhiRegistration;
         private $nhiNumber;
         private $reviewOn;
@@ -31,8 +32,11 @@
         private $sickleCellPos;
         private $sickleCellType;
         private $G6PDeficiency;
+        public  $arrayMedical = array();
 
         public function __construct(){
+
+            $this->medicalMainID = isset($_POST['medicalMainID']) ? $_POST['medicalMainID'] : null;
             $this->nhiRegistration = isset($_POST['nhiRadios']) ? $_POST['nhiRadios'] : null;
             $this->getRadioButtonValue($this->nhiRegistration);
             
@@ -99,41 +103,54 @@
         }
 
         public function paramsToArray(){
-            $this->arrayChild['nhiRegistration'] = $this->nhiRegistration;
-            $this->arrayChild['nhiNumber'] = $this->nhiNumber;
-            $this->arrayChild['reviewOn'] =  $this->reviewOn;
-            $this->arrayChild['conditions'] = $this->conditions;
-            $this->arrayChild['permanentPrescription'] = $this->permanentPrescription;
-            $this->arrayChild['plan'] = $this->plan;
-            $this->arrayChild['otherInformation'] = $this->otherInformation;
-            $this->arrayChild['PregnancyHistory'] = $this->PregnancyHistory;
-            $this->arrayChild['immuniCompleted'] = $this->immuniCompleted;
-            $this->arrayChild['physicalAbuse'] = $this->physicalAbuse;
-            $this->arrayChild['sexualAbuse'] = $this->sexualAbuse;
-            $this->arrayChild['substanceAbuse'] = $this->substanceAbuse;
-            $this->arrayChild['menstrualHistory'] = $this->menstrualHistory;
-            $this->arrayChild['hepBPos'] = $this->hepBPos;
-            $this->arrayChild['hepBPosCheckDate'] = $this->hepBPosCheckDate;
-            $this->arrayChild['hepBTreated'] = $this->hepBTreated;
-            $this->arrayChild['hivPos'] = $this->hivPos;
-            $this->arrayChild['hivCheckDate'] = $this->hivCheckDate;
-            $this->arrayChild['hivTreated'] = $this->hivTreated;
-            $this->arrayChild['tbPos'] = $this->tbPos;
-            $this->arrayChild['tbposCheckDate'] = $this->tbposCheckDate;
-            $this->arrayChild['tbposTreated'] = $this->tbposTreated;
-            $this->arrayChild['stdPos'] = $this->stdPos;
-            $this->arrayChild['stdPosCheckDate'] = $this->stdPosCheckDate;
-            $this->arrayChild['stdPosTreated'] = $this->stdPosTreated;
-            $this->arrayChild['pregnancyPos'] = $this->pregnancyPos;
-            $this->arrayChild['pregnancyTestDate'] = $this->pregnancyTestDate;
-            $this->arrayChild['sickleCellPos'] = $this->sickleCellPos;
-            $this->arrayChild['sickleCellType'] = $this->sickleCellType;
-            $this->arrayChild['G6PDeficiency'] = $this->G6PDeficiency;
+            $this->arrayMedical['medicalMainID'] = $this->medicalMainID;
+            $this->arrayMedical['nhiRegistration'] = $this->nhiRegistration;
+            $this->arrayMedical['nhiNumber'] = $this->nhiNumber;
+            $this->arrayMedical['reviewOn'] =  $this->reviewOn;
+            $this->arrayMedical['conditions'] = $this->conditions;
+            $this->arrayMedical['permanentPrescription'] = $this->permanentPrescription;
+            $this->arrayMedical['plan'] = $this->plan;
+            $this->arrayMedical['otherInformation'] = $this->otherInformation;
+            $this->arrayMedical['PregnancyHistory'] = $this->PregnancyHistory;
+            $this->arrayMedical['immuniCompleted'] = $this->immuniCompleted;
+            $this->arrayMedical['physicalAbuse'] = $this->physicalAbuse;
+            $this->arrayMedical['sexualAbuse'] = $this->sexualAbuse;
+            $this->arrayMedical['substanceAbuse'] = $this->substanceAbuse;
+            $this->arrayMedical['menstrualHistory'] = $this->menstrualHistory;
+            $this->arrayMedical['hepBPos'] = $this->hepBPos;
+            $this->arrayMedical['hepBPosCheckDate'] = $this->hepBPosCheckDate;
+            $this->arrayMedical['hepBTreated'] = $this->hepBTreated;
+            $this->arrayMedical['hivPos'] = $this->hivPos;
+            $this->arrayMedical['hivCheckDate'] = $this->hivCheckDate;
+            $this->arrayMedical['hivTreated'] = $this->hivTreated;
+            $this->arrayMedical['tbPos'] = $this->tbPos;
+            $this->arrayMedical['tbposCheckDate'] = $this->tbposCheckDate;
+            $this->arrayMedical['tbposTreated'] = $this->tbposTreated;
+            $this->arrayMedical['stdPos'] = $this->stdPos;
+            $this->arrayMedical['stdPosCheckDate'] = $this->stdPosCheckDate;
+            $this->arrayMedical['stdPosTreated'] = $this->stdPosTreated;
+            $this->arrayMedical['pregnancyPos'] = $this->pregnancyPos;
+            $this->arrayMedical['pregnancyTestDate'] = $this->pregnancyTestDate;
+            $this->arrayMedical['sickleCellPos'] = $this->sickleCellPos;
+            $this->arrayMedical['sickleCellType'] = $this->sickleCellType;
+            $this->arrayMedical['G6PDeficiency'] = $this->G6PDeficiency;
         }
 
         public function printParams(){
-            foreach ($this->arrayChild as $key => $value) {
+            foreach ($this->arrayMedical as $key => $value) {
                 echo $key . ": ". $value . "</br>";
+            }
+        }
+
+        public function getParams(){
+            return $this->arrayMedical;
+        }
+
+        public function checkMedicalMainID(){
+            if($this->medicalMainID === ""){
+                return false;
+            } else {
+                return true;
             }
         }
     }

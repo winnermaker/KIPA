@@ -2,6 +2,7 @@
 
     class pexam{
         
+        private $pexamID;
         private $examinationDate;
         private $weight;
         private $height;
@@ -92,6 +93,8 @@
 
 
         public function __construct(){
+
+            $this->pexamID = isset($_POST['pexamID']) ? $_POST['pexamID'] : null;
             $this->examinationDate = isset($_POST['examinationDate']) ? $_POST['examinationDate'] : null;
             $this->weight = isset($_POST['weight']) ? $_POST['weight'] : null;
             $this->height = isset($_POST['height']) ? $_POST['height'] : null;
@@ -200,6 +203,7 @@
         }
 
         public function paramsToArray(){
+            $this->arrayPexam['pexamID'] = $this->pexamID;
             $this->arrayPexam['examinationDate'] = $this->examinationDate;
             $this->arrayPexam['weight'] = $this->weight;
             $this->arrayPexam['height'] = $this->height;
@@ -296,6 +300,14 @@
 
         public function getParams(){
             return $this->arrayPexam;
+        }
+
+        public function checkPexamID(){
+            if($this->pexamID === ""){
+                return false;
+            } else {
+                return true;
+            }
         }
 
     }

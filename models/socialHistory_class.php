@@ -1,5 +1,6 @@
 <?php
     class socialhistory{
+        private $socialHistoryID;
         private $dateOfInvestigation;
         private $livedWithWho;
         private $livedWhere;
@@ -19,6 +20,7 @@
         public  $allSiblings = array();
 
         public function __construct(){
+            $this->socialHistoryID = isset($_POST['socialHistoryID']) ? $_POST['socialHistoryID'] : null;
             $this->dateOfInvestigation = isset($_POST['dateOfInvestigation']) ? $_POST['dateOfInvestigation'] : null;
             $this->livedWithWho = isset($_POST['livedWithWho']) ? $_POST['livedWithWho'] : null;
             $this->livedWhere = isset($_POST['livedWhere']) ? $_POST['livedWhere'] : null;
@@ -77,6 +79,14 @@
 
         public function getParams(){
             return $this->arrayParams;
+        }
+
+        public function checkSocialHistoryID(){
+            if($this->socialHistoryID === ""){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 ?>
