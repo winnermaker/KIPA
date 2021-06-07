@@ -157,22 +157,22 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadiosRadioNo" value="option2">
-                    <label class="form-check-label" for="HepBPosRadiosRadioNo">No</label>
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNo" value="option2">
+                    <label class="form-check-label" for="HepBPosRadioNo">No</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option3">
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option3" checked>
                     <label class="form-check-label" for="HepBPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>
-                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate">        
+                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate" disabled>        
             </div>
 
-            <fieldset class="col-2 offset-1">
+            <fieldset class="col-2 offset-1" id="hepBtreated" disabled>
               <legend class="col-form-label">Hep.B treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioYes" value="option1">
@@ -200,17 +200,17 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioNotDone" value="option3">
+                    <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioNotDone" value="option3" checked>
                     <label class="form-check-label" for="hivPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate">        
+                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" disabled>        
             </div>
 
-            <fieldset class="col-2 offset-1">
+            <fieldset class="col-2 offset-1" id="hivTreated" disabled>
               <legend class="col-form-label">HIV treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="hivTreatedRadios" id="hivtreatedRadioYes" value="option1">
@@ -238,17 +238,17 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option3">
+                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option3" checked>
                     <label class="form-check-label" for="TbPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="TbposCheckDate" class="form-label">Tb Check Date</label>
-                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate">        
+                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" disabled>        
             </div>
 
-            <fieldset class="col-2 offset-1">
+            <fieldset class="col-2 offset-1" id="tbTreated" disabled>
               <legend class="col-form-label">Tb treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="TposTreatedRadios" id="TPosTreatedRadioYes" value="option1">
@@ -277,17 +277,17 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioNotDone" value="option3">
+                    <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioNotDone" value="option3" checked>
                     <label class="form-check-label" for="STDposRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="STDposCheckDate" class="form-label">STD Check Date</label>
-                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate">        
+                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" disabled>        
             </div>
 
-            <fieldset class="col-2 offset-1">
+            <fieldset class="col-2 offset-1" id="stdTreated" disabled>
               <legend class="col-form-label">STD treated</legend>
                 <div class="form-check form-check-inline">
                   <input class="form-check-input" type="radio" name="STDPosTreatedRadios" id="STDposTreatedRadioYes" value="option1">
@@ -316,14 +316,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option3">
+                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option3" checked>
                     <label class="form-check-label" for="pregPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
-                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate">        
+                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" disabled>        
             </div>
           </div>
 
@@ -342,14 +342,14 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option3">
+                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option3" checked>
                       <label class="form-check-label" for="SickleCellRadioNotDone">Not done</label>
                     </div>
               </fieldset>
 
               <div class="form-group col-3">
                 <label for="sickleCellType" class="form-label">Sickle Cell Type</label>
-                <input type="text" class="form-control" name="sickleCellType" id="sickleCellType">
+                <input type="text" class="form-control" name="sickleCellType" id="sickleCellType" disabled>
               </div>
           </div>
 
@@ -367,7 +367,7 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option3">
+                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option3" checked>
                       <label class="form-check-label" for="G6DPRadiosRadioNotDone">Not done</label>
                     </div>
               </fieldset>
@@ -396,6 +396,115 @@
             }
         });
     });
+
+      $('#HepBPosRadioYes').click(function()
+      {
+        $('#HepBPosCheckDate').removeAttr("disabled");
+        $('#hepBtreated').removeAttr("disabled");
+      });
+
+      $('#HepBPosRadioNo').click(function()
+      {
+        $('#HepBPosCheckDate').removeAttr("disabled");
+        $('#hepBtreated').attr("disabled","disabled");
+      });
+
+      $('#HepBPosRadioNotDone').click(function()
+      {
+        $('#HepBPosCheckDate').attr("disabled","disabled");
+        $('#hepBtreated').attr("disabled","disabled");
+      });
+
+
+
+      $('#hivPosRadioYes').click(function()
+      {
+        $('#hivCheckDate').removeAttr("disabled");
+        $('#hivTreated').removeAttr("disabled");
+      });
+
+      $('#hivPosRadioNo').click(function()
+      {
+        $('#hivCheckDate').removeAttr("disabled");
+        $('#hivTreated').attr("disabled","disabled");
+      });
+
+      $('#hivPosRadioNotDone').click(function()
+      {
+        $('#hivCheckDate').attr("disabled","disabled");
+        $('#hivTreated').attr("disabled","disabled");
+      });
+
+
+      $('#TbPosRadioYes').click(function()
+      {
+        $('#TbposCheckDate').removeAttr("disabled");
+        $('#tbTreated').removeAttr("disabled");
+      });
+
+      $('#TbPosRadioNo').click(function()
+      {
+        $('#TbposCheckDate').removeAttr("disabled");
+        $('#tbTreated').attr("disabled","disabled");
+      });
+
+      $('#TbPosRadioNotDone').click(function()
+      {
+        $('#TbposCheckDate').attr("disabled","disabled");
+        $('#tbTreated').attr("disabled","disabled");
+      });
+
+
+      $('#STDposRadioYes').click(function()
+      {
+        $('#STDposCheckDate').removeAttr("disabled");
+        $('#stdTreated').removeAttr("disabled");
+      });
+
+      $('#STDposRadioNo').click(function()
+      {
+        $('#STDposCheckDate').removeAttr("disabled");
+        $('#stdTreated').attr("disabled","disabled");
+      });
+
+      $('#STDposRadioNotDone').click(function()
+      {
+        $('#STDposCheckDate').attr("disabled","disabled");
+        $('#stdTreated').attr("disabled","disabled");
+      });
+
+
+      $('#pregPosRadioYes').click(function()
+      {
+        $('#PregTestDate').removeAttr("disabled");
+      });
+
+      $('#pregPosRadioNo').click(function()
+      {
+        $('#PregTestDate').removeAttr("disabled");
+      });
+
+      $('#pregPosRadioNotDone').click(function()
+      {
+        $('#PregTestDate').attr("disabled","disabled");
+      });
+
+
+      $('#SickleCellRadioYes').click(function()
+      {
+        $('#sickleCellType').removeAttr("disabled");
+      });
+
+      $('#SickleCellRadioNo').click(function()
+      {
+        $('#sickleCellType').attr("disabled","disabled");
+      });
+
+      $('#SickleCellRadioNotDone').click(function()
+      {
+        $('#sickleCellType').attr("disabled","disabled");
+      });
+
 
       document.getElementById("investigator").hidden = true;
       document.getElementById("investigatorName").hidden = true;

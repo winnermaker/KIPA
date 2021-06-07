@@ -88,9 +88,9 @@
 
         private function getRadioButtonValue(&$radioValue){
             if($radioValue === "option1"){
-                $radioValue = "Yes";
+                $radioValue = true;
             } elseif($radioValue === "option2"){
-                $radioValue = "No";
+                $radioValue = false;
             } elseif($radioValue === "option3")
                 $radioValue = "Not Done";
             else{

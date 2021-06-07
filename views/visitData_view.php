@@ -23,7 +23,7 @@
                   <th scope="col" class="sticky-top">Exam. Cause</th>
                   <th scope="col" class="sticky-top">Review Date</th>
                   <th scope="col" class="sticky-top">Forms</th>
-                  <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
+             <!-- <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th> -->
                 </tr>
               </thead>
               
@@ -35,7 +35,7 @@
                   <td><input type="text" class="form-control" name="examCause"></td>
                   <td><input type="date" class="form-control" name="reviewDate"></td>
                   <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a></td>
-                  <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  
+                <!-- <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  -->
                 </tr>
               </tbody> 
           </table>  
