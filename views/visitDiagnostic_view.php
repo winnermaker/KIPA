@@ -15,6 +15,7 @@
   </head>
   <body>
     <form action="visitDiagnostic_con.php" method="post" class="needs-validation" novalidate>
+      <input type="hidden" id="visitID" name="visitID">
       <div class="container">
         <h1 class="mt-3">Diagnostic Data</h1>
         <?php require 'formsHeadline.php' ?>

@@ -15,6 +15,7 @@
         
 
         <form action="pregnancy_con.php" method="post" class="needs-validation" novalidate>
+            <input type="hidden" id="pregnancyID" name="pregnancyID">
 
             <div class="row mt-5">
                 <div class ="form-group col-2">

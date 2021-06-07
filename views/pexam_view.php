@@ -15,6 +15,8 @@
         
 
         <form action="pexam_con.php" method="post">
+            <input type="hidden" id="pexamID" name="pexamID">
+            
             <div class="row mt-5">
                 <div class ="form-group col">
                     <label for="examinationDate" class="form-label">Examination Date</label>

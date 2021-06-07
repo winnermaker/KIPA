@@ -15,6 +15,8 @@
 
       <form action="socialHistory_con.php" method="post" class="needs-validation" novalidate>
 
+        <input type="hidden" id="socialHistoryID" name="socialHistoryID">
+
           <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>

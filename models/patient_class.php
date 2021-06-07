@@ -16,11 +16,11 @@
         public function __construct() {
             $this->gender = isset($_POST['genderRadios']) ? $_POST['genderRadios'] : null;
             if($this->gender === "option1"){
-                $this->gender = "Male";
+                $this->gender = "m";
             } elseif($this->gender === "option2"){
-                $this->gender = "Female";
+                $this->gender = "f";
             } elseif($this->gender === "option3"){
-                $this->gender = "Others";
+                $this->gender = "x";
             } else{
                 $this->gender = null;
             }

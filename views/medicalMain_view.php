@@ -21,6 +21,7 @@
       <?php require 'formsHeadline.php' ?>
 
       <form action="medicalMain_con.php" method="post">
+        <input type="hidden" id="medicalMainID" name="medicalMainID">
         <div class="row mt-5">
           <fieldset class="col-2">
             <legend class="col-form-label">NHI Registration</legend>

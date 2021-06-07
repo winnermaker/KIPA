@@ -14,6 +14,8 @@
         <?php require 'formsHeadline.php' ?>
 
         <form action="vaccination_con.php" method="post">
+          <input type="hidden" id="vaccinationID" name="vaccinationID">
+
           <div class="">
               <table class="table table-striped table-hover table-bordered mt-5" id="table">
                 <thead class="table-dark">

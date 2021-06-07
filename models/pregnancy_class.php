@@ -58,11 +58,11 @@
 
         private function getGenderRadioValue(&$radioValue){
             if($radioValue === "option1"){
-                $radioValue = "Male";
+                $radioValue = "m";
             } elseif($radioValue === "option2"){
-                $radioValue = "Female";
+                $radioValue = "f";
             } elseif($radioValue === "option3")
-                $radioValue = "Others";
+                $radioValue = "x";
             else{
                 $radioValue = null;
             }
