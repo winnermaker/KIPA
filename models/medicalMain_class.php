@@ -10,7 +10,7 @@
         private $plan;
         private $otherInformation;
         private $PregnancyHistory;
-        private $immuniCompleted;
+        private $immuniComplRadios;
         private $physicalAbuse;
         private $sexualAbuse;
         private $substanceAbuse;
@@ -49,8 +49,8 @@
 
             $this->PregnancyHistory = isset($_POST['PregnancyHistRadios']) ? $_POST['PregnancyHistRadios'] : null;
             $this->getRadioButtonValue($this->PregnancyHistory);
-            $this->immuniCompleted = isset($_POST['immuniComplRadios']) ? $_POST['immuniComplRadios'] : null;
-            $this->getRadioButtonValue($this->immuniCompleted);
+            $this->immuniComplRadios = isset($_POST['immuniComplRadios']) ? $_POST['immuniComplRadios'] : null;
+            $this->getRadioButtonValue($this->immuniComplRadios);
             $this->physicalAbuse = isset($_POST['physicalAbuseRadios']) ? $_POST['physicalAbuseRadios'] : null;
             $this->getRadioButtonValue($this->physicalAbuse);
             $this->sexualAbuse = isset($_POST['sexualAbuseRadios']) ? $_POST['sexualAbuseRadios'] : null;
@@ -112,7 +112,7 @@
             $this->arrayMedical['plan'] = $this->plan;
             $this->arrayMedical['otherInformation'] = $this->otherInformation;
             $this->arrayMedical['PregnancyHistory'] = $this->PregnancyHistory;
-            $this->arrayMedical['immuniCompleted'] = $this->immuniCompleted;
+            $this->arrayMedical['immuniComplRadios'] = $this->immuniComplRadios;
             $this->arrayMedical['physicalAbuse'] = $this->physicalAbuse;
             $this->arrayMedical['sexualAbuse'] = $this->sexualAbuse;
             $this->arrayMedical['substanceAbuse'] = $this->substanceAbuse;
@@ -138,7 +138,14 @@
 
         public function printParams(){
             foreach ($this->arrayMedical as $key => $value) {
-                echo $key . ": ". $value . "</br>";
+                if($value === false){
+                    echo $key . ": " . "false" . "</br>";
+                } elseif($value === true){
+                    echo $key . ": " . "true" . "</br>";
+                } else{
+                    echo $key . ": ". $value . "</br>";
+                }
+                
             }
         }
 

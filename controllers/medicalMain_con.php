@@ -5,7 +5,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $medicalObj = new medicalmain();
         $medicalObj->printParams();
-        
+         
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "GET"){

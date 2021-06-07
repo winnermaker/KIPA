@@ -1,5 +1,6 @@
 <?php
     class socialhistory{
+
         private $socialHistoryID;
         private $dateOfInvestigation;
         private $livedWithWho;
@@ -10,6 +11,7 @@
         private $incomeForHowMany;
         private $abuse;
         private $sexuallyActive;
+        private $numberSiblings;
         private $siblings;
         public  $siblingsGender = array();
         private $siblingsAge = array();
@@ -30,30 +32,43 @@
             $this->incomeForHowMany = isset($_POST['incomeForHowMany']) ? $_POST['incomeForHowMany'] : null;
             $this->abuse = isset($_POST['abuse']) ? $_POST['abuse'] : null;
             $this->sexuallyActive = isset($_POST['sexuallyActive']) ? $_POST['sexuallyActive'] : null;
-            $this->siblings = isset($_POST['siblings']) ? $_POST['siblings'] : null;
-            if($this->siblings === "option1"){
-                $this->siblings = "Yes";
-            } elseif($this->siblings === "option2"){
-                $this->siblings = "No";
-            } else{
-                $this->siblings = null;
-            }
 
+            $this->siblings = isset($_POST['siblings']) ? $_POST['siblings'] : null;
+            $this->getRadioValue($this->siblings);
             $this->siblingsGender = isset($_POST['gender']) ? $_POST['gender'] : null;
             $this->siblingsAge = isset($_POST['age']) ? $_POST['age'] : null;
             $this->siblingsHealthy = isset($_POST['healthy']) ? $_POST['healthy'] : null;
             $this->siblingsAlive = isset($_POST['alive']) ? $_POST['alive'] : null;
             $this->siblingsParents = isset($_POST['sameFatherMother']) ? $_POST['sameFatherMother'] : null;
             
-            for ($i=0; $i < count($this->siblingsGender) ; $i++) { 
-                array_push($this->allSiblings,$this->siblingsGender[$i]);
-                array_push($this->allSiblings,$this->siblingsAge[$i]);
-                array_push($this->allSiblings,$this->siblingsHealthy[$i]);
-                array_push($this->allSiblings,$this->siblingsAlive[$i]);
-                array_push($this->allSiblings,$this->siblingsParents[$i]);
-            }
-
+            
             $this->paramsToArray();
+            $this->siblingsToArray();
+        }
+
+        private function getRadioValue(&$radioValue){
+            if($radioValue === "option1"){
+                $radioValue = true;
+            } elseif($radioValue === "option2"){
+                $radioValue = false;
+            } else{
+                $radioValue = null;
+            }
+        }
+
+        public function siblingsToArray(){
+            for ($i=0; $i < count($this->siblingsGender) ; $i++) {
+                if($this->siblingsGender[$i] !== "" || $this->siblingsAge[$i] !== "" || $this->siblingsHealthy[$i] !== "" || $this->siblingsAlive[$i] !== "" || $this->siblingsParents[$i] !== "" ){
+                
+                    $this->allSiblings[] = [
+                    'gender' => $this->siblingsGender[$i], 
+                    'age' => $this->siblingsAge[$i],
+                    'healthy' => $this->siblingsHealthy[$i],
+                    'alive' => $this->siblingsAlive[$i],
+                    'parents' => $this->siblingsParents[$i],
+                ]; 
+                }
+            }
         }
 
         public function paramsToArray(){
@@ -67,7 +82,6 @@
             $this->arrayParams['abuse'] = $this->abuse;
             $this->arrayParams['sexuallyActive'] = $this->sexuallyActive;
             $this->arrayParams['siblings'] = $this->siblings;
-            $this->arrayParams['allSiblings'] = $this->allSiblings;
         }
 
         public function printParams(){
@@ -81,12 +95,39 @@
             return $this->arrayParams;
         }
 
+
+        public function printAllSiblings(){
+            foreach($this->allSiblings as $index => $row){
+                echo "Sibling Number:".  " ". $index +1 . "</br>";
+                foreach ($row as $key => $value) {
+                    echo $key . ": " . $value . "</br>";
+                }
+                echo "</br>";
+            }
+        }
+
+        public function getAllSiblings(){
+            return $this->allSiblings;
+        }
+
         public function checkSocialHistoryID(){
             if($this->socialHistoryID === ""){
                 return false;
             } else {
                 return true;
             }
+        }
+
+        public function checkSiblings(){
+            if(empty($this->allSiblings) || $this->siblings === false){
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        public function getNumberSiblings(){
+            return count($this->allSiblings);
         }
     }
 ?>

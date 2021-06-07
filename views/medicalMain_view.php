@@ -65,7 +65,7 @@
         </div>
 
         <div class="form-group form-row mt-3">
-            <label for="plan" >Plan</label>
+            <label for="plan" class="form-label" >Plan</label>
             <textarea class="form-control" name="plan" id="plan" rows="2"></textarea>
         </div> 
 

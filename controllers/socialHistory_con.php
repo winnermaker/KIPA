@@ -5,6 +5,9 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $socialHistoryObj = new socialhistory();
         $socialHistoryObj->printParams();
+        $socialHistoryObj->printAllSiblings();
+        var_dump($socialHistoryObj->checkSiblings());
+        echo $socialHistoryObj->getNumberSiblings();
         
     }
 

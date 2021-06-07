@@ -66,7 +66,7 @@
 
           <div class="form-group col-4">
             <label for="examLocation" class="form-label">Exam. Location</label>
-            <input class="form-control" list="examLocationdatalistOptions" id="examLocation" placeholder="Type to search...">
+            <input class="form-control" list="examLocationdatalistOptions" name="examLocation" id="examLocation" placeholder="Type to search...">
 
             <datalist id="examLocationdatalistOptions">
               <option value="Accra Psychiatric Hospital">

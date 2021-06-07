@@ -3,6 +3,7 @@
         private $visitID;
         private $visitDate;
         private $visitType;
+        private $examLocation;
         private $reviewDate;
         private $excause;
         private $presentComplaint;
@@ -18,6 +19,7 @@
             $this->visitID = isset($_POST['visitID']) ? $_POST['visitID'] : null;
             $this->visitDate = isset($_POST['visitDate']) ? $_POST['visitDate'] : null;
             $this->visitType = isset($_POST['visitType']) ? $_POST['visitType'] : null;
+            $this->examLocation = isset($_POST['examLocation']) ? $_POST['examLocation'] : null;
             $this->reviewDate = isset($_POST['reviewDate']) ? $_POST['reviewDate'] : null;
             $this->excause = isset($_POST['excause']) ? $_POST['excause'] : null;
             $this->presentComplaint = isset($_POST['presentComplaint']) ? $_POST['presentComplaint'] : null;
@@ -36,6 +38,7 @@
             $this->arrayVisit['visitID'] = $this->visitID;
             $this->arrayVisit['visitDate'] = $this->visitDate;
             $this->arrayVisit['visitType'] = $this->visitType;
+            $this->arrayVisit['examLocation'] = $this->examLocation;
             $this->arrayVisit['reviewDate'] = $this->reviewDate;
             $this->arrayVisit['excause'] = $this->excause;
             $this->arrayVisit['presentComplaint'] = $this->presentComplaint;
