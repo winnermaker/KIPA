@@ -35,7 +35,7 @@
         public function __construct(){
             $this->nhiRegistration = isset($_POST['nhiRadios']) ? $_POST['nhiRadios'] : null;
             $this->getRadioButtonValue($this->nhiRegistration);
-            
+
             $this->nhiNumber = isset($_POST['nhiNumber']) ? $_POST['nhiNumber'] : null;
             $this->reviewOn = isset($_POST['reviewOn']) ? $_POST['reviewOn'] : null;
             $this->conditions = isset($_POST['conditions']) ? $_POST['conditions'] : null;
@@ -95,7 +95,7 @@
                 $radioValue = "Not Done";
             else{
                 $radioValue = null;
-            }  
+            }
         }
 
         public function paramsToArray(){
@@ -135,6 +135,10 @@
             foreach ($this->arrayChild as $key => $value) {
                 echo $key . ": ". $value . "</br>";
             }
+        }
+        
+        public function getParams(){
+            return $this->arrayChild;
         }
     }
 ?>

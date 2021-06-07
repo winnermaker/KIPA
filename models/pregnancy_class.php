@@ -6,7 +6,7 @@
         private $alive;
         private $dead;
         private $top;
-        
+
         private $gestationalAge;
         private $estimatedDateOfDelivery;
         private $antenatalClinikAttendanceRadios;
@@ -106,6 +106,9 @@
             foreach ($this->arrayPregnancy as $key => $value) {
                 echo $key . ": ". $value . "</br>";
             }
+        }
+        public function getParams(){
+            return $this->arrayPregnancy;
         }
     }
 ?>

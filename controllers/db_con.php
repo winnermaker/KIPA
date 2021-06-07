@@ -9,6 +9,7 @@
 
   class DBCon{
       private $pdo;
+      private $currentChildID
 
 
       public function connectToDB(){
@@ -35,8 +36,8 @@
       $patient = $patientObj->getParams();
       $sql = "INSERT INTO childrenmain (FirstName, LastName, CallNames, DOB, EDOB, Gender, AdmDate, DisDate, PicTaken, Picture) values (?,?,?,?,?,?,?,?,?,?)";
       $this->pdo->prepare($sql)->execute([$patient["firstName"],$patient["lastName"],$patient["callName"],$patient["dateOfBirth"],$patient["estDateOfBirth"],$patient["gender"],$patient["admissionDate"],$patient["dischargeDate"],$patient["pictureTakenOn"],$patient["customFile"]]);
-      //echo $this->pdo->lastInsertId();
-      return $LAST_ID = $this->pdo->lastInsertId();
+      $currentChildID = $this->pdo->lastInsertId();
+      return  $this->pdo->lastInsertId();
     }
 
     function insertSocialHistory($socialObj){
@@ -110,13 +111,6 @@
       $this->pdo->prepare($sql)->execute([]);
 
     }
-
-    /*function insert(){
-      $sql = "";
-      $pdo->prepare($sql)->execute([]);
-
-    }*/
-
 
     function getAllChildern(){
       $sql = "SELECT * FROM ChildernMain";
