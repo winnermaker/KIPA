@@ -32,7 +32,7 @@
         private $sickleCellPos;
         private $sickleCellType;
         private $G6PDeficiency;
-        public  $arrayMedical = array();
+        private  $arrayMedical = array();
 
         public function __construct(){
 

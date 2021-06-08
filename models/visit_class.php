@@ -13,7 +13,7 @@
         private $medication;
         private $diagnosis;
         private $remarks;
-        public  $arrayVisit = array();
+        private  $arrayVisit = array();
 
         public function __construct(){
             $this->visitID = isset($_POST['visitID']) ? $_POST['visitID'] : null;

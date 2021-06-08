@@ -10,7 +10,7 @@
         private $fifthVaccDate = array();
         private $nextVaccDate = array();
 
-        public $allVaccination = array();
+        private $allVaccination = array();
 
         private $vaccinationRemarks;
 
@@ -24,12 +24,12 @@
             $this->fourthVaccDate = isset($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
             $this->fifthVaccDate = isset($_POST['vaccDate5']) ? $_POST['vaccDate5'] : null;
             $this->nextVaccDate = isset($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
-            $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null; 
-            
+            $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
+
 
             for ($i=0; $i < count($this->vaccineDataList); $i++) {
                 $this->allVaccination[$i] = [
-                    'vaccine' => $this->vaccineDataList[$i], 
+                    'vaccine' => $this->vaccineDataList[$i],
                     'firstVaccDate' => $this->firstVaccDate[$i],
                     'secondvaccDate' => $this->secondVaccDate[$i],
                     'thirdVaccDate' => $this->thirdVaccDate[$i],
@@ -37,7 +37,7 @@
                     'fifthVaccDate' => $this->fifthVaccDate[$i],
                     'nextVaccDate' => $this->nextVaccDate[$i],
                     'Remarks' => $this->vaccinationRemarks
-                ]; 
+                ];
             }
 
         }
