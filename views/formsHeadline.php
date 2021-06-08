@@ -28,7 +28,7 @@
                 <td>Mustermann</td>
                 <td>Mike</td>
                 <td>Mustermann</td>
-                <td id="gender">Male</td>
+                <td id="gender">Other</td>
                 <td>29.10.1997</td>
                 <td>29.10.1997</td>
                 <td id="investigatorName">Drechsel-Atta</td>

@@ -90,6 +90,8 @@
         private $skin_remarks;
         private $generalRemarks;
         public  $arrayPexam = array();
+        public  $arrayPexamMale = array();
+        public  $arrayPexamFemale = array();
 
 
         public function __construct(){
@@ -343,6 +345,37 @@
             } else {
                 return true;
             }
+        }
+
+        public function checkGenitals(){
+            if(($this->male_CircumsisedRadio !== null || $this->male_tannerStage !== "" || $this->male_descensusOfTestes !== "" || $this->male_remarks !== "")
+                    &&
+                    ($this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" || 
+                    $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" || 
+                    $this->female_breasts !== "" || $this->female_mastodynia !== "" ||
+                    $this->female_period !== "" || $this->female_dysmenorrhoea !== "" || $this->female_dyspareunia !== "" ||
+                    $this->female_menarche !== "" || $this->female_pregnancy !== "")){
+                        // Genitals Male and Female => Other
+                        return 2;
+                    }
+
+            elseif($this->male_CircumsisedRadio !== null || $this->male_tannerStage !== "" || $this->male_descensusOfTestes !== "" || $this->male_remarks !== ""){
+                // GenitalsMale
+                return 1;
+            }
+            elseif(
+                $this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" || 
+                $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" || 
+                $this->female_breasts !== "" || $this->female_mastodynia !== "" ||
+                $this->female_period !== "" || $this->female_dysmenorrhoea !== "" || $this->female_dyspareunia !== "" ||
+                $this->female_menarche !== "" || $this->female_pregnancy !== "") {
+                    //Genitals Female 
+                    return 0;
+            }
+             else{
+                    // No Input for GenitalsMale and GenitalsFemale
+                    return null;
+                }
         }
 
     }
