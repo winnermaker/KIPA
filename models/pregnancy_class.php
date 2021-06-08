@@ -1,6 +1,8 @@
 <?php
     class pregnancy{
+
         private $pregnancyID;
+
         private $entryDate;
         private $gravida;
         private $para;
@@ -25,6 +27,8 @@
         private $Remarks;
 
         public  $arrayPregnancy = array();
+        public  $arrayPresentPregnancy = array();
+        public  $arrayPreviousPregnancy = array();
 
         public function __construct(){
             $this->pregnancyID = isset($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
@@ -54,7 +58,9 @@
             $this->childrenProblems = isset($_POST['childrenProblems']) ? $_POST['childrenProblems'] : null;
             $this->Remarks = isset($_POST['Remarks']) ? $_POST['Remarks'] : null;
 
-            $this->paramsToArray();
+            $this->pregnancyMainToArray();
+            $this->presentPregnancyToArray();
+            $this->previousPregnancyToArray();
 
         }
 
@@ -80,7 +86,7 @@
             }
         }
 
-        public function paramsToArray(){
+        public function pregnancyMainToArray(){
             $this->arrayPregnancy['pregnancyID'] = $this->pregnancyID;
             $this->arrayPregnancy['entryDate'] = $this->entryDate;
             $this->arrayPregnancy['gravida'] = $this->gravida;
@@ -88,31 +94,57 @@
             $this->arrayPregnancy['alive'] = $this->alive;
             $this->arrayPregnancy['dead'] = $this->dead;
             $this->arrayPregnancy['top'] = $this->top;
-            $this->arrayPregnancy['gestationalAge'] = $this->gestationalAge;
-            $this->arrayPregnancy['estimatedDateOfDelivery'] = $this->estimatedDateOfDelivery;
-            $this->arrayPregnancy['antenatalClinikAttendanceRadios'] = $this->antenatalClinikAttendanceRadios;
-            $this->arrayPregnancy['problems'] = $this->problems;
-            $this->arrayPregnancy['pregnancyRemarks'] = $this->pregnancyRemarks;
-            $this->arrayPregnancy['genderpregnancyRadios'] = $this->genderpregnancyRadios;
-            $this->arrayPregnancy['name'] = $this->name;
-            $this->arrayPregnancy['dateofBirth'] = $this->dateofBirth;
-            $this->arrayPregnancy['eventsDuringPregnancy'] = $this->eventsDuringPregnancy;
-            $this->arrayPregnancy['durationOfLabor'] = $this->durationOfLabor;
-            $this->arrayPregnancy['spont_CS_forceps'] = $this->spont_CS_forceps;
-            $this->arrayPregnancy['healthyRadios'] = $this->healthyRadios;
-            $this->arrayPregnancy['childrenProblems'] = $this->childrenProblems;
-            $this->arrayPregnancy['Remarks'] = $this->Remarks;
 
         }
 
-        public function printParams(){
+        public function presentPregnancyToArray(){
+            $this->arrayPresentPregnancy['gestationalAge'] = $this->gestationalAge;
+            $this->arrayPresentPregnancy['estimatedDateOfDelivery'] = $this->estimatedDateOfDelivery;
+            $this->arrayPresentPregnancy['antenatalClinikAttendanceRadios'] = $this->antenatalClinikAttendanceRadios;
+            $this->arrayPresentPregnancy['problems'] = $this->problems;
+            $this->arrayPresentPregnancy['pregnancyRemarks'] = $this->pregnancyRemarks;
+        }
+
+        public function previousPregnancyToArray(){
+            $this->arrayPreviousPregnancy['genderpregnancyRadios'] = $this->genderpregnancyRadios;
+            $this->arrayPreviousPregnancy['name'] = $this->name;
+            $this->arrayPreviousPregnancy['dateofBirth'] = $this->dateofBirth;
+            $this->arrayPreviousPregnancy['eventsDuringPregnancy'] = $this->eventsDuringPregnancy;
+            $this->arrayPreviousPregnancy['durationOfLabor'] = $this->durationOfLabor;
+            $this->arrayPreviousPregnancy['spont_CS_forceps'] = $this->spont_CS_forceps;
+            $this->arrayPreviousPregnancy['healthyRadios'] = $this->healthyRadios;
+            $this->arrayPreviousPregnancy['childrenProblems'] = $this->childrenProblems;
+            $this->arrayPreviousPregnancy['Remarks'] = $this->Remarks;
+        }
+
+        public function printPregnancyMain(){
             foreach ($this->arrayPregnancy as $key => $value) {
                 echo $key . ": ". $value . "</br>";
             }
         }
 
-        public function getParams(){
+        public function printPresentPregnancy(){
+            foreach ($this->arrayPresentPregnancy as $key => $value) {
+                echo $key . ": ". $value . "</br>";
+            }
+        }
+
+        public function printPreviousPregnancy(){
+            foreach ($this->arrayPreviousPregnancy as $key => $value) {
+                echo $key . ": ". $value . "</br>";
+            }
+        }
+
+        public function getPregnancyMain(){
             return $this->arrayPregnancy;
+        }
+
+        public function getPresentPregnancy(){
+            return $this->arrayPresentPregnancy;
+        }
+
+        public function getPreviousPregnancy(){
+            return $this->arrayPreviousPregnancy;
         }
 
         public function checkPregnancyID(){
@@ -120,6 +152,22 @@
                 return false;
             } else {
                 return true;
+            }
+        }
+
+        public function checkPregnancyMain(){
+            if($this->entryDate !== "" || $this->gravida !== "" || $this->para !== "" || $this->alive !== "" || $this->dead !== "" || $this->top !== ""){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function checkPresentPregnancy(){
+            if($this->gestationalAge !== "" || $this->estimatedDateOfDelivery !== "" || $this->antenatalClinikAttendanceRadios !== null || $this->problems === "" || $this->pregnancyRemarks !== ""){
+                echo "Mindestens eine Eingabe";
+            } else {
+                echo "Keine Eingabe";
             }
         }
     }

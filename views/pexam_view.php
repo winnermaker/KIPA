@@ -412,7 +412,7 @@
                 </div>
             </div>
 
-            <div style="display:block" id="maleGenitals">
+            <div id="maleGenitals" name="maleGenitalsForm">
                 <h3 class="mt-5">Genitals male</h3>
 
                 <div class="row mt-3">
@@ -450,7 +450,7 @@
                 </div>
             </div>
 
-            <div style="display:block" id="femaleGenitals">
+            <div id="femaleGenitals" name="femaleGenitalsForm">
                 <h3 class="mt-5">Genitals female</h3>
 
                 <div class="row mt-3">
@@ -612,7 +612,15 @@
 
         if(gender == "Male"){
             document.getElementById("maleGenitals").style.display = "block";
+            document.getElementById("femaleGenitals").style.display = "none";
         } else if(gender == "Female"){
+            document.getElementById("femaleGenitals").style.display = "block";
+            document.getElementById("maleGenitals").style.display = "none";
+        } else if(gender === "Other" || gender === "Others"){
+            document.getElementById("maleGenitals").style.display = "block";
+            document.getElementById("femaleGenitals").style.display = "block";
+        } else {
+            document.getElementById("maleGenitals").style.display = "block";
             document.getElementById("femaleGenitals").style.display = "block";
         }
     </script>

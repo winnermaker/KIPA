@@ -6,7 +6,20 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();
-        $controller -> prepared_insert('medicalpexam',$pexamObj->getParams());
+        //$pexamObj->printParams();
+
+        if($pexamObj->checkGenitals() === 0){
+            $pexamObj->printParamsFemale();
+
+        } elseif($pexamObj->checkGenitals() === 1){
+            $pexamObj->printParamsMale();
+        } elseif($pexamObj->checkGenitals() === 2){
+            $pexamObj->printParamsMale();
+            $pexamObj->printParamsFemale();
+        } else{
+            echo "NO INPUT FOR GENITALS";
+        }
+        //$controller->insertPEXAM($pexamObj);
 
     }
 
