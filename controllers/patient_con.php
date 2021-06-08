@@ -6,12 +6,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $patientObj = new patient();
-        //$patientObj->printParams();
-        $childID = $controller -> insertChilderenMain($patientObj);
-        $controller -> setCurrentChildID($childID);
-        echo "$childID";
-
-
+        $controller -> prepared_insert('childrenmain',$patientObj->getParams());
     }
 
    if ($_SERVER["REQUEST_METHOD"] == "GET"){

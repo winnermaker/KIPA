@@ -254,7 +254,7 @@
             $this->arrayPexam['cns_orientation'] = $this->cns_orientation;
             $this->arrayPexam['cns_speech'] = $this->cns_speech;
             $this->arrayPexam['cns_sensation'] = $this->cns_sensation;
-            $this->arrayPexam['cns_milestones'] = $this->cns_milestones;
+            $this->arrayPexam['cns_milestone'] = $this->cns_milestones;
 
             $this->arrayPexam['gas_tenderness'] = $this->gas_tenderness;
             $this->arrayPexam['gas_rebound'] = $this->gas_rebound;

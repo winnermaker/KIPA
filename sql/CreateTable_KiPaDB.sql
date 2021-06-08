@@ -209,7 +209,7 @@ create table if not exists MedicalPEXAM
     cns_cgs				text,
     cns_neck			text,
     cns_reflexes		text,
-    cns_oriental 		text,
+    cns_orientation 		text,
     cns_speech  		text,
     cns_sensation 		text,
     cns_milestone 		text,

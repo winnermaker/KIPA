@@ -6,10 +6,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $medicalObj = new medicalmain();
-        //$medicalObj->printParams();
-        $controller -> insertMedicalMain($medicalObj);
-        $childID = $controller->getCurrentChildID();
-        echo "ChildID medMain_con = $childID";
+        $controller -> prepared_insert('medicalmain',$medicalObj->getParams());
 
 
     }

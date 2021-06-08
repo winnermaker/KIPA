@@ -6,7 +6,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $visitObj = new visit();
         $visitObj->printParams();
-        $controller -> insertMedicalVisits($visitObj);
+        $controller -> prepared_insert('medicalvisits',$visitObj->getParams());
 
     }
 

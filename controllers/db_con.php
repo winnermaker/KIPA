@@ -41,63 +41,45 @@
       return "`".str_replace("`", "``", $field)."`";
     }
 
-    function prepared_insert($pdo, $table, $data) {
+    function prepared_insert($table, $data) {
       $keys = array_keys($data);
       $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
       $fields = implode(",", $keys);
       $table = $this ->escape_mysql_identifier($table);
       $placeholders = str_repeat('?,', count($keys) - 1) . '?';
+
       $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
-      $pdo->prepare($sql)->execute(array_values($data));
-      $childID = $this->pdo->lastInsertId();
-      $this->setCurrentChildID($childID);
-      return  $childID;
+      $this->pdo->prepare($sql)->execute(array_values($data));
+
+      if($table == $this ->escape_mysql_identifier('childrenmain')){
+        $childID = $this->pdo->lastInsertId();
+        $this->setCurrentChildID($childID);
+      }
     }
 
-    function insertChilderenMain($patientObj){
-      $patient = $patientObj->getParams();
-      $this->prepared_insert($this->pdo, 'childrenmain', $patient);
-      //$sql = "INSERT INTO childrenmain (FirstName, LastName, CallNames, DOB, EDOB, Gender, AdmDate, DisDate, PicTaken, Picture) values (?,?,?,?,?,?,?,?,?,?)";
-      //$this->pdo->prepare($sql)->execute([$patient["firstName"],$patient["lastName"],$patient["callName"],$patient["dateOfBirth"],$patient["estDateOfBirth"],$patient["gender"],$patient["admissionDate"],$patient["dischargeDate"],$patient["pictureTakenOn"],$patient["customFile"]]);
+    function prepared_update($table, $data) {
+      $values = array_values($data);
+      $keys = array_keys($data);
 
-    }
+      $IDKey = $keys[0];
+      unset($keys[0]);
 
-    function insertSocialHistory($socialObj){
-      $social = $socialObj -> getParams();
-      $social['fk_ChildrenID'] = 15;
-      $this->prepared_insert($this->pdo, 'SocialHistory', $social);
-    }
+      $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+      $IDKey = $this ->escape_mysql_identifier($IDKey);
 
-    function insertMedicalMain($medicalObj){
-      $medical = $medicalObj->getParams();
-      $medical['fk_ChildrenID'] = 15;
-      $this->prepared_insert($this->pdo, 'MedicalMain', $medical);
-    }
+      $keys = implode("=?, ", $keys);
+      $keys = $keys."=?";
+      $IDKey = $IDKey."=?";
+      $table = $this ->escape_mysql_identifier($table);
 
-    function insertMedicalVisits($visitsObj){
-      $visits = $visitsObj->getParams();
-      $visits['fk_MedicalID'] = 1;
-      $this->prepared_insert($this->pdo, 'MedicalVisits', $visits);
 
-    }
-
-    function insertMedicalVacc($vaccObj){
-      $vacc = $vaccObj->getParams();
-      $sql = "INSERT INTO MedicalVacc (fk_MedicalID, VaccRemarks, Vaccine, nxtVaccDate) values (?, ?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
-
+      $sql = "UPDATE $table SET $keys WHERE $IDKey";
+      $this->pdo->prepare($sql)->execute($values);
     }
 
     function insertMedicalVaccDate($vaccObj){
       $vaccDate = $vaccObj->getParams();
       $sql = "INSERT INTO MedicalVaccDate (fk_VaccID, VaccDate) values (?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
-
-    }
-
-    function insertMedicalPregnancyMain($pregnancyObj){
-      $pregnancy = $pregnancyObj->getParams();
-      $sql = "INSERT INTO MedicalPregnancyMain (fk_MedicalID, EntryDate, Gravida, Para, alive, dead, top) values (?,?,?,?,?,?,?)";
       $this->pdo->prepare($sql)->execute([]);
 
     }
@@ -108,30 +90,12 @@
       $this->pdo->prepare($sql)->execute([]);
 
     }
-    function insertMedicalPresentPregnancy($pregnancyObj){
-      $presentPreg = $pregnancyObj->getParams();
-      $sql = "INSERT INTO MedicalPresentPregnancy (fk_MotherID, preg, GestationalAge, EstDelivery, AntClinicAttend, Problems, Remarks) values (?, ?, ?, ?, ?, ?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
 
-    }
-    function insertPEXAM($PEXAMObj){
-      $pexam = $PEXAMObj->getParams();
-      $pexam['fk_MedicalID'] = 1;
-      $this->prepared_insert($this->pdo, 'MedicalPexam', $pexam);
+    /**function update($obj){
+      $data = $obj->getParams();
+      $this->prepared_update($this->pdo, 'tableName', $data);
 
-    }
-    function insertMedicalGenMale($PEXAMObj){
-      $genMale = $PEXAMObj->getParams();
-      $sql = "INSERT INTO MedicalGenMale (fk_PEXAMID, circumcised, TannerSt, Descensus) values (?, ?, ?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
-
-    }
-    function insertMedicalGenFemale($PEXAMObj){
-      $genFemale = $PEXAMObj->getParams();
-      $sql = "INSERT INTO MedicalGenFemale (fk_PEXAMID, circumcised, TannerSt, Introitus, Discharge, Breasts, Mastodynia, Period, Dysmenorrhoea, Dyspareunia, Menarche, Pregnancy) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
-
-    }
+    }**/
 
     function getAllChildern(){
       $sql = "SELECT * FROM ChildernMain";

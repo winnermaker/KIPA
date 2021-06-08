@@ -6,8 +6,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();
-        $pexamObj->printParams();
-        $controller->insertPEXAM($pexamObj);
+        $controller -> prepared_insert('medicalpexam',$pexamObj->getParams());
 
     }
 
