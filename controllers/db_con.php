@@ -63,21 +63,20 @@
 
     function insertSocialHistory($socialObj){
       $social = $socialObj -> getParams();
-      $sql = "INSERT INTO SocialHistory (fk_ChildrenID, SocialDate, LivedWithWho, LivedWhere, ParentsAlive, ParentsDiedWhen, ParentsLiveTogether, ParentsLivePeace, ProfessSourceIncome, IncomeForHowMany, HowManySiblings, SiblingsGender, SiblingsAge, SibAliveHealthy, OneFatherOneMother, NxtOfKin_Caretaker, Abuse, SexuallyActive, FamilyPlanning) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-      $this->pdo->prepare($sql)->execute([]);
+      $social['fk_ChildrenID'] = 15;
+      $this->prepared_insert($this->pdo, 'SocialHistory', $social);
     }
 
     function insertMedicalMain($medicalObj){
       $medical = $medicalObj->getParams();
-      echo "currentChildID = $this->currentChildID";
       $medical['fk_ChildrenID'] = 15;
       $this->prepared_insert($this->pdo, 'MedicalMain', $medical);
     }
 
     function insertMedicalVisits($visitsObj){
       $visits = $visitsObj->getParams();
-      $sql = "INSERT INTO MedicalVisits (fk_MedicalID, VisitDate, VisitType, ExLocation, ExCause, PresComplaint, HistPresComplaint, PE, Plan, RVD, Medication, Remarks, Therapy, Diagnosis) values ()";
-      $this->pdo->prepare($sql)->execute([]);
+      $visits['fk_MedicalID'] = 1;
+      $this->prepared_insert($this->pdo, 'MedicalVisits', $visits);
 
     }
 
@@ -116,8 +115,8 @@
     }
     function insertPEXAM($PEXAMObj){
       $pexam = $PEXAMObj->getParams();
-      $sql = "";
-      $this->pdo->prepare($sql)->execute([]);
+      $pexam['fk_MedicalID'] = 1;
+      $this->prepared_insert($this->pdo, 'PEXAM', $visits);
 
     }
     function insertMedicalGenMale($PEXAMObj){

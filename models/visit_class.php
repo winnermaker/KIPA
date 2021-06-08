@@ -36,18 +36,18 @@
 
         public function paramsToArray(){
             $this->arrayVisit['visitID'] = $this->visitID;
-            $this->arrayVisit['visitDate'] = $this->visitDate;
-            $this->arrayVisit['visitType'] = $this->visitType;
-            $this->arrayVisit['examLocation'] = $this->examLocation;
-            $this->arrayVisit['reviewDate'] = $this->reviewDate;
-            $this->arrayVisit['excause'] = $this->excause;
-            $this->arrayVisit['presentComplaint'] = $this->presentComplaint;
-            $this->arrayVisit['historyOfPresentComplaint'] = $this->historyOfPresentComplaint;
-            $this->arrayVisit['pe'] = $this->pe;
-            $this->arrayVisit['plan'] = $this->plan;
-            $this->arrayVisit['medication'] = $this->medication;
-            $this->arrayVisit['diagnosis'] = $this->diagnosis;
-            $this->arrayVisit['remarks'] = $this->remarks;
+            $this->arrayVisit['VisitDate'] = $this->visitDate;
+            $this->arrayVisit['VisitType'] = $this->visitType;
+            $this->arrayVisit['ExLocation'] = $this->examLocation;
+            $this->arrayVisit['RVD'] = $this->reviewDate;
+            $this->arrayVisit['ExCause'] = $this->excause;
+            $this->arrayVisit['PresComplaint'] = $this->presentComplaint;
+            $this->arrayVisit['HistPresComplaint'] = $this->historyOfPresentComplaint;
+            $this->arrayVisit['PE'] = $this->pe;
+            $this->arrayVisit['Plan'] = $this->plan;
+            $this->arrayVisit['Medication'] = $this->medication;
+            $this->arrayVisit['Diagnosis'] = $this->diagnosis;
+            $this->arrayVisit['Remarks'] = $this->remarks;
         }
 
         public function printParams(){

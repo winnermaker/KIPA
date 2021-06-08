@@ -17,17 +17,17 @@ create table if not exists SocialHistory
 (
 	SocialID			int auto_increment	not null primary key,
 	fk_ChildrenID		int,
-    SocialDate			date,
+    DateOfInvestigation			date,
     LivedWithWho		text,
     LivedWhere			text,
     ParentsAlive		text,
-    ParentsDiedWhen		text,
     ParentsLiveTogether	text,
     ParentsLivePeace	text,
-    ProfessSourceIncome	text,
+    AmountAndSourceOfIncome	text,
     IncomeForHowMany	text,
     Abuse				text,
     SexuallyActive		text,
+    siblings    boolean,
     foreign key (fk_ChildrenID) references childrenmain(ChildrenID) on delete no action
     );
 
@@ -97,7 +97,6 @@ create table if not exists MedicalVisits
     RVD					date,
     Medication			text,
     Remarks				text,
-    Therapy				text,
     Diagnosis			text,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
     );

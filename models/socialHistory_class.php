@@ -40,8 +40,8 @@
             $this->siblingsHealthy = isset($_POST['healthy']) ? $_POST['healthy'] : null;
             $this->siblingsAlive = isset($_POST['alive']) ? $_POST['alive'] : null;
             $this->siblingsParents = isset($_POST['sameFatherMother']) ? $_POST['sameFatherMother'] : null;
-            
-            
+
+
             $this->paramsToArray();
             $this->siblingsToArray();
         }
@@ -59,36 +59,36 @@
         public function siblingsToArray(){
             for ($i=0; $i < count($this->siblingsGender) ; $i++) {
                 if($this->siblingsGender[$i] !== "" || $this->siblingsAge[$i] !== "" || $this->siblingsHealthy[$i] !== "" || $this->siblingsAlive[$i] !== "" || $this->siblingsParents[$i] !== "" ){
-                
+
                     $this->allSiblings[] = [
-                    'gender' => $this->siblingsGender[$i], 
+                    'gender' => $this->siblingsGender[$i],
                     'age' => $this->siblingsAge[$i],
                     'healthy' => $this->siblingsHealthy[$i],
                     'alive' => $this->siblingsAlive[$i],
                     'parents' => $this->siblingsParents[$i],
-                ]; 
+                ];
                 }
             }
         }
 
         public function paramsToArray(){
-            $this->arrayParams['dateOfInvestigation'] = $this->dateOfInvestigation;
-            $this->arrayParams['livedWithWho'] = $this->livedWithWho;
-            $this->arrayParams['livedWhere'] =  $this->livedWhere;
+            $this->arrayParams['DateOfInvestigation'] = $this->dateOfInvestigation;
+            $this->arrayParams['LivedWithWho'] = $this->livedWithWho;
+            $this->arrayParams['LivedWhere'] =  $this->livedWhere;
             $this->arrayParams['parentsAlive'] = $this->parentsAlive;
-            $this->arrayParams['parentslivetogether'] = $this->parentslivetogether;
-            $this->arrayParams['amountAndSourceOfIncome'] = $this->amountAndSourceOfIncome;
-            $this->arrayParams['incomeForHowMany'] = $this->incomeForHowMany;
-            $this->arrayParams['abuse'] = $this->abuse;
-            $this->arrayParams['sexuallyActive'] = $this->sexuallyActive;
-            $this->arrayParams['siblings'] = $this->siblings;
+            $this->arrayParams['ParentsLiveTogether'] = $this->parentslivetogether;
+            $this->arrayParams['AmountAndSourceOfIncome'] = $this->amountAndSourceOfIncome;
+            $this->arrayParams['IncomeForHowMany'] = $this->incomeForHowMany;
+            $this->arrayParams['Abuse'] = $this->abuse;
+            $this->arrayParams['SexuallyActive'] = $this->sexuallyActive;
+            $this->arrayParams['Siblings'] = $this->siblings;
         }
 
         public function printParams(){
             foreach ($this->arrayParams as $key => $value) {
                 echo $key . ": ". $value . "</br>";
             }
-       
+
         }
 
         public function getParams(){

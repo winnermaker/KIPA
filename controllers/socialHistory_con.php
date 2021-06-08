@@ -10,9 +10,10 @@
         $socialHistoryObj->printAllSiblings();
         var_dump($socialHistoryObj->checkSiblings());
         echo $socialHistoryObj->getNumberSiblings();
+        $controller -> insertSocialHistory($socialHistoryObj);
     }
 
-    if ($_SERVER["REQUEST_METHOD"] == "GET"){
+    if ($_SERVER["REQUEST_METHOD"] == "GET"){}
 
 
 ?>
