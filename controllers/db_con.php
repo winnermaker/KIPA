@@ -2,14 +2,11 @@
   /**
    * controller of the application
    */
-  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/patient_class.php";
-
-
-  //$patient = new patient();
+  //require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/patient_class.php";
 
   class DBCon{
       private $pdo;
-      private $currentChildID
+      private $currentChildID;
 
 
       public function connectToDB(){
@@ -32,12 +29,36 @@
 
       }
 
+    function setCurrentChildID($ID){
+      $this->currentChildID = $ID;
+    }
+
+    function getCurrentChildID(){
+      return  $this->currentChildID;
+    }
+
+    function escape_mysql_identifier($field){
+      return "`".str_replace("`", "``", $field)."`";
+    }
+
+    function prepared_insert($pdo, $table, $data) {
+      $keys = array_keys($data);
+      $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+      $fields = implode(",", $keys);
+      $table = $this ->escape_mysql_identifier($table);
+      $placeholders = str_repeat('?,', count($keys) - 1) . '?';
+      $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
+      $pdo->prepare($sql)->execute(array_values($data));
+    }
+
     function insertChilderenMain($patientObj){
       $patient = $patientObj->getParams();
       $sql = "INSERT INTO childrenmain (FirstName, LastName, CallNames, DOB, EDOB, Gender, AdmDate, DisDate, PicTaken, Picture) values (?,?,?,?,?,?,?,?,?,?)";
       $this->pdo->prepare($sql)->execute([$patient["firstName"],$patient["lastName"],$patient["callName"],$patient["dateOfBirth"],$patient["estDateOfBirth"],$patient["gender"],$patient["admissionDate"],$patient["dischargeDate"],$patient["pictureTakenOn"],$patient["customFile"]]);
-      $currentChildID = $this->pdo->lastInsertId();
-      return  $this->pdo->lastInsertId();
+      $this->currentChildID = $this->pdo->lastInsertId();
+      $childID = $this->pdo->lastInsertId();
+      $this->setCurrentChildID($childID);
+      return  $childID;
     }
 
     function insertSocialHistory($socialObj){
@@ -48,9 +69,9 @@
 
     function insertMedicalMain($medicalObj){
       $medical = $medicalObj->getParams();
-      $sql = "INSERT INTO MedicalMain (fk_ChildrenID, ImmuniCompl, Plan, HIVPos, HIVCheckDate, HIVTreated, NHIReg, NHINr, TPos, TposCheckDate, TPosTreated, STDPos, STDPosCheckDate, STDPosTreated, HepBPos, HepBPosCheckDate, HepBPosTreated, SickelCellPos, SickelCellType, G6DP, Allergies, PregnancyHist, PregTestPos, PregTestDate, PhysicalAbuse, SexualAnuse, Conditions, PermMedication, NextVaccDate, ReviewOn, OtherInfo, MenarcheHist) values ()";
-      $this->pdo->prepare($sql)->execute([]);
-
+      echo "currentChildID = $this->currentChildID";
+      $medical['fk_ChildrenID'] = 15;
+      $this->prepared_insert($this->pdo, 'MedicalMain', $medical);
     }
 
     function insertMedicalVisits($visitsObj){
@@ -127,12 +148,15 @@
     }
 
     function getChildData ($patient){
-      $id = $patient.id;
+      //$id = $patient.id;
       $sql = "SELECT * FROM ChildernMain WHERE ChilderenID = ?";
       $pdo->prepare($sql)->execute([$id]);
 
     }
   }
+
+  $controller = new DBCon();
+  $controller -> connectToDB();
 
 
  ?>

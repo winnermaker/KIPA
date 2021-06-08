@@ -1,8 +1,8 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/socialHistory_view.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/socialHistory_class.php";
-    $controller = new DBCon();
-    $controller -> connectToDB();
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $socialHistoryObj = new socialhistory();

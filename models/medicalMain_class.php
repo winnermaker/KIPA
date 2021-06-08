@@ -99,36 +99,36 @@
         }
 
         public function paramsToArray(){
-            $this->arrayChild['nhiRegistration'] = $this->nhiRegistration;
-            $this->arrayChild['nhiNumber'] = $this->nhiNumber;
-            $this->arrayChild['reviewOn'] =  $this->reviewOn;
-            $this->arrayChild['conditions'] = $this->conditions;
-            $this->arrayChild['permanentPrescription'] = $this->permanentPrescription;
-            $this->arrayChild['plan'] = $this->plan;
-            $this->arrayChild['otherInformation'] = $this->otherInformation;
-            $this->arrayChild['PregnancyHistory'] = $this->PregnancyHistory;
-            $this->arrayChild['immuniCompleted'] = $this->immuniCompleted;
-            $this->arrayChild['physicalAbuse'] = $this->physicalAbuse;
-            $this->arrayChild['sexualAbuse'] = $this->sexualAbuse;
-            $this->arrayChild['substanceAbuse'] = $this->substanceAbuse;
-            $this->arrayChild['menstrualHistory'] = $this->menstrualHistory;
-            $this->arrayChild['hepBPos'] = $this->hepBPos;
-            $this->arrayChild['hepBPosCheckDate'] = $this->hepBPosCheckDate;
-            $this->arrayChild['hepBTreated'] = $this->hepBTreated;
-            $this->arrayChild['hivPos'] = $this->hivPos;
-            $this->arrayChild['hivCheckDate'] = $this->hivCheckDate;
-            $this->arrayChild['hivTreated'] = $this->hivTreated;
-            $this->arrayChild['tbPos'] = $this->tbPos;
-            $this->arrayChild['tbposCheckDate'] = $this->tbposCheckDate;
-            $this->arrayChild['tbposTreated'] = $this->tbposTreated;
-            $this->arrayChild['stdPos'] = $this->stdPos;
-            $this->arrayChild['stdPosCheckDate'] = $this->stdPosCheckDate;
-            $this->arrayChild['stdPosTreated'] = $this->stdPosTreated;
-            $this->arrayChild['pregnancyPos'] = $this->pregnancyPos;
-            $this->arrayChild['pregnancyTestDate'] = $this->pregnancyTestDate;
-            $this->arrayChild['sickleCellPos'] = $this->sickleCellPos;
-            $this->arrayChild['sickleCellType'] = $this->sickleCellType;
-            $this->arrayChild['G6PDeficiency'] = $this->G6PDeficiency;
+            $this->arrayChild['NHIReg'] = $this->nhiRegistration;
+            $this->arrayChild['NHINr'] = $this->nhiNumber;
+            $this->arrayChild['ReviewOn'] =  $this->reviewOn;
+            $this->arrayChild['Conditions'] = $this->conditions;
+            $this->arrayChild['PermMedication'] = $this->permanentPrescription;
+            $this->arrayChild['Plan'] = $this->plan;
+            $this->arrayChild['OtherInfo'] = $this->otherInformation;
+            $this->arrayChild['PregnancyHist'] = $this->PregnancyHistory;
+            $this->arrayChild['ImmuniCompl'] = $this->immuniCompleted;
+            $this->arrayChild['PhysicalAbuse'] = $this->physicalAbuse;
+            $this->arrayChild['SexualAbuse'] = $this->sexualAbuse;
+            $this->arrayChild['SubstanceAbuse'] = $this->substanceAbuse;
+            $this->arrayChild['MenstrualHist'] = $this->menstrualHistory;
+            $this->arrayChild['HepBPos'] = $this->hepBPos;
+            $this->arrayChild['HepBPosCheckDate'] = $this->hepBPosCheckDate;
+            $this->arrayChild['HepBPosCheckDate'] = $this->hepBTreated;
+            $this->arrayChild['HIVPos'] = $this->hivPos;
+            $this->arrayChild['HIVCheckDate'] = $this->hivCheckDate;
+            $this->arrayChild['HIVTreated'] = $this->hivTreated;
+            $this->arrayChild['TPos'] = $this->tbPos;
+            $this->arrayChild['TposCheckDate'] = $this->tbposCheckDate;
+            $this->arrayChild['TPosTreated'] = $this->tbposTreated;
+            $this->arrayChild['STDPos'] = $this->stdPos;
+            $this->arrayChild['STDPosCheckDate'] = $this->stdPosCheckDate;
+            $this->arrayChild['STDPosTreated'] = $this->stdPosTreated;
+            $this->arrayChild['PregTestPos'] = $this->pregnancyPos;
+            $this->arrayChild['PregTestDate'] = $this->pregnancyTestDate;
+            $this->arrayChild['SickelCellPos'] = $this->sickleCellPos;
+            $this->arrayChild['SickelCellType'] = $this->sickleCellType;
+            $this->arrayChild['G6DP'] = $this->G6PDeficiency;
         }
 
         public function printParams(){
@@ -136,7 +136,7 @@
                 echo $key . ": ". $value . "</br>";
             }
         }
-        
+
         public function getParams(){
             return $this->arrayChild;
         }

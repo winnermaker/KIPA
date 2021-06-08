@@ -10,7 +10,7 @@ create table if not exists ChildrenMain
    AdmDate				date,
    DisDate				date,
    PicTaken				date,
-   Picture				text -- evtl BLOB
+   Picture		  BLOB
    );
 
 create table if not exists SocialHistory
@@ -26,17 +26,23 @@ create table if not exists SocialHistory
     ParentsLivePeace	text,
     ProfessSourceIncome	text,
     IncomeForHowMany	text,
-    HowManySiblings		text,
-    SiblingsGender 		text,
-    SiblingsAge 		text,
-    SibAliveHealthy		text,
-    OneFatherOneMother	text,
-    NxtOfKin_Caretaker	text,
     Abuse				text,
     SexuallyActive		text,
-    FamilyPlanning		text,
     foreign key (fk_ChildrenID) references childrenmain(ChildrenID) on delete no action
     );
+
+    create table if not exists SocialSiblings
+    (
+       SiblingID			int auto_increment	not null primary key,
+       	fk_SocialID		int,
+       Name			text,
+       Age					text,
+       Gender				text,
+       Alive				text,
+       Healthy				text,
+       SameParents				text,
+       foreign key (fk_SocialID) references SocialHistory(SocialID) on delete no action
+       );
 
 create table if not exists MedicalMain
  (
@@ -61,18 +67,18 @@ create table if not exists MedicalMain
     SickelCellPos		boolean,
     SickelCellType		char(2),
     G6DP				boolean,
-	Allergies			boolean,
     PregnancyHist		boolean,
     PregTestPos			boolean,
     PregTestDate		date,
     PhysicalAbuse		boolean,
-    SexualAnuse			boolean,
+    SexualAbuse			boolean,
+    SubstanceAbuse  boolean,
     Conditions			text,
     PermMedication		text,
     NextVaccDate		date,
     ReviewOn			date,
     OtherInfo   text,
-    MenarcheHist			text,
+    MenstrualHist			text,
 	foreign key (fk_CHildrenID) references ChildrenMain(ChildrenID) on delete no action
     );
 
