@@ -14,7 +14,8 @@
     <title>Diagnostic Data</title>
   </head>
   <body>
-    <form action="" class="needs-validation" novalidate>
+    <form action="visitDiagnostic_con.php" method="post" class="needs-validation" novalidate>
+      <input type="hidden" id="visitID" name="visitID">
       <div class="container">
         <h1 class="mt-3">Diagnostic Data</h1>
         <?php require 'formsHeadline.php' ?>
@@ -23,8 +24,8 @@
 
         <div class="row mt-5">
           <div class ="form-group col-2">
-            <label for="VisitDate" class="form-label">Visit Date</label>
-            <input class="form-control" type="date" value="<?php echo date('Y-m-d'); ?>"  id="VisitDate" required>
+            <label for="visitDate" class="form-label">Visit Date</label>
+            <input class="form-control" type="date" name="visitDate" id="visitDate" required>
             <div class="invalid-feedback">
                     Please enter a Date
             </div>        
@@ -32,7 +33,7 @@
 
           <div class="form-group col-4">
             <label for="visitType" class="form-label">Visit Type</label>
-            <input class="form-control" list="datalistOptions" id="visitType" placeholder="Type to search...">
+            <input class="form-control" list="datalistOptions" name="visitType" id="visitType" placeholder="Type to search...">
             
             <datalist id="datalistOptions">
               <option value="Visit">
@@ -65,7 +66,7 @@
 
           <div class="form-group col-4">
             <label for="examLocation" class="form-label">Exam. Location</label>
-            <input class="form-control" list="examLocationdatalistOptions" id="examLocation" placeholder="Type to search...">
+            <input class="form-control" list="examLocationdatalistOptions" name="examLocation" id="examLocation" placeholder="Type to search...">
 
             <datalist id="examLocationdatalistOptions">
               <option value="Accra Psychiatric Hospital">
@@ -87,15 +88,15 @@
           </div>
 
           <div class ="form-group col-2">
-            <label for="RVD" class="form-label">Review Date</label>
-            <input class="form-control" type="date" value="2021-04-12" id="RVD">        
+            <label for="reviewDate" class="form-label">Review Date</label>
+            <input class="form-control" type="date" name="reviewDate" id="reviewDate">        
           </div>
 
         </div>
 
         <div class="form-group form-row mt-3">
-          <label for="Excause" class="form-label">Exam. Cause</label>
-          <input type="text" class="form-control" id="Excause" placeholder="" required>
+          <label for="excause" class="form-label">Exam. Cause</label>
+          <input type="text" class="form-control" name="excause" id="excause" required>
           <div class="invalid-feedback">
                     Please enter a Exam. Cause
             </div> 
@@ -103,37 +104,37 @@
 
         <div class="form-group form-row mt-3">
           <label for="presentComplaint" class="form-label">Present Complaint</label>
-          <input type="text" class="form-control" id="presentComplaint" placeholder="" >
+          <input type="text" class="form-control" name="presentComplaint" id="presentComplaint" placeholder="" >
         </div>
 
         <div class="form-group form-row mt-3">
-              <label for="HxOfPresentComplaint" class="form-label">Hx. of Present Complaint</label>
-              <textarea class="form-control" id="HxOfPresentComplaint" rows="2"></textarea>
+              <label for="historyOfPresentComplaint" class="form-label">Hx. of Present Complaint</label>
+              <textarea class="form-control" name="historyOfPresentComplaint" id="historyOfPresentComplaint" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
-              <label for="PE" class="form-label">PE</label>
-              <textarea class="form-control" id="PE" rows="2"></textarea>
+              <label for="pe" class="form-label">PE</label>
+              <textarea class="form-control" name="pe" id="pe" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
-              <label for="Plan" class="form-label">Plan</label>
-              <textarea class="form-control" id="Plan" rows="2"></textarea>
+              <label for="plan" class="form-label">Plan</label>
+              <textarea class="form-control" name="plan" id="plan" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
-              <label for="Medication" class="form-label">Medication</label>
-              <textarea class="form-control" id="Medication" rows="2"></textarea>
+              <label for="medication" class="form-label">Medication</label>
+              <textarea class="form-control" name="medication" id="medication" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
-              <label for="Diagnosis" class="form-label">Diagnosis</label>
-              <textarea class="form-control" id="Diagnosis" rows="2"></textarea>
+              <label for="diagnosis" class="form-label">Diagnosis</label>
+              <textarea class="form-control" name="diagnosis" id="diagnosis" rows="2"></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
-              <label for="Remarks" class="form-label">Remarks</label>
-              <textarea class="form-control" id="Remarks" rows="3"></textarea>
+              <label for="remarks" class="form-label">Remarks</label>
+              <textarea class="form-control" name="remarks" id="remarks" rows="3"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
@@ -167,7 +168,26 @@
         $('input,textarea,select').addClass('border border-dark');
         
         document.getElementById("investigator").hidden = true;
-        document.getElementById("investigatorName").hidden = true; 
+        document.getElementById("investigatorName").hidden = true;
+
+        function GetUrlParameter(sParam)
+        {
+            var sPageURL = window.location.search.substring(1);
+
+            var sURLVariables = sPageURL.split('&');
+
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] == sParam)
+
+                {
+                    return sParameterName[1];
+                }
+            }
+        }
+        
     </script>
   </body>
 </html>

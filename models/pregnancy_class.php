@@ -1,5 +1,6 @@
 <?php
     class pregnancy{
+        private $pregnancyID;
         private $entryDate;
         private $gravida;
         private $para;
@@ -26,6 +27,7 @@
         public  $arrayPregnancy = array();
 
         public function __construct(){
+            $this->pregnancyID = isset($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
             $this->entryDate = isset($_POST['entryDate']) ? $_POST['entryDate'] : null;
             $this->gravida = isset($_POST['gravida']) ? $_POST['gravida'] : null;
             $this->para = isset($_POST['para']) ? $_POST['para'] : null;
@@ -58,11 +60,11 @@
 
         private function getGenderRadioValue(&$radioValue){
             if($radioValue === "option1"){
-                $radioValue = "Male";
+                $radioValue = "m";
             } elseif($radioValue === "option2"){
-                $radioValue = "Female";
+                $radioValue = "f";
             } elseif($radioValue === "option3")
-                $radioValue = "Others";
+                $radioValue = "x";
             else{
                 $radioValue = null;
             }
@@ -79,6 +81,7 @@
         }
 
         public function paramsToArray(){
+            $this->arrayPregnancy['pregnancyID'] = $this->pregnancyID;
             $this->arrayPregnancy['entryDate'] = $this->entryDate;
             $this->arrayPregnancy['gravida'] = $this->gravida;
             $this->arrayPregnancy['para'] = $this->para;
@@ -107,8 +110,17 @@
                 echo $key . ": ". $value . "</br>";
             }
         }
+
         public function getParams(){
             return $this->arrayPregnancy;
+        }
+
+        public function checkPregnancyID(){
+            if($this->pregnancyID === ""){
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 ?>

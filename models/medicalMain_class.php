@@ -1,6 +1,7 @@
 <?php
     class medicalmain{
 
+        private $medicalMainID;
         private $nhiRegistration;
         private $nhiNumber;
         private $reviewOn;
@@ -9,7 +10,7 @@
         private $plan;
         private $otherInformation;
         private $PregnancyHistory;
-        private $immuniCompleted;
+        private $immuniComplRadios;
         private $physicalAbuse;
         private $sexualAbuse;
         private $substanceAbuse;
@@ -31,8 +32,11 @@
         private $sickleCellPos;
         private $sickleCellType;
         private $G6PDeficiency;
+        public  $arrayMedical = array();
 
         public function __construct(){
+
+            $this->medicalMainID = isset($_POST['medicalMainID']) ? $_POST['medicalMainID'] : null;
             $this->nhiRegistration = isset($_POST['nhiRadios']) ? $_POST['nhiRadios'] : null;
             $this->getRadioButtonValue($this->nhiRegistration);
 
@@ -45,8 +49,8 @@
 
             $this->PregnancyHistory = isset($_POST['PregnancyHistRadios']) ? $_POST['PregnancyHistRadios'] : null;
             $this->getRadioButtonValue($this->PregnancyHistory);
-            $this->immuniCompleted = isset($_POST['immuniComplRadios']) ? $_POST['immuniComplRadios'] : null;
-            $this->getRadioButtonValue($this->immuniCompleted);
+            $this->immuniComplRadios = isset($_POST['immuniComplRadios']) ? $_POST['immuniComplRadios'] : null;
+            $this->getRadioButtonValue($this->immuniComplRadios);
             $this->physicalAbuse = isset($_POST['physicalAbuseRadios']) ? $_POST['physicalAbuseRadios'] : null;
             $this->getRadioButtonValue($this->physicalAbuse);
             $this->sexualAbuse = isset($_POST['sexualAbuseRadios']) ? $_POST['sexualAbuseRadios'] : null;
@@ -88,9 +92,9 @@
 
         private function getRadioButtonValue(&$radioValue){
             if($radioValue === "option1"){
-                $radioValue = "Yes";
+                $radioValue = true;
             } elseif($radioValue === "option2"){
-                $radioValue = "No";
+                $radioValue = false;
             } elseif($radioValue === "option3")
                 $radioValue = "Not Done";
             else{
@@ -132,8 +136,27 @@
         }
 
         public function printParams(){
-            foreach ($this->arrayChild as $key => $value) {
-                echo $key . ": ". $value . "</br>";
+            foreach ($this->arrayMedical as $key => $value) {
+                if($value === false){
+                    echo $key . ": " . "false" . "</br>";
+                } elseif($value === true){
+                    echo $key . ": " . "true" . "</br>";
+                } else{
+                    echo $key . ": ". $value . "</br>";
+                }
+
+            }
+        }
+
+        public function getParams(){
+            return $this->arrayMedical;
+        }
+
+        public function checkMedicalMainID(){
+            if($this->medicalMainID === ""){
+                return false;
+            } else {
+                return true;
             }
         }
 

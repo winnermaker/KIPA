@@ -16,7 +16,7 @@
         <div class="container" >
             <h1 class="mt-3">Patient</h1>
             
-            <input type="text" id="childID" hidden>
+            <input type="hidden" id="patientID" name="patientID">
 
             <div class="form-row mt-5">
                 <fieldset>

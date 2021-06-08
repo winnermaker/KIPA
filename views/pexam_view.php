@@ -11,10 +11,12 @@
   <body>
     <div class="container">
         <h1 class="mt-3">Physical Examination</h1>
-        <?php require 'formsHeadline.php' ?>
         
 
         <form action="pexam_con.php" method="post">
+            <?php require 'formsHeadline.php' ?>
+            <input type="hidden" id="pexamID" name="pexamID">
+            
             <div class="row mt-5">
                 <div class ="form-group col">
                     <label for="examinationDate" class="form-label">Examination Date</label>
