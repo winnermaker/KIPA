@@ -9,6 +9,7 @@
         //$patientObj->printParams();
         $childID = $controller -> insertChilderenMain($patientObj);
         $controller -> setCurrentChildID($childID);
+        echo "$childID";
 
 
     }

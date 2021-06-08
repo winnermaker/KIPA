@@ -165,7 +165,7 @@ create table if not exists MedicalPEXAM
 (
 	PEXAMID				int auto_increment	not null primary key,
     fk_MedicalID		int,
-    PEXAMDate			date,
+    ExaminationDate			date,
     generalCond			text,
     weight				decimal,
     height				decimal,
@@ -201,12 +201,12 @@ create table if not exists MedicalPEXAM
 
     cvs_heartrate		text,
     cvs_pulse			text,
-    cvs_HS_1_2			text,
+    cvs_HSII			text,
     cvs_Murmurs			text,
     cvs_ApexBeat		text,
     cvs_BP				text,
 
-    cns_gcs				text,
+    cns_cgs				text,
     cns_neck			text,
     cns_reflexes		text,
     cns_oriental 		text,
@@ -223,8 +223,8 @@ create table if not exists MedicalPEXAM
     gas_spleen 			text,
     gas_bm 				text,
     gas_stool  			text,
-    anus				text,
-    sphincter			text,
+    gas_anus				text,
+    gas_sphincter			text,
 
     urin_kidneys 		text,
     urin_frequency		text,
@@ -242,7 +242,7 @@ create table if not exists MedicalPEXAM
     skin_scars 			text,
     skin_remarks		text,
 
-    remarks				text,
+    generalRemarks				text,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
     );
 

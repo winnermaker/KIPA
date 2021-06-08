@@ -49,16 +49,17 @@
       $placeholders = str_repeat('?,', count($keys) - 1) . '?';
       $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
       $pdo->prepare($sql)->execute(array_values($data));
+      $childID = $this->pdo->lastInsertId();
+      $this->setCurrentChildID($childID);
+      return  $childID;
     }
 
     function insertChilderenMain($patientObj){
       $patient = $patientObj->getParams();
-      $sql = "INSERT INTO childrenmain (FirstName, LastName, CallNames, DOB, EDOB, Gender, AdmDate, DisDate, PicTaken, Picture) values (?,?,?,?,?,?,?,?,?,?)";
-      $this->pdo->prepare($sql)->execute([$patient["firstName"],$patient["lastName"],$patient["callName"],$patient["dateOfBirth"],$patient["estDateOfBirth"],$patient["gender"],$patient["admissionDate"],$patient["dischargeDate"],$patient["pictureTakenOn"],$patient["customFile"]]);
-      $this->currentChildID = $this->pdo->lastInsertId();
-      $childID = $this->pdo->lastInsertId();
-      $this->setCurrentChildID($childID);
-      return  $childID;
+      $this->prepared_insert($this->pdo, 'childrenmain', $patient);
+      //$sql = "INSERT INTO childrenmain (FirstName, LastName, CallNames, DOB, EDOB, Gender, AdmDate, DisDate, PicTaken, Picture) values (?,?,?,?,?,?,?,?,?,?)";
+      //$this->pdo->prepare($sql)->execute([$patient["firstName"],$patient["lastName"],$patient["callName"],$patient["dateOfBirth"],$patient["estDateOfBirth"],$patient["gender"],$patient["admissionDate"],$patient["dischargeDate"],$patient["pictureTakenOn"],$patient["customFile"]]);
+
     }
 
     function insertSocialHistory($socialObj){
@@ -116,7 +117,7 @@
     function insertPEXAM($PEXAMObj){
       $pexam = $PEXAMObj->getParams();
       $pexam['fk_MedicalID'] = 1;
-      $this->prepared_insert($this->pdo, 'PEXAM', $visits);
+      $this->prepared_insert($this->pdo, 'MedicalPexam', $pexam);
 
     }
     function insertMedicalGenMale($PEXAMObj){

@@ -7,6 +7,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();
         $pexamObj->printParams();
+        $controller->insertPEXAM($pexamObj);
 
     }
 
