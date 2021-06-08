@@ -89,7 +89,9 @@
         private $skin_scars;
         private $skin_remarks;
         private $generalRemarks;
-        public  $arrayPexam = array();
+        private  $arrayPexam = array();
+        private  $arrayPexamMale = array();
+        private  $arrayPexamFemale = array();
 
 
         public function __construct(){
