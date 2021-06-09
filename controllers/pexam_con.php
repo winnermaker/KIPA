@@ -1,37 +1,37 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/pexam_view.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/pexam_class.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
 
-
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();
-        $controller -> prepared_insert('medicalpexam',$pexamObj->getParams());
+        $pexamdata = $pexamObj->getParams();
+        $pexamdata['fk_MedicalID']=$_COOKIE["MedicalIDCookie"];
+        $controller -> prepared_insert('medicalpexam',$pexamdata);
 
         if($pexamObj->checkGenitals() === 0){
             //female
-            $pexamObj->printParamsFemale();
-            $controller -> prepared_insert('MedicalGenFemale',$pexamObj->getParamsFemale());
+            $pexamdata = $pexamObj->getParamsFemale();
+            $pexamdata['fk_PEXAMID']=$_COOKIE["pexamID"];
+            $controller -> prepared_insert('MedicalGenFemale',$pexamdata);
 
         } elseif($pexamObj->checkGenitals() === 1){
             //male
-            $pexamObj->printParamsMale();
             $controller -> prepared_insert('MedicalGenMale',$pexamObj->getParamsMale());
 
         } elseif($pexamObj->checkGenitals() === 2){
             //other
-            $pexamObj->printParamsMale();
-            $pexamObj->printParamsFemale();
-            $controller -> prepared_insert('MedicalGenMale',$pexamObj->getParamsMale());
-            $controller -> prepared_insert('MedicalGenFemale',$pexamObj->getParamsFemale());
-        } else{
-            echo "NO INPUT FOR GENITALS";
+            $pexamdata = $pexamObj->getParamsFemale();
+            $pexamdata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
+            $controller -> prepared_insert('MedicalGenFemale',$pexamdata);
+            $pexamdata = $pexamObj->getParamsMale();
+            $pexamdata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
+            $controller -> prepared_insert('MedicalGenMale',$pexamdata);
         }
-        //$controller->insertPEXAM($pexamObj);
-
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     }
+
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/pexam_view.php";
 ?>

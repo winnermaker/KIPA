@@ -16,7 +16,7 @@ create table if not exists ChildrenMain
 create table if not exists SocialHistory
 (
 	SocialID			int auto_increment	not null primary key,
-	fk_ChildrenID		int,
+	fk_ChildrenID		int not null,
     DateOfInvestigation			date,
     LivedWithWho		text,
     LivedWhere			text,
@@ -47,7 +47,7 @@ create table if not exists SocialHistory
 create table if not exists MedicalMain
  (
 	MedicalID			int auto_increment	not null primary key,
-    fk_CHildrenID		int,
+    fk_CHildrenID		int not null,
     ImmuniCompl			boolean,
     Plan				text,
     HIVPos				boolean,
@@ -85,7 +85,7 @@ create table if not exists MedicalMain
 create table if not exists MedicalVisits
  (
 	VisitID				int auto_increment	not null primary key,
-    fk_MedicalID		int,
+    fk_MedicalID		int not null,
     VisitDate			date,
 	VisitType			varchar(200),
     ExLocation			varchar(200),
@@ -104,7 +104,7 @@ create table if not exists MedicalVisits
 create table if not exists MedicalVacc
 (
   VaccID				int auto_increment	not null primary key,
-  fk_MedicalID			int,
+  fk_MedicalID			int not null,
   VaccRemarks			text,
   Vaccine				varchar(100),
   nxtVaccDate			date,
@@ -114,7 +114,7 @@ create table if not exists MedicalVacc
 create table if not exists MedicalVaccDate
 (
 	VaccDateID			int auto_increment	not null primary key,
-    fk_VaccID			int,
+    fk_VaccID			int not null,
 	VaccDate			date,
     foreign key (fk_VaccID) references MedicalVacc(VaccID) on delete no action
     );
@@ -122,7 +122,7 @@ create table if not exists MedicalVaccDate
  create table if not exists MedicalPregnancyMain
  (
 	MotherID			int auto_increment 	not null primary key,
-    fk_MedicalID		int,
+    fk_MedicalID		int not null,
 	EntryDate			date,
     Gravida				int,
     Para				int,
@@ -135,14 +135,14 @@ create table if not exists MedicalVaccDate
 create table if not exists MedicalPregnancyChildData
 (
 	ChildID				int auto_increment	not null primary key,
-    fk_MotherID 		int,
+    fk_MotherID 		int not null,
     DOB					text,
     Name				text,
     EvDurP				text,
     durLabor			text,
     spont_CS_forceps	text,
     Gender				char(1),
-    Healthy				text,
+    Healthy				boolean,
     Problems			text,
     Remarks 			text,
     foreign key (fk_MotherID) references medicalpregnancymain(MotherID) on delete no action
@@ -151,11 +151,11 @@ create table if not exists MedicalPregnancyChildData
 create table if not exists MedicalPresentPregnancy
 (
 	PresPreagnancyID 	int auto_increment	not null primary key,
-    fk_MotherID 		int,
+    fk_MotherID 		int not null,
     preg				text,
     GestationalAge		text,
     EstDelivery			date,
-    AntClinicAttend		text,
+    AntClinicAttend		boolean,
     Problems			text,
     Remarks				text,
 	foreign key (fk_MotherID) references medicalpregnancymain(MotherID) on delete no action
@@ -164,7 +164,7 @@ create table if not exists MedicalPresentPregnancy
 create table if not exists MedicalPEXAM
 (
 	PEXAMID				int auto_increment	not null primary key,
-    fk_MedicalID		int,
+    fk_MedicalID		int not null,
     ExaminationDate			date,
     generalCond			text,
     weight				decimal,
@@ -249,7 +249,7 @@ create table if not exists MedicalPEXAM
 create table if not exists MedicalGenMale
 (
 	GenMaleID			int auto_increment	not null primary key,
-    fk_PEXAMID			int,
+    fk_PEXAMID			int not null,
     circumcised			text,
     TannerSt 			text,
     Descensus 			text,
@@ -259,7 +259,7 @@ create table if not exists MedicalGenMale
 create table if not exists MedicalGenFemale
 (
 	GenFemaleID			int auto_increment	not null primary key,
-    fk_PEXAMID			int,
+    fk_PEXAMID			int not null,
     circumcised			text,
     TannerSt 			text,
     Introitus			text,

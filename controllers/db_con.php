@@ -6,8 +6,6 @@
 
   class DBCon{
       private $pdo;
-      private $currentChildID;
-
 
       public function connectToDB(){
         $servername = "localhost";
@@ -28,14 +26,6 @@
 
       }
 
-    function setCurrentChildID($ID){
-      $this->currentChildID = $ID;
-    }
-
-    function getCurrentChildID(){
-      return  $this->currentChildID;
-    }
-
     function escape_mysql_identifier($field){
       return "`".str_replace("`", "``", $field)."`";
     }
@@ -51,8 +41,23 @@
       $this->pdo->prepare($sql)->execute(array_values($data));
 
       if($table == $this ->escape_mysql_identifier('childrenmain')){
-        $childID = $this->pdo->lastInsertId();
-        $this->setCurrentChildID($childID);
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("ChildIDCookie" , $ID);
+      }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("MedicalIDCookie" , $ID);
+      }elseif ($table == $this ->escape_mysql_identifier('socialhistory')) {
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("SocialIDCookie" , $ID);
+      }elseif ($table == $this ->escape_mysql_identifier('medicalpexam')) {
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("pexamIDCookie" , $ID);
+      }elseif ($table == $this ->escape_mysql_identifier('medicalvacc')) {
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("vaccIDCookie" , $ID);
+      }elseif ($table == $this ->escape_mysql_identifier('medicalpregnancymain')) {
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("pregnancyIDCookie" , $ID);
       }
     }
 
@@ -97,24 +102,45 @@
     }
 
     function getAllChildern(){
-      $sql = "SELECT * FROM ChildernMain";
-      $data = $this->pdo->query($sql)->fetchAll();
+      $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
+      // and somewhere later:
+      foreach ($data as $row) {
+        //do something
       }
+    }
 
 
     function getAllChildernReviewSoon(){
-        $sql = "SELECT ChildernMain.Name FROM ChildernMain NATURAL JOIN MedicalMain WHERE MedicalMain.reviewOn BETWEEN ? AND ?";
-        $stmt = $pdo->query($sql);
+        $sql = "SELECT * FROM childrenmain NATURAL JOIN MedicalMain WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
+        $stmt =  $this->pdo->query($sql)-fetchAll();
         /*while ($row = $stmt->fetch()) {
           echo $row['name']."<br />\n";
         }*/
     }
 
-    function getChildData ($patientID){
-      $sql = "SELECT * FROM ChildernMain WHERE ChilderenID = ?";
-      $pdo->prepare($sql)->execute([$patientID]);
+    function getChildData($patientID){
+      // select a particular child by id
+      $stmt = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
+      $stmt->execute([$patientID]);
+      $child = $stmt->fetch();
     }
-  }
+
+    function getChildDataForHeadline($patientID){
+      // select a particular child by id
+      $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
+      $stmt->execute([$patientID]);
+      $child = $stmt->fetch();
+      var_dump($child);
+    }
+
+    function getChildDataForSearch ($patientID){
+      // select a particular childdata by id
+      $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain WHERE ChildrenID=?");
+      $stmt->execute([$patientID]);
+      $child = $stmt->fetch();
+
+    }
+}
 
   $controller = new DBCon();
   $controller -> connectToDB();
