@@ -214,14 +214,14 @@
     </script>
 
     <script>
-       var cloneId = 0;
+       var cloneId = 1;
 
         $(document).ready(function()
         {
             $("#addChild").click(function()
             {
                 var clone = $("#childs").clone(true);
-                clone.find("input[name=genderpregnancyRadios]").prop("name", "newgnderRadioName" + cloneId);
+                clone.find("input[name=genderpregnancyRadios]").prop("name", "genderpregnancyRadios" + cloneId);
                 clone.find("input[id=malepregnancyRadio]").prop("id", "malepregnancyRadio" + cloneId);
                 clone.find("label[for=malepregnancyRadio]").prop("for", "malepregnancyRadio" + cloneId);
 
@@ -237,6 +237,14 @@
 
                 clone.find("input[id=healthyRadioNo]").prop("id", "healthyRadioNo" + cloneId);
                 clone.find("label[for=healthyRadioNo]").prop("for", "healthyRadioNo" + cloneId);
+
+                clone.find("input[name=name]").prop("name", "name" + cloneId);
+                clone.find("input[name=dateofBirth]").prop("name", "dateofBirth" + cloneId);
+                clone.find("input[name=durationOfLabor]").prop("name", "durationOfLabor" + cloneId);
+                clone.find("input[name=eventsDuringPregnancy]").prop("name", "eventsDuringPregnancy" + cloneId);
+                clone.find("input[name=spont_CS_forceps]").prop("name", "spont_CS_forceps" + cloneId);
+                clone.find("input[name=childrenProblems]").prop("name", "childrenProblems" + cloneId);
+                clone.find("input[name=Remarks]").prop("name", "Remarks" + cloneId);
 
                 
                 clone.find("input,textarea").val("");

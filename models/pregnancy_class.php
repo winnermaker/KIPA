@@ -164,11 +164,25 @@
         }
 
         public function checkPresentPregnancy(){
-            if($this->gestationalAge !== "" || $this->estimatedDateOfDelivery !== "" || $this->antenatalClinikAttendanceRadios !== null || $this->problems === "" || $this->pregnancyRemarks !== ""){
+            if($this->gestationalAge !== "" || $this->estimatedDateOfDelivery !== "" || $this->antenatalClinikAttendanceRadios !== null || $this->problems !== "" || $this->pregnancyRemarks !== ""){
                 echo "Mindestens eine Eingabe";
             } else {
                 echo "Keine Eingabe";
             }
+        }
+
+        public function printChilds(){
+            var_dump($_POST['genderpregnancyRadios1']);
+            echo $_POST['name1'] . "</br>";
+            echo $_POST['dateofBirth1'] . "</br>";
+            echo $_POST['eventsDuringPregnancy1'] . "</br>";
+            echo $_POST['durationOfLabor1'] . "</br>";
+            echo $_POST['spont_CS_forceps1'] . "</br>";
+            echo $_POST['healthyRadios1'] . "</br>";
+            echo $_POST['childrenProblems1'] . "</br>";
+            echo $_POST['Remarks1'] . "</br>";
+
+
         }
     }
 ?>
