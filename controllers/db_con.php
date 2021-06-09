@@ -130,15 +130,11 @@
       $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
       $stmt->execute([$patientID]);
       $child = $stmt->fetch();
-      var_dump($child);
     }
 
     function getChildDataForSearch (){
-      // select a particular childdata by id
-      $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain");
-      $stmt->execute([$patientID]);
-      $child = $stmt->fetch();
-
+      // select a particular childdata
+      $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
     }
 }
 
