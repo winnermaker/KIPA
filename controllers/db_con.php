@@ -19,7 +19,6 @@
           $this->pdo = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
           // set the PDO error mode to exception
           $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-          //echo "Connected successfully";
           return $this->pdo;
         }
         catch(PDOException $e) {
@@ -77,29 +76,29 @@
       $this->pdo->prepare($sql)->execute($values);
     }
 
-    function insertMedicalVaccDate($vaccObj){
+    function insertMedicalVaccDate($table, $vaccDateArray){
       $vaccDate = $vaccObj->getParams();
+      prepared_insert($table, $data);
       $sql = "INSERT INTO MedicalVaccDate (fk_VaccID, VaccDate) values (?, ?)";
       $this->pdo->prepare($sql)->execute([]);
 
     }
 
-    function insertMedicalPregnancyChildData($pregnancyObj){
+    function insertMedicalPregnancyChildData($table, $childrenArray){
+      prepared_insert($table, $data);
       $childData = $pregnancyObj->getParams();
       $sql = "INSERT INTO MedicalPregnancyChildData (fk_MotherID, DOB, Name, EvDurP, durLabor, spont_CS_forceps, Gender, Healthy, Problems, Remarks) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
       $this->pdo->prepare($sql)->execute([]);
 
     }
 
-    /**function update($obj){
-      $data = $obj->getParams();
-      $this->prepared_update($this->pdo, 'tableName', $data);
-
-    }**/
+    function insertSocialSiblings($table, $siblingArray){
+      prepared_insert($table, $data);
+    }
 
     function getAllChildern(){
       $sql = "SELECT * FROM ChildernMain";
-      $data = $pdo->query($sql)->fetchAll();
+      $data = $this->pdo->query($sql)->fetchAll();
       }
 
 
@@ -111,11 +110,9 @@
         }*/
     }
 
-    function getChildData ($patient){
-      //$id = $patient.id;
+    function getChildData ($patientID){
       $sql = "SELECT * FROM ChildernMain WHERE ChilderenID = ?";
-      $pdo->prepare($sql)->execute([$id]);
-
+      $pdo->prepare($sql)->execute([$patientID]);
     }
   }
 
