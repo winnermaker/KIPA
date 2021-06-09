@@ -5,10 +5,10 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pregnancyObj = new pregnancy();
+        //$pregnancyObj->printPreviousPregnancy();
+        //echo "</br>";
+        //$pregnancyObj->printChilds();
         $pregnancyObj->printPreviousPregnancy();
-        echo "</br>";
-        $pregnancyObj->printChilds();
-        
 
     }
 

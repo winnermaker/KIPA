@@ -17,14 +17,15 @@
         private $pregnancyRemarks;
 
         private $genderpregnancyRadios;
-        private $name;
-        private $dateofBirth;
-        private $eventsDuringPregnancy;
-        private $durationOfLabor;
-        private $spont_CS_forceps;
         private $healthyRadios;
-        private $childrenProblems;
-        private $Remarks;
+        private $arrayName = array();
+        private $arrayDateOfBirth = array();
+        private $arrayEventsPregnancy = array();
+        private $arrayDurationOfLabor = array();
+        private $arraySpontCSforceps = array();
+        private $arrayChildrenProblems = array();
+        private $arrayRemarks = array();
+        private $arrayAllChilds = array();
 
         private  $arrayPregnancy = array();
         private  $arrayPresentPregnancy = array();
@@ -38,29 +39,56 @@
             $this->alive = isset($_POST['alive']) ? $_POST['alive'] : null;
             $this->dead = isset($_POST['dead']) ? $_POST['dead'] : null;
             $this->top = isset($_POST['top']) ? $_POST['top'] : null;
+
             $this->gestationalAge = isset($_POST['gestationalAge']) ? $_POST['gestationalAge'] : null;
             $this->estimatedDateOfDelivery = isset($_POST['estimatedDateOfDelivery']) ? $_POST['estimatedDateOfDelivery'] : null;
             $this->antenatalClinikAttendanceRadios = isset($_POST['antenatalClinikAttendanceRadios']) ? $_POST['antenatalClinikAttendanceRadios'] : null;
             $this->getRadioValue($this->antenatalClinikAttendanceRadios);
-
             $this->problems = isset($_POST['problems']) ? $_POST['problems'] : null;
             $this->pregnancyRemarks = isset($_POST['pregnancyRemarks']) ? $_POST['pregnancyRemarks'] : null;
-            $this->genderpregnancyRadios = isset($_POST['genderpregnancyRadios']) ? $_POST['genderpregnancyRadios'] : null;
-            $this->getGenderRadioValue($this->genderpregnancyRadios);
 
-            $this->name = isset($_POST['name']) ? $_POST['name'] : null;
-            $this->dateofBirth = isset($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
-            $this->eventsDuringPregnancy = isset($_POST['eventsDuringPregnancy']) ? $_POST['eventsDuringPregnancy'] : null;
-            $this->durationOfLabor = isset($_POST['durationOfLabor']) ? $_POST['durationOfLabor'] : null;
-            $this->spont_CS_forceps = isset($_POST['spont_CS_forceps']) ? $_POST['spont_CS_forceps'] : null;
-            $this->healthyRadios = isset($_POST['healthyRadios']) ? $_POST['healthyRadios'] : null;
-            $this->getRadioValue($this->healthyRadios);
-            $this->childrenProblems = isset($_POST['childrenProblems']) ? $_POST['childrenProblems'] : null;
-            $this->Remarks = isset($_POST['Remarks']) ? $_POST['Remarks'] : null;
+            $this->arrayName = isset($_POST['name']) ? $_POST['name'] : null;
+            $this->arrayDateOfBirth = isset($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
+            $this->arrayEventsPregnancy = isset($_POST['eventsDuringPregnancy']) ? $_POST['eventsDuringPregnancy'] : null;
+            $this->arrayDurationOfLabor = isset($_POST['durationOfLabor']) ? $_POST['durationOfLabor'] : null;
+            $this->arraySpontCSforceps = isset($_POST['spont_CS_forceps']) ? $_POST['spont_CS_forceps'] : null;
+            $this->arrayChildrenProblems = isset($_POST['childrenProblems']) ? $_POST['childrenProblems'] : null;
+            $this->arrayRemarks = isset($_POST['Remarks']) ? $_POST['Remarks'] : null;
+
+            for ($i=0; $i < count($this->arrayName); $i++) { 
+                $gender = "genderpregnancyRadios" . $i;
+                $healthy = "healthyRadios" . $i;
+
+                $this->genderpregnancyRadios = isset($_POST[$gender]) ? $_POST[$gender] : null;
+                $this->getGenderRadioValue($this->genderpregnancyRadios);
+
+                $this->healthyRadios = isset($_POST[$healthy]) ? $_POST[$healthy] : null;
+                $this->getRadioValue($this->healthyRadios);
+                
+                $this->arrayName[$i] = isset($this->arrayName[$i]) ? $this->arrayName[$i] : null;
+                $this->arrayDateOfBirth[$i] = isset($this->arrayDateOfBirth[$i]) ? $this->arrayDateOfBirth[$i] : null;
+                $this->arrayEventsPregnancy[$i] = isset($this->arrayEventsPregnancy[$i]) ? $this->arrayEventsPregnancy[$i] : null;
+                $this->arrayDurationOfLabor[$i] = isset($this->arrayDurationOfLabor[$i]) ? $this->arrayDurationOfLabor[$i] : null;
+                $this->arraySpontCSforceps[$i] = isset($this->arraySpontCSforceps[$i]) ? $this->arraySpontCSforceps[$i] : null;
+                $this->arrayChildrenProblems[$i] = isset($this->arrayChildrenProblems[$i]) ? $this->arrayChildrenProblems[$i] : null;
+                $this->arrayRemarks[$i] = isset($this->arrayRemarks[$i]) ? $this->arrayRemarks[$i] : null;
+
+                $this->arrayAllChilds[] = [
+                    'genderRadio' => $this->genderpregnancyRadios,
+                    'name' => $this->arrayName[$i],
+                    'dateOfBirth' => $this->arrayDateOfBirth[$i],
+                    'eventsDuringPregnancy' => $this->arrayEventsPregnancy[$i],
+                    'durationOfLabor' => $this->arrayDurationOfLabor[$i],
+                    'spontCsForceps' => $this->arraySpontCSforceps[$i],
+                    'healthy' => $this->healthyRadios,
+                    'problems' => $this->arrayChildrenProblems[$i],
+                    'remarks' => $this->arrayRemarks[$i],
+                ];
+            }
+
 
             $this->pregnancyMainToArray();
             $this->presentPregnancyToArray();
-            $this->previousPregnancyToArray();
 
         }
 
@@ -105,18 +133,6 @@
             $this->arrayPresentPregnancy['pregnancyRemarks'] = $this->pregnancyRemarks;
         }
 
-        public function previousPregnancyToArray(){
-            $this->arrayPreviousPregnancy['genderpregnancyRadios'] = $this->genderpregnancyRadios;
-            $this->arrayPreviousPregnancy['name'] = $this->name;
-            $this->arrayPreviousPregnancy['dateofBirth'] = $this->dateofBirth;
-            $this->arrayPreviousPregnancy['eventsDuringPregnancy'] = $this->eventsDuringPregnancy;
-            $this->arrayPreviousPregnancy['durationOfLabor'] = $this->durationOfLabor;
-            $this->arrayPreviousPregnancy['spont_CS_forceps'] = $this->spont_CS_forceps;
-            $this->arrayPreviousPregnancy['healthyRadios'] = $this->healthyRadios;
-            $this->arrayPreviousPregnancy['childrenProblems'] = $this->childrenProblems;
-            $this->arrayPreviousPregnancy['Remarks'] = $this->Remarks;
-        }
-
         public function printPregnancyMain(){
             foreach ($this->arrayPregnancy as $key => $value) {
                 echo $key . ": ". $value . "</br>";
@@ -130,8 +146,11 @@
         }
 
         public function printPreviousPregnancy(){
-            foreach ($this->arrayPreviousPregnancy as $key => $value) {
-                echo $key . ": ". $value . "</br>";
+            foreach($this->arrayAllChilds as $key => $row){
+                foreach ($row as $index => $value){
+                    echo $index . ": " . $value . "</br>";
+                }
+                echo "</br>";
             }
         }
 
