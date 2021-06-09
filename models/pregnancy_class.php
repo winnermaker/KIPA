@@ -26,9 +26,9 @@
         private $childrenProblems;
         private $Remarks;
 
-        public  $arrayPregnancy = array();
-        public  $arrayPresentPregnancy = array();
-        public  $arrayPreviousPregnancy = array();
+        private  $arrayPregnancy = array();
+        private  $arrayPresentPregnancy = array();
+        private  $arrayPreviousPregnancy = array();
 
         public function __construct(){
             $this->pregnancyID = isset($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;

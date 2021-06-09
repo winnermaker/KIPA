@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
+    <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
     ?>
     <title>Patient</title>
-  
+
   </head>
   <body>
-    
+
     <form action="patient_con.php"  method="post" class="needs-validation" novalidate>
 
         <div class="container" >
             <h1 class="mt-3">Patient</h1>
-            
+
             <input type="hidden" id="patientID" name="patientID">
 
             <div class="form-row mt-5">
@@ -48,7 +48,7 @@
                     <input type="text" class="form-control"  name="firstName" id="firstName" placeholder="Max" required>
                     <div class="invalid-feedback">
                     Please choose a Call name
-                    </div>  
+                    </div>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
                     <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Mustermann" required>
                     <div class="invalid-feedback">
                     Please choose a Last name
-                    </div> 
+                    </div>
                 </div>
             </div>
 
@@ -68,14 +68,14 @@
                     <input type="text" class="form-control" name="callName" id="callName" placeholder="Mike" required >
                     <div class="invalid-feedback">
                     Please choose a Call name
-                    </div>  
+                    </div>
                 </div>
             </div>
 
             <div class="row mt-3">
                 <div class ="form-group col">
                     <label for="dateOfBirth" class="col-form-label">Date of Birth</label>
-                    <input class="form-control " type="date" name="dateOfBirth" id="dateOfBirth">        
+                    <input class="form-control " type="date" name="dateOfBirth" id="dateOfBirth">
                 </div>
 
                 <div class="form-group col">
@@ -85,15 +85,15 @@
 
                 <div class ="form-group col">
                     <label for="admissionDate" class="col-form-label">Admission Date</label>
-                    <input class="form-control " type="date" name="admissionDate" id="admissionDate">        
+                    <input class="form-control " type="date" name="admissionDate" id="admissionDate">
                 </div>
 
                 <div class="form-group col">
                     <label for="dischargeDate" class="col-form-label">Discharge Date</label>
                     <input class="form-control" type="date" name="dischargeDate"  id="dischargeDate">
-                
+
                 </div>
-                
+
             </div>
 
             <div class="row mt-3">
@@ -112,7 +112,7 @@
 
         </div>
     </form>
- 
+
 
     <script>
 
@@ -137,7 +137,7 @@
             })
         })()
     </script>
-        
+
     <script>
         $('input,textarea,select').addClass('border border-dark');
     </script>

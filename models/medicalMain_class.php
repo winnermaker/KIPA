@@ -32,7 +32,7 @@
         private $sickleCellPos;
         private $sickleCellType;
         private $G6PDeficiency;
-        public  $arrayMedical = array();
+        private  $arrayChild = array();
 
         public function __construct(){
 
@@ -111,7 +111,7 @@
             $this->arrayChild['Plan'] = $this->plan;
             $this->arrayChild['OtherInfo'] = $this->otherInformation;
             $this->arrayChild['PregnancyHist'] = $this->PregnancyHistory;
-            $this->arrayChild['ImmuniCompl'] = $this->immuniCompleted;
+            $this->arrayChild['ImmuniCompl'] = $this->immuniComplRadios;
             $this->arrayChild['PhysicalAbuse'] = $this->physicalAbuse;
             $this->arrayChild['SexualAbuse'] = $this->sexualAbuse;
             $this->arrayChild['SubstanceAbuse'] = $this->substanceAbuse;
@@ -149,7 +149,7 @@
         }
 
         public function getParams(){
-            return $this->arrayMedical;
+            return $this->arrayChild;
         }
 
         public function checkMedicalMainID(){
@@ -160,8 +160,8 @@
             }
         }
 
-        public function getParams(){
+        /*public function getParams(){
             return $this->arrayChild;
-        }
+        }*/
     }
 ?>

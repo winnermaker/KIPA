@@ -19,7 +19,7 @@
         private $siblingsAlive = array();
         private $siblingsParents = array();
         private $arrayParams = array();
-        public  $allSiblings = array();
+        private  $allSiblings = array();
 
         public function __construct(){
             $this->socialHistoryID = isset($_POST['socialHistoryID']) ? $_POST['socialHistoryID'] : null;

@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <?php 
+    <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
     ?>

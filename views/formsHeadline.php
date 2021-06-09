@@ -7,7 +7,7 @@
       background: rgba(252, 252, 252, 1) !important;
     }
   </style>
-    
+
   </head>
   <body>
   <div id="formsTable" class="form-row sticky-top mt-3">
@@ -23,8 +23,11 @@
                   <th id="investigator" scope="col" class="">Investigator</th>
                 </tr>
               </thead>
-              
+
               <tbody>
+                <?php
+                  $child = $controller->getChildDataForHeadline($_COOKIE["ChildIDCookie"]);                  
+                 ?>
                 <td>Mustermann</td>
                 <td>Mike</td>
                 <td>Mustermann</td>
@@ -32,8 +35,8 @@
                 <td>29.10.1997</td>
                 <td>29.10.1997</td>
                 <td id="investigatorName">Drechsel-Atta</td>
-              </tbody> 
-          </table>  
+              </tbody>
+          </table>
         </div>
   </body>
 </html>

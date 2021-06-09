@@ -45,17 +45,17 @@
         }
 
         public function paramsToArray(){
-            $this->arrayChild['patientID'] = $this->patientID;
+            $this->arrayChild['childrenID'] = $this->patientID;
             $this->arrayChild['gender'] = $this->gender;
             $this->arrayChild['firstName'] = $this->firstName;
             $this->arrayChild['lastName'] =  $this->lastName;
-            $this->arrayChild['callName'] = $this->callName;
-            $this->arrayChild['dateOfBirth'] = $this->dateOfBirth;
-            $this->arrayChild['estDateOfBirth'] = $this->estDateOfBirth;
-            $this->arrayChild['admissionDate'] = $this->admissionDate;
-            $this->arrayChild['dischargeDate'] = $this->dischargeDate;
-            $this->arrayChild['pictureTakenOn'] = $this->pictureTakenOn;
-            $this->arrayChild['customFile'] = $this->customFile;
+            $this->arrayChild['callNames'] = $this->callName;
+            $this->arrayChild['DOB'] = $this->dateOfBirth;
+            $this->arrayChild['EDOB'] = $this->estDateOfBirth;
+            $this->arrayChild['AdmDate'] = $this->admissionDate;
+            $this->arrayChild['DisDate'] = $this->dischargeDate;
+            $this->arrayChild['PicTaken'] = $this->pictureTakenOn;
+            $this->arrayChild['Picture'] = $this->customFile;
         }
 
         public function printParams(){

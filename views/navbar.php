@@ -6,7 +6,7 @@
         <a class="nav-link text-white" href="patient_con.php">Forms</a>
       </div>
     </div>
-  
+
 
       <form class="d-flex float-end" action="<?php substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  ?>">
         <div class="input-group">
@@ -17,10 +17,9 @@
             <option value="Karin Müller Kari">
           </datalist>
 
-            <button class="btn btn-success" type="submit">Search</button> 
-       </div>      
+            <button class="btn btn-success" type="submit">Search</button>
+       </div>
       </form>
-      
+
   </div>
 </nav>
-

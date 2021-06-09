@@ -89,9 +89,9 @@
         private $skin_scars;
         private $skin_remarks;
         private $generalRemarks;
-        public  $arrayPexam = array();
-        public  $arrayPexamMale = array();
-        public  $arrayPexamFemale = array();
+        private  $arrayPexam = array();
+        private  $arrayPexamMale = array();
+        private  $arrayPexamFemale = array();
 
 
         public function __construct(){
@@ -256,7 +256,7 @@
             $this->arrayPexam['cns_orientation'] = $this->cns_orientation;
             $this->arrayPexam['cns_speech'] = $this->cns_speech;
             $this->arrayPexam['cns_sensation'] = $this->cns_sensation;
-            $this->arrayPexam['cns_milestones'] = $this->cns_milestones;
+            $this->arrayPexam['cns_milestone'] = $this->cns_milestones;
 
             $this->arrayPexam['gas_tenderness'] = $this->gas_tenderness;
             $this->arrayPexam['gas_rebound'] = $this->gas_rebound;
@@ -350,8 +350,8 @@
         public function checkGenitals(){
             if(($this->male_CircumsisedRadio !== null || $this->male_tannerStage !== "" || $this->male_descensusOfTestes !== "" || $this->male_remarks !== "")
                     &&
-                    ($this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" || 
-                    $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" || 
+                    ($this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" ||
+                    $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" ||
                     $this->female_breasts !== "" || $this->female_mastodynia !== "" ||
                     $this->female_period !== "" || $this->female_dysmenorrhoea !== "" || $this->female_dyspareunia !== "" ||
                     $this->female_menarche !== "" || $this->female_pregnancy !== "")){
@@ -364,12 +364,12 @@
                 return 1;
             }
             elseif(
-                $this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" || 
-                $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" || 
+                $this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" ||
+                $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" ||
                 $this->female_breasts !== "" || $this->female_mastodynia !== "" ||
                 $this->female_period !== "" || $this->female_dysmenorrhoea !== "" || $this->female_dyspareunia !== "" ||
                 $this->female_menarche !== "" || $this->female_pregnancy !== "") {
-                    //Genitals Female 
+                    //Genitals Female
                     return 0;
             }
              else{
