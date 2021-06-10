@@ -169,25 +169,13 @@
             $this->generalRemarks = !empty($_POST['generalRemarks']) ? $_POST['generalRemarks'] : null;
 
             $this->male_CircumsisedRadio = !empty($_POST['male_CircumsisedRadio']) ? $_POST['male_CircumsisedRadio'] : null;
-            if($this->male_CircumsisedRadio === "option1"){
-                $this->male_CircumsisedRadio = "Yes";
-            } elseif($this->male_CircumsisedRadio ==="option2"){
-                $this->male_CircumsisedRadio = "No";
-            } else {
-                $this->male_CircumsisedRadio = null;
-            }
+            $this->getRadioValue($this->male_CircumsisedRadio);
             $this->male_tannerStage = !empty($_POST['male_tannerStage']) ? $_POST['male_tannerStage'] : null;
             $this->male_descensusOfTestes = !empty($_POST['male_descensusOfTestes']) ? $_POST['male_descensusOfTestes'] : null;
             $this->male_remarks = !empty($_POST['male_remarks']) ? $_POST['male_remarks'] : null;
             $this->female_circumcisedRadios = !empty($_POST['female_circumcisedRadios']) ? $_POST['female_circumcisedRadios'] : null;
+            $this->getRadioValue($this->female_circumcisedRadios);
 
-            if($this->female_circumcisedRadios === "option1"){
-                $this->female_circumcisedRadios = "Yes";
-            } elseif($this->female_circumcisedRadios ==="option2"){
-                $this->female_circumcisedRadios = "No";
-            } else {
-                $this->female_circumcisedRadios = null;
-            }
             $this->female_tannerStage = !empty($_POST['female_tannerStage']) ? $_POST['female_tannerStage'] : null;
             $this->female_hymen = !empty($_POST['female_hymen']) ? $_POST['female_hymen'] : null;
             $this->female_introitus = !empty($_POST['female_introitus']) ? $_POST['female_introitus'] : null;
@@ -205,6 +193,16 @@
             $this->paramsFemaleToArray();
 
 
+        }
+
+        private function getRadioValue(&$radioValue){
+            if($radioValue === "option1"){
+                $radioValue = true;
+            } elseif($radioValue === "option2"){
+                $radioValue = false;
+            } else{
+                $radioValue = null;
+            }
         }
 
         public function paramsToArray(){
@@ -348,27 +346,27 @@
         }
 
         public function checkGenitals(){
-            if(($this->male_CircumsisedRadio !== null || $this->male_tannerStage !== "" || $this->male_descensusOfTestes !== "" || $this->male_remarks !== "")
+            if(( !is_null($this->male_CircumsisedRadio) || !is_null($this->male_tannerStage) || !is_null($this->male_descensusOfTestes) || !is_null($this->male_remarks))
                     &&
-                    ($this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" ||
-                    $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" ||
-                    $this->female_breasts !== "" || $this->female_mastodynia !== "" ||
-                    $this->female_period !== "" || $this->female_dysmenorrhoea !== "" || $this->female_dyspareunia !== "" ||
-                    $this->female_menarche !== "" || $this->female_pregnancy !== "")){
+                    (!is_null($this->female_circumcisedRadios) || !is_null($this->female_tannerStage) ||
+                    !is_null($this->female_hymen) || !is_null($this->female_introitus) || !is_null($this->female_discharge) ||
+                    !is_null($this->female_breasts) || !is_null($this->female_mastodynia) ||
+                    !is_null($this->female_period) || !is_null($this->female_dysmenorrhoea) || !is_null($this->female_dyspareunia) ||
+                    !is_null($this->female_menarche) || !is_null($this->female_pregnancy))){
                         // Genitals Male and Female => Other
                         return 2;
                     }
 
-            elseif($this->male_CircumsisedRadio !== null || $this->male_tannerStage !== "" || $this->male_descensusOfTestes !== "" || $this->male_remarks !== ""){
+            elseif( !is_null($this->male_CircumsisedRadio) || !is_null($this->male_tannerStage) || !is_null($this->male_descensusOfTestes) || !is_null($this->male_remarks)){
                 // GenitalsMale
                 return 1;
             }
             elseif(
-                $this->female_circumcisedRadios !== null || $this->female_tannerStage !== "" ||
-                $this->female_hymen !== "" || $this->female_introitus !== "" || $this->female_discharge !== "" ||
-                $this->female_breasts !== "" || $this->female_mastodynia !== "" ||
-                $this->female_period !== "" || $this->female_dysmenorrhoea !== "" || $this->female_dyspareunia !== "" ||
-                $this->female_menarche !== "" || $this->female_pregnancy !== "") {
+                !is_null($this->female_circumcisedRadios) || !is_null($this->female_tannerStage) ||
+                !is_null($this->female_hymen) || !is_null($this->female_introitus) || !is_null($this->female_discharge) ||
+                !is_null($this->female_breasts) || !is_null($this->female_mastodynia) ||
+                !is_null($this->female_period) || !is_null($this->female_dysmenorrhoea) || !is_null($this->female_dyspareunia) ||
+                !is_null($this->female_menarche) || !is_null($this->female_pregnancy)) {
                     //Genitals Female
                     return 0;
             }
