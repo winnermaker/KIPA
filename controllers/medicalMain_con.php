@@ -6,13 +6,13 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $medicalObj = new medicalmain();
         $medicalData = $medicalObj->getParams();
-        $medicalData['fk_ChildrenID'] = $_COOKIE["ChildIDCookie"];
-        $controller -> prepared_insert('medicalmain',$medicalData);
-        $child = $controller->getChildData((int)$_COOKIE["ChildIDCookie"]);
+        if (!$medicalObj->checkMedicalMainID()) {
+          $medicalData['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
+          $controller -> prepared_insert('medicalmain',$medicalData);.
+        }else {
+          $controller -> prepared_update('medicalmain',$medicalData);
+        }
     }
-
-    if ($_SERVER["REQUEST_METHOD"] == "GET"){
-
-    }
+    
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/medicalMain_view.php";
 ?>

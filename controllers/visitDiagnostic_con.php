@@ -4,8 +4,12 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $visitObj = new visit();
-        $visitObj->printParams();
-        $controller -> prepared_insert('medicalvisits',$visitObj->getParams());
+        if (!$visitObj->checkVisitID()) {
+          $controller -> prepared_insert('medicalvisits',$visitObj->getParams());
+        }else {
+          $controller -> prepared_update('medicalvisits',$visitObj->getParams());
+        }
+
 
     }
 

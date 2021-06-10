@@ -42,22 +42,25 @@
 
       if($table == $this ->escape_mysql_identifier('childrenmain')){
         $ID = $this->pdo->lastInsertId();
-        setcookie ("ChildIDCookie" , $ID);
+        setcookie ("childIDCookie" , (int)$ID);
       }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
         $ID = $this->pdo->lastInsertId();
-        setcookie ("MedicalIDCookie" , $ID);
+        setcookie ("medicalIDCookie" , (int)$ID);
       }elseif ($table == $this ->escape_mysql_identifier('socialhistory')) {
         $ID = $this->pdo->lastInsertId();
-        setcookie ("SocialIDCookie" , $ID);
+        setcookie ("socialIDCookie" , (int)$ID);
       }elseif ($table == $this ->escape_mysql_identifier('medicalpexam')) {
         $ID = $this->pdo->lastInsertId();
-        setcookie ("pexamIDCookie" , $ID);
+        setcookie ("pexamIDCookie" , (int)$ID);
       }elseif ($table == $this ->escape_mysql_identifier('medicalvacc')) {
         $ID = $this->pdo->lastInsertId();
-        setcookie ("vaccIDCookie" , $ID);
+        setcookie ("vaccIDCookie" , (int)$ID);
       }elseif ($table == $this ->escape_mysql_identifier('medicalpregnancymain')) {
         $ID = $this->pdo->lastInsertId();
-        setcookie ("pregnancyIDCookie" , $ID);
+        setcookie ("pregnancyIDCookie" , (int)$ID);
+      }elseif ($table == $this ->escape_mysql_identifier('medicalvisits')) {
+        $ID = $this->pdo->lastInsertId();
+        setcookie ("visitIDCookie" , (int)$ID);
       }
     }
 

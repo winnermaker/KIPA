@@ -5,12 +5,14 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pregnancyObj = new pregnancy();
-        $pregnancyObj->checkPresentPregnancy();
-        //$pregnancyObj->printPresentPregnancy();
+        $pregdata = $pregnancyObj->getPregnancyMain();
+        if (!$pregnancyObj->checkPregnancyID()) {
+          $pregdata['fk_MedicalID']=$_COOKIE["MedicalIDCookie"];
+          $controller -> prepared_insert('MedicalPregnancyMain',$pregdata);
+        }else {
+          $controller -> prepared_update('MedicalPregnancyMain',$pregdata);
+        }
 
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "GET"){
 
     }
 

@@ -4,11 +4,13 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $patientObj = new patient();
-        $controller -> prepared_insert('childrenmain',$patientObj->getParams());
+        if(!$patientObj->checkPatientID()){
+          $controller -> prepared_insert('childrenmain',$patientObj->getParams());
+        }else {
+          $controller -> prepared_update('childrenmain',$patientObj->getParams());
+        }
+
     }
-
-   if ($_SERVER["REQUEST_METHOD"] == "GET"){
-
-  }
+    
   require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/patient_view.php";
 ?>
