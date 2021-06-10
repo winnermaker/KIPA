@@ -4,6 +4,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $patientObj = new patient();
+        $controller->getAllChildern();
         if(!$patientObj->checkPatientID()){
           $controller -> prepared_insert('childrenmain',$patientObj->getParams());
         }else {
@@ -11,6 +12,6 @@
         }
 
     }
-    
+
   require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/patient_view.php";
 ?>

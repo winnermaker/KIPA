@@ -8,11 +8,12 @@
         $medicalData = $medicalObj->getParams();
         if (!$medicalObj->checkMedicalMainID()) {
           $medicalData['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
-          $controller -> prepared_insert('medicalmain',$medicalData);.
+          $controller -> prepared_insert('medicalmain',$medicalData);
         }else {
           $controller -> prepared_update('medicalmain',$medicalData);
         }
+        //$test = $controller->getMedicalData($_COOKIE["childIDCookie"]);
     }
-    
+
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/medicalMain_view.php";
 ?>

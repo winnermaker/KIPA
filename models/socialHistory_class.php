@@ -74,7 +74,7 @@
                     'age' => $this->siblingsAge[$i],
                     'healthy' => $this->siblingsHealthy[$i],
                     'alive' => $this->siblingsAlive[$i],
-                    'parents' => $this->siblingsParents[$i],
+                    'SameParents' => $this->siblingsParents[$i],
                 ];
                 }
             }
@@ -90,7 +90,7 @@
             $this->arrayParams['IncomeForHowMany'] = $this->incomeForHowMany;
             $this->arrayParams['Abuse'] = $this->abuse;
             $this->arrayParams['SexuallyActive'] = $this->sexuallyActive;
-            $this->arrayParams['siblingRadio'] = $this->siblings;
+            $this->arrayParams['siblings'] = $this->siblings;
         }
 
         public function printParams(){

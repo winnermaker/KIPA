@@ -11,6 +11,7 @@
         private $nextVaccDate = array();
 
         private $allVaccination = array();
+        private $allVaccinationDate = array();
 
         private $vaccinationRemarks;
 
@@ -26,24 +27,41 @@
             $this->nextVaccDate = !empty($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
             $this->vaccinationRemarks = !empty($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
 
+            $this->paramsToArray();
+        }
+        public function paramsToArray(){
+          for ($i=0; $i < count($this->vaccineDataList); $i++) {
+              $this->allVaccination[$i] = [
+                  'vaccine' => $this->vaccineDataList[$i],
+                  'nextVaccDate' => $this->nextVaccDate[$i],
+                  'VaccRemarks' => $this->vaccinationRemarks
+              ];
+              $this->allVaccinationDates[$i] = [
+                'firstVaccDate' => $this->firstVaccDate[$i],
+                'secondVaccDate' => $this->secondVaccDate[$i],
+                'thirdVaccDate' => $this->thirdVaccDate[$i],
+                'fourthVaccDate' => $this->fourthVaccDate[$i],
+                'fifthVaccDate' => $this->fifthVaccDate[$i]
+              ];
+          }
+        }
 
-            for ($i=0; $i < count($this->vaccineDataList); $i++) {
-                $this->allVaccination[$i] = [
-                    'vaccine' => $this->vaccineDataList[$i],
-                    'firstVaccDate' => $this->firstVaccDate[$i],
-                    'secondvaccDate' => $this->secondVaccDate[$i],
-                    'thirdVaccDate' => $this->thirdVaccDate[$i],
-                    'fourthVaccDate' => $this->fourthVaccDate[$i],
-                    'fifthVaccDate' => $this->fifthVaccDate[$i],
-                    'nextVaccDate' => $this->nextVaccDate[$i],
-                    'Remarks' => $this->vaccinationRemarks
-                ];
-            }
+        public function getParams(){
+          return $this->allVaccination;
+        }
 
+        public function getParamsDates(){
+          return $this->allVaccinationDates;
         }
 
         public function printParams(){
             foreach($this->allVaccination as $index => $row){
+                foreach ($row as $key => $value) {
+                    echo $key . ": " . $value . "</br>";
+                }
+                echo "</br>";
+            }
+            foreach($this->allVaccinationDates as $index => $row){
                 foreach ($row as $key => $value) {
                     echo $key . ": " . $value . "</br>";
                 }

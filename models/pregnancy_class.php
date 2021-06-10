@@ -96,7 +96,7 @@
         }
 
         public function validatePreviousPregnancy(){
-            for ($i=0; $i < count($this->arrayName); $i++) { 
+            for ($i=0; $i < count($this->arrayName); $i++) {
                 $gender = "genderpregnancyRadios" . $i;
                 $healthy = "healthyRadios" . $i;
 
@@ -105,7 +105,7 @@
 
                 $this->healthyRadios = !empty($_POST[$healthy]) ? $_POST[$healthy] : null;
                 $this->getRadioValue($this->healthyRadios);
-                
+
                 $this->arrayName[$i] = !empty($this->arrayName[$i]) ? $this->arrayName[$i] : null;
                 $this->arrayDateOfBirth[$i] = !empty($this->arrayDateOfBirth[$i]) ? $this->arrayDateOfBirth[$i] : null;
                 $this->arrayEventsPregnancy[$i] = !empty($this->arrayEventsPregnancy[$i]) ? $this->arrayEventsPregnancy[$i] : null;
@@ -114,18 +114,18 @@
                 $this->arrayChildrenProblems[$i] = !empty($this->arrayChildrenProblems[$i]) ? $this->arrayChildrenProblems[$i] : null;
                 $this->arrayRemarks[$i] = !empty($this->arrayRemarks[$i]) ? $this->arrayRemarks[$i] : null;
 
-                if(!is_null($this->arrayName[$i]) || !is_null($this->arrayDateOfBirth[$i]) || 
-                    !is_null($this->arrayEventsPregnancy[$i]) || !is_null($this->arrayDurationOfLabor[$i]) || 
-                    !is_null($this->arraySpontCSforceps[$i]) || !is_null($this->arrayChildrenProblems[$i]) || 
+                if(!is_null($this->arrayName[$i]) || !is_null($this->arrayDateOfBirth[$i]) ||
+                    !is_null($this->arrayEventsPregnancy[$i]) || !is_null($this->arrayDurationOfLabor[$i]) ||
+                    !is_null($this->arraySpontCSforceps[$i]) || !is_null($this->arrayChildrenProblems[$i]) ||
                     !is_null($this->arrayRemarks[$i]) || !is_null($this->genderpregnancyRadios) || !is_null($this->healthyRadios))
                 {
                 $this->arrayAllChilds[] = [
-                    'genderRadio' => $this->genderpregnancyRadios,
+                    'gender' => $this->genderpregnancyRadios,
                     'name' => $this->arrayName[$i],
-                    'dateOfBirth' => $this->arrayDateOfBirth[$i],
-                    'eventsDuringPregnancy' => $this->arrayEventsPregnancy[$i],
-                    'durationOfLabor' => $this->arrayDurationOfLabor[$i],
-                    'spontCsForceps' => $this->arraySpontCSforceps[$i],
+                    'DOB' => $this->arrayDateOfBirth[$i],
+                    'EvDurP' => $this->arrayEventsPregnancy[$i],
+                    'durLabor' => $this->arrayDurationOfLabor[$i],
+                    'spont_CS_forceps' => $this->arraySpontCSforceps[$i],
                     'healthy' => $this->healthyRadios,
                     'problems' => $this->arrayChildrenProblems[$i],
                     'remarks' => $this->arrayRemarks[$i],
@@ -136,10 +136,10 @@
 
         public function presentPregnancyToArray(){
             $this->arrayPresentPregnancy['gestationalAge'] = $this->gestationalAge;
-            $this->arrayPresentPregnancy['estimatedDateOfDelivery'] = $this->estimatedDateOfDelivery;
-            $this->arrayPresentPregnancy['antenatalClinikAttendanceRadios'] = $this->antenatalClinikAttendanceRadios;
+            $this->arrayPresentPregnancy['EstDelivery'] = $this->estimatedDateOfDelivery;
+            $this->arrayPresentPregnancy['AntClinicAttend'] = $this->antenatalClinikAttendanceRadios;
             $this->arrayPresentPregnancy['problems'] = $this->problems;
-            $this->arrayPresentPregnancy['pregnancyRemarks'] = $this->pregnancyRemarks;
+            $this->arrayPresentPregnancy['Remarks'] = $this->pregnancyRemarks;
         }
 
         public function printPregnancyMain(){

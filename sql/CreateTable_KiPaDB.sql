@@ -35,7 +35,6 @@ create table if not exists SocialHistory
     (
        SiblingID			int auto_increment	not null primary key,
        	fk_SocialID		int,
-       Name			text,
        Age					text,
        Gender				text,
        Alive				text,
@@ -107,7 +106,7 @@ create table if not exists MedicalVacc
   fk_MedicalID			int not null,
   VaccRemarks			text,
   Vaccine				varchar(100),
-  nxtVaccDate			date,
+  nextVaccDate			date,
   foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
   );
 
@@ -152,7 +151,6 @@ create table if not exists MedicalPresentPregnancy
 (
 	PresPreagnancyID 	int auto_increment	not null primary key,
     fk_MotherID 		int not null,
-    preg				text,
     GestationalAge		text,
     EstDelivery			date,
     AntClinicAttend		boolean,

@@ -31,6 +31,7 @@
     }
 
     function prepared_insert($table, $data) {
+      //generic insert functin $table = the name of the table, $data = the date that should be inserted in DB
       $keys = array_keys($data);
       $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
       $fields = implode(",", $keys);
@@ -107,28 +108,35 @@
     function getAllChildern(){
       $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
       // and somewhere later:
-      foreach ($data as $row) {
+      foreach ($dataAllCildren as $row) {
         //do something
       }
     }
 
+    function getMedicalData($childrenID){
+      $sql = $this->pdo->prepare("SELECT medicalmain.*, medicalvacc.nxtVaccDate FROM medicalmain NATURAL JOIN medicalvacc WHERE  fk_ChildrenID = ?");
+      $sql->execute($ForeignKeyID);
+      $medical = $stmt->fetch();
+      return $medical;
+    }
+
 
     function getAllChildernReviewSoon(){
-        $sql = "SELECT * FROM childrenmain NATURAL JOIN MedicalMain WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
+        $sql = "SELECT * FROM childrenmain NATURAL JOIN medicalmain WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
         $stmt =  $this->pdo->query($sql)-fetchAll();
         /*while ($row = $stmt->fetch()) {
           echo $row['name']."<br />\n";
         }*/
     }
 
-    function getChildData($patientID){
+    function getChildData($childrenID){
       // select a particular child by id
-      $stmt = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
-      $stmt->execute([$patientID]);
+      $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
+      $sql->execute([$childrenID]);
       $child = $stmt->fetch();
     }
 
-    function getChildDataForHeadline($patientID){
+    function getChildDataForHeadline($childrenID){
       // select a particular child by id
       $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
       $stmt->execute([$patientID]);
@@ -138,6 +146,7 @@
     function getChildDataForSearch (){
       // select a particular childdata
       $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
+      return $dataAllCildren;
     }
 }
 
