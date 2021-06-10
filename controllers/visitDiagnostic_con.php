@@ -4,10 +4,13 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $visitObj = new visit();
+        $visitData = $visitObj->getParams();
+
         if (!$visitObj->checkVisitID()) {
-          $controller -> prepared_insert('medicalvisits',$visitObj->getParams());
+          $visitData['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
+          $controller -> prepared_insert('medicalvisits',$visitData);
         }else {
-          $controller -> prepared_update('medicalvisits',$visitObj->getParams());
+          $controller -> prepared_update('medicalvisits',$visitData);
         }
 
 
