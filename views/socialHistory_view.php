@@ -95,7 +95,7 @@
               </thead>
               
               <tbody name="tableBody" id="tableBody">
-                <td>1</td>
+                <td><input type="text" name="tableIndex[]" hidden>1</td>
                 <td><input type="text" name="gender[]" class="form-control"></td>
                 <td><input type="text" name="age[]" class="form-control"></td>
                 <td><input type="text" name="healthy[]" class="form-control"></td>
@@ -160,7 +160,7 @@
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
 
-              cell1.innerHTML = row.rowIndex;
+              cell1.innerHTML = '<input type="text" name="tableIndex[]" hidden>' + row.rowIndex + '</input>';
               cell2.innerHTML = '<input type="text" class="form-control bg-black" name="gender[]">';
               cell3.innerHTML = '<input type="text" class="form-control" name="age[]">';
               cell4.innerHTML = '<input type="text" class="form-control" name="healthy[]">';

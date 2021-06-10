@@ -26,7 +26,7 @@
 
               <tbody>
                 <?php
-                  $child = $controller->getChildDataForHeadline($_COOKIE["ChildIDCookie"]);                  
+                  //$child = $controller->getChildDataForHeadline($_COOKIE["ChildIDCookie"]);                  
                  ?>
                 <td>Mustermann</td>
                 <td>Mike</td>
