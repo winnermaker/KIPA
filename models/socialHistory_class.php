@@ -11,39 +11,42 @@
         private $incomeForHowMany;
         private $abuse;
         private $sexuallyActive;
+
         private $numberSiblings;
         private $siblings;
+        private $tableIndex = array();
         public  $siblingsGender = array();
         private $siblingsAge = array();
         private $siblingsHealthy = array();
         private $siblingsAlive = array();
         private $siblingsParents = array();
         private $arrayParams = array();
-        private  $allSiblings = array();
+        private $allSiblings = array();
 
         public function __construct(){
-            $this->socialHistoryID = isset($_POST['socialHistoryID']) ? $_POST['socialHistoryID'] : null;
-            $this->dateOfInvestigation = isset($_POST['dateOfInvestigation']) ? $_POST['dateOfInvestigation'] : null;
-            $this->livedWithWho = isset($_POST['livedWithWho']) ? $_POST['livedWithWho'] : null;
-            $this->livedWhere = isset($_POST['livedWhere']) ? $_POST['livedWhere'] : null;
-            $this->parentsAlive = isset($_POST['parentsAlive']) ? $_POST['parentsAlive'] : null;
-            $this->parentslivetogether = isset($_POST['parentslivetogether']) ? $_POST['parentslivetogether'] : null;
-            $this->amountAndSourceOfIncome = isset($_POST['amountAndSourceOfIncome']) ? $_POST['amountAndSourceOfIncome'] : null;
-            $this->incomeForHowMany = isset($_POST['incomeForHowMany']) ? $_POST['incomeForHowMany'] : null;
-            $this->abuse = isset($_POST['abuse']) ? $_POST['abuse'] : null;
-            $this->sexuallyActive = isset($_POST['sexuallyActive']) ? $_POST['sexuallyActive'] : null;
+            $this->socialHistoryID = !empty($_POST['socialHistoryID']) ? $_POST['socialHistoryID'] : null;
+            $this->dateOfInvestigation = !empty($_POST['dateOfInvestigation']) ? $_POST['dateOfInvestigation'] : null;
+            $this->livedWithWho = !empty($_POST['livedWithWho']) ? $_POST['livedWithWho'] : null;
+            $this->livedWhere = !empty($_POST['livedWhere']) ? $_POST['livedWhere'] : null;
+            $this->parentsAlive = !empty($_POST['parentsAlive']) ? $_POST['parentsAlive'] : null;
+            $this->parentslivetogether = !empty($_POST['parentslivetogether']) ? $_POST['parentslivetogether'] : null;
+            $this->amountAndSourceOfIncome = !empty($_POST['amountAndSourceOfIncome']) ? $_POST['amountAndSourceOfIncome'] : null;
+            $this->incomeForHowMany = !empty($_POST['incomeForHowMany']) ? $_POST['incomeForHowMany'] : null;
+            $this->abuse = !empty($_POST['abuse']) ? $_POST['abuse'] : null;
+            $this->sexuallyActive = !empty($_POST['sexuallyActive']) ? $_POST['sexuallyActive'] : null;
 
-            $this->siblings = isset($_POST['siblings']) ? $_POST['siblings'] : null;
+            $this->tableIndex = isset($_POST['tableIndex']) ? $_POST['tableIndex'] : null;
+            $this->siblings = !empty($_POST['siblings']) ? $_POST['siblings'] : null;
             $this->getRadioValue($this->siblings);
-            $this->siblingsGender = isset($_POST['gender']) ? $_POST['gender'] : null;
-            $this->siblingsAge = isset($_POST['age']) ? $_POST['age'] : null;
-            $this->siblingsHealthy = isset($_POST['healthy']) ? $_POST['healthy'] : null;
-            $this->siblingsAlive = isset($_POST['alive']) ? $_POST['alive'] : null;
-            $this->siblingsParents = isset($_POST['sameFatherMother']) ? $_POST['sameFatherMother'] : null;
+            $this->siblingsGender = !empty($_POST['gender']) ? $_POST['gender'] : null;
+            $this->siblingsAge = !empty($_POST['age']) ? $_POST['age'] : null;
+            $this->siblingsHealthy = !empty($_POST['healthy']) ? $_POST['healthy'] : null;
+            $this->siblingsAlive = !empty($_POST['alive']) ? $_POST['alive'] : null;
+            $this->siblingsParents = !empty($_POST['sameFatherMother']) ? $_POST['sameFatherMother'] : null;
 
 
             $this->paramsToArray();
-            $this->siblingsToArray();
+            $this->validateSiblings();
         }
 
         private function getRadioValue(&$radioValue){
@@ -56,9 +59,15 @@
             }
         }
 
-        public function siblingsToArray(){
-            for ($i=0; $i < count($this->siblingsGender) ; $i++) {
-                if($this->siblingsGender[$i] !== "" || $this->siblingsAge[$i] !== "" || $this->siblingsHealthy[$i] !== "" || $this->siblingsAlive[$i] !== "" || $this->siblingsParents[$i] !== "" ){
+        public function validateSiblings(){
+            for ($i=0; $i < count($this->tableIndex) ; $i++) {
+                $this->siblingsGender[$i] = !empty($this->siblingsGender[$i])  ? $this->siblingsGender[$i] : null;
+                $this->siblingsAge[$i] = !empty($this->siblingsAge[$i]) ? $this->siblingsAge[$i] : null;
+                $this->siblingsHealthy[$i] = !empty($this->siblingsHealthy[$i]) ? $this->siblingsHealthy[$i] : null;
+                $this->siblingsAlive[$i] = !empty($this->siblingsAlive[$i]) ? $this->siblingsAlive[$i] : null;
+                $this->siblingsParents[$i] = !empty($this->siblingsParents[$i]) ? $this->siblingsParents[$i] : null;
+
+                if(!is_null($this->siblingsGender[$i]) || !is_null($this->siblingsAge[$i]) || !is_null($this->siblingsHealthy[$i]) || !is_null($this->siblingsAlive[$i]) || !is_null($this->siblingsParents[$i])){
 
                     $this->allSiblings[] = [
                     'gender' => $this->siblingsGender[$i],
@@ -81,7 +90,7 @@
             $this->arrayParams['IncomeForHowMany'] = $this->incomeForHowMany;
             $this->arrayParams['Abuse'] = $this->abuse;
             $this->arrayParams['SexuallyActive'] = $this->sexuallyActive;
-            $this->arrayParams['Siblings'] = $this->siblings;
+            $this->arrayParams['siblingRadio'] = $this->siblings;
         }
 
         public function printParams(){
@@ -111,7 +120,7 @@
         }
 
         public function checkSocialHistoryID(){
-            if($this->socialHistoryID === ""){
+            if(is_null($this->socialHistoryID)){
                 return false;
             } else {
                 return true;
@@ -119,15 +128,11 @@
         }
 
         public function checkSiblings(){
-            if(empty($this->allSiblings) || $this->siblings === false){
+            if($this->siblings === false){
                 return false;
             } else {
                 return true;
             }
-        }
-
-        public function getNumberSiblings(){
-            return count($this->allSiblings);
         }
     }
 ?>

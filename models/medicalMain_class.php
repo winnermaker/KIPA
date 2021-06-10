@@ -32,59 +32,59 @@
         private $sickleCellPos;
         private $sickleCellType;
         private $G6PDeficiency;
-        private  $arrayChild = array();
+        private $arrayMedical = array();
 
         public function __construct(){
 
-            $this->medicalMainID = isset($_POST['medicalMainID']) ? $_POST['medicalMainID'] : null;
-            $this->nhiRegistration = isset($_POST['nhiRadios']) ? $_POST['nhiRadios'] : null;
+            $this->medicalMainID = !empty($_POST['medicalMainID']) ? $_POST['medicalMainID'] : null;
+            $this->nhiRegistration = !empty($_POST['nhiRadios']) ? $_POST['nhiRadios'] : null;
             $this->getRadioButtonValue($this->nhiRegistration);
 
-            $this->nhiNumber = isset($_POST['nhiNumber']) ? $_POST['nhiNumber'] : null;
-            $this->reviewOn = isset($_POST['reviewOn']) ? $_POST['reviewOn'] : null;
-            $this->conditions = isset($_POST['conditions']) ? $_POST['conditions'] : null;
-            $this->permanentPrescription = isset($_POST['permanentPrescription']) ? $_POST['permanentPrescription'] : null;
-            $this->plan = isset($_POST['plan']) ? $_POST['plan'] : null;
-            $this->otherInformation = isset($_POST['otherInformation']) ? $_POST['otherInformation'] : null;
+            $this->nhiNumber = !empty($_POST['nhiNumber']) ? $_POST['nhiNumber'] : null;
+            $this->reviewOn = !empty($_POST['reviewOn']) ? $_POST['reviewOn'] : null;
+            $this->conditions = !empty($_POST['conditions']) ? $_POST['conditions'] : null;
+            $this->permanentPrescription = !empty($_POST['permanentPrescription']) ? $_POST['permanentPrescription'] : null;
+            $this->plan = !empty($_POST['plan']) ? $_POST['plan'] : null;
+            $this->otherInformation = !empty($_POST['otherInformation']) ? $_POST['otherInformation'] : null;
 
-            $this->PregnancyHistory = isset($_POST['PregnancyHistRadios']) ? $_POST['PregnancyHistRadios'] : null;
+            $this->PregnancyHistory = !empty($_POST['PregnancyHistRadios']) ? $_POST['PregnancyHistRadios'] : null;
             $this->getRadioButtonValue($this->PregnancyHistory);
-            $this->immuniComplRadios = isset($_POST['immuniComplRadios']) ? $_POST['immuniComplRadios'] : null;
+            $this->immuniComplRadios = !empty($_POST['immuniComplRadios']) ? $_POST['immuniComplRadios'] : null;
             $this->getRadioButtonValue($this->immuniComplRadios);
-            $this->physicalAbuse = isset($_POST['physicalAbuseRadios']) ? $_POST['physicalAbuseRadios'] : null;
+            $this->physicalAbuse = !empty($_POST['physicalAbuseRadios']) ? $_POST['physicalAbuseRadios'] : null;
             $this->getRadioButtonValue($this->physicalAbuse);
-            $this->sexualAbuse = isset($_POST['sexualAbuseRadios']) ? $_POST['sexualAbuseRadios'] : null;
+            $this->sexualAbuse = !empty($_POST['sexualAbuseRadios']) ? $_POST['sexualAbuseRadios'] : null;
             $this->getRadioButtonValue($this->sexualAbuse);
-            $this->substanceAbuse = isset($_POST['substanceAbuseRadios']) ? $_POST['substanceAbuseRadios'] : null;
+            $this->substanceAbuse = !empty($_POST['substanceAbuseRadios']) ? $_POST['substanceAbuseRadios'] : null;
             $this->getRadioButtonValue($this->substanceAbuse);
-            $this->menstrualHistory = isset($_POST['menstrualHistory']) ? $_POST['menstrualHistory'] : null;
-            $this->hepBPos = isset($_POST['HepBPosRadios']) ? $_POST['HepBPosRadios'] : null;
+            $this->menstrualHistory = !empty($_POST['menstrualHistory']) ? $_POST['menstrualHistory'] : null;
+            $this->hepBPos = !empty($_POST['HepBPosRadios']) ? $_POST['HepBPosRadios'] : null;
             $this->getRadioButtonValue($this->hepBPos);
-            $this->hepBPosCheckDate = isset($_POST['HepBPosCheckDate']) ? $_POST['HepBPosCheckDate'] : null;
-            $this->hepBTreated = isset($_POST['HepBTreatedRadios']) ? $_POST['HepBTreatedRadios'] : null;
+            $this->hepBPosCheckDate = !empty($_POST['HepBPosCheckDate']) ? $_POST['HepBPosCheckDate'] : null;
+            $this->hepBTreated = !empty($_POST['HepBTreatedRadios']) ? $_POST['HepBTreatedRadios'] : null;
             $this->getRadioButtonValue($this->hepBTreated);
-            $this->hivPos = isset($_POST['hivRadios']) ? $_POST['hivRadios'] : null;
+            $this->hivPos = !empty($_POST['hivRadios']) ? $_POST['hivRadios'] : null;
             $this->getRadioButtonValue($this->hivPos);
-            $this->hivCheckDate = isset($_POST['hivCheckDate']) ? $_POST['hivCheckDate'] : null;
-            $this->hivTreated = isset($_POST['hivTreatedRadios']) ? $_POST['hivTreatedRadios'] : null;
+            $this->hivCheckDate = !empty($_POST['hivCheckDate']) ? $_POST['hivCheckDate'] : null;
+            $this->hivTreated = !empty($_POST['hivTreatedRadios']) ? $_POST['hivTreatedRadios'] : null;
             $this->getRadioButtonValue($this->hivTreated);
-            $this->tbPos = isset($_POST['TbposRadios']) ? $_POST['TbposRadios'] : null;
+            $this->tbPos = !empty($_POST['TbposRadios']) ? $_POST['TbposRadios'] : null;
             $this->getRadioButtonValue($this->tbPos);
-            $this->tbposCheckDate = isset($_POST['TbposCheckDate']) ? $_POST['TbposCheckDate'] : null;
-            $this->tbposTreated = isset($_POST['TposTreatedRadios']) ? $_POST['TposTreatedRadios'] : null;
+            $this->tbposCheckDate = !empty($_POST['TbposCheckDate']) ? $_POST['TbposCheckDate'] : null;
+            $this->tbposTreated = !empty($_POST['TposTreatedRadios']) ? $_POST['TposTreatedRadios'] : null;
             $this->getRadioButtonValue($this->tbposTreated);
-            $this->stdPos = isset($_POST['stdposRadios']) ? $_POST['stdposRadios'] : null;
+            $this->stdPos = !empty($_POST['stdposRadios']) ? $_POST['stdposRadios'] : null;
             $this->getRadioButtonValue($this->stdPos);
-            $this->stdPosCheckDate = isset($_POST['stdposCheckDate']) ? $_POST['stdposCheckDate'] : null;
-            $this->stdPosTreated = isset($_POST['STDPosTreatedRadios']) ? $_POST['STDPosTreatedRadios'] : null;
+            $this->stdPosCheckDate = !empty($_POST['stdposCheckDate']) ? $_POST['stdposCheckDate'] : null;
+            $this->stdPosTreated = !empty($_POST['STDPosTreatedRadios']) ? $_POST['STDPosTreatedRadios'] : null;
             $this->getRadioButtonValue($this->stdPosTreated);
-            $this->pregnancyPos = isset($_POST['pregPosRadios']) ? $_POST['pregPosRadios'] : null;
+            $this->pregnancyPos = !empty($_POST['pregPosRadios']) ? $_POST['pregPosRadios'] : null;
             $this->getRadioButtonValue($this->pregnancyPos);
-            $this->pregnancyTestDate = isset($_POST['pregTestDate']) ? $_POST['pregTestDate'] : null;
-            $this->sickleCellPos = isset($_POST['SickleCellPosRadios']) ? $_POST['SickleCellPosRadios'] : null;
+            $this->pregnancyTestDate = !empty($_POST['pregTestDate']) ? $_POST['pregTestDate'] : null;
+            $this->sickleCellPos = !empty($_POST['SickleCellPosRadios']) ? $_POST['SickleCellPosRadios'] : null;
             $this->getRadioButtonValue($this->sickleCellPos);
-            $this->sickleCellType = isset($_POST['sickleCellType']) ? $_POST['sickleCellType'] : null;
-            $this->G6PDeficiency = isset($_POST['G6DPRadios']) ? $_POST['G6DPRadios'] : null;
+            $this->sickleCellType = !empty($_POST['sickleCellType']) ? $_POST['sickleCellType'] : null;
+            $this->G6PDeficiency = !empty($_POST['G6DPRadios']) ? $_POST['G6DPRadios'] : null;
             $this->getRadioButtonValue($this->G6PDeficiency);
 
             $this->paramsToArray();
@@ -103,36 +103,36 @@
         }
 
         public function paramsToArray(){
-            $this->arrayChild['NHIReg'] = $this->nhiRegistration;
-            $this->arrayChild['NHINr'] = $this->nhiNumber;
-            $this->arrayChild['ReviewOn'] =  $this->reviewOn;
-            $this->arrayChild['Conditions'] = $this->conditions;
-            $this->arrayChild['PermMedication'] = $this->permanentPrescription;
-            $this->arrayChild['Plan'] = $this->plan;
-            $this->arrayChild['OtherInfo'] = $this->otherInformation;
-            $this->arrayChild['PregnancyHist'] = $this->PregnancyHistory;
-            $this->arrayChild['ImmuniCompl'] = $this->immuniComplRadios;
-            $this->arrayChild['PhysicalAbuse'] = $this->physicalAbuse;
-            $this->arrayChild['SexualAbuse'] = $this->sexualAbuse;
-            $this->arrayChild['SubstanceAbuse'] = $this->substanceAbuse;
-            $this->arrayChild['MenstrualHist'] = $this->menstrualHistory;
-            $this->arrayChild['HepBPos'] = $this->hepBPos;
-            $this->arrayChild['HepBPosCheckDate'] = $this->hepBPosCheckDate;
-            $this->arrayChild['HepBPosCheckDate'] = $this->hepBTreated;
-            $this->arrayChild['HIVPos'] = $this->hivPos;
-            $this->arrayChild['HIVCheckDate'] = $this->hivCheckDate;
-            $this->arrayChild['HIVTreated'] = $this->hivTreated;
-            $this->arrayChild['TPos'] = $this->tbPos;
-            $this->arrayChild['TposCheckDate'] = $this->tbposCheckDate;
-            $this->arrayChild['TPosTreated'] = $this->tbposTreated;
-            $this->arrayChild['STDPos'] = $this->stdPos;
-            $this->arrayChild['STDPosCheckDate'] = $this->stdPosCheckDate;
-            $this->arrayChild['STDPosTreated'] = $this->stdPosTreated;
-            $this->arrayChild['PregTestPos'] = $this->pregnancyPos;
-            $this->arrayChild['PregTestDate'] = $this->pregnancyTestDate;
-            $this->arrayChild['SickelCellPos'] = $this->sickleCellPos;
-            $this->arrayChild['SickelCellType'] = $this->sickleCellType;
-            $this->arrayChild['G6DP'] = $this->G6PDeficiency;
+            $this->arrayMedical['NHIReg'] = $this->nhiRegistration;
+            $this->arrayMedical['NHINr'] = $this->nhiNumber;
+            $this->arrayMedical['ReviewOn'] =  $this->reviewOn;
+            $this->arrayMedical['Conditions'] = $this->conditions;
+            $this->arrayMedical['PermMedication'] = $this->permanentPrescription;
+            $this->arrayMedical['Plan'] = $this->plan;
+            $this->arrayMedical['OtherInfo'] = $this->otherInformation;
+            $this->arrayMedical['PregnancyHist'] = $this->PregnancyHistory;
+            $this->arrayMedical['ImmuniCompl'] = $this->immuniComplRadios;
+            $this->arrayMedical['PhysicalAbuse'] = $this->physicalAbuse;
+            $this->arrayMedical['SexualAbuse'] = $this->sexualAbuse;
+            $this->arrayMedical['SubstanceAbuse'] = $this->substanceAbuse;
+            $this->arrayMedical['MenstrualHist'] = $this->menstrualHistory;
+            $this->arrayMedical['HepBPos'] = $this->hepBPos;
+            $this->arrayMedical['HepBPosCheckDate'] = $this->hepBPosCheckDate;
+            $this->arrayMedical['HepBPosCheckDate'] = $this->hepBTreated;
+            $this->arrayMedical['HIVPos'] = $this->hivPos;
+            $this->arrayMedical['HIVCheckDate'] = $this->hivCheckDate;
+            $this->arrayMedical['HIVTreated'] = $this->hivTreated;
+            $this->arrayMedical['TPos'] = $this->tbPos;
+            $this->arrayMedical['TposCheckDate'] = $this->tbposCheckDate;
+            $this->arrayMedical['TPosTreated'] = $this->tbposTreated;
+            $this->arrayMedical['STDPos'] = $this->stdPos;
+            $this->arrayMedical['STDPosCheckDate'] = $this->stdPosCheckDate;
+            $this->arrayMedical['STDPosTreated'] = $this->stdPosTreated;
+            $this->arrayMedical['PregTestPos'] = $this->pregnancyPos;
+            $this->arrayMedical['PregTestDate'] = $this->pregnancyTestDate;
+            $this->arrayMedical['SickelCellPos'] = $this->sickleCellPos;
+            $this->arrayMedical['SickelCellType'] = $this->sickleCellType;
+            $this->arrayMedical['G6DP'] = $this->G6PDeficiency;
         }
 
         public function printParams(){
@@ -149,19 +149,15 @@
         }
 
         public function getParams(){
-            return $this->arrayChild;
+            return $this->arrayMedical;
         }
 
         public function checkMedicalMainID(){
-            if($this->medicalMainID === ""){
+            if(is_null($this->medicalMainID)){
                 return false;
             } else {
                 return true;
             }
         }
-
-        /*public function getParams(){
-            return $this->arrayChild;
-        }*/
     }
 ?>

@@ -15,19 +15,19 @@
 
 
         public function __construct() {
-            $this->patientID = isset($_POST['patientID']) ? $_POST['patientID'] : null;
-            $this->gender = isset($_POST['genderRadios']) ? $_POST['genderRadios'] : null;
+            $this->patientID = !empty($_POST['patientID']) ? $_POST['patientID'] : null;
+            $this->gender = !empty($_POST['genderRadios']) ? $_POST['genderRadios'] : null;
             $this->getGenderRadioValue($this->gender);
 
-            $this->firstName = isset($_POST['firstName']) ? $_POST['firstName'] : null;
-            $this->lastName =  isset($_POST['lastName']) ? $_POST['lastName'] : null;
-            $this->callName =  isset($_POST['callName']) ? $_POST['callName'] : null;
-            $this->dateOfBirth =  isset($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : null;
-            $this->estDateOfBirth =  isset($_POST['estDateOfBirth']) ? $_POST['estDateOfBirth'] : null;
-            $this->admissionDate =  isset($_POST['admissionDate']) ? $_POST['admissionDate'] : null;
-            $this->dischargeDate =  isset($_POST['dischargeDate']) ? $_POST['dischargeDate'] : null;
-            $this->pictureTakenOn =  isset($_POST['pictureTakenOn']) ? $_POST['pictureTakenOn'] : null;
-            $this->customFile =  isset($_POST['customFile']) ? $_POST['customFile'] : null;
+            $this->firstName = !empty($_POST['firstName']) ? $_POST['firstName'] : null;
+            $this->lastName =  !empty($_POST['lastName']) ? $_POST['lastName'] : null;
+            $this->callName =  !empty($_POST['callName']) ? $_POST['callName'] : null;
+            $this->dateOfBirth =  !empty($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : null;
+            $this->estDateOfBirth =  !empty($_POST['estDateOfBirth']) ? $_POST['estDateOfBirth'] : null;
+            $this->admissionDate =  !empty($_POST['admissionDate']) ? $_POST['admissionDate'] : null;
+            $this->dischargeDate =  !empty($_POST['dischargeDate']) ? $_POST['dischargeDate'] : null;
+            $this->pictureTakenOn =  !empty($_POST['pictureTakenOn']) ? $_POST['pictureTakenOn'] : null;
+            $this->customFile =  !empty($_POST['customFile']) ? $_POST['customFile'] : null;
 
             $this->paramsToArray();
         }
@@ -69,7 +69,7 @@
         }
 
         public function checkPatientID(){
-            if($this->patientID === ""){
+            if(is_null($this->patientID)){
                 return false;
             } else {
                 return true;

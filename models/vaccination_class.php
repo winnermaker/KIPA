@@ -16,15 +16,15 @@
 
 
         public function __construct(){
-            $this->vaccinationID = isset($_POST['vaccinationID']) ? $_POST['vaccinationID'] : null;
-            $this->vaccineDataList = isset($_POST['vaccineDataList']) ? $_POST['vaccineDataList'] : null;
-            $this->firstVaccDate = isset($_POST['vaccDate1']) ? $_POST['vaccDate1'] : null;
-            $this->secondVaccDate = isset($_POST['vaccDate2']) ? $_POST['vaccDate2'] : null;
-            $this->thirdVaccDate = isset($_POST['vaccDate3']) ? $_POST['vaccDate3'] : null;
-            $this->fourthVaccDate = isset($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
-            $this->fifthVaccDate = isset($_POST['vaccDate5']) ? $_POST['vaccDate5'] : null;
-            $this->nextVaccDate = isset($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
-            $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
+            $this->vaccinationID = !empty($_POST['vaccinationID']) ? $_POST['vaccinationID'] : null;
+            $this->vaccineDataList = !empty($_POST['vaccineDataList']) ? $_POST['vaccineDataList'] : null;
+            $this->firstVaccDate = !empty($_POST['vaccDate1']) ? $_POST['vaccDate1'] : null;
+            $this->secondVaccDate = !empty($_POST['vaccDate2']) ? $_POST['vaccDate2'] : null;
+            $this->thirdVaccDate = !empty($_POST['vaccDate3']) ? $_POST['vaccDate3'] : null;
+            $this->fourthVaccDate = !empty($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
+            $this->fifthVaccDate = !empty($_POST['vaccDate5']) ? $_POST['vaccDate5'] : null;
+            $this->nextVaccDate = !empty($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
+            $this->vaccinationRemarks = !empty($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
 
 
             for ($i=0; $i < count($this->vaccineDataList); $i++) {
@@ -52,7 +52,7 @@
         }
 
         public function checkVaccinationID(){
-            if($this->vaccinationID === ""){
+            if(is_null($this->vaccinationID)){
                 return false;
             } else {
                 return true;

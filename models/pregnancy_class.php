@@ -32,46 +32,46 @@
         private  $arrayPreviousPregnancy = array();
 
         public function __construct(){
-            $this->pregnancyID = isset($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
-            $this->entryDate = isset($_POST['entryDate']) ? $_POST['entryDate'] : null;
-            $this->gravida = isset($_POST['gravida']) ? $_POST['gravida'] : null;
-            $this->para = isset($_POST['para']) ? $_POST['para'] : null;
-            $this->alive = isset($_POST['alive']) ? $_POST['alive'] : null;
-            $this->dead = isset($_POST['dead']) ? $_POST['dead'] : null;
-            $this->top = isset($_POST['top']) ? $_POST['top'] : null;
+            $this->pregnancyID = !empty($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
+            $this->entryDate = !empty($_POST['entryDate']) ? $_POST['entryDate'] : null;
+            $this->gravida = !empty($_POST['gravida']) ? $_POST['gravida'] : null;
+            $this->para = !empty($_POST['para']) ? $_POST['para'] : null;
+            $this->alive = !empty($_POST['alive']) ? $_POST['alive'] : null;
+            $this->dead = !empty($_POST['dead']) ? $_POST['dead'] : null;
+            $this->top = !empty($_POST['top']) ? $_POST['top'] : null;
 
-            $this->gestationalAge = isset($_POST['gestationalAge']) ? $_POST['gestationalAge'] : null;
-            $this->estimatedDateOfDelivery = isset($_POST['estimatedDateOfDelivery']) ? $_POST['estimatedDateOfDelivery'] : null;
-            $this->antenatalClinikAttendanceRadios = isset($_POST['antenatalClinikAttendanceRadios']) ? $_POST['antenatalClinikAttendanceRadios'] : null;
+            $this->gestationalAge = !empty($_POST['gestationalAge']) ? $_POST['gestationalAge'] : null;
+            $this->estimatedDateOfDelivery = !empty($_POST['estimatedDateOfDelivery']) ? $_POST['estimatedDateOfDelivery'] : null;
+            $this->antenatalClinikAttendanceRadios = !empty($_POST['antenatalClinikAttendanceRadios']) ? $_POST['antenatalClinikAttendanceRadios'] : null;
             $this->getRadioValue($this->antenatalClinikAttendanceRadios);
-            $this->problems = isset($_POST['problems']) ? $_POST['problems'] : null;
-            $this->pregnancyRemarks = isset($_POST['pregnancyRemarks']) ? $_POST['pregnancyRemarks'] : null;
+            $this->problems = !empty($_POST['problems']) ? $_POST['problems'] : null;
+            $this->pregnancyRemarks = !empty($_POST['pregnancyRemarks']) ? $_POST['pregnancyRemarks'] : null;
 
-            $this->arrayName = isset($_POST['name']) ? $_POST['name'] : null;
-            $this->arrayDateOfBirth = isset($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
-            $this->arrayEventsPregnancy = isset($_POST['eventsDuringPregnancy']) ? $_POST['eventsDuringPregnancy'] : null;
-            $this->arrayDurationOfLabor = isset($_POST['durationOfLabor']) ? $_POST['durationOfLabor'] : null;
-            $this->arraySpontCSforceps = isset($_POST['spont_CS_forceps']) ? $_POST['spont_CS_forceps'] : null;
-            $this->arrayChildrenProblems = isset($_POST['childrenProblems']) ? $_POST['childrenProblems'] : null;
-            $this->arrayRemarks = isset($_POST['Remarks']) ? $_POST['Remarks'] : null;
+            $this->arrayName = !empty($_POST['name']) ? $_POST['name'] : null;
+            $this->arrayDateOfBirth = !empty($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
+            $this->arrayEventsPregnancy = !empty($_POST['eventsDuringPregnancy']) ? $_POST['eventsDuringPregnancy'] : null;
+            $this->arrayDurationOfLabor = !empty($_POST['durationOfLabor']) ? $_POST['durationOfLabor'] : null;
+            $this->arraySpontCSforceps = !empty($_POST['spont_CS_forceps']) ? $_POST['spont_CS_forceps'] : null;
+            $this->arrayChildrenProblems = !empty($_POST['childrenProblems']) ? $_POST['childrenProblems'] : null;
+            $this->arrayRemarks = !empty($_POST['Remarks']) ? $_POST['Remarks'] : null;
 
             for ($i=0; $i < count($this->arrayName); $i++) { 
                 $gender = "genderpregnancyRadios" . $i;
                 $healthy = "healthyRadios" . $i;
 
-                $this->genderpregnancyRadios = isset($_POST[$gender]) ? $_POST[$gender] : null;
+                $this->genderpregnancyRadios = !empty($_POST[$gender]) ? $_POST[$gender] : null;
                 $this->getGenderRadioValue($this->genderpregnancyRadios);
 
-                $this->healthyRadios = isset($_POST[$healthy]) ? $_POST[$healthy] : null;
+                $this->healthyRadios = !empty($_POST[$healthy]) ? $_POST[$healthy] : null;
                 $this->getRadioValue($this->healthyRadios);
                 
-                $this->arrayName[$i] = isset($this->arrayName[$i]) ? $this->arrayName[$i] : null;
-                $this->arrayDateOfBirth[$i] = isset($this->arrayDateOfBirth[$i]) ? $this->arrayDateOfBirth[$i] : null;
-                $this->arrayEventsPregnancy[$i] = isset($this->arrayEventsPregnancy[$i]) ? $this->arrayEventsPregnancy[$i] : null;
-                $this->arrayDurationOfLabor[$i] = isset($this->arrayDurationOfLabor[$i]) ? $this->arrayDurationOfLabor[$i] : null;
-                $this->arraySpontCSforceps[$i] = isset($this->arraySpontCSforceps[$i]) ? $this->arraySpontCSforceps[$i] : null;
-                $this->arrayChildrenProblems[$i] = isset($this->arrayChildrenProblems[$i]) ? $this->arrayChildrenProblems[$i] : null;
-                $this->arrayRemarks[$i] = isset($this->arrayRemarks[$i]) ? $this->arrayRemarks[$i] : null;
+                $this->arrayName[$i] = !empty($this->arrayName[$i]) ? $this->arrayName[$i] : null;
+                $this->arrayDateOfBirth[$i] = !empty($this->arrayDateOfBirth[$i]) ? $this->arrayDateOfBirth[$i] : null;
+                $this->arrayEventsPregnancy[$i] = !empty($this->arrayEventsPregnancy[$i]) ? $this->arrayEventsPregnancy[$i] : null;
+                $this->arrayDurationOfLabor[$i] = !empty($this->arrayDurationOfLabor[$i]) ? $this->arrayDurationOfLabor[$i] : null;
+                $this->arraySpontCSforceps[$i] = !empty($this->arraySpontCSforceps[$i]) ? $this->arraySpontCSforceps[$i] : null;
+                $this->arrayChildrenProblems[$i] = !empty($this->arrayChildrenProblems[$i]) ? $this->arrayChildrenProblems[$i] : null;
+                $this->arrayRemarks[$i] = !empty($this->arrayRemarks[$i]) ? $this->arrayRemarks[$i] : null;
 
                 $this->arrayAllChilds[] = [
                     'genderRadio' => $this->genderpregnancyRadios,
@@ -167,7 +167,7 @@
         }
 
         public function checkPregnancyID(){
-            if($this->pregnancyID === ""){
+            if(is_null($this->pregnancyID)){
                 return false;
             } else {
                 return true;
