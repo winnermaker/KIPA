@@ -288,25 +288,25 @@
         }
 
         public function paramsMaleToArray(){
-          $this->arrayPexamMale['male_CircumsisedRadio'] = $this->male_CircumsisedRadio;
-          $this->arrayPexamMale['male_tannerStage'] = $this->male_tannerStage;
-          $this->arrayPexamMale['male_descensusOfTestes'] = $this->male_descensusOfTestes;
+          $this->arrayPexamMale['circumcised'] = $this->male_CircumsisedRadio;
+          $this->arrayPexamMale['TannerSt'] = $this->male_tannerStage;
+          $this->arrayPexamMale['Descensus'] = $this->male_descensusOfTestes;
           $this->arrayPexamMale['male_remarks'] = $this->male_remarks;
         }
 
         public function paramsFemaleToArray(){
-          $this->arrayPexamFemale['female_circumcisedRadios'] = $this->female_circumcisedRadios;
-          $this->arrayPexamFemale['female_tannerStage'] = $this->female_tannerStage;
-          $this->arrayPexamFemale['female_hymen'] = $this->female_hymen;
-          $this->arrayPexamFemale['female_introitus'] = $this->female_introitus;
-          $this->arrayPexamFemale['female_discharge'] = $this->female_discharge;
-          $this->arrayPexamFemale['female_breasts'] = $this->female_breasts;
-          $this->arrayPexamFemale['female_mastodynia'] = $this->female_mastodynia;
-          $this->arrayPexamFemale['female_period'] = $this->female_period;
-          $this->arrayPexamFemale['female_dysmenorrhoea'] = $this->female_dysmenorrhoea;
-          $this->arrayPexamFemale['female_dyspareunia'] = $this->female_dyspareunia;
-          $this->arrayPexamFemale['female_menarche'] = $this->female_menarche;
-          $this->arrayPexamFemale['female_pregnancy'] = $this->female_pregnancy;
+          $this->arrayPexamFemale['circumcised'] = $this->female_circumcisedRadios;
+          $this->arrayPexamFemale['TannerSt'] = $this->female_tannerStage;
+          $this->arrayPexamFemale['Hymen'] = $this->female_hymen;
+          $this->arrayPexamFemale['Introitus'] = $this->female_introitus;
+          $this->arrayPexamFemale['Discharge'] = $this->female_discharge;
+          $this->arrayPexamFemale['Breasts'] = $this->female_breasts;
+          $this->arrayPexamFemale['Mastodynia'] = $this->female_mastodynia;
+          $this->arrayPexamFemale['Period'] = $this->female_period;
+          $this->arrayPexamFemale['Dysmenorrhoea'] = $this->female_dysmenorrhoea;
+          $this->arrayPexamFemale['Dyspareunia'] = $this->female_dyspareunia;
+          $this->arrayPexamFemale['Menarche'] = $this->female_menarche;
+          $this->arrayPexamFemale['Pregnancy'] = $this->female_pregnancy;
         }
 
         public function printParams(){

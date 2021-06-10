@@ -12,7 +12,6 @@
         }else {
           $controller -> prepared_update('medicalmain',$medicalData);
         }
-        //$test = $controller->getMedicalData($_COOKIE["childIDCookie"]);
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/medicalMain_view.php";

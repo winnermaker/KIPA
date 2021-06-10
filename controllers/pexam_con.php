@@ -5,32 +5,33 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();
         $pexamdata = $pexamObj->getParams();
+        $gendata = array();
 
         if (!$pexamObj->checkPexamID()) {
-          $pexamdata['fk_MedicalID']=$_COOKIE["MedicalIDCookie"];
+          $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
           $controller -> prepared_insert('medicalpexam',$pexamdata);
 
-          if($pexamObj->checkGenitals() === 0){
+          if($pexamObj->checkGenitals() == 0){
               //female
-              $pexamdata = $pexamObj->getParamsFemale();
-              $pexamdata['fk_PEXAMID']=$_COOKIE["pexamID"];
-              $controller -> prepared_insert('MedicalGenFemale',$pexamdata);
+              $gendata = $pexamObj->getParamsFemale();
+              $gendata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
+              $controller -> prepared_insert('MedicalGenFemale',$gendata);
 
-          } elseif($pexamObj->checkGenitals() === 1){
+          } elseif($pexamObj->checkGenitals() == 1){
               //male
-              $pexamdata = $pexamObj->getParamsMale();
-              $pexamdata['fk_PEXAMID']=$_COOKIE["pexamID"];
-              $controller -> prepared_insert('MedicalGenMale',$pexamdata);
+              $gendata = $pexamObj->getParamsMale();
+              $gendata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
+              $controller -> prepared_insert('MedicalGenMale',$gendata);
 
-          } elseif($pexamObj->checkGenitals() === 2){
+          } elseif($pexamObj->checkGenitals() == 2){
               //other
-              $pexamdata = $pexamObj->getParamsFemale();
-              $pexamdata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
-              $controller -> prepared_insert('MedicalGenFemale',$pexamdata);
+              $gendata = $pexamObj->getParamsFemale();
+              $gendata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
+              $controller -> prepared_insert('MedicalGenFemale',$gendata);
 
-              $pexamdata = $pexamObj->getParamsMale();
-              $pexamdata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
-              $controller -> prepared_insert('MedicalGenMale',$pexamdata);
+              $gendata = $pexamObj->getParamsMale();
+              $gendata['fk_PEXAMID']=$_COOKIE["pexamIDCookie"];
+              $controller -> prepared_insert('MedicalGenMale',$gendata);
           }
         }else {
           $controller -> prepared_update('medicalpexam',$pexamdata);
@@ -42,7 +43,8 @@
 
           } elseif($pexamObj->checkGenitals() === 1){
               //male
-              $controller -> prepared_insert('MedicalGenMale',$pexamObj->getParamsMale());
+              $pexamdata = $pexamObj->getParamsMale();
+              $controller -> prepared_update('MedicalGenMale',$pexamdata);
 
           } elseif($pexamObj->checkGenitals() === 2){
               //other

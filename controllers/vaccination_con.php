@@ -7,17 +7,17 @@
         $vaccinationObj = new vaccination();
 
         $vaccdata = $vaccinationObj->getParams();
-        for($i=0; $i < count($vaccdata); $i++) {
-          $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
-          $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
-        }
-
         $vaccdates = $vaccinationObj->getParamsDates();
         $data = Array();
+        $fk_VaccID = array();
+
+        for($i=0; $i < count($vaccdata); $i++) {
+          $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
+          $fk_VaccID[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+        }
 
         for($i=0; $i < count($vaccdates); $i++) {
-
-          $data['fk_VaccID'] = $_COOKIE["vaccIDCookie"];
+          $data['fk_VaccID'] = $fk_VaccID[$i];
 
           $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
           $controller->prepared_insert('medicalvaccdate',$data);
@@ -38,6 +38,8 @@
             $controller->prepared_insert('medicalvaccdate',$data);
           }
         }
+        $test = $controller->getMedicalData($_COOKIE["childIDCookie"]);
+        var_dump($test);
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/vaccination_view.php";

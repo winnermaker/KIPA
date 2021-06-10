@@ -34,7 +34,7 @@ create table if not exists SocialHistory
     create table if not exists SocialSiblings
     (
        SiblingID			int auto_increment	not null primary key,
-       	fk_SocialID		int,
+       	fk_SocialID		int not null,
        Age					text,
        Gender				text,
        Alive				text,
@@ -248,9 +248,10 @@ create table if not exists MedicalGenMale
 (
 	GenMaleID			int auto_increment	not null primary key,
     fk_PEXAMID			int not null,
-    circumcised			text,
+    circumcised			boolean,
     TannerSt 			text,
     Descensus 			text,
+    remarks       text,
 	foreign key (fk_PEXAMID) references medicalpexam(PEXAMID) on delete no action
     );
 
@@ -258,8 +259,9 @@ create table if not exists MedicalGenFemale
 (
 	GenFemaleID			int auto_increment	not null primary key,
     fk_PEXAMID			int not null,
-    circumcised			text,
+    circumcised			boolean,
     TannerSt 			text,
+    Hymen       text,
     Introitus			text,
     Discharge 			text,
     Breasts 			text,

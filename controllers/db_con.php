@@ -47,15 +47,9 @@
       }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
         $ID = $this->pdo->lastInsertId();
         setcookie ("medicalIDCookie" , (int)$ID);
-      }elseif ($table == $this ->escape_mysql_identifier('socialhistory')) {
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("socialIDCookie" , (int)$ID);
       }elseif ($table == $this ->escape_mysql_identifier('medicalpexam')) {
         $ID = $this->pdo->lastInsertId();
         setcookie ("pexamIDCookie" , (int)$ID);
-      }elseif ($table == $this ->escape_mysql_identifier('medicalvacc')) {
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("vaccIDCookie" , (int)$ID);
       }elseif ($table == $this ->escape_mysql_identifier('medicalpregnancymain')) {
         $ID = $this->pdo->lastInsertId();
         setcookie ("pregnancyIDCookie" , (int)$ID);
@@ -63,6 +57,7 @@
         $ID = $this->pdo->lastInsertId();
         setcookie ("visitIDCookie" , (int)$ID);
       }
+      return $this->pdo->lastInsertId();
     }
 
     function prepared_update($table, $data) {
@@ -85,13 +80,6 @@
       $this->pdo->prepare($sql)->execute($values);
     }
 
-    function insertMedicalVaccDate($table, $vaccDateArray){
-      $vaccDate = $vaccObj->getParams();
-      prepared_insert($table, $data);
-      $sql = "INSERT INTO MedicalVaccDate (fk_VaccID, VaccDate) values (?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
-
-    }
 
     function insertMedicalPregnancyChildData($table, $childrenArray){
       prepared_insert($table, $data);
@@ -114,15 +102,15 @@
     }
 
     function getMedicalData($childrenID){
-      $sql = $this->pdo->prepare("SELECT medicalmain.*, medicalvacc.nxtVaccDate FROM medicalmain NATURAL JOIN medicalvacc WHERE  fk_ChildrenID = ?");
-      $sql->execute($ForeignKeyID);
-      $medical = $stmt->fetch();
+      $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
+      $sql->execute([$childrenID]);
+      $medical = $sql->fetchAll();
       return $medical;
     }
 
 
     function getAllChildernReviewSoon(){
-        $sql = "SELECT * FROM childrenmain NATURAL JOIN medicalmain WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
+        $sql = "SELECT * FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
         $stmt =  $this->pdo->query($sql)-fetchAll();
         /*while ($row = $stmt->fetch()) {
           echo $row['name']."<br />\n";
