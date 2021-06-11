@@ -9,10 +9,6 @@
         if (!$pregnancyObj->checkPregnancyID()) {
           $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
           $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
-          echo "present";
-          var_dump($pregnancyObj->checkPresentPregnancy());
-          echo "previous";
-          var_dump($pregnancyObj->checkPreviousPregnancy());
           if ($pregnancyObj->checkPresentPregnancy()) {
             $pregdata = $pregnancyObj->getPresentPregnancy();
             $pregdata['fk_MotherID'] = $motherID;
@@ -27,6 +23,16 @@
           }
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);
+          if ($pregnancyObj->checkPresentPregnancy()) {
+            $pregdata = $pregnancyObj->getPresentPregnancy();
+            $controller -> prepared_update('medicalpresentpregnancy',$pregdata);
+          }
+          if ($pregnancyObj->checkPreviousPregnancy()) {
+            $pregdata = $pregnancyObj->getPreviousPregnancy();
+            for($i=0;$i<count($pregdata);$i++){
+              $controller -> prepared_update('medicalpregnancychilddata',$pregdata[$i]);
+            }
+          }
         }
 
 
