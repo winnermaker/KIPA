@@ -11,7 +11,7 @@
         private $nextVaccDate = array();
 
         private $allVaccination = array();
-        private $allVaccinationDate = array();
+        private $allVaccinationDates = array();
 
         private $vaccinationRemarks;
 
@@ -27,16 +27,35 @@
             $this->nextVaccDate = !empty($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
             $this->vaccinationRemarks = !empty($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
 
-            $this->paramsToArray();
+            $this->validateParams();
         }
-        public function paramsToArray(){
+        
+        public function validateParams(){
           for ($i=0; $i < count($this->vaccineDataList); $i++) {
-              $this->allVaccination[$i] = [
+
+            $this->vaccineDataList[$i] = !empty($this->vaccineDataList[$i]) ? $this->vaccineDataList[$i] : null;
+            $this->nextVaccDate[$i] = !empty($this->nextVaccDate[$i]) ? $this->nextVaccDate[$i] : null;
+            $this->vaccinationRemarks[$i] = !empty($this->vaccinationRemarks[$i]) ? $this->vaccinationRemarks[$i] : null;
+
+            $this->firstVaccDate[$i] = !empty($this->firstVaccDate[$i]) ? $this->firstVaccDate[$i] : null;
+            $this->secondVaccDate[$i] = !empty($this->secondVaccDate[$i]) ? $this->secondVaccDate[$i] : null;
+            $this->thirdVaccDate[$i] = !empty($this->thirdVaccDate[$i]) ? $this->thirdVaccDate[$i] : null;
+            $this->fourthVaccDate[$i] = !empty($this->fourthVaccDate[$i]) ? $this->fourthVaccDate[$i] : null;
+            $this->fifthVaccDate[$i] = !empty($this->fifthVaccDate[$i]) ? $this->fifthVaccDate[$i] : null;
+
+            if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks[$i])){
+
+              $this->allVaccination[] = [
                   'vaccine' => $this->vaccineDataList[$i],
                   'nextVaccDate' => $this->nextVaccDate[$i],
                   'VaccRemarks' => $this->vaccinationRemarks
               ];
-              $this->allVaccinationDates[$i] = [
+            }
+
+
+            if(!is_null($this->firstVaccDate[$i]) || !is_null($this->secondVaccDate[$i]) || !is_null($this->thirdVaccDate[$i]) ||
+               !is_null($this->fourthVaccDate[$i]) || !is_null($this->fifthVaccDate[$i])){
+              $this->allVaccinationDates[] = [
                 'firstVaccDate' => $this->firstVaccDate[$i],
                 'secondVaccDate' => $this->secondVaccDate[$i],
                 'thirdVaccDate' => $this->thirdVaccDate[$i],
@@ -45,6 +64,7 @@
               ];
           }
         }
+    }
 
         public function getParams(){
           return $this->allVaccination;
@@ -74,6 +94,22 @@
                 return false;
             } else {
                 return true;
+            }
+        }
+
+        public function checkParams(){
+            if(!empty($this->allVaccination)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function checkParamsDates(){
+            if(!empty($this->allVaccinationDates)){
+                return true;
+            } else {
+                return false;
             }
         }
     }
