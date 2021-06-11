@@ -25,11 +25,10 @@
         private $arraySpontCSforceps = array();
         private $arrayChildrenProblems = array();
         private $arrayRemarks = array();
-        private $arrayAllChilds = array();
 
-        private  $arrayPregnancy = array();
-        private  $arrayPresentPregnancy = array();
-        private  $arrayPreviousPregnancy = array();
+        private $arrayAllChilds = array();
+        private $arrayPregnancy = array();
+        private $arrayPresentPregnancy = array();
 
         public function __construct(){
             $this->pregnancyID = !empty($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
@@ -85,7 +84,7 @@
         }
 
         public function pregnancyMainToArray(){
-            $this->arrayPregnancy['pregnancyID'] = $this->pregnancyID;
+            $this->arrayPregnancy['MotherID'] = $this->pregnancyID;
             $this->arrayPregnancy['entryDate'] = $this->entryDate;
             $this->arrayPregnancy['gravida'] = $this->gravida;
             $this->arrayPregnancy['para'] = $this->para;
@@ -131,7 +130,7 @@
                     'remarks' => $this->arrayRemarks[$i],
                 ];
             }
-            }
+          }
         }
 
         public function presentPregnancyToArray(){
@@ -172,7 +171,7 @@
         }
 
         public function getPreviousPregnancy(){
-            return $this->arrayPreviousPregnancy;
+            return $this->arrayAllChilds;
         }
 
         public function checkPregnancyID(){
@@ -191,7 +190,7 @@
             }
         }
 
-        public function checkPresentPregnancy(){
+        /*public function checkPresentPregnancy(){
             if( !is_null($this->gestationalAge) || !is_null($this->estimatedDateOfDelivery) || !is_null($this->antenatalClinikAttendanceRadios) || !is_null($this->problems) || !is_null($this->pregnancyRemarks)){
                 return true;
             } else {
@@ -200,11 +199,28 @@
         }
 
         public function checkPreviousPregnancy(){
-            if(empty($this->arrayPreviousPregnancy)){
+            if(empty($this->arrayAllChilds)){
                 return false;
             } else {
                 return true;
             }
+        }*/
+        public function checkPresentPregnancy(){
+          var_dump($this->problems);
+            if( !is_null($this->gestationalAge) || !is_null($this->estimatedDateOfDelivery)  || !is_null($this->problems) || !is_null($this->pregnancyRemarks)){
+                return true;
+            } else {
+                return false;
+            }
         }
+
+        public function checkPreviousPregnancy(){
+          var_dump($this->arrayName[0]);
+            if(!is_null($this->arrayName[0]) || !is_null($this->arrayDateOfBirth[0]) || !is_null($this->arrayEventsPregnancy[0]) || !is_null($this->arrayDurationOfLabor[0]) || !is_null($this->arraySpontCSforceps[0]) || !is_null($this->arrayChildrenProblems[0]) || !is_null($this->arrayRemarks[0])){
+                return true;
+            } else {
+                return false;
+            }
     }
+  }
 ?>

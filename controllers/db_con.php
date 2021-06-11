@@ -1,9 +1,7 @@
 <?php
   /**
-   * controller of the application
+   * database controller of the application
    */
-  //require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/patient_class.php";
-
   class DBCon{
       private $pdo;
 
@@ -31,7 +29,7 @@
     }
 
     function prepared_insert($table, $data) {
-      //generic insert functin $table = the name of the table, $data = the date that should be inserted in DB
+      //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
       $keys = array_keys($data);
       $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
       $fields = implode(",", $keys);
@@ -41,26 +39,19 @@
       $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
       $this->pdo->prepare($sql)->execute(array_values($data));
 
+      //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
       if($table == $this ->escape_mysql_identifier('childrenmain')){
         $ID = $this->pdo->lastInsertId();
         setcookie ("childIDCookie" , (int)$ID);
       }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
         $ID = $this->pdo->lastInsertId();
         setcookie ("medicalIDCookie" , (int)$ID);
-      }elseif ($table == $this ->escape_mysql_identifier('medicalpexam')) {
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("pexamIDCookie" , (int)$ID);
-      }elseif ($table == $this ->escape_mysql_identifier('medicalpregnancymain')) {
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("pregnancyIDCookie" , (int)$ID);
-      }elseif ($table == $this ->escape_mysql_identifier('medicalvisits')) {
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("visitIDCookie" , (int)$ID);
       }
       return $this->pdo->lastInsertId();
     }
 
     function prepared_update($table, $data) {
+      //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
       $values = array_values($data);
       $keys = array_keys($data);
 

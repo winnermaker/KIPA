@@ -19,9 +19,9 @@
 
           for($i=0; $i < count($vaccdates); $i++) {
             $data['fk_VaccID'] = $fk_VaccID[$i];
-
             $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
             $controller->prepared_insert('medicalvaccdate',$data);
+            
             if ($vaccdates[$i]['secondVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
               $controller->prepared_insert('medicalvaccdate',$data);
