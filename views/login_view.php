@@ -3,32 +3,51 @@
   <head>
     <?php
          require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbarLogin.php";
     ?>
     
 
     <title>Login</title>
+
+    <style>
+        .container{
+            margin: auto;
+            width: 70%;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .logoImage{
+            width:40%;
+        }
+
+        .username{
+            margin:auto;
+        }
+
+        .password{
+            margin:auto;
+        }
+
+    </style>
   </head>
   <body>
     <form action="login_con.php" method="post">
-        <div class="">
             <div class="container mt-5">
-
-               
-                    <img src="/kipa/views/img/loginImg.png" alt="" width="350" height="150" >
-                    <h2 class="mt-3 col">Login</h2>
-
+          
                 
+                    <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="350" height="150" >
+                    <h2 class="mt-3 col">Login</h2>     
 
                 <div class="form-row">
-                    <div class="form-group mt-5 col-4">
+                    <div class="form-group username mt-5 col-4">
                         <label for="username" class="form-label">Username</label>
                         <input class="form-control" type="text" id="username" name="username">
                     </div>
                 </div>
 
                 <div class="form-row">
-                    <div class="form-group mt-3 col-4">
+                    <div class="form-group password mt-3 col-4">
                         <label for="password" class="form-label">Password</label>
                         <input class="form-control" type="password" name="password" id="password">
                     </div>
@@ -39,9 +58,6 @@
                 </div>
 
             </div>
-
-        </div>
-    
     </form>
 
     <script>

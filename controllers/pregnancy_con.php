@@ -6,6 +6,8 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pregnancyObj = new pregnancy();
         $pregdata = $pregnancyObj->getPregnancyMain();
+        $pregnancyObj->printPreviousPregnancy();
+        var_dump($pregnancyObj->checkPreviousPregnancy());
         if (!$pregnancyObj->checkPregnancyID()) {
           $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
           $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
