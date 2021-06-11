@@ -9,37 +9,65 @@
         $vaccdata = $vaccinationObj->getParams();
         $vaccdates = $vaccinationObj->getParamsDates();
         $data = Array();
-        $fk_VaccID = array();
 
-        for($i=0; $i < count($vaccdata); $i++) {
-          $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
-          $fk_VaccID[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+        if (!$vaccinationObj->checkVaccinationID()) {
+          $fk_VaccID = array();
+          for($i=0; $i < count($vaccdata); $i++) {
+            $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
+            $fk_VaccID[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+          }
+
+          for($i=0; $i < count($vaccdates); $i++) {
+            $data['fk_VaccID'] = $fk_VaccID[$i];
+
+            $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
+            $controller->prepared_insert('medicalvaccdate',$data);
+            if ($vaccdates[$i]['secondVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
+              $controller->prepared_insert('medicalvaccdate',$data);
+            }
+            if ($vaccdates[$i]['thirdVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['thirdVaccDate'];
+              $controller->prepared_insert('medicalvaccdate',$data);
+            }
+            if ($vaccdates[$i]['fourthVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
+              $controller->prepared_insert('medicalvaccdate',$data);
+            }
+            if ($vaccdates[$i]['fifthVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['fifthVaccDate'];
+              $controller->prepared_insert('medicalvaccdate',$data);
+            }
+          }
         }
+        else {
+          for($i=0; $i < count($vaccdata); $i++) {
+            $fk_VaccID[$i] = $controller->prepared_update('medicalvacc',$vaccdata[$i]);
+          }
 
-        for($i=0; $i < count($vaccdates); $i++) {
-          $data['fk_VaccID'] = $fk_VaccID[$i];
+          for($i=0; $i < count($vaccdates); $i++) {
+            $data['fk_VaccID'] = $fk_VaccID[$i];
+            $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
+            $controller->prepared_update('medicalvaccdate',$data);
+            if ($vaccdates[$i]['secondVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
+              $controller->prepared_update('medicalvaccdate',$data);
+            }
+            if ($vaccdates[$i]['thirdVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['thirdVaccDate'];
+              $controller->prepared_update('medicalvaccdate',$data);
+            }
+            if ($vaccdates[$i]['fourthVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
+              $controller->prepared_update('medicalvaccdate',$data);
+            }
+            if ($vaccdates[$i]['fifthVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['fifthVaccDate'];
+              $controller->prepared_update('medicalvaccdate',$data);
+            }
+          }
 
-          $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
-          $controller->prepared_insert('medicalvaccdate',$data);
-          if ($vaccdates[$i]['secondVaccDate'] != "") {
-            $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
-            $controller->prepared_insert('medicalvaccdate',$data);
-          }
-          if ($vaccdates[$i]['thirdVaccDate'] != "") {
-            $data['VaccDate'] = $vaccdates[$i]['thirdVaccDate'];
-            $controller->prepared_insert('medicalvaccdate',$data);
-          }
-          if ($vaccdates[$i]['fourthVaccDate'] != "") {
-            $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
-            $controller->prepared_insert('medicalvaccdate',$data);
-          }
-          if ($vaccdates[$i]['fifthVaccDate'] != "") {
-            $data['VaccDate'] = $vaccdates[$i]['fifthVaccDate'];
-            $controller->prepared_insert('medicalvaccdate',$data);
-          }
         }
-        $test = $controller->getMedicalData($_COOKIE["childIDCookie"]);
-        var_dump($test);
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/vaccination_view.php";
