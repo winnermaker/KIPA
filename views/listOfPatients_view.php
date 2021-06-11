@@ -4,17 +4,41 @@
   <head>
     <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbarListOfPatients.php";
     ?>
 
     <title>Children table</title>
   </head>
   <body>
     <div class="container">
-        <h1 class="mt-3 ">List of Patients</h1>
+        <h1 class="mt-4 ">List of Patients</h1>
 
-        <div class="table-responsive-lg">
-            <table class="table table-striped table-hover table-bordered mt-5">
+        <div class="row mt-5">
+            <fieldset class="col">
+                <legend class="col-form-label">Filter Options:</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="filterRadios" id="maleRadio" value="option1" checked>
+                        <label class="form-check-label" for="maleRadio">All Patients</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="filterRadios" id="femaleRadio" value="option2">
+                        <label class="form-check-label" for="femaleRadio">Review Date</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="filterRadios" id="genderOtherRadio" value="option3">
+                        <label class="form-check-label" for="genderOtherRadio">Vaccination Date</label>
+                    </div>
+            </fieldset>
+
+            <div class="form-group offset-4 col ">
+                <label for="searchInput"></label>
+                <input type="text" placeholder="Search" id="searchInput" class="form-control">
+            </div>
+        </div>
+        <div class="table-responsive-lg mt-3">
+            <table class="table table-striped table-hover table-bordered" id="table">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="sticky-top">#</th>
@@ -33,15 +57,15 @@
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody id="tableBody">
                 <?php  for($i=0;$i<100;$i++) { ?>
                     <tr>
                         <th scope="row"><?php echo $i; ?></th>
-                        <td>Max</td>
+                        <td><?php echo "Max" . $i; ?></td>
                         <td>Mustermann</td>
                         <td>Mike</td>
                         <td>m </td>
-                        <td>10.12.1998</td>
+                        <td><?php echo "ismet" . $i ?></td>
                         <td>01.01.2000</td>
                         <td>05.01.2021</td>
                         <td>18.04.2021</td>
@@ -60,6 +84,19 @@
         </div>
     </div>
 
+    <script>
+        $('input,textarea,select').addClass('border border-dark');
+
+        var $rows = $('#tableBody tr');
+        $('#searchInput').keyup(function() {
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+            
+            $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
+        });
+</script>
 
   </body>
 </html>
