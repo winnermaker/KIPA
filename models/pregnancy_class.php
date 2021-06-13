@@ -190,23 +190,6 @@
             }
         }
 
-        /*public function checkPresentPregnancy(){
-            if( !is_null($this->gestationalAge) || !is_null($this->estimatedDateOfDelivery) || !is_null($this->antenatalClinikAttendanceRadios) || !is_null($this->problems) || !is_null($this->pregnancyRemarks)){
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public function checkPreviousPregnancy(){
-            if(empty($this->arrayAllChilds)){
-                return false;
-            } else {
-                return true;
-            } else {
-                return false;
-            }
-        }*/
         public function checkPresentPregnancy(){
           var_dump($this->problems);
             if( !is_null($this->gestationalAge) || !is_null($this->estimatedDateOfDelivery)  || !is_null($this->problems) || !is_null($this->pregnancyRemarks)){
