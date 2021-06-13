@@ -29,11 +29,11 @@
               
               <tbody id="tableBody">
                 <tr>
-                  <td><input type="date" class="form-control" name="visitDate"></input></td>
-                  <td><input type="text" class="form-control" name="visitType"></input></td>
-                  <td><input type="text" class="form-control" name="examLocation"></td>
-                  <td><input type="text" class="form-control" name="examCause"></td>
-                  <td><input type="date" class="form-control" name="reviewDate"></td>
+                  <td><input type="date" class="form-control" name="visitDate" disabled></input></td>
+                  <td><input type="text" class="form-control" name="visitType" disabled></input></td>
+                  <td><input type="text" class="form-control" name="examLocation" disabled></td>
+                  <td><input type="text" class="form-control" name="examCause" disabled></td>
+                  <td><input type="date" class="form-control" name="reviewDate" disabled></td>
                   <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a></td>
                 <!-- <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  -->
                 </tr>
