@@ -86,10 +86,7 @@
 
     function getAllChildern(){
       $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
-      // and somewhere later:
-      foreach ($dataAllCildren as $row) {
-        //do something
-      }
+      return $dataAllCildren;
     }
 
     function getMedicalData($childrenID){
@@ -107,6 +104,8 @@
         /*while ($row = $stmt->fetch()) {
           echo $row['name']."<br />\n";
         }*/
+        $data =  $this->pdo->query($sql)-fetchAll();
+        return $data;
     }
 
     function getChildData($childrenID){
@@ -114,17 +113,19 @@
       $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
       $sql->execute([$childrenID]);
       $child = $stmt->fetch();
+      return $child;
     }
 
     function getChildDataForHeadline($childrenID){
-      // select a particular child by id
+      // select childata for headlines
       $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
       $stmt->execute([$childrenID]);
       $child = $stmt->fetch();
+      return $child;
     }
 
     function getChildDataForSearch (){
-      // select a particular childdata
+      // select childdata for searchbar
       $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
       return $dataAllCildren;
     }
