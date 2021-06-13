@@ -42,6 +42,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="sticky-top">#</th>
+                        <th scope="col" class="sticky-top" hidden>Children ID</th>
                         <th scope="col" class="sticky-top">First name</th>
                         <th scope="col" class="sticky-top">Last name</th>
                         <th scope="col" class="sticky-top">Call name</th>
@@ -64,19 +65,20 @@
                 ?>
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
-                        <td><?php echo $row['FirstName']; ?></td>
-                        <td><?php echo $row['LastName']; ?></td>
-                        <td><?php echo $row['CallNames']; ?></td>
-                        <td><?php echo $row['Gender']; ?></td>
-                        <td><?php echo $row['DOB']; ?></td>
-                        <td><?php echo $row['EDOB']; ?></td>
-                        <td><?php echo $row['AdmDate']; ?></td>
-                        <td><?php echo $row['DisDate']; ?></td>
-                        <td><?php echo $row['ReviewOn']; ?></td>
-                        <td><?php echo $row['NextVaccDate']; ?></td>
+                        <td name="childrenID" hidden><?php echo $row['ChildrenID']; ?></td>
+                        <td name="firstName"><?php echo $row['FirstName']; ?></td>
+                        <td name="lastName"><?php echo $row['LastName']; ?></td>
+                        <td name="callNames"><?php echo $row['CallNames']; ?></td>
+                        <td name="gender"><?php echo $row['Gender']; ?></td>
+                        <td name="DOB"><?php echo $row['DOB']; ?></td>
+                        <td name="EDOB"><?php echo $row['EDOB']; ?></td>
+                        <td name="admDate"><?php echo $row['AdmDate']; ?></td>
+                        <td name="disDate"><?php echo $row['DisDate']; ?></td>
+                        <td name="reviewOn"><?php echo $row['ReviewOn']; ?></td>
+                        <td name="nextVaccDate"><?php echo $row['NextVaccDate']; ?></td>
                         <td>
                             <div style="">
-                                <a href="patient_con.php"  target="_blank"> <button class="btn btn-primary">Forms</button> </a>
+                                <a href="patient_con.php" onclick="addParamsToUrl(this)"  target="_blank"> <button class="btn btn-primary">Forms</button> </a>
                             </div>
                         </td>
                         </td>
@@ -99,7 +101,19 @@
                 return !~text.indexOf(val);
             }).hide();
         });
+
+
+        function addParamsToUrl(element)
+          {
+            
+            $(element).attr('href', function() {
+              var childrenID = $(this).closest("tr").find('td[name="childrenID"]').html();
+              var reviewOn = $(this).closest("tr").find('td[name="reviewOn"]').html();
+              var nextVaccDate = $(this).closest("tr").find('td[name="nextVaccDate"]').html();
+              return this.href + '?childrenID=' + childrenID  +  '&reviewOn=' + reviewOn + '&nextVaccDate=' + nextVaccDate;
+            });
+          }
 </script>
 
-  </body>
+  </body>0
 </html>

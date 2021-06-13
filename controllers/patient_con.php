@@ -12,6 +12,8 @@
           $controller -> prepared_update('childrenmain',$patientObj->getParams());
         }
 
+    } elseif($_SERVER["REQUEST_METHOD"] == "GET"){
+      $childData = $controller->getChildData($_GET['childrenID']);
     }
 
   require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/patient_view.php";
