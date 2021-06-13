@@ -107,7 +107,7 @@
       // select a particular child by id
       $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
       $sql->execute([$childrenID]);
-      $child = $stmt->fetch();
+      $child = $sql->fetch();
       return $child;
     }
 
