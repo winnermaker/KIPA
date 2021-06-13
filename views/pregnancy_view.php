@@ -20,9 +20,9 @@
             <div class="row mt-5">
                 <div class ="form-group col-2">
                     <label for="entryDate" class="form-label">Entry Date</label>
-                    <input class="form-control" type="date" name="entryDate" id="entryDate" required>
+                    <input class="form-control" type="date" name="entryDate" id="entryDate" min="1900-04-01" max="2300-04-20" required>
                     <div class="invalid-feedback">
-                    Please enter a Date
+                    Please pick a valid Date
                     </div>       
                 </div>
 
@@ -62,7 +62,10 @@
 
                 <div class ="form-group offset-1 col-2">
                     <label for="estimatedDateOfDelivery" class="form-label">Estimated Date of Delivery</label>
-                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery">        
+                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery" min="1900-04-01" max="2300-04-20">    
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>     
                 </div>
 
                 <fieldset class="offset-1 col-4">

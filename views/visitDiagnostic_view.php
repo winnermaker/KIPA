@@ -25,9 +25,9 @@
         <div class="row mt-5">
           <div class ="form-group col-2">
             <label for="visitDate" class="form-label">Visit Date</label>
-            <input class="form-control" type="date" name="visitDate" id="visitDate" required>
+            <input class="form-control" type="date" name="visitDate" id="visitDate" min="1900-04-01" max="2300-04-20" required>
             <div class="invalid-feedback">
-                    Please enter a Date
+              Please chose a valid Date
             </div>        
           </div>
 
@@ -89,7 +89,10 @@
 
           <div class ="form-group col-2">
             <label for="reviewDate" class="form-label">Review Date</label>
-            <input class="form-control" type="date" name="reviewDate" id="reviewDate">        
+            <input class="form-control" type="date" name="reviewDate" id="reviewDate" min="1900-04-01" max="2300-04-20">
+            <div class="invalid-feedback">
+              Please chose a valid Date
+            </div>       
           </div>
 
         </div>

@@ -20,7 +20,7 @@
       <h1 class="mt-3">Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
 
-      <form action="medicalMain_con.php" method="post">
+      <form action="medicalMain_con.php" method="post" class="needs-validation" novalidate>
         <input type="hidden" id="medicalMainID" name="medicalMainID">
         <div class="row mt-5">
           <fieldset class="col-2">
@@ -43,7 +43,10 @@
 
             <div class ="form-group col">
                     <label for="reviewOn" class="form-label">Review on</label>
-                    <input class="form-control" type="date" name="reviewOn" id="reviewOn">        
+                    <input class="form-control" type="date" name="reviewOn" id="reviewOn" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>      
             </div>
 
             <div class ="form-group col">
@@ -169,8 +172,11 @@
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>
-                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate" disabled>        
+                    <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>1
+                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate" min="1900-04-01" max="2300-04-20" disabled>
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>      
             </div>
 
             <fieldset class="col-2 offset-1" id="hepBtreated" disabled>
@@ -208,7 +214,10 @@
 
             <div class ="form-group col-3">
                     <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" disabled>        
+                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" min="1900-04-01" max="2300-04-20" disabled> 
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>        
             </div>
 
             <fieldset class="col-2 offset-1" id="hivTreated" disabled>
@@ -246,7 +255,10 @@
 
             <div class ="form-group col-3">
                     <label for="TbposCheckDate" class="form-label">Tb Check Date</label>
-                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" disabled>        
+                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" min="1900-04-01" max="2300-04-20" disabled> 
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>        
             </div>
 
             <fieldset class="col-2 offset-1" id="tbTreated" disabled>
@@ -285,7 +297,10 @@
 
             <div class ="form-group col-3">
                     <label for="STDposCheckDate" class="form-label">STD Check Date</label>
-                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" disabled>        
+                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" min="1900-04-01" max="2300-04-20" disabled> 
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>        
             </div>
 
             <fieldset class="col-2 offset-1" id="stdTreated" disabled>
@@ -324,7 +339,10 @@
 
             <div class ="form-group col-3">
                     <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
-                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" disabled>        
+                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" min="1900-04-01" max="2300-04-20" disabled> 
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>        
             </div>
           </div>
 
@@ -379,6 +397,29 @@
     </div>
 
     <script>
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+
+
+
+
         $('input,textarea,select').addClass('border border-dark');
 
         var gender = document.getElementById( "gender" ).innerText;

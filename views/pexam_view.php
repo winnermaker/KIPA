@@ -13,14 +13,17 @@
         <h1 class="mt-3">Physical Examination</h1>
         
 
-        <form action="pexam_con.php" method="post">
+        <form action="pexam_con.php" method="post" class="needs-validation" novalidate>
             <?php require 'formsHeadline.php' ?>
             <input type="hidden" id="pexamID" name="pexamID">
             
             <div class="row mt-5">
                 <div class ="form-group col">
                     <label for="examinationDate" class="form-label">Examination Date</label>
-                    <input class="form-control" type="date" name="examinationDate" id="examinationDate">
+                    <input class="form-control" type="date" name="examinationDate" id="examinationDate" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>
                 </div>
 
                 <div class="form-group col">
@@ -627,6 +630,26 @@
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
+
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
     </script>
   </body>
 </html>
