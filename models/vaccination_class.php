@@ -29,7 +29,7 @@
 
             $this->validateParams();
         }
-        
+
         public function validateParams(){
           for ($i=0; $i < count($this->vaccineDataList); $i++) {
 
@@ -46,6 +46,7 @@
             if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks[$i])){
 
               $this->allVaccination[] = [
+                  'vaccID'=>$this->vaccinationID,
                   'vaccine' => $this->vaccineDataList[$i],
                   'nextVaccDate' => $this->nextVaccDate[$i],
                   'VaccRemarks' => $this->vaccinationRemarks
