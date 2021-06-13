@@ -4,7 +4,6 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $patientObj = new patient();
-        $patientObj->printParams();
         $controller->getAllChildern();
         if(!$patientObj->checkPatientID()){
           $controller -> prepared_insert('childrenmain',$patientObj->getParams());

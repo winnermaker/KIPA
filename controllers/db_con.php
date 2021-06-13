@@ -24,6 +24,13 @@
 
       }
 
+      function moveElement(&$array, $a, $b) {
+        //helper function to switch two elements in an array
+        $p1 = array_splice($array, $a, 1);
+        $p2 = array_splice($array, 0, $b);
+        $array = array_merge($p2,$p1,$array);
+      }
+
     function escape_mysql_identifier($field){
       return "`".str_replace("`", "``", $field)."`";
     }
@@ -57,18 +64,23 @@
 
       $IDKey = $keys[0];
       unset($keys[0]);
+      var_dump($values);
+      $this->moveElement($values,0,count($values)-1);
+      var_dump($values);
 
-      $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
-      $IDKey = $this ->escape_mysql_identifier($IDKey);
+     $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+     $IDKey = $this ->escape_mysql_identifier($IDKey);
 
-      $keys = implode("=?, ", $keys);
-      $keys = $keys."=?";
-      $IDKey = $IDKey."=?";
+      $keys = implode(" = ?, ", $keys);
+      $keys = $keys." = ?";
+      $IDKey = $IDKey." = ?";
       $table = $this ->escape_mysql_identifier($table);
 
 
       $sql = "UPDATE $table SET $keys WHERE $IDKey";
-      $this->pdo->prepare($sql)->execute($values);
+
+      $test = $this->pdo->prepare($sql)->execute($values);
+      var_dump($test);
     }
 
 
