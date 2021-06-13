@@ -33,18 +33,18 @@
         public function __construct(){
             $this->pregnancyID = !empty($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
             $this->entryDate = !empty($_POST['entryDate']) ? $_POST['entryDate'] : null;
-            $this->gravida = !empty($_POST['gravida']) ? $_POST['gravida'] : null;
-            $this->para = !empty($_POST['para']) ? $_POST['para'] : null;
-            $this->alive = !empty($_POST['alive']) ? $_POST['alive'] : null;
-            $this->dead = !empty($_POST['dead']) ? $_POST['dead'] : null;
-            $this->top = !empty($_POST['top']) ? $_POST['top'] : null;
+            $this->gravida = !empty($_POST['gravida']) ? trim($_POST['gravida']) : null;
+            $this->para = !empty($_POST['para']) ? trim($_POST['para']) : null;
+            $this->alive = !empty($_POST['alive']) ? trim($_POST['alive']) : null;
+            $this->dead = !empty($_POST['dead']) ? trim($_POST['dead']) : null;
+            $this->top = !empty($_POST['top']) ? trim($_POST['top']) : null;
 
-            $this->gestationalAge = !empty($_POST['gestationalAge']) ? $_POST['gestationalAge'] : null;
+            $this->gestationalAge = !empty($_POST['gestationalAge']) ? trim($_POST['gestationalAge']) : null;
             $this->estimatedDateOfDelivery = !empty($_POST['estimatedDateOfDelivery']) ? $_POST['estimatedDateOfDelivery'] : null;
             $this->antenatalClinikAttendanceRadios = !empty($_POST['antenatalClinikAttendanceRadios']) ? $_POST['antenatalClinikAttendanceRadios'] : null;
             $this->getRadioValue($this->antenatalClinikAttendanceRadios);
-            $this->problems = !empty($_POST['problems']) ? $_POST['problems'] : null;
-            $this->pregnancyRemarks = !empty($_POST['pregnancyRemarks']) ? $_POST['pregnancyRemarks'] : null;
+            $this->problems = !empty($_POST['problems']) ? trim($_POST['problems']) : null;
+            $this->pregnancyRemarks = !empty($_POST['pregnancyRemarks']) ? trim($_POST['pregnancyRemarks']) : null;
 
             $this->arrayName = isset($_POST['name']) ? $_POST['name'] : null;
             $this->arrayDateOfBirth = isset($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
@@ -105,13 +105,13 @@
                 $this->healthyRadios = !empty($_POST[$healthy]) ? $_POST[$healthy] : null;
                 $this->getRadioValue($this->healthyRadios);
 
-                $this->arrayName[$i] = !empty($this->arrayName[$i]) ? $this->arrayName[$i] : null;
-                $this->arrayDateOfBirth[$i] = !empty($this->arrayDateOfBirth[$i]) ? $this->arrayDateOfBirth[$i] : null;
-                $this->arrayEventsPregnancy[$i] = !empty($this->arrayEventsPregnancy[$i]) ? $this->arrayEventsPregnancy[$i] : null;
-                $this->arrayDurationOfLabor[$i] = !empty($this->arrayDurationOfLabor[$i]) ? $this->arrayDurationOfLabor[$i] : null;
-                $this->arraySpontCSforceps[$i] = !empty($this->arraySpontCSforceps[$i]) ? $this->arraySpontCSforceps[$i] : null;
-                $this->arrayChildrenProblems[$i] = !empty($this->arrayChildrenProblems[$i]) ? $this->arrayChildrenProblems[$i] : null;
-                $this->arrayRemarks[$i] = !empty($this->arrayRemarks[$i]) ? $this->arrayRemarks[$i] : null;
+                $this->arrayName[$i] = !empty($this->arrayName[$i]) ? trim($this->arrayName[$i]) : null;
+                $this->arrayDateOfBirth[$i] = !empty($this->arrayDateOfBirth[$i]) ? trim($this->arrayDateOfBirth[$i]) : null;
+                $this->arrayEventsPregnancy[$i] = !empty($this->arrayEventsPregnancy[$i]) ? trim($this->arrayEventsPregnancy[$i]) : null;
+                $this->arrayDurationOfLabor[$i] = !empty($this->arrayDurationOfLabor[$i]) ? trim($this->arrayDurationOfLabor[$i]) : null;
+                $this->arraySpontCSforceps[$i] = !empty($this->arraySpontCSforceps[$i]) ? trim($this->arraySpontCSforceps[$i]) : null;
+                $this->arrayChildrenProblems[$i] = !empty($this->arrayChildrenProblems[$i]) ? trim($this->arrayChildrenProblems[$i]) : null;
+                $this->arrayRemarks[$i] = !empty($this->arrayRemarks[$i]) ? trim($this->arrayRemarks[$i]) : null;
 
                 if(!is_null($this->arrayName[$i]) || !is_null($this->arrayDateOfBirth[$i]) ||
                     !is_null($this->arrayEventsPregnancy[$i]) || !is_null($this->arrayDurationOfLabor[$i]) ||

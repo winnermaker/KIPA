@@ -19,9 +19,9 @@
             $this->gender = !empty($_POST['genderRadios']) ? $_POST['genderRadios'] : null;
             $this->getGenderRadioValue($this->gender);
 
-            $this->firstName = !empty($_POST['firstName']) ? $_POST['firstName'] : null;
-            $this->lastName =  !empty($_POST['lastName']) ? $_POST['lastName'] : null;
-            $this->callName =  !empty($_POST['callName']) ? $_POST['callName'] : null;
+            $this->firstName = !empty($_POST['firstName']) ? trim($_POST['firstName']) : null;
+            $this->lastName =  !empty($_POST['lastName']) ? trim($_POST['lastName']) : null;
+            $this->callName =  !empty($_POST['callName']) ? trim($_POST['callName']) : null;
             $this->dateOfBirth =  !empty($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : null;
             $this->estDateOfBirth =  !empty($_POST['estDateOfBirth']) ? $_POST['estDateOfBirth'] : null;
             $this->admissionDate =  !empty($_POST['admissionDate']) ? $_POST['admissionDate'] : null;

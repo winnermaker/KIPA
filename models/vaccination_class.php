@@ -33,9 +33,9 @@
         public function validateParams(){
           for ($i=0; $i < count($this->vaccineDataList); $i++) {
 
-            $this->vaccineDataList[$i] = !empty($this->vaccineDataList[$i]) ? $this->vaccineDataList[$i] : null;
+            $this->vaccineDataList[$i] = !empty($this->vaccineDataList[$i]) ? trim($this->vaccineDataList[$i]) : null;
             $this->nextVaccDate[$i] = !empty($this->nextVaccDate[$i]) ? $this->nextVaccDate[$i] : null;
-            $this->vaccinationRemarks[$i] = !empty($this->vaccinationRemarks[$i]) ? $this->vaccinationRemarks[$i] : null;
+            $this->vaccinationRemarks[$i] = !empty($this->vaccinationRemarks[$i]) ? trim($this->vaccinationRemarks[$i]) : null;
 
             $this->firstVaccDate[$i] = !empty($this->firstVaccDate[$i]) ? $this->firstVaccDate[$i] : null;
             $this->secondVaccDate[$i] = !empty($this->secondVaccDate[$i]) ? $this->secondVaccDate[$i] : null;

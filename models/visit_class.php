@@ -18,17 +18,17 @@
         public function __construct(){
             $this->visitID = !empty($_POST['visitID']) ? $_POST['visitID'] : null;
             $this->visitDate = !empty($_POST['visitDate']) ? $_POST['visitDate'] : null;
-            $this->visitType = !empty($_POST['visitType']) ? $_POST['visitType'] : null;
-            $this->examLocation = !empty($_POST['examLocation']) ? $_POST['examLocation'] : null;
+            $this->visitType = !empty($_POST['visitType']) ? trim($_POST['visitType']) : null;
+            $this->examLocation = !empty($_POST['examLocation']) ? trim($_POST['examLocation']) : null;
             $this->reviewDate = !empty($_POST['reviewDate']) ? $_POST['reviewDate'] : null;
-            $this->excause = !empty($_POST['excause']) ? $_POST['excause'] : null;
-            $this->presentComplaint = !empty($_POST['presentComplaint']) ? $_POST['presentComplaint'] : null;
-            $this->historyOfPresentComplaint = !empty($_POST['historyOfPresentComplaint']) ? $_POST['historyOfPresentComplaint'] : null;
-            $this->pe = !empty($_POST['pe']) ? $_POST['pe'] : null;
-            $this->plan = !empty($_POST['plan']) ? $_POST['plan'] : null;
-            $this->medication = !empty($_POST['medication']) ? $_POST['medication'] : null;
-            $this->diagnosis = !empty($_POST['diagnosis']) ? $_POST['diagnosis'] : null;
-            $this->remarks = !empty($_POST['remarks']) ? $_POST['remarks'] : null;
+            $this->excause = !empty($_POST['excause']) ? trim($_POST['excause']) : null;
+            $this->presentComplaint = !empty($_POST['presentComplaint']) ? trim($_POST['presentComplaint']) : null;
+            $this->historyOfPresentComplaint = !empty($_POST['historyOfPresentComplaint']) ? trim($_POST['historyOfPresentComplaint']) : null;
+            $this->pe = !empty($_POST['pe']) ? trim($_POST['pe']) : null;
+            $this->plan = !empty($_POST['plan']) ? trim($_POST['plan']) : null;
+            $this->medication = !empty($_POST['medication']) ? trim($_POST['medication']) : null;
+            $this->diagnosis = !empty($_POST['diagnosis']) ? trim($_POST['diagnosis']) : null;
+            $this->remarks = !empty($_POST['remarks']) ? trim($_POST['remarks']) : null;
 
             $this->paramsToArray();
 

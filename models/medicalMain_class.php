@@ -40,12 +40,12 @@
             $this->nhiRegistration = !empty($_POST['nhiRadios']) ? $_POST['nhiRadios'] : null;
             $this->getRadioButtonValue($this->nhiRegistration);
 
-            $this->nhiNumber = !empty($_POST['nhiNumber']) ? $_POST['nhiNumber'] : null;
+            $this->nhiNumber = !empty($_POST['nhiNumber']) ? trim($_POST['nhiNumber']) : null;
             $this->reviewOn = !empty($_POST['reviewOn']) ? $_POST['reviewOn'] : null;
-            $this->conditions = !empty($_POST['conditions']) ? $_POST['conditions'] : null;
-            $this->permanentPrescription = !empty($_POST['permanentPrescription']) ? $_POST['permanentPrescription'] : null;
-            $this->plan = !empty($_POST['plan']) ? $_POST['plan'] : null;
-            $this->otherInformation = !empty($_POST['otherInformation']) ? $_POST['otherInformation'] : null;
+            $this->conditions = !empty($_POST['conditions']) ? trim($_POST['conditions']) : null;
+            $this->permanentPrescription = !empty($_POST['permanentPrescription']) ? trim($_POST['permanentPrescription']) : null;
+            $this->plan = !empty($_POST['plan']) ? trim($_POST['plan']) : null;
+            $this->otherInformation = !empty($_POST['otherInformation']) ? trim($_POST['otherInformation']) : null;
 
             $this->PregnancyHistory = !empty($_POST['PregnancyHistRadios']) ? $_POST['PregnancyHistRadios'] : null;
             $this->getRadioButtonValue($this->PregnancyHistory);
@@ -57,7 +57,7 @@
             $this->getRadioButtonValue($this->sexualAbuse);
             $this->substanceAbuse = !empty($_POST['substanceAbuseRadios']) ? $_POST['substanceAbuseRadios'] : null;
             $this->getRadioButtonValue($this->substanceAbuse);
-            $this->menstrualHistory = !empty($_POST['menstrualHistory']) ? $_POST['menstrualHistory'] : null;
+            $this->menstrualHistory = !empty($_POST['menstrualHistory']) ? trim($_POST['menstrualHistory']) : null;
             $this->hepBPos = !empty($_POST['HepBPosRadios']) ? $_POST['HepBPosRadios'] : null;
             $this->getRadioButtonValue($this->hepBPos);
             $this->hepBPosCheckDate = !empty($_POST['HepBPosCheckDate']) ? $_POST['HepBPosCheckDate'] : null;
@@ -83,7 +83,7 @@
             $this->pregnancyTestDate = !empty($_POST['pregTestDate']) ? $_POST['pregTestDate'] : null;
             $this->sickleCellPos = !empty($_POST['SickleCellPosRadios']) ? $_POST['SickleCellPosRadios'] : null;
             $this->getRadioButtonValue($this->sickleCellPos);
-            $this->sickleCellType = !empty($_POST['sickleCellType']) ? $_POST['sickleCellType'] : null;
+            $this->sickleCellType = !empty($_POST['sickleCellType']) ? trim($_POST['sickleCellType']) : null;
             $this->G6PDeficiency = !empty($_POST['G6DPRadios']) ? $_POST['G6DPRadios'] : null;
             $this->getRadioButtonValue($this->G6PDeficiency);
 
