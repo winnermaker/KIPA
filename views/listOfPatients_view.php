@@ -58,19 +58,22 @@
                 </thead>
 
                 <tbody id="tableBody">
-                <?php  for($i=0;$i<100;$i++) { ?>
+                <?php  
+                    $index = 1;
+                    foreach($childData as $key => $row){
+                ?>
                     <tr>
-                        <th scope="row"><?php echo $i; ?></th>
-                        <td><?php echo "Max" . $i; ?></td>
-                        <td>Mustermann</td>
-                        <td>Mike</td>
-                        <td>m </td>
-                        <td><?php echo "ismet" . $i ?></td>
-                        <td>01.01.2000</td>
-                        <td>05.01.2021</td>
-                        <td>18.04.2021</td>
-                        <td><b>18.04.2021</b></td>
-                        <td><b>30.05.2021</b></td>
+                        <th scope="row"><?php echo $index; ?></th>
+                        <td><?php echo $row['FirstName']; ?></td>
+                        <td><?php echo $row['LastName']; ?></td>
+                        <td><?php echo $row['CallNames']; ?></td>
+                        <td><?php echo $row['Gender']; ?></td>
+                        <td><?php echo $row['DOB']; ?></td>
+                        <td><?php echo $row['EDOB']; ?></td>
+                        <td><?php echo $row['AdmDate']; ?></td>
+                        <td><?php echo $row['DisDate']; ?></td>
+                        <td><?php echo $row['ReviewOn']; ?></td>
+                        <td><?php echo $row['NextVaccDate']; ?></td>
                         <td>
                             <div style="">
                                 <a href="patient_con.php"  target="_blank"> <button class="btn btn-primary">Forms</button> </a>
@@ -78,7 +81,7 @@
                         </td>
                         </td>
                     </tr>
-                    <?php } ?>
+                    <?php $index++; } ?>
                 </tbody>
             </table>
         </div>

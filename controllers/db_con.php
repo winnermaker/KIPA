@@ -102,7 +102,8 @@
 
     function getAllChildernReviewSoon(){
         $sql = "SELECT * FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
-        $stmt =  $this->pdo->query($sql)-fetchAll();
+        $stmt =  $this->pdo->query($sql)->fetchAll();
+        return $stmt;
         /*while ($row = $stmt->fetch()) {
           echo $row['name']."<br />\n";
         }*/
@@ -118,7 +119,7 @@
     function getChildDataForHeadline($childrenID){
       // select a particular child by id
       $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
-      $stmt->execute([$patientID]);
+      $stmt->execute([$childrenID]);
       $child = $stmt->fetch();
     }
 
