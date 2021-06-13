@@ -99,7 +99,7 @@
 
     function getAllChildernReviewSoon(){
         $sql = "SELECT * FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
-        $data =  $this->pdo->query($sql)-fetchAll();
+        $data =  $this->pdo->query($sql)->fetchAll();
         return $data;
     }
 
