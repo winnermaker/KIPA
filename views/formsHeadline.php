@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <?php 
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
+
+    var_dump($arrayChildData);
+  ?>
 
   <style>
     .table {
