@@ -75,23 +75,35 @@
             <div class="row mt-3">
                 <div class ="form-group col">
                     <label for="dateOfBirth" class="col-form-label">Date of Birth</label>
-                    <input class="form-control " type="date" name="dateOfBirth" id="dateOfBirth">
+                    <input class="form-control " type="date" name="dateOfBirth" id="dateOfBirth" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>
                 </div>
 
                 <div class="form-group col">
                     <label for="estDateOfBirth" class="col-form-label">Est. Date of Birth</label>
-                    <input class="form-control " type="date" name="estDateOfBirth" id="estDateOfBirth">
+                    <input class="form-control " type="date" name="estDateOfBirth" id="estDateOfBirth" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>
                 </div>
+
 
                 <div class ="form-group col">
                     <label for="admissionDate" class="col-form-label">Admission Date</label>
-                    <input class="form-control " type="date" name="admissionDate" id="admissionDate">
+                    <input class="form-control " type="date" name="admissionDate" id="admissionDate" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>
                 </div>
 
                 <div class="form-group col">
                     <label for="dischargeDate" class="col-form-label">Discharge Date</label>
-                    <input class="form-control" type="date" name="dischargeDate"  id="dischargeDate">
-
+                    <input class="form-control" type="date" name="dischargeDate"  id="dischargeDate" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>
                 </div>
 
             </div>
@@ -99,7 +111,10 @@
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="pictureTakenOn" class="form-label">Picture taken on</label>
-                    <input class="form-control" type="date" name="pictureTakenOn" id="pictureTakenOn">
+                    <input class="form-control" type="date" name="pictureTakenOn" id="pictureTakenOn" min="1900-04-01" max="2300-04-20">
+                    <div class="invalid-feedback">
+                    Please pick a valid Date
+                    </div>
                 </div>
 
                 <div class="form-group col">
@@ -140,6 +155,7 @@
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
+
     </script>
   </body>
 </html>

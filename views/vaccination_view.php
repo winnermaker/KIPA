@@ -13,43 +13,73 @@
         <h1 class="mt-3 ">Vaccination</h1>
         <?php require 'formsHeadline.php' ?>
 
-        <form action="vaccination_con.php" method="post">
+        <form action="vaccination_con.php" method="post" class="needs-validation" novalidate>
           <input type="hidden" id="vaccinationID" name="vaccinationID">
 
-          <div class="">
-              <table class="table table-striped table-hover table-bordered mt-5" id="table">
-                <thead class="table-dark">
-                  <tr>
-                    <th scope="col" class="sticky-top">Vaccine</th>
-                    <th scope="col" class="sticky-top">Vacc. Date</th>
-                    <th scope="col" class="sticky-top">Vacc. Date</th>
-                    <th scope="col" class="sticky-top">Vacc. Date</th>
-                    <th scope="col" class="sticky-top">Vacc. Date</th>
-                    <th scope="col" class="sticky-top">Vacc. Date</th>
-                    <th scope="col" class="sticky-top">Next vacc. Date</th>
-                    <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
-                  </tr>
-                </thead>
-                
-                <tbody id="tableBody">
-                <tr id="row">
-                  <td><input style="width:160px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
-                      <datalist id="vaccinedatalistOptions">
-                          <option value="CSM">
-                          <option value="ATS">
-                          <option value="BCG">
-                      </datalist>
-                  </td>
-                  <td><input style="width:150px;" class="form-control" type="date" name="vaccDate1[]" id="VaccDate1"></td>
-                  <td><input style="width:150px;" class="form-control" type="date" name="vaccDate2[]" id="VaccDate2"></td>
-                  <td><input style="width:150px;" class="form-control" type="date" name="vaccDate3[]" id="VaccDate3"></td>
-                  <td><input style="width:150px;" class="form-control" type="date" name="vaccDate4[]" id="VaccDate4"></td>
-                  <td><input style="width:150px;" class="form-control" type="date" name="vaccDate5[]" id="VaccDate5"></td>
-                  <td><input style="width:150px;" class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate"></td>
-                  <td><input type="button" style="width:110px;" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
-                
+          <div class="table-responsive-lg mt-5">
+            <table class="table table-striped table-hover table-bordered" id="table">
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col" class="sticky-top">Vaccine</th>
+                  <th scope="col" class="sticky-top">Vacc. Date</th>
+                  <th scope="col" class="sticky-top">Vacc. Date</th>
+                  <th scope="col" class="sticky-top">Vacc. Date</th>
+                  <th scope="col" class="sticky-top">Vacc. Date</th>
+                  <th scope="col" class="sticky-top">Vacc. Date</th>
+                  <th scope="col" class="sticky-top">Next vacc. Date</th>
+                  <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
                 </tr>
-                </tbody> 
+              </thead>
+              
+              <tbody id="tableBody">
+              <tr id="row">
+                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
+                    <datalist id="vaccinedatalistOptions">
+                        <option value="CSM">
+                        <option value="ATS">
+                        <option value="BCG">
+                    </datalist>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate1[]" id="VaccDate1" min="1900-04-01" max="2300-04-20"> 
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate2[]" id="VaccDate2" min="1900-04-01" max="2300-04-20">    
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate3[]" id="VaccDate3" min="1900-04-01" max="2300-04-20">    
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20">    
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate5[]" id="VaccDate5" min="1900-04-01" max="2300-04-20">    
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">    
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
+              
+              </tr>
+              </tbody> 
             </table>
           </div>
 
@@ -79,14 +109,14 @@
               var cell7 = row.insertCell(6);
               var cell8 = row.insertCell(7);
               
-              cell1.innerHTML = '<input type="text" style="width:160px;" class="form-control" name="vaccineDataList[]">';
-              cell2.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccDate1[]"> ';
-              cell3.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccDate2[]"> ';
-              cell4.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccDate3[]"> ';
-              cell5.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccDate4[]"> ';
-              cell6.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="vaccDate5[]"> ';
-              cell7.innerHTML = '<input type="date" style="width:150px;" class="form-control" name="nextVaccDate[]">';
-              cell8.innerHTML = '<input type="button" style="width:110px;" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
+              cell1.innerHTML = '<input style="width:200px;" type="text" class="form-control" name="vaccineDataList[]">';
+              cell2.innerHTML = '<input type="date" class="form-control" name="vaccDate1[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell3.innerHTML = '<input type="date" class="form-control" name="vaccDate2[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell4.innerHTML = '<input type="date" class="form-control" name="vaccDate3[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell5.innerHTML = '<input type="date" class="form-control" name="vaccDate4[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell6.innerHTML = '<input type="date" class="form-control" name="vaccDate5[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell7.innerHTML = '<input type="date" class="form-control" name="nextVaccDate[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell8.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
 
               $('input').addClass('border border-dark'); 
         }
@@ -125,5 +155,26 @@
 
     document.getElementById("investigator").hidden = true;
     document.getElementById("investigatorName").hidden = true;
+
+
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
   </script>
 </html>

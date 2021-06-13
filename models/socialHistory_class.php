@@ -26,14 +26,14 @@
         public function __construct(){
             $this->socialHistoryID = !empty($_POST['socialHistoryID']) ? $_POST['socialHistoryID'] : null;
             $this->dateOfInvestigation = !empty($_POST['dateOfInvestigation']) ? $_POST['dateOfInvestigation'] : null;
-            $this->livedWithWho = !empty($_POST['livedWithWho']) ? $_POST['livedWithWho'] : null;
-            $this->livedWhere = !empty($_POST['livedWhere']) ? $_POST['livedWhere'] : null;
-            $this->parentsAlive = !empty($_POST['parentsAlive']) ? $_POST['parentsAlive'] : null;
-            $this->parentslivetogether = !empty($_POST['parentslivetogether']) ? $_POST['parentslivetogether'] : null;
-            $this->amountAndSourceOfIncome = !empty($_POST['amountAndSourceOfIncome']) ? $_POST['amountAndSourceOfIncome'] : null;
-            $this->incomeForHowMany = !empty($_POST['incomeForHowMany']) ? $_POST['incomeForHowMany'] : null;
-            $this->abuse = !empty($_POST['abuse']) ? $_POST['abuse'] : null;
-            $this->sexuallyActive = !empty($_POST['sexuallyActive']) ? $_POST['sexuallyActive'] : null;
+            $this->livedWithWho = !empty($_POST['livedWithWho']) ? trim($_POST['livedWithWho']) : null;
+            $this->livedWhere = !empty($_POST['livedWhere']) ? trim($_POST['livedWhere']) : null;
+            $this->parentsAlive = !empty($_POST['parentsAlive']) ? trim($_POST['parentsAlive']) : null;
+            $this->parentslivetogether = !empty($_POST['parentslivetogether']) ? trim($_POST['parentslivetogether']) : null;
+            $this->amountAndSourceOfIncome = !empty($_POST['amountAndSourceOfIncome']) ? trim($_POST['amountAndSourceOfIncome']) : null;
+            $this->incomeForHowMany = !empty($_POST['incomeForHowMany']) ? trim($_POST['incomeForHowMany']) : null;
+            $this->abuse = !empty($_POST['abuse']) ? trim($_POST['abuse']) : null;
+            $this->sexuallyActive = !empty($_POST['sexuallyActive']) ? trim($_POST['sexuallyActive']) : null;
 
             $this->tableIndex = isset($_POST['tableIndex']) ? $_POST['tableIndex'] : null;
             $this->siblings = !empty($_POST['siblings']) ? $_POST['siblings'] : null;
@@ -61,11 +61,11 @@
 
         public function validateSiblings(){
             for ($i=0; $i < count($this->tableIndex) ; $i++) {
-                $this->siblingsGender[$i] = !empty($this->siblingsGender[$i])  ? $this->siblingsGender[$i] : null;
-                $this->siblingsAge[$i] = !empty($this->siblingsAge[$i]) ? $this->siblingsAge[$i] : null;
-                $this->siblingsHealthy[$i] = !empty($this->siblingsHealthy[$i]) ? $this->siblingsHealthy[$i] : null;
-                $this->siblingsAlive[$i] = !empty($this->siblingsAlive[$i]) ? $this->siblingsAlive[$i] : null;
-                $this->siblingsParents[$i] = !empty($this->siblingsParents[$i]) ? $this->siblingsParents[$i] : null;
+                $this->siblingsGender[$i] = !empty($this->siblingsGender[$i])  ? trim($this->siblingsGender[$i]) : null;
+                $this->siblingsAge[$i] = !empty($this->siblingsAge[$i]) ? trim($this->siblingsAge[$i]) : null;
+                $this->siblingsHealthy[$i] = !empty($this->siblingsHealthy[$i]) ? trim($this->siblingsHealthy[$i]) : null;
+                $this->siblingsAlive[$i] = !empty($this->siblingsAlive[$i]) ? trim($this->siblingsAlive[$i]) : null;
+                $this->siblingsParents[$i] = !empty($this->siblingsParents[$i]) ? trim($this->siblingsParents[$i]) : null;
 
                 if(!is_null($this->siblingsGender[$i]) || !is_null($this->siblingsAge[$i]) || !is_null($this->siblingsHealthy[$i]) || !is_null($this->siblingsAlive[$i]) || !is_null($this->siblingsParents[$i])){
 

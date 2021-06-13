@@ -20,9 +20,9 @@
           <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
-                  <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" required>
+                  <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" min="1900-04-01" max="2300-04-20" required>
                   <div class="invalid-feedback">
-                    Please enter a Date
+                    Please chose a valid Date
                     </div>      
             </div>
             <div class="form-group col">

@@ -18,7 +18,7 @@
         }
 
         .logoImage{
-            width:40%;
+            width:36%;
         }
 
         .username{
@@ -36,7 +36,7 @@
             <div class="container mt-5">
           
                 
-                    <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="350" height="150" >
+                    <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="330" height="150" >
                     <h2 class="mt-3 col">Login</h2>     
 
                 <div class="form-row">
