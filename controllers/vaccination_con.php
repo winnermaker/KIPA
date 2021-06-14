@@ -6,7 +6,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $vaccinationObj = new vaccination();
         $vaccdata = $vaccinationObj->getParams();
-        $vaccinationObj->printParams();
         $vaccdates = $vaccinationObj->getParamsDates();
         $data = Array();
 

@@ -59,7 +59,7 @@
                 </thead>
 
                 <tbody id="tableBody">
-                <?php  
+                <?php
                     $index = 1;
                     foreach($childData as $key => $row){
                 ?>
@@ -75,7 +75,7 @@
                         <td name="admDate"><?php echo $row['AdmDate']; ?></td>
                         <td name="disDate"><?php echo $row['DisDate']; ?></td>
                         <td name="reviewOn"><?php echo $row['ReviewOn']; ?></td>
-                        <td name="nextVaccDate"><?php echo $row['NextVaccDate']; ?></td>
+                        <td name="nextVaccDate"><?php echo $row['nextVaccDate']; ?></td>
                         <td>
                             <div style="">
                                 <a href="patient_con.php" onclick="addParamsToUrl(this)"  target="_blank"> <button class="btn btn-primary">Forms</button> </a>
@@ -95,7 +95,7 @@
         var $rows = $('#tableBody tr');
         $('#searchInput').keyup(function() {
             var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-            
+
             $rows.show().filter(function() {
                 var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
                 return !~text.indexOf(val);
@@ -105,7 +105,7 @@
 
         function addParamsToUrl(element)
           {
-            
+
             $(element).attr('href', function() {
               var childrenID = $(this).closest("tr").find('td[name="childrenID"]').html();
               var reviewOn = $(this).closest("tr").find('td[name="reviewOn"]').html();
@@ -115,5 +115,5 @@
           }
 </script>
 
-  </body>0
+  </body>
 </html>

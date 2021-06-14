@@ -74,7 +74,7 @@ create table if not exists MedicalMain
     SubstanceAbuse  boolean,
     Conditions			text,
     PermMedication		text,
-    NextVaccDate		date,
+    nextVaccDate		date,
     ReviewOn			date,
     OtherInfo   text,
     MenstrualHist			text,

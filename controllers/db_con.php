@@ -87,16 +87,7 @@
       }
 
       function getMedicalData($childrenID){
-        $succes = false;
-        try {
-          $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
-          $succes = true;
-        } catch (\Exception $e) {
-
-        }
-        if(!$succes){
-          $sql = $this->pdo->prepare("SELECT * FROM medicalmain WHERE fk_ChildrenID = ?");
-        }
+        $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
         $sql->execute([$childrenID]);
         $medical = $sql->fetchAll();
         return $medical;
@@ -104,7 +95,7 @@
 
 
       function getAllChildernReviewSoon(){
-          $sql = "SELECT * FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
+          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE medicalmain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
           $data =  $this->pdo->query($sql)->fetchAll();
           return $data;
       }
@@ -115,6 +106,20 @@
         $sql->execute([$childrenID]);
         $child = $sql->fetch();
         return $child;
+      }
+
+      function getChildDataForListOfPatients(){
+        $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID ORDER BY childrenmain.ChildrenID, medicalvacc.nextVaccDate";
+        $data = $this->pdo->query($sql)->fetchAll();
+        for ($i=1; $i < count($data); $i++) {
+          if($data[$i]['ChildrenID'] == $data[$i-1]['ChildrenID']){
+            $remember[$i-1] = $i;
+          }
+        }
+        for ($i=0; $i <count($remember) ; $i++) {
+          unset($data[$remember[$i]]);
+        }
+        return $data;
       }
 
       function getChildDataForHeadline($childrenID){
