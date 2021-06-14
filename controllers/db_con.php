@@ -85,21 +85,6 @@
         $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
         return $dataAllCildren;
       }
-
-      function getMedicalData($childrenID){
-        $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
-        $sql->execute([$childrenID]);
-        $medical = $sql->fetchAll();
-        return $medical;
-      }
-
-
-      function getAllChildernReviewSoon(){
-          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE medicalmain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
-          $data =  $this->pdo->query($sql)->fetchAll();
-          return $data;
-      }
-
       function getChildData($childrenID){
         // select a particular child by id
         $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
@@ -135,6 +120,35 @@
         $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
         return $dataAllCildren;
       }
+
+      function getMedicalData($childrenID){
+        try {
+          $sql = "SELECT medicalmain.*,medicalvacc.nextVaccDate FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE medicalmain.fk_CHildrenID = ? ORDER BY medicalvacc.nextVaccDate LIMIT 1";
+          $smt = $this->pdo->prepare($sql);
+          $smt->execute([$childrenID]);
+          $medical = $smt->fetchAll();
+
+        } catch (\Exception $e) {
+
+        }
+
+        if(empty($medical)){
+          $sql = "SELECT * FROM medicalmain WHERE fk_CHildrenID = ?";
+          $smt = $this->pdo->prepare($sql);
+          $smt->execute([$childrenID]);
+          $medical = $smt->fetchAll();
+        }
+        return $medical;
+      }
+
+
+      function getAllChildernReviewSoon(){
+          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE medicalmain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
+          $data =  $this->pdo->query($sql)->fetchAll();
+          return $data;
+      }
+
+
 }
 
   $controller = new DBCon();
