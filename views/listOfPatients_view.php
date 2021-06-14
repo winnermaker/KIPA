@@ -60,7 +60,7 @@
                 </thead>
 
                 <tbody id="tableBody">
-                <?php 
+                <?php
                     if(isset($childData)){
                     $index = 1;
                     foreach($childData as $key => $row){
@@ -77,7 +77,7 @@
                         <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
-                        <td name="medicalID" hidden><?php echo $row['MedicalID']; ?></td>
+                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
                         <td name="nextVaccDate"><?php echo (isset($row['NextVaccDate'])) ? date("d-m-Y", strtotime($row['NextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
