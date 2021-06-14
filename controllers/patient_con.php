@@ -14,9 +14,9 @@
     } elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if(isset($_GET['childrenID'])){
         $childData = $controller->getChildData($_GET['childrenID']);
+        setcookie ("childIDCookie" , (int)$_GET['childrenID']);
+        setcookie ("medicalIDCookie" , (int)$_GET['medicalID']);
       }
-      $medical = $controller->getMedicalData($_GET['childrenID']);
-      var_dump($medical);
     }
 
   require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/patient_view.php";

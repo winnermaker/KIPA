@@ -85,6 +85,17 @@
         $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
         return $dataAllCildren;
       }
+
+      function getAllChildernID(){
+        $dataAllCildrenID = $this->pdo->query("SELECT ChildrenID FROM childrenmain")->fetchAll();
+        return $dataAllCildrenID;
+      }
+      function getAllVaccID(){
+        $data = $this->pdo->query("SELECT DISTINCT fk_MedicalID FROM medicalvacc")->fetchAll();
+        return $data;
+      }
+
+
       function getChildData($childrenID){
         // select a particular child by id
         $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
@@ -94,16 +105,26 @@
       }
 
       function getChildDataForListOfPatients(){
-        $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID ORDER BY childrenmain.ChildrenID, medicalvacc.nextVaccDate";
-        $data = $this->pdo->query($sql)->fetchAll();
-        for ($i=1; $i < count($data); $i++) {
-          if($data[$i]['ChildrenID'] == $data[$i-1]['ChildrenID']){
-            $remember[$i-1] = $i;
+        $ChildIDs = $this->getAllChildernID();
+        $VaccIDs = $this->getAllVaccID();
+        if(count($ChildIDs) > count($VaccIDs)){
+          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn, medicalmain.MedicalID, medicalmain.nextVaccDate FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID";
+          $data = $this->pdo->query($sql)->fetchAll();
           }
-        }
-        for ($i=0; $i <count($remember) ; $i++) {
-          unset($data[$remember[$i]]);
-        }
+          else {
+            $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.ReviewOn, medicalmain.MedicalID, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID ORDER BY childrenmain.ChildrenID, medicalvacc.nextVaccDate";
+            $data = $this->pdo->query($sql)->fetchAll();
+            $k = 0;
+            for ($i=1; $i < count($data); $i++) {
+              if($data[$i]['ChildrenID'] == $data[$i-1]['ChildrenID']){
+                $remember[$k] = $i;
+                $k++;
+              }
+            }
+            for ($i=0; $i <count($remember) ; $i++) {
+              unset($data[$remember[$i]]);
+            }
+          }
         return $data;
       }
 
