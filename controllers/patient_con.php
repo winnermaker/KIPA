@@ -4,7 +4,6 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $patientObj = new patient();
-        $patientObj->printParams();
         $controller->getAllChildern();
         if(!$patientObj->checkPatientID()){
           $controller -> prepared_insert('childrenmain',$patientObj->getParams());
@@ -13,7 +12,11 @@
         }
 
     } elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-      $childData = $controller->getChildData($_GET['childrenID']);
+      if(isset($_GET['childrenID'])){
+        $childData = $controller->getChildData($_GET['childrenID']);
+        setcookie ("childIDCookie" , (int)$_GET['childrenID']);
+        setcookie ("medicalIDCookie" , (int)$_GET['medicalID']);
+      }
     }
 
   require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/patient_view.php";

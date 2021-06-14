@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <?php 
+  <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
   ?>
 
@@ -29,7 +29,7 @@
 
               <tbody>
                 <?php
-                  //$child = $controller->getChildDataForHeadline($_COOKIE["ChildIDCookie"]);                  
+                  //$child = $controller->getChildDataForHeadline($_COOKIE["ChildIDCookie"]);
                  ?>
                 <td>Mustermann</td>
                 <td>Mike</td>

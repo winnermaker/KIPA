@@ -42,7 +42,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="sticky-top">#</th>
-                        <th scope="col" class="sticky-top" hidden>Children ID</th>
+                        <th scope="col" class="sticky-top" hidden>ChildrenID</th>
                         <th scope="col" class="sticky-top">First name</th>
                         <th scope="col" class="sticky-top">Last name</th>
                         <th scope="col" class="sticky-top">Call name</th>
@@ -52,6 +52,7 @@
                         <th scope="col" class="sticky-top">Admission Date</th>
                         <th scope="col" class="sticky-top">Discharge Date</th>
                         <th scope="col" class="sticky-top">Review Date</th>
+                        <th scope="col" class="sticky-top" hidden>MedicalID</th>
                         <th scope="col" class="sticky-top">Next Vaccination Date</th>
                         <th scope="col" class="sticky-top">Forms</th>
 
@@ -76,6 +77,7 @@
                         <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
+                        <td name="medicalID" hidden><?php echo $row['MedicalID']; ?></td>
                         <td name="nextVaccDate"><?php echo (isset($row['NextVaccDate'])) ? date("d-m-Y", strtotime($row['NextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
@@ -96,7 +98,7 @@
         var $rows = $('#tableBody tr');
         $('#searchInput').keyup(function() {
             var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-            
+
             $rows.show().filter(function() {
                 var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
                 return !~text.indexOf(val);
@@ -106,15 +108,15 @@
 
         function addParamsToUrl(element)
           {
-            
             $(element).attr('href', function() {
               var childrenID = $(this).closest("tr").find('td[name="childrenID"]').html();
               var reviewOn = $(this).closest("tr").find('td[name="reviewOn"]').html();
               var nextVaccDate = $(this).closest("tr").find('td[name="nextVaccDate"]').html();
-              return this.href + '?childrenID=' + childrenID  +  '&reviewOn=' + reviewOn + '&nextVaccDate=' + nextVaccDate;
+              var medicalID = $(this).closest("tr").find('td[name="medicalID"]').html();
+              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID + '&reviewOn=' + reviewOn + '&nextVaccDate=' + nextVaccDate;
             });
           }
 </script>
 
-  </body>0
+  </body>
 </html>
