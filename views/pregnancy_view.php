@@ -15,12 +15,12 @@
         
 
         <form action="pregnancy_con.php" method="post" class="needs-validation" novalidate>
-            <input type="hidden" id="pregnancyID" name="pregnancyID">
+            <input type="hidden" id="pregnancyID" name="pregnancyID" value="<?php echo (isset($pregnancyData['MotherID']))?$pregnancyData['MotherID']:'';?>" >
 
             <div class="row mt-5">
                 <div class ="form-group col-2">
                     <label for="entryDate" class="form-label">Entry Date</label>
-                    <input class="form-control" type="date" name="entryDate" id="entryDate" min="1900-04-01" max="2300-04-20" required>
+                    <input class="form-control" type="date" name="entryDate" id="entryDate" min="1900-04-01" max="2300-04-20"  value="<?php echo (isset($pregnancyData['EntryDate']))?$pregnancyData['EntryDate']:'';?>" required>
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>       
@@ -28,41 +28,43 @@
 
                 <div class="form-group col-2">
                     <label class="form-label" for="gravida">Gravida</label>
-                    <input type="number" class="form-control" name="gravida" id="gravida">
+                    <input type="number" class="form-control" name="gravida" id="gravida" value="<?php echo (isset($pregnancyData['Gravida']))?$pregnancyData['Gravida']: null;?>" >
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="para">Para</label>
-                    <input type="number" class="form-control" name="para" id="para">
+                    <input type="number" class="form-control" name="para" id="para" value="<?php echo (isset($pregnancyData['Para']))?$pregnancyData['Para']: null;?>" >
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="alive">Alive</label>
-                    <input type="number" class="form-control" name="alive" id="alive">
+                    <input type="number" class="form-control" name="alive" id="alive" value="<?php echo (isset($pregnancyData['alive']))?$pregnancyData['alive']:null;?>" >
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="dead">Dead</label>
-                    <input type="number" class="form-control" name="dead" id="dead">
+                    <input type="number" class="form-control" name="dead" id="dead" value="<?php echo (isset($pregnancyData['dead']))?$pregnancyData['dead']:null;?>" >
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="top">TOP</label>
-                    <input type="number" class="form-control" name="top" id="top">
+                    <input type="number" class="form-control" name="top" id="top" value="<?php echo (isset($pregnancyData['top']))?$pregnancyData['top']:null;?>" >
                 </div>
             </div>
 
             <h3 class="mt-5">Present Pregnancy</h3>
 
+            <input type="hidden" id="presentPregnancyID" name="presentPregnancyID" value="<?php echo (isset($presentPregnancy['PresPreagnancyID']))?$presentPregnancy['PresPreagnancyID']:'';?>" >
+
             <div class="row mt-4">
                 <div class="form-group col-3">
                 <label class="form-label" for="gestationalAge">Gestational Age</label>
-                <input type="text" class="form-control" name="gestationalAge" id="gestationalAge">
+                <input type="text" class="form-control" name="gestationalAge" id="gestationalAge" value="<?php echo (isset($presentPregnancy['GestationalAge']))?$presentPregnancy['GestationalAge']:'';?>" >
                 </div>
 
                 <div class ="form-group offset-1 col-2">
                     <label for="estimatedDateOfDelivery" class="form-label">Estimated Date of Delivery</label>
-                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery" min="1900-04-01" max="2300-04-20">    
+                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($presentPregnancy['EstDelivery']))?$presentPregnancy['EstDelivery']:'';?>" >    
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>     
@@ -71,12 +73,12 @@
                 <fieldset class="offset-1 col-4">
                 <legend class="col-form-label">Antenatal Clinic attendance</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioYes" value="option1">
+                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioYes" value="option1" <?php echo (isset($presentPregnancy['AntClinicAttend']) && $presentPregnancy['AntClinicAttend'] === 1 )?'checked':'' ?> >
                         <label class="form-check-label" for="antenatalRadioYes">Yes</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioNo" value="option2">
+                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioNo" value="option2" <?php echo (isset($presentPregnancy['AntClinicAttend']) && $presentPregnancy['AntClinicAttend'] === 0 )?'checked':'' ?> >
                         <label class="form-check-label" for="antenatalRadioNo">No</label>
                     </div>
                 </fieldset>
@@ -86,12 +88,12 @@
             
             <div class="form-group form-row mt-3">
                 <label for="problems" class="form-label">Any problems during this pregnancy ?</label>
-                <textarea class="form-control" name="problems" id="problems" rows="2"></textarea>
+                <textarea class="form-control" name="problems" id="problems" rows="2"><?php echo (isset($presentPregnancy['Problems'])) ? htmlspecialchars($presentPregnancy['Problems']): '' ; ?></textarea>
             </div>
 
             <div class="form-group form-row mt-3">
                 <label for="pregnancyRemarks" class="form-label">Remarks</label>
-                <textarea class="form-control" name="pregnancyRemarks" id="pregnancyRemarks" rows="3"></textarea>
+                <textarea class="form-control" name="pregnancyRemarks" id="pregnancyRemarks" rows="3"><?php echo (isset($presentPregnancy['Remarks'])) ? htmlspecialchars($presentPregnancy['Remarks']): '' ; ?></textarea>
             </div>
 
 

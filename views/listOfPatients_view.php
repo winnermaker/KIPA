@@ -78,7 +78,7 @@
                         <td name="nextVaccDate"><?php echo $row['NextVaccDate']; ?></td>
                         <td>
                             <div style="">
-                                <a href="patient_con.php" onclick="addParamsToUrl(this)"  target="_blank"> <button class="btn btn-primary">Forms</button> </a>
+                                <a href="patient_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-primary">Forms</button> </a>
                             </div>
                         </td>
                         </td>
