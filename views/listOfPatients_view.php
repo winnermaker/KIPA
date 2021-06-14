@@ -13,30 +13,32 @@
     <div class="container">
         <h1 class="mt-4 ">List of Patients</h1>
 
-        <div class="row mt-5">
-            <fieldset class="col">
-                <legend class="col-form-label">Filter Options:</legend>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="filterRadios" id="maleRadio" value="option1" checked>
-                        <label class="form-check-label" for="maleRadio">All Patients</label>
-                    </div>
+        <form action="listOfPatients_con.php" method="post">
+            <div class="row mt-5">
+                <fieldset class="col">
+                    <legend class="col-form-label">Filter Options:</legend>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="filterRadios" id="maleRadio" value="option1" checked>
+                            <label class="form-check-label" for="maleRadio">All Patients</label>
+                        </div>
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="filterRadios" id="femaleRadio" value="option2">
-                        <label class="form-check-label" for="femaleRadio">Review Date</label>
-                    </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="filterRadios" id="femaleRadio" value="option2">
+                            <label class="form-check-label" for="femaleRadio">Review Date</label>
+                        </div>
 
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="filterRadios" id="genderOtherRadio" value="option3">
-                        <label class="form-check-label" for="genderOtherRadio">Vaccination Date</label>
-                    </div>
-            </fieldset>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="filterRadios" id="genderOtherRadio" value="option3">
+                            <label class="form-check-label" for="genderOtherRadio">Vaccination Date</label>
+                        </div>
+                </fieldset>
 
-            <div class="form-group offset-4 col ">
-                <label for="searchInput"></label>
-                <input type="text" placeholder="Search" id="searchInput" class="form-control">
+                <div class="form-group offset-4 col ">
+                    <label for="searchInput"></label>
+                    <input type="text" placeholder="Search" id="searchInput" class="form-control">
+                </div>
             </div>
-        </div>
+        </form>
         <div class="table-responsive-lg mt-3">
             <table class="table table-striped table-hover table-bordered" id="table">
                 <thead class="table-dark">

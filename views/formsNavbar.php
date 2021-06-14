@@ -15,22 +15,22 @@
             Visits
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item text-dark" href="visitData_con.php">Visit Data</a></li>
-            <li><a class="dropdown-item text-dark" href="visitDiagnostic_con.php">Diagnostic Data</a></li>
+            <li><a class="dropdown-item text-dark" onclick="addParamsToUrl(this)" href="visitData_con.php">Visit Data</a></li>
+            <li><a class="dropdown-item text-dark" onclick="addParamsToUrl(this)" href="visitDiagnostic_con.php">Diagnostic Data</a></li>
           </ul>
         </li>
 
         <li class="nav-item">
-          <a href="socialHistory_con.php" class="nav-link text-dark"  role="tab"  >Social History</a>
+          <a href="socialHistory_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab"  >Social History</a>
         </li>
         <li class="nav-item">
-          <a href="pexam_con.php" class="nav-link text-dark"  role="tab" >Physical Examination</a>
+          <a href="pexam_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Physical Examination</a>
         </li>
         <li class="nav-item">
-          <a href="pregnancy_con.php" class="nav-link text-dark"  role="tab" >Pregnancy</a>
+          <a href="pregnancy_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Pregnancy</a>
         </li>
         <li class="nav-item">
-          <a href="vaccination_con.php" class="nav-link text-dark"  role="tab">Vaccination</a>
+          <a href="vaccination_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab">Vaccination</a>
         </li>
       </ul>
     </div>
