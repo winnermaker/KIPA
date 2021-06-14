@@ -7,7 +7,7 @@
           <a  href="patient_con.php" class="nav-link text-dark" role="tab" >Patients</a>
         </li>
         <li class="nav-item">
-          <a href="medicalMain_con.php" class="nav-link text-dark"  role="tab" >Medical Main</a>
+          <a href="medicalMain_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Medical Main</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -34,6 +34,19 @@
         </li>
       </ul>
     </div>
+    
+    <script>
+      function addParamsToUrl(element)
+          {
+            $(element).attr('href', function() {
+              var childrenID = $(this).closest("tr").find('td[name="childrenID"]').html();
+              var reviewOn = $(this).closest("tr").find('td[name="reviewOn"]').html();
+              var nextVaccDate = $(this).closest("tr").find('td[name="nextVaccDate"]').html();
+              var medicalID = $(this).closest("tr").find('td[name="medicalID"]').html();
+              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID + '&reviewOn=' + reviewOn + '&nextVaccDate=' + nextVaccDate;
+            });
+          }
+    </script>
       
   </body>
 </html>
