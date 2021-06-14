@@ -39,13 +39,29 @@
       function addParamsToUrl(element)
           {
             $(element).attr('href', function() {
-              var childrenID = $(this).closest("tr").find('td[name="childrenID"]').html();
-              var reviewOn = $(this).closest("tr").find('td[name="reviewOn"]').html();
-              var nextVaccDate = $(this).closest("tr").find('td[name="nextVaccDate"]').html();
-              var medicalID = $(this).closest("tr").find('td[name="medicalID"]').html();
-              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID + '&reviewOn=' + reviewOn + '&nextVaccDate=' + nextVaccDate;
+              var medicalID = getUrlParameter('medicalID');
+              var childrenID = getUrlParameter('childrenID');
+        
+              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID;
             });
           }
+
+
+          var getUrlParameter = function getUrlParameter(sParam) {
+            var sPageURL = window.location.search.substring(1),
+                sURLVariables = sPageURL.split('&'),
+                sParameterName,
+                i;
+
+            for (i = 0; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+
+                if (sParameterName[0] === sParam) {
+                    return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                }
+            }
+            return false;
+        };
     </script>
       
   </body>

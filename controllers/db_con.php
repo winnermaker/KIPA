@@ -120,7 +120,8 @@
         $medical = $smt->fetchAll();
 
         if(empty($medical)){
-          $sql = "SELECT * FROM medicalmain WHERE fk_CHildrenID = ?";
+          $sql = "SELECT * FROM medicalmain WHE
+          RE fk_CHildrenID = ?";
           $smt = $this->pdo->prepare($sql);
           $smt->execute([$childrenID]);
           $medical = $smt->fetchAll();
