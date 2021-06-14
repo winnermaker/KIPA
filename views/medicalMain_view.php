@@ -435,6 +435,7 @@
                 $("#nhiNumber").removeAttr("disabled");
             } else {
                 $("#nhiNumber").attr("disabled", "disabled");
+                $("#nhiNumber").val("");
             }
         });
     });
@@ -447,12 +448,17 @@
 
       $('#HepBPosRadioNo').click(function()
       {
+        $('#HepBtreatedRadioYes').prop('checked', false);
+        $('#HepBtreatedRadioNo').prop('checked', false);
         $('#HepBPosCheckDate').removeAttr("disabled");
         $('#hepBtreated').attr("disabled","disabled");
       });
 
       $('#HepBPosRadioNotDone').click(function()
       {
+        $('#HepBtreatedRadioYes').prop('checked', false);
+        $('#HepBtreatedRadioNo').prop('checked', false);
+        $('#HepBPosCheckDate').val("");
         $('#HepBPosCheckDate').attr("disabled","disabled");
         $('#hepBtreated').attr("disabled","disabled");
       });
@@ -467,12 +473,17 @@
 
       $('#hivPosRadioNo').click(function()
       {
+        $('#hivtreatedRadioYes').prop('checked', false);
+        $('#hivtreatedRadioNo').prop('checked', false);
         $('#hivCheckDate').removeAttr("disabled");
         $('#hivTreated').attr("disabled","disabled");
       });
 
       $('#hivPosRadioNotDone').click(function()
       {
+        $('#hivtreatedRadioYes').prop('checked', false);
+        $('#hivtreatedRadioNo').prop('checked', false);
+        $('#hivCheckDate').val("");
         $('#hivCheckDate').attr("disabled","disabled");
         $('#hivTreated').attr("disabled","disabled");
       });
@@ -486,12 +497,17 @@
 
       $('#TbPosRadioNo').click(function()
       {
+        $('#TPosTreatedRadioYes').prop('checked', false);
+        $('#TPosTreatedRadioNo').prop('checked', false);
         $('#TbposCheckDate').removeAttr("disabled");
         $('#tbTreated').attr("disabled","disabled");
       });
 
       $('#TbPosRadioNotDone').click(function()
       {
+        $('#TPosTreatedRadioYes').prop('checked', false);
+        $('#TPosTreatedRadioNo').prop('checked', false);
+        $('#TbposCheckDate').val("");
         $('#TbposCheckDate').attr("disabled","disabled");
         $('#tbTreated').attr("disabled","disabled");
       });
@@ -505,12 +521,17 @@
 
       $('#STDposRadioNo').click(function()
       {
+        $('#STDposTreatedRadioYes').prop('checked', false);
+        $('#STDposTreatedRadioNo').prop('checked', false);
         $('#STDposCheckDate').removeAttr("disabled");
         $('#stdTreated').attr("disabled","disabled");
       });
 
       $('#STDposRadioNotDone').click(function()
       {
+        $('#STDposTreatedRadioYes').prop('checked', false);
+        $('#STDposTreatedRadioNo').prop('checked', false);
+        $('#STDposCheckDate').val("");
         $('#STDposCheckDate').attr("disabled","disabled");
         $('#stdTreated').attr("disabled","disabled");
       });
@@ -528,6 +549,7 @@
 
       $('#pregPosRadioNotDone').click(function()
       {
+        $('#PregTestDate').val("");
         $('#PregTestDate').attr("disabled","disabled");
       });
 
@@ -539,11 +561,13 @@
 
       $('#SickleCellRadioNo').click(function()
       {
+        $('#sickleCellType').val("");
         $('#sickleCellType').attr("disabled","disabled");
       });
 
       $('#SickleCellRadioNotDone').click(function()
       {
+        $('#sickleCellType').val("");
         $('#sickleCellType').attr("disabled","disabled");
       });
 

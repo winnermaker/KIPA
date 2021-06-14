@@ -25,7 +25,6 @@
                   <th scope="col" class="sticky-top">Vacc. Date</th>
                   <th scope="col" class="sticky-top">Vacc. Date</th>
                   <th scope="col" class="sticky-top">Vacc. Date</th>
-                  <th scope="col" class="sticky-top">Vacc. Date</th>
                   <th scope="col" class="sticky-top">Next vacc. Date</th>
                   <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
                 </tr>
@@ -60,12 +59,6 @@
                 </td>
                 <td>
                   <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20">    
-                  <div class="invalid-feedback">
-                  Please pick a valid Date
-                  </div>
-                </td>
-                <td>
-                  <input class="form-control" type="date" name="vaccDate5[]" id="VaccDate5" min="1900-04-01" max="2300-04-20">    
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
@@ -107,16 +100,14 @@
               var cell5 = row.insertCell(4);
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
-              var cell8 = row.insertCell(7);
               
               cell1.innerHTML = '<input style="width:200px;" type="text" class="form-control" name="vaccineDataList[]">';
               cell2.innerHTML = '<input type="date" class="form-control" name="vaccDate1[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell3.innerHTML = '<input type="date" class="form-control" name="vaccDate2[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell4.innerHTML = '<input type="date" class="form-control" name="vaccDate3[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell5.innerHTML = '<input type="date" class="form-control" name="vaccDate4[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
-              cell6.innerHTML = '<input type="date" class="form-control" name="vaccDate5[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
-              cell7.innerHTML = '<input type="date" class="form-control" name="nextVaccDate[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
-              cell8.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
+              cell6.innerHTML = '<input type="date" class="form-control" name="nextVaccDate[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
+              cell7.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
 
               $('input').addClass('border border-dark'); 
         }

@@ -7,7 +7,6 @@
         private $secondVaccDate = array();
         private $thirdVaccDate = array();
         private $fourthVaccDate = array();
-        private $fifthVaccDate = array();
         private $nextVaccDate = array();
 
         private $allVaccination = array();
@@ -23,7 +22,6 @@
             $this->secondVaccDate = !empty($_POST['vaccDate2']) ? $_POST['vaccDate2'] : null;
             $this->thirdVaccDate = !empty($_POST['vaccDate3']) ? $_POST['vaccDate3'] : null;
             $this->fourthVaccDate = !empty($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
-            $this->fifthVaccDate = !empty($_POST['vaccDate5']) ? $_POST['vaccDate5'] : null;
             $this->nextVaccDate = !empty($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
             $this->vaccinationRemarks = !empty($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
 
@@ -41,7 +39,6 @@
             $this->secondVaccDate[$i] = !empty($this->secondVaccDate[$i]) ? $this->secondVaccDate[$i] : null;
             $this->thirdVaccDate[$i] = !empty($this->thirdVaccDate[$i]) ? $this->thirdVaccDate[$i] : null;
             $this->fourthVaccDate[$i] = !empty($this->fourthVaccDate[$i]) ? $this->fourthVaccDate[$i] : null;
-            $this->fifthVaccDate[$i] = !empty($this->fifthVaccDate[$i]) ? $this->fifthVaccDate[$i] : null;
 
             if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks[$i])){
 
@@ -55,13 +52,12 @@
 
 
             if(!is_null($this->firstVaccDate[$i]) || !is_null($this->secondVaccDate[$i]) || !is_null($this->thirdVaccDate[$i]) ||
-               !is_null($this->fourthVaccDate[$i]) || !is_null($this->fifthVaccDate[$i])){
+               !is_null($this->fourthVaccDate[$i])){
               $this->allVaccinationDates[] = [
                 'firstVaccDate' => $this->firstVaccDate[$i],
                 'secondVaccDate' => $this->secondVaccDate[$i],
                 'thirdVaccDate' => $this->thirdVaccDate[$i],
-                'fourthVaccDate' => $this->fourthVaccDate[$i],
-                'fifthVaccDate' => $this->fifthVaccDate[$i]
+                'fourthVaccDate' => $this->fourthVaccDate[$i]
               ];
           }
         }
