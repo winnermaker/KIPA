@@ -16,7 +16,8 @@
         <div class="form-row sticky-top mt-3">   
             <table class="table table-striped table-hover table-bordered mt-5" id="table">
               <thead class="table-dark">
-                <tr> 
+                <tr>
+                  <th scope="col" class="sticky-top" hidden>Visit ID</th>
                   <th scope="col" class="sticky-top">Visit Date</th>
                   <th scope="col" class="sticky-top">Visit Type</th>
                   <th scope="col" class="sticky-top">Exam. Location</th>
@@ -28,15 +29,21 @@
               </thead>
               
               <tbody id="tableBody">
+              <?php if(isset($visitData)){
+                      $index = 1;
+                      foreach($visitData as $key => $row){
+                ?>
                 <tr>
-                  <td><input type="date" class="form-control" name="visitDate" disabled></input></td>
-                  <td><input type="text" class="form-control" name="visitType" disabled></input></td>
-                  <td><input type="text" class="form-control" name="examLocation" disabled></td>
-                  <td><input type="text" class="form-control" name="examCause" disabled></td>
-                  <td><input type="date" class="form-control" name="reviewDate" disabled></td>
+                  <td name="childrenID" hidden><?php echo (isset($row['VisitID']))?$row['VisitID']:'';?></td>
+                  <td><input type="date" class="form-control" name="visitDate" value="<?php echo (isset($row['VisitDate']))?$row['VisitDate']:'';?>" disabled></input></td>
+                  <td><input type="text" class="form-control" name="visitType" value="<?php echo (isset($row['VisitType']))?$row['VisitType']:'';?>" disabled></input></td>
+                  <td><input type="text" class="form-control" name="examLocation" value="<?php echo (isset($row['ExLocation']))?$row['ExLocation']:'';?>" disabled></td>
+                  <td><input type="text" class="form-control" name="examCause" value="<?php echo (isset($row['ExCause']))?$row['ExCause']:'';?>" disabled></td>
+                  <td><input type="date" class="form-control" name="reviewDate" value="<?php echo (isset($row['RVD']))?$row['RVD'] :'';?>" disabled></td>
                   <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a></td>
                 <!-- <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  -->
                 </tr>
+                <?php $index++; } } ?>
               </tbody> 
           </table>  
         </div>

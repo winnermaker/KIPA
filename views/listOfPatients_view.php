@@ -59,23 +59,24 @@
                 </thead>
 
                 <tbody id="tableBody">
-                <?php  
+                <?php 
+                    if(isset($childData)){
                     $index = 1;
                     foreach($childData as $key => $row){
                 ?>
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
-                        <td name="childrenID" hidden><?php echo $row['ChildrenID']; ?></td>
-                        <td name="firstName"><?php echo $row['FirstName']; ?></td>
-                        <td name="lastName"><?php echo $row['LastName']; ?></td>
-                        <td name="callNames"><?php echo $row['CallNames']; ?></td>
-                        <td name="gender"><?php echo $row['Gender']; ?></td>
-                        <td name="DOB"><?php echo $row['DOB']; ?></td>
-                        <td name="EDOB"><?php echo $row['EDOB']; ?></td>
-                        <td name="admDate"><?php echo $row['AdmDate']; ?></td>
-                        <td name="disDate"><?php echo $row['DisDate']; ?></td>
-                        <td name="reviewOn"><?php echo $row['ReviewOn']; ?></td>
-                        <td name="nextVaccDate"><?php echo $row['NextVaccDate']; ?></td>
+                        <td name="childrenID" hidden><?php echo (isset($row['ChildrenID']))?$row['ChildrenID']:'';?></td>
+                        <td name="firstName"><?php echo (isset($row['FirstName']))?$row['FirstName']:'';?></td>
+                        <td name="lastName"><?php echo (isset($row['LastName']))?$row['LastName']:'';?></td>
+                        <td name="callNames"><?php echo (isset($row['CallNames']))?$row['CallNames']:'';?></td>
+                        <td name="gender"><?php echo (isset($row['Gender']))?$row['Gender']:'';?></td>
+                        <td name="DOB"><?php echo (isset($row['DOB']))? date("d-m-Y", strtotime($row['DOB'])) :'';?></td>
+                        <td name="EDOB"><?php echo (isset($row['EDOB']))? date("d-m-Y", strtotime($row['EDOB'])) :'';?></td>
+                        <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
+                        <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
+                        <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
+                        <td name="nextVaccDate"><?php echo (isset($row['NextVaccDate'])) ? date("d-m-Y", strtotime($row['NextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
                                 <a href="patient_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-primary">Forms</button> </a>
@@ -83,7 +84,7 @@
                         </td>
                         </td>
                     </tr>
-                    <?php $index++; } ?>
+                    <?php $index++; } } ?>
                 </tbody>
             </table>
         </div>
