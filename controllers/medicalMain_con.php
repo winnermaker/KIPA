@@ -14,5 +14,8 @@
         }
     }
 
+    $medicalData = $controller->getMedicalData($medicalData['fk_ChildrenID']);
+    var_dump($medicalData);
+
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/medicalMain_view.php";
 ?>

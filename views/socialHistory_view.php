@@ -15,65 +15,65 @@
 
       <form action="socialHistory_con.php" method="post" class="needs-validation" novalidate>
 
-        <input type="hidden" id="socialHistoryID" name="socialHistoryID">
+        <input type="hidden" id="socialHistoryID" name="socialHistoryID" value="<?php echo (isset($socialData['SocialID']))?$socialData['SocialID']:'';?>" >
 
           <div class="row mt-5">
             <div class ="form-group col-2 ">
                   <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
-                  <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" min="1900-04-01" max="2300-04-20" required>
+                  <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($socialData['DateOfInvestigation']))?$socialData['DateOfInvestigation']:'';?>" required>
                   <div class="invalid-feedback">
                     Please chose a valid Date
                     </div>      
             </div>
             <div class="form-group col">
             <label for="livedWithWho" class="form-label">Lived with who?</label>
-            <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="1"></textarea>
+            <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="1"> <?php echo (isset($socialData['LivedWithWho'])) ? htmlspecialchars($socialData['LivedWithWho']): '' ; ?> </textarea>
             </div>
           </div>
           <div class="form-group form-row mt-3">
             <label for="livedWhere" class="form-label">Lived where?</label>
-            <textarea class="form-control" name="livedWhere" id="livedWhere" rows="2"></textarea>
+            <textarea class="form-control" name="livedWhere" id="livedWhere" rows="2"> <?php echo (isset($socialData['LivedWhere'])) ? htmlspecialchars($socialData['LivedWhere']): '' ; ?> </textarea>
           </div>
 
           <div class="form-group form-row mt-3">
             <label for="parentsAlive" class="form-label">Parents alive? Died when?</label>
-            <textarea class="form-control" name="parentsAlive" id="parentsAlive" rows="2"></textarea>
+            <textarea class="form-control" name="parentsAlive" id="parentsAlive" rows="2"> <?php echo (isset($socialData['ParentsAlive'])) ? htmlspecialchars($socialData['ParentsAlive']): '' ; ?> </textarea>
           </div>
 
           <div class="form-group form-row mt-3">
             <label for="parentslivetogether" class="form-label">Parents live together? Peacefully?</label>
-            <textarea class="form-control" name="parentslivetogether" id="parentslivetogether" rows="2"></textarea>
+            <textarea class="form-control" name="parentslivetogether" id="parentslivetogether" rows="2"> <?php echo (isset($socialData['ParentsLiveTogether'])) ? htmlspecialchars($socialData['ParentsLiveTogether']): '' ; ?> </textarea>
           </div>
   
           <div class="form-group form-row mt-3">
             <label for="amountAndSourceOfIncome" class="form-label">Amount and Source of Income?</label>
-            <textarea class="form-control" name="amountAndSourceOfIncome" id="amountAndSourceOfIncome" rows="2"></textarea>
+            <textarea class="form-control" name="amountAndSourceOfIncome" id="amountAndSourceOfIncome" rows="2"> <?php echo (isset($socialData['AmountAndSourceOfIncome'])) ? htmlspecialchars($socialData['AmountAndSourceOfIncome']): '' ; ?> </textarea>
           </div>
           <div class="form-group form-row mt-3">
             <label for="incomeForHowMany" class="form-label">Income for how many?</label>
-            <textarea class="form-control" name="incomeForHowMany" id="incomeForHowMany" rows="2"></textarea>
+            <textarea class="form-control" name="incomeForHowMany" id="incomeForHowMany" rows="2"> <?php echo (isset($socialData['IncomeForHowMany'])) ? htmlspecialchars($socialData['IncomeForHowMany']): '' ; ?> </textarea>
           </div>
          
       
           <div class="form-group form-row mt-3">
             <label for="abuse" class="form-label">Abuse?</label>
-            <textarea class="form-control" name="abuse" id="abuse" rows="2"></textarea>
+            <textarea class="form-control" name="abuse" id="abuse" rows="2"> <?php echo (isset($socialData['Abuse'])) ? htmlspecialchars($socialData['Abuse']): '' ; ?> </textarea>
           </div>
           <div class="form-group form-row mt-3">
             <label for="sexuallyActive" class="form-label">Sexually Active?</label>
-            <textarea class="form-control" name="sexuallyActive" id="sexuallyActive" rows="2"></textarea>
+            <textarea class="form-control" name="sexuallyActive" id="sexuallyActive" rows="2"> <?php echo (isset($socialData['SexuallyActive'])) ? htmlspecialchars($socialData['SexuallyActive']): '' ; ?> </textarea>
           </div>
 
           <div class="row mt-3">
             <fieldset class="col-2">
               <legend class="col-form-label">Siblings?</legend>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1">
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] === 1 )?'checked':'' ?> >
                 <label class="form-check-label" for="siblingsYes">Yes</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2">
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] === 0 )?'checked':'' ?> >
                 <label class="form-check-label" for="siblingsNo">No</label>
               </div>
             </fieldset>
