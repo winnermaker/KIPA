@@ -15,7 +15,7 @@
   </head>
   <body>
     <form action="visitDiagnostic_con.php" method="post" class="needs-validation" novalidate>
-      <input type="hidden" id="visitID" name="visitID">
+      <input type="hidden" id="visitID" name="visitID" value="<?php echo (isset($visitData['VisitID']))?$visitData['VisitID']:'';?>" >
       <div class="container">
         <h1 class="mt-3">Diagnostic Data</h1>
         <?php require 'formsHeadline.php' ?>
@@ -25,7 +25,7 @@
         <div class="row mt-5">
           <div class ="form-group col-2">
             <label for="visitDate" class="form-label">Visit Date</label>
-            <input class="form-control" type="date" name="visitDate" id="visitDate" min="1900-04-01" max="2300-04-20" required>
+            <input class="form-control" type="date" name="visitDate" id="visitDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($visitData['VisitDate']))?$visitData['VisitDate']:'';?>" required>
             <div class="invalid-feedback">
               Please chose a valid Date
             </div>        
@@ -33,7 +33,7 @@
 
           <div class="form-group col-4">
             <label for="visitType" class="form-label">Visit Type</label>
-            <input class="form-control" list="datalistOptions" name="visitType" id="visitType" placeholder="Type to search...">
+            <input class="form-control" list="datalistOptions" name="visitType" id="visitType" placeholder="Type to search..." value="<?php echo (isset($visitData['VisitType']))?$visitData['VisitType']:'';?>" >
             
             <datalist id="datalistOptions">
               <option value="Visit">
@@ -66,7 +66,7 @@
 
           <div class="form-group col-4">
             <label for="examLocation" class="form-label">Exam. Location</label>
-            <input class="form-control" list="examLocationdatalistOptions" name="examLocation" id="examLocation" placeholder="Type to search...">
+            <input class="form-control" list="examLocationdatalistOptions" name="examLocation" id="examLocation" placeholder="Type to search..." value="<?php echo (isset($visitData['ExLocation']))?$visitData['ExLocation']:'';?>" >
 
             <datalist id="examLocationdatalistOptions">
               <option value="Accra Psychiatric Hospital">
@@ -89,7 +89,7 @@
 
           <div class ="form-group col-2">
             <label for="reviewDate" class="form-label">Review Date</label>
-            <input class="form-control" type="date" name="reviewDate" id="reviewDate" min="1900-04-01" max="2300-04-20">
+            <input class="form-control" type="date" name="reviewDate" id="reviewDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($visitData['RVD']))?$visitData['RVD']:'';?>" >
             <div class="invalid-feedback">
               Please chose a valid Date
             </div>       
@@ -99,7 +99,7 @@
 
         <div class="form-group form-row mt-3">
           <label for="excause" class="form-label">Exam. Cause</label>
-          <input type="text" class="form-control" name="excause" id="excause" required>
+          <input type="text" class="form-control" name="excause" id="excause" required value="<?php echo (isset($visitData['ExCause']))?$visitData['ExCause']:'';?>" >
           <div class="invalid-feedback">
                     Please enter a Exam. Cause
             </div> 
@@ -107,37 +107,37 @@
 
         <div class="form-group form-row mt-3">
           <label for="presentComplaint" class="form-label">Present Complaint</label>
-          <input type="text" class="form-control" name="presentComplaint" id="presentComplaint" placeholder="" >
+          <input type="text" class="form-control" name="presentComplaint" id="presentComplaint" value="<?php echo (isset($visitData['PresComplaint']))?$visitData['PresComplaint']:'';?>" >
         </div>
 
         <div class="form-group form-row mt-3">
               <label for="historyOfPresentComplaint" class="form-label">Hx. of Present Complaint</label>
-              <textarea class="form-control" name="historyOfPresentComplaint" id="historyOfPresentComplaint" rows="2"></textarea>
+              <textarea class="form-control" name="historyOfPresentComplaint" id="historyOfPresentComplaint" rows="2"><?php echo (isset($medicalData['HistPresComplaint'])) ? htmlspecialchars($medicalData['HistPresComplaint']): '' ; ?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
               <label for="pe" class="form-label">PE</label>
-              <textarea class="form-control" name="pe" id="pe" rows="2"></textarea>
+              <textarea class="form-control" name="pe" id="pe" rows="2"><?php echo (isset($medicalData['PE'])) ? htmlspecialchars($medicalData['PE']): '' ; ?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
               <label for="plan" class="form-label">Plan</label>
-              <textarea class="form-control" name="plan" id="plan" rows="2"></textarea>
+              <textarea class="form-control" name="plan" id="plan" rows="2"><?php echo (isset($medicalData['Plan'])) ? htmlspecialchars($medicalData['Plan']): '' ; ?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
               <label for="medication" class="form-label">Medication</label>
-              <textarea class="form-control" name="medication" id="medication" rows="2"></textarea>
+              <textarea class="form-control" name="medication" id="medication" rows="2"><?php echo (isset($medicalData['Medication'])) ? htmlspecialchars($medicalData['Medication']): '' ; ?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
               <label for="diagnosis" class="form-label">Diagnosis</label>
-              <textarea class="form-control" name="diagnosis" id="diagnosis" rows="2"></textarea>
+              <textarea class="form-control" name="diagnosis" id="diagnosis" rows="2"><?php echo (isset($medicalData['Diagnosis'])) ? htmlspecialchars($medicalData['Diagnosis']): '' ; ?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
               <label for="remarks" class="form-label">Remarks</label>
-              <textarea class="form-control" name="remarks" id="remarks" rows="3"></textarea>
+              <textarea class="form-control" name="remarks" id="remarks" rows="3"><?php echo (isset($medicalData['Remarks'])) ? htmlspecialchars($medicalData['Remarks']): '' ; ?></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
