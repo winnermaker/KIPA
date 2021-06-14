@@ -33,10 +33,6 @@
               $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
               $controller->prepared_insert('medicalvaccdate',$data);
             }
-            if ($vaccdates[$i]['fifthVaccDate'] != "") {
-              $data['VaccDate'] = $vaccdates[$i]['fifthVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data);
-            }
           }
         }
         else {
