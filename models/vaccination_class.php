@@ -35,7 +35,7 @@
 
             $this->vaccineDataList[$i] = !empty($this->vaccineDataList[$i]) ? trim($this->vaccineDataList[$i]) : null;
             $this->nextVaccDate[$i] = !empty($this->nextVaccDate[$i]) ? $this->nextVaccDate[$i] : null;
-            $this->vaccinationRemarks[$i] = !empty($this->vaccinationRemarks[$i]) ? trim($this->vaccinationRemarks[$i]) : null;
+            $this->vaccinationRemarks = !empty($this->vaccinationRemarks) ? trim($this->vaccinationRemarks) : null;
 
             $this->firstVaccDate[$i] = !empty($this->firstVaccDate[$i]) ? $this->firstVaccDate[$i] : null;
             $this->secondVaccDate[$i] = !empty($this->secondVaccDate[$i]) ? $this->secondVaccDate[$i] : null;
@@ -43,7 +43,7 @@
             $this->fourthVaccDate[$i] = !empty($this->fourthVaccDate[$i]) ? $this->fourthVaccDate[$i] : null;
             $this->fifthVaccDate[$i] = !empty($this->fifthVaccDate[$i]) ? $this->fifthVaccDate[$i] : null;
 
-            if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks[$i])){
+            if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks)){
 
               $this->allVaccination[] = [
                   'vaccID'=>$this->vaccinationID,

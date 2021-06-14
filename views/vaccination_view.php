@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
+    <?php
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
-      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php"; 
+      require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
     ?>
     <title>Vaccination</title>
@@ -30,7 +30,7 @@
                   <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
                 </tr>
               </thead>
-              
+
               <tbody id="tableBody">
               <tr id="row">
                 <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
@@ -41,45 +41,45 @@
                     </datalist>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate1[]" id="VaccDate1" min="1900-04-01" max="2300-04-20"> 
+                  <input class="form-control" type="date" name="vaccDate1[]" id="VaccDate1" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate2[]" id="VaccDate2" min="1900-04-01" max="2300-04-20">    
+                  <input class="form-control" type="date" name="vaccDate2[]" id="VaccDate2" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate3[]" id="VaccDate3" min="1900-04-01" max="2300-04-20">    
+                  <input class="form-control" type="date" name="vaccDate3[]" id="VaccDate3" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20">    
+                  <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate5[]" id="VaccDate5" min="1900-04-01" max="2300-04-20">    
+                  <input class="form-control" type="date" name="vaccDate5[]" id="VaccDate5" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">    
+                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
-              
+
               </tr>
-              </tbody> 
+              </tbody>
             </table>
           </div>
 
@@ -99,16 +99,16 @@
             function createRow(){
               var table = document.getElementById("tableBody");
               var row = table.insertRow(-1);
-              
+
               var cell1 = row.insertCell(0);
-              var cell2 = row.insertCell(1);  
+              var cell2 = row.insertCell(1);
               var cell3 = row.insertCell(2);
               var cell4 = row.insertCell(3);
               var cell5 = row.insertCell(4);
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
               var cell8 = row.insertCell(7);
-              
+
               cell1.innerHTML = '<input style="width:200px;" type="text" class="form-control" name="vaccineDataList[]">';
               cell2.innerHTML = '<input type="date" class="form-control" name="vaccDate1[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell3.innerHTML = '<input type="date" class="form-control" name="vaccDate2[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
@@ -118,10 +118,10 @@
               cell7.innerHTML = '<input type="date" class="form-control" name="nextVaccDate[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell8.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
 
-              $('input').addClass('border border-dark'); 
+              $('input').addClass('border border-dark');
         }
 
-        function createCell(row){ 
+        function createCell(row){
           var i=row.parentNode.parentNode.rowIndex;
           var table = document.getElementById("table");
           var cell = table.rows[i].insertCell(2);
@@ -143,7 +143,7 @@
           document.getElementById('table').deleteRow(i);
         }
 
-        function removeCssClass() 
+        function removeCssClass()
         {
           var element = document.getElementById("formsTable");
           element.classList.remove("sticky-top");

@@ -87,7 +87,16 @@
       }
 
       function getMedicalData($childrenID){
-        $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
+        $succes = false;
+        try {
+          $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
+          $succes = true;
+        } catch (\Exception $e) {
+
+        }
+        if(!$succes){
+          $sql = $this->pdo->prepare("SELECT * FROM medicalmain WHERE fk_ChildrenID = ?");
+        }
         $sql->execute([$childrenID]);
         $medical = $sql->fetchAll();
         return $medical;
