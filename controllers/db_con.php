@@ -25,117 +25,102 @@
       }
 
       function moveElement(&$array, $a, $b) {
-        //helper function to switch two elements in an array
-        $p1 = array_splice($array, $a, 1);
-        $p2 = array_splice($array, 0, $b);
-        $array = array_merge($p2,$p1,$array);
+          //helper function to switch two elements in an array
+          $p1 = array_splice($array, $a, 1);
+          $p2 = array_splice($array, 0, $b);
+          $array = array_merge($p2,$p1,$array);
       }
 
-    function escape_mysql_identifier($field){
-      return "`".str_replace("`", "``", $field)."`";
-    }
-
-    function prepared_insert($table, $data) {
-      //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
-      $keys = array_keys($data);
-      $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
-      $fields = implode(",", $keys);
-      $table = $this ->escape_mysql_identifier($table);
-      $placeholders = str_repeat('?,', count($keys) - 1) . '?';
-
-      $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
-      $this->pdo->prepare($sql)->execute(array_values($data));
-
-      //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
-      if($table == $this ->escape_mysql_identifier('childrenmain')){
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("childIDCookie" , (int)$ID);
-      }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
-        $ID = $this->pdo->lastInsertId();
-        setcookie ("medicalIDCookie" , (int)$ID);
+      function escape_mysql_identifier($field){
+        return "`".str_replace("`", "``", $field)."`";
       }
-      return $this->pdo->lastInsertId();
-    }
 
-    function prepared_update($table, $data) {
-      //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
-      $values = array_values($data);
-      $keys = array_keys($data);
+      function prepared_insert($table, $data) {
+        //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
+        $keys = array_keys($data);
+        $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+        $fields = implode(",", $keys);
+        $table = $this ->escape_mysql_identifier($table);
+        $placeholders = str_repeat('?,', count($keys) - 1) . '?';
 
-      $IDKey = $keys[0];
-      unset($keys[0]);
-      var_dump($values);
-      $this->moveElement($values,0,count($values)-1);
-      var_dump($values);
+        $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
+        $this->pdo->prepare($sql)->execute(array_values($data));
 
-     $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
-     $IDKey = $this ->escape_mysql_identifier($IDKey);
+        //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
+        if($table == $this ->escape_mysql_identifier('childrenmain')){
+          $ID = $this->pdo->lastInsertId();
+          setcookie ("childIDCookie" , (int)$ID);
+        }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
+          $ID = $this->pdo->lastInsertId();
+          setcookie ("medicalIDCookie" , (int)$ID);
+        }
+        return $this->pdo->lastInsertId();
+      }
 
-      $keys = implode(" = ?, ", $keys);
-      $keys = $keys." = ?";
-      $IDKey = $IDKey." = ?";
-      $table = $this ->escape_mysql_identifier($table);
+      function prepared_update($table, $data) {
+        //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
+        $values = array_values($data);
+        $keys = array_keys($data);
 
+        $IDKey = $keys[0];
+        unset($keys[0]);
 
-      $sql = "UPDATE $table SET $keys WHERE $IDKey";
+        $this->moveElement($values,0,count($values)-1);
 
-      $test = $this->pdo->prepare($sql)->execute($values);
-      var_dump($test);
-    }
+       $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+       $IDKey = $this ->escape_mysql_identifier($IDKey);
 
-
-    function insertMedicalPregnancyChildData($table, $childrenArray){
-      prepared_insert($table, $data);
-      $childData = $pregnancyObj->getParams();
-      $sql = "INSERT INTO MedicalPregnancyChildData (fk_MotherID, DOB, Name, EvDurP, durLabor, spont_CS_forceps, Gender, Healthy, Problems, Remarks) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-      $this->pdo->prepare($sql)->execute([]);
-
-    }
-
-    function insertSocialSiblings($table, $siblingArray){
-      prepared_insert($table, $data);
-    }
-
-    function getAllChildern(){
-      $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
-      return $dataAllCildren;
-    }
-
-    function getMedicalData($childrenID){
-      $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
-      $sql->execute([$childrenID]);
-      $medical = $sql->fetchAll();
-      return $medical;
-    }
+        $keys = implode(" = ?, ", $keys);
+        $keys = $keys." = ?";
+        $IDKey = $IDKey." = ?";
+        $table = $this ->escape_mysql_identifier($table);
 
 
-    function getAllChildernReviewSoon(){
-        $sql = "SELECT * FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
-        $data =  $this->pdo->query($sql)->fetchAll();
-        return $data;
-    }
+        $sql = "UPDATE $table SET $keys WHERE $IDKey";
 
-    function getChildData($childrenID){
-      // select a particular child by id
-      $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
-      $sql->execute([$childrenID]);
-      $child = $sql->fetch();
-      return $child;
-    }
+        $test = $this->pdo->prepare($sql)->execute($values);
+      }
 
-    function getChildDataForHeadline($childrenID){
-      // select childata for headlines
-      $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
-      $stmt->execute([$childrenID]);
-      $child = $stmt->fetch();
-      return $child;
-    }
+      function getAllChildern(){
+        $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain")->fetchAll();
+        return $dataAllCildren;
+      }
 
-    function getChildDataForSearch (){
-      // select childdata for searchbar
-      $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
-      return $dataAllCildren;
-    }
+      function getMedicalData($childrenID){
+        $sql = $this->pdo->prepare("SELECT * FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE fk_ChildrenID = ?");
+        $sql->execute([$childrenID]);
+        $medical = $sql->fetchAll();
+        return $medical;
+      }
+
+
+      function getAllChildernReviewSoon(){
+          $sql = "SELECT * FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID WHERE MedicalMain.reviewOn BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 14 DAY)";
+          $data =  $this->pdo->query($sql)->fetchAll();
+          return $data;
+      }
+
+      function getChildData($childrenID){
+        // select a particular child by id
+        $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
+        $sql->execute([$childrenID]);
+        $child = $sql->fetch();
+        return $child;
+      }
+
+      function getChildDataForHeadline($childrenID){
+        // select childata for headlines
+        $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
+        $stmt->execute([$childrenID]);
+        $child = $stmt->fetch();
+        return $child;
+      }
+
+      function getChildDataForSearch (){
+        // select childdata for searchbar
+        $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
+        return $dataAllCildren;
+      }
 }
 
   $controller = new DBCon();
