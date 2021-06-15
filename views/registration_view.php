@@ -7,7 +7,7 @@
     ?>
 
 
-    <title>Login</title>
+    <title>Registration</title>
 
     <style>
         .container{
@@ -32,12 +32,12 @@
     </style>
   </head>
   <body>
-    <form action="login_con.php" method="post">
+    <form action="registration_con.php" method="post">
             <div class="container mt-5">
 
 
                     <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="330" height="150" >
-                    <h2 class="mt-3 col">Login</h2>
+                    <h2 class="mt-3 col">Registration</h2>
 
                 <div class="form-row">
                     <div class="form-group username mt-5 col-4">
@@ -53,15 +53,16 @@
                     </div>
                 </div>
 
-                <div class="form-row mt-4 ">
-                      <button class="btn btn-primary col-4" type="submit">Login</button>
+                <div class="form-row">
+                    <div class="form-group password mt-3 col-4">
+                        <label for="password" class="form-label"> Repeat Password</label>
+                        <input class="form-control" type="passwordRepeat" name="passwordRepeat" id="passwordRepeat">
+                    </div>
                 </div>
 
-                <div class="form-row">
-        				      <div class="form-group password mt-3 col-4">
-        				            You don't have a account register here? <a href="registration_con.php"><p class="text-info">Register Account</p></a>
-        				      </div>
-        				</div>
+                <div class="form-row mt-4 ">
+                      <button class="btn btn-primary col-4" type="submit">Registration</button>
+                </div>
 
             </div>
     </form>

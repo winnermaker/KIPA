@@ -230,6 +230,14 @@
         return $data;
       }
 
+      function login(){
+
+      }
+
+      function registration(){
+        
+      }
+
 
 }
   $controller = new DBCon();
