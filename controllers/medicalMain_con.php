@@ -13,9 +13,6 @@
           $controller -> prepared_update('medicalmain',$medicalData);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-      if(filter_var($_GET['medicalID'],FILTER_VALIDATE_BOOLEAN)){
-        $medicalData = $controller->getmedicaldata($_GET['medicalID']);
-      }
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/medicalMain_view.php";

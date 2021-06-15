@@ -119,8 +119,7 @@
         $medical = $smt->fetchAll();
 
         if(empty($medical)){
-          $sql = "SELECT * FROM medicalmain WHE
-          RE fk_CHildrenID = ?";
+          $sql = "SELECT * FROM medicalmain WHERE fk_CHildrenID = ?";
           $smt = $this->pdo->prepare($sql);
           $smt->execute([$childrenID]);
           $medical = $smt->fetchAll();
@@ -231,6 +230,45 @@
       }
 
       function login($table, $data){
+        $username = $data['username'];
+        $password = $data['passowrd'];
+
+        $returnArray = array();
+        try
+    		{
+    			$select_stmt=$this->pdo->prepare("SELECT * FROM $table WHERE username=?");
+    			$select_stmt->execute([$username]);
+    			$row=$select_stmt->fetch(PDO::FETCH_ASSOC);
+
+    			if($select_stmt->rowCount() > 0)
+    			{
+    				if($username==$row["username"]) //check condition user taypable "username or email" are both match from database "username or email" after continue
+    				{
+    					if(password_verify($password, $row["password"])) //check condition user taypable "password" are match from database "password" using password_verify() after continue
+    					{
+    						$_SESSION["user_login"] = $row["user_id"];
+                $returnArray['loginMsg'] = "Successfully Login...";
+    					}
+    					else
+    					{
+    						$returnArray['error']="wrong password";
+    					}
+    				}
+    				else
+    				{
+    					$returnArray['error']="wrong username";
+    				}
+    			}
+    			else
+    			{
+    				$returnArray['error']="wrong username";
+    			}
+    		}
+    		catch(PDOException $e)
+    		{
+    			$e->getMessage();
+    		}
+        return $returnArray;
 
       }
 
