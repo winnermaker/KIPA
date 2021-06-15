@@ -4,9 +4,6 @@
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        echo "<script>";
-        echo "alert('POST-REQUEST')";
-        echo "</script>";
         $medicalObj = new medicalmain();
         $data = $medicalObj->getParams();
         if (!$medicalObj->checkMedicalMainID()) {

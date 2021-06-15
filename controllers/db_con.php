@@ -116,13 +116,13 @@
         $sql = "SELECT medicalmain.*, medicalvacc.nextVaccDate FROM medicalmain JOIN medicalvacc ON medicalmain.MedicalID = medicalvacc.fk_MedicalID WHERE medicalmain.fk_CHildrenID = ? ORDER BY medicalvacc.nextVaccDate LIMIT 1";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$childrenID]);
-        $medical = $smt->fetchAll();
+        $medical = $smt->fetch();
 
         if(empty($medical)){
           $sql = "SELECT * FROM medicalmain WHERE fk_CHildrenID = ?";
           $smt = $this->pdo->prepare($sql);
           $smt->execute([$childrenID]);
-          $medical = $smt->fetchAll();
+          $medical = $smt->fetch();
         }
         return $medical;
       }
@@ -143,7 +143,7 @@
         $sql = "SELECT * FROM socialhistory WHERE fk_childrenID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$childrenID]);
-        $data = $smt->fetchAll();
+        $data = $smt->fetch();
 
         return $data;
       }
@@ -170,7 +170,7 @@
         $sql = "SELECT * FROM medicalvisits WHERE visitID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$visitID]);
-        $data = $smt->fetchAll();
+        $data = $smt->fetch();
 
         return $data;
       }
@@ -179,7 +179,7 @@
         $sql = "SELECT * FROM medicalpexam WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
-        $data = $smt->fetchAll();
+        $data = $smt->fetch();
 
         return $data;
       }
@@ -188,7 +188,7 @@
         $sql = "SELECT * FROM medicalpregnancymain WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
-        $data = $smt->fetchAll();
+        $data = $smt->fetch();
 
         return $data;
       }
@@ -197,7 +197,7 @@
         $sql = "SELECT * FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$motherID]);
-        $data = $smt->fetchAll();
+        $data = $smt->fetch();
 
         return $data;
       }

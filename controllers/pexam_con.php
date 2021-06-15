@@ -53,7 +53,11 @@
               $controller -> prepared_update('MedicalGenMale',$pexamdata);
           }
         }
-
+    }elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
+      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+        $pexamdata = $controller->getPexamData($_GET['medicalID']);
+        var_dump($pexamdata);
+      }
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/pexam_view.php";
