@@ -159,13 +159,78 @@
       }
 
       function getVisits($medicalID){
-        $sql = "SELECT visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
+        $sql = "SELECT visitID, visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
         $data = $smt->fetchAll();
 
         return $data;
       }
+
+      function getVisitDiagnosticData($visitID){
+        $sql = "SELECT * FROM medicalvisits WHERE visitID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$visitID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+      function getPexamData($medicalID){
+        $sql = "SELECT * FROM medicalpexam WHERE fk_MedicalID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$medicalID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+      function getPregnancyMain($medicalID){
+        $sql = "SELECT * FROM medicalpregnancymain WHERE fk_MedicalID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$medicalID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+      function getPregnancyPresent($motherID){
+        $sql = "SELECT * FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$motherID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+      function getPregnancyPrevious($motherID){
+        $sql = "SELECT * FROM medicalpregnancychilddata WHERE fk_MotherID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$motherID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+      function getVacc($medicalID){
+        $sql = "SELECT * FROM medicalvacc WHERE fk_MedicalID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$medicalID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+      function getVaccDates($vaccID){
+        $sql = "SELECT * FROM medicalvaccdate WHERE fk_VaccID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$vaccID]);
+        $data = $smt->fetchAll();
+
+        return $data;
+      }
+
+
 }
   $controller = new DBCon();
   $controller -> connectToDB();
