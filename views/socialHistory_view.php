@@ -109,13 +109,13 @@
                           );  
 
                       $index = 1;
-                      if(isset($arrayData) && !empty($arrayData)){
+                      if(!empty($arrayData)){
                       foreach($arrayData as $row){
                     
                 ?>
                 <tr>
                   <td style="display:none;"><input type="text" name="SiblingID[]" class="form-control" value="<?php echo (isset($row['SiblingID']))?$row['SiblingID']:'';?>" ></td>
-                  <td><input type="text" name="tableIndex[]"  >1</td>
+                  <td name="tableIndex[]">1</td>
                   <td><input type="text" name="gender[]" class="form-control" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>" ></td>
                   <td><input type="text" name="age[]" class="form-control" value="<?php echo (isset($row['Age']))?$row['Age']:'';?>" ></td>
                   <td><input type="text" name="healthy[]" class="form-control" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>" ></td>
@@ -127,8 +127,8 @@
 
                 <tr>
                 <td style="display:none;"><input type="text" name="SiblingID[]" class="form-control"></td>
-                  <td><input type="text" name="tableIndex[]" >1</td>
-                  <td><input type="text" name="gender[]" class="form-control" ></td>
+                  <td name="tableIndex[]">1</td>
+                  <td><input type="text" name="gender[]" class="form-control"></td>
                   <td><input type="text" name="age[]" class="form-control" ></td>
                   <td><input type="text" name="healthy[]" class="form-control" ></td>
                   <td><input type="text" name="alive[]" class="form-control" ></td>
@@ -194,7 +194,7 @@
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
 
-              cell1.innerHTML = '<input type="text" name="tableIndex[]" hidden>' + row.rowIndex + '</input>';
+              cell1.innerHTML = '<td name="tableIndex[]">' + row.rowIndex + '</td>' ;
               cell2.innerHTML = '<input type="text" class="form-control bg-black" name="gender[]">';
               cell3.innerHTML = '<input type="text" class="form-control" name="age[]">';
               cell4.innerHTML = '<input type="text" class="form-control" name="healthy[]">';

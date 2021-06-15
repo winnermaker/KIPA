@@ -12,9 +12,7 @@
         private $abuse;
         private $sexuallyActive;
 
-        private $numberSiblings;
         private $siblings;
-        private $tableIndex = array();
         public  $siblingsGender = array();
         private $siblingsAge = array();
         private $siblingsHealthy = array();
@@ -35,14 +33,13 @@
             $this->abuse = !empty($_POST['abuse']) ? trim($_POST['abuse']) : null;
             $this->sexuallyActive = !empty($_POST['sexuallyActive']) ? trim($_POST['sexuallyActive']) : null;
 
-            $this->tableIndex = isset($_POST['tableIndex']) ? $_POST['tableIndex'] : null;
             $this->siblings = !empty($_POST['siblings']) ? $_POST['siblings'] : null;
             $this->getRadioValue($this->siblings);
-            $this->siblingsGender = !empty($_POST['gender']) ? $_POST['gender'] : null;
-            $this->siblingsAge = !empty($_POST['age']) ? $_POST['age'] : null;
-            $this->siblingsHealthy = !empty($_POST['healthy']) ? $_POST['healthy'] : null;
-            $this->siblingsAlive = !empty($_POST['alive']) ? $_POST['alive'] : null;
-            $this->siblingsParents = !empty($_POST['sameFatherMother']) ? $_POST['sameFatherMother'] : null;
+            $this->siblingsGender = isset($_POST['gender']) ? $_POST['gender'] : null;
+            $this->siblingsAge = isset($_POST['age']) ? $_POST['age'] : null;
+            $this->siblingsHealthy = isset($_POST['healthy']) ? $_POST['healthy'] : null;
+            $this->siblingsAlive = isset($_POST['alive']) ? $_POST['alive'] : null;
+            $this->siblingsParents = isset($_POST['sameFatherMother']) ? $_POST['sameFatherMother'] : null;
 
 
             $this->paramsToArray();
@@ -60,7 +57,7 @@
         }
 
         public function validateSiblings(){
-            for ($i=0; $i < count($this->tableIndex) ; $i++) {
+            for ($i=0; $i < count($this->siblingsGender) ; $i++) {
                 $this->siblingsGender[$i] = !empty($this->siblingsGender[$i])  ? trim($this->siblingsGender[$i]) : null;
                 $this->siblingsAge[$i] = !empty($this->siblingsAge[$i]) ? trim($this->siblingsAge[$i]) : null;
                 $this->siblingsHealthy[$i] = !empty($this->siblingsHealthy[$i]) ? trim($this->siblingsHealthy[$i]) : null;
