@@ -6,7 +6,12 @@
         $patientObj = new patient();
         $controller->getAllChildern();
         if(!$patientObj->checkPatientID()){
-          $controller -> prepared_insert('childrenmain',$patientObj->getParams());
+         $childID  = $controller -> prepared_insert('childrenmain',$patientObj->getParams());
+          if(!empty($childID)){
+            echo "<script>";
+            echo "alert('Datensatz wurde eingespeichert')";
+            echo "</script>";
+          }
         }else {
           $controller -> prepared_update('childrenmain',$patientObj->getParams());
         }

@@ -36,8 +36,8 @@
                 </fieldset>
 
                 <div class="form-group col-1">
-                    <label class="form-label" for=""></label>
-                    <button type="submit" id="submit"  class="btn btn-primary form-control">Filter</button>
+                    <label for="submit"></label>
+                    <button type="submit" id="submit" style="font-size:15px;"  class="btn btn-success form-control mt-1">Filter</button>
                 </div>
 
                 <div class="form-group offset-2 col ">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </form>
-        <div class="table-responsive-lg mt-3">
+        <div class="table-responsive-lg mt-4">
             <table class="table table-striped table-hover table-bordered" id="table">
                 <thead class="table-dark">
                     <tr>

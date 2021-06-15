@@ -9,7 +9,6 @@
         <li class="nav-item">
           <a href="medicalMain_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Medical Main</a>
         </li>
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Visits
