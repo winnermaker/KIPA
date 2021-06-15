@@ -230,15 +230,40 @@
         return $data;
       }
 
-      function login(){
+      function login($table, $data){
 
       }
 
-      function registration(){
-        
+      function registration($table, $data){
+        try {
+            $username = $data['username'];
+            $password = $data['password'];
+            $returnArray = array();
+
+            $sql = "SELECT username FROM userdetails WHERE username=?";
+            $smt = $this->pdo->prepare($sql);
+            $smt->execute([$data['username']]);
+            $row=$smt->fetch(PDO::FETCH_ASSOC);
+            if($row){
+              $returnArray['error'] = "Sorry username already exists";
+            }
+            else if(!isset($returnArray['error']))
+            {
+              $data['password'] = password_hash($password, PASSWORD_DEFAULT); //encrypt password using password_hash()
+
+              $id = $this->prepared_insert($table, $data);
+              $returnArray['ID'] = $id;
+
+              if($id){
+                $returnArray['registerMsg'] = "Register Successfully..... Please Click On Login Account Link";
+              }
+            }
+            return $returnArray;
+
+        } catch (PDOException $e) {
+
+        }
       }
-
-
 }
   $controller = new DBCon();
   $controller -> connectToDB();

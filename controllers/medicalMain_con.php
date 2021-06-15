@@ -13,7 +13,7 @@
           $controller -> prepared_update('medicalmain',$medicalData);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-      if(isset($_GET['medicalID'])){
+      if(filter_var($_GET['medicalID'],FILTER_VALIDATE_BOOLEAN)){
         $medicalData = $controller->getmedicaldata($_GET['medicalID']);
       }
     }

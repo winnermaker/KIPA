@@ -38,18 +38,19 @@
 
                     <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="330" height="150" >
                     <h2 class="mt-3 col">Login</h2>
+                    <input type="hidden" id="userID" name="userID">
 
                 <div class="form-row">
                     <div class="form-group username mt-5 col-4">
                         <label for="username" class="form-label">Username</label>
-                        <input class="form-control" type="text" id="username" name="username">
+                        <input class="form-control" type="text" id="username" name="username" required>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group password mt-3 col-4">
                         <label for="password" class="form-label">Password</label>
-                        <input class="form-control" type="password" name="password" id="password">
+                        <input class="form-control" type="password" name="password" id="password" required>
                     </div>
                 </div>
 
@@ -59,12 +60,36 @@
 
                 <div class="form-row">
         				      <div class="form-group password mt-3 col-4">
-        				            You don't have a account register here? <a href="registration_con.php"><p class="text-info">Register Account</p></a>
+        				            You don't have an account register here? <a href="registration_con.php"><p class="text-info">Register Account</p></a>
         				      </div>
         				</div>
 
             </div>
     </form>
+
+    <script>
+
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+    </script>
 
     <script>
         $('input,textarea,select').addClass('border border-dark');
