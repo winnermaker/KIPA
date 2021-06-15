@@ -4,15 +4,22 @@
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
+        echo "<script>";
+        echo "alert('POST-REQUEST')";
+        echo "</script>";
         $medicalObj = new medicalmain();
-        $medicalData = $medicalObj->getParams();
+        $data = $medicalObj->getParams();
         if (!$medicalObj->checkMedicalMainID()) {
-          $medicalData['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
-          $controller -> prepared_insert('medicalmain',$medicalData);
+          $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
+          $controller -> prepared_insert('medicalmain',$data);
         }else {
-          $controller -> prepared_update('medicalmain',$medicalData);
+          $controller -> prepared_update('medicalmain',$data);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
+      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+        $medicalData = $controller->getmedicaldata($_GET['childrenID']);
+
+      }
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/medicalMain_view.php";

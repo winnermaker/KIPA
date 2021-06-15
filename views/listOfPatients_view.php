@@ -5,6 +5,7 @@
     <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbarListOfPatients.php";
+
     ?>
 
     <title>Children table</title>
@@ -18,18 +19,18 @@
                 <fieldset class="col">
                     <legend class="col-form-label">Filter Options:</legend>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="filterRadios" id="maleRadio" value="option1" checked>
-                            <label class="form-check-label" for="maleRadio">All Patients</label>
+                            <input class="form-check-input" type="radio" name="filterRadios" id="allPatients" value="option1" checked>
+                            <label class="form-check-label" for="allPatients">All Patients</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="filterRadios" id="femaleRadio" value="option2">
-                            <label class="form-check-label" for="femaleRadio">Review Date</label>
+                            <input class="form-check-input" type="radio" name="filterRadios" id="patientsReviewDate" value="option2">
+                            <label class="form-check-label" for="patientsReviewDate">Review Date</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="filterRadios" id="genderOtherRadio" value="option3">
-                            <label class="form-check-label" for="genderOtherRadio">Vaccination Date</label>
+                            <input class="form-check-input" type="radio" name="filterRadios" id="patientsNextVaccDate" value="option3">
+                            <label class="form-check-label" for="patientsNextVaccDate">Vaccination Date</label>
                         </div>
                 </fieldset>
 
@@ -63,9 +64,8 @@
 
                 <tbody id="tableBody">
                 <?php
-                    if(isset($childData)){
                     $index = 1;
-                    foreach($childData as $key => $row){
+                    foreach($childData as $row){
                 ?>
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
@@ -88,7 +88,7 @@
                         </td>
                         </td>
                     </tr>
-                    <?php $index++; } } ?>
+                    <?php $index++; }  ?>
                 </tbody>
             </table>
         </div>

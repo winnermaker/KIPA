@@ -83,8 +83,8 @@
             <table class="table table-striped table-hover table-bordered mt-5" name="table" id="table">
               <thead class="table-dark">
                 <tr>
-                  
-                  <th scope="col" class="sticky-top">Sibling</th>
+                  <th style="display:none;" scope="col" class="sticky-top" >ID</th>
+                  <th scope="col" class="sticky-top" >#</th>
                   <th scope="col" class="sticky-top">Gender</th>
                   <th scope="col" class="sticky-top">Age</th>
                   <th scope="col" class="sticky-top">Healthy?</th>
@@ -95,13 +95,47 @@
               </thead>
               
               <tbody name="tableBody" id="tableBody">
-                <td><input type="text" name="tableIndex[]" hidden>1</td>
-                <td><input type="text" name="gender[]" class="form-control"></td>
-                <td><input type="text" name="age[]" class="form-control"></td>
-                <td><input type="text" name="healthy[]" class="form-control"></td>
-                <td><input type="text" name="alive[]" class="form-control"></td>
-                <td><input type="text" name="sameFatherMother[]" class="form-control"></td>
-                <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
+              <?php     
+                        
+                          
+                        $arrayData = array(
+                          0 => array(
+                            'Gender' => "Male",
+                            'Alive' => "Yes",
+                            'Healthy' => "Healthy yes",
+                            'SameParents' => "same mother",
+                            'Age' => "age"
+                          )
+                          );  
+
+                      $index = 1;
+                      if(isset($arrayData) && !empty($arrayData)){
+                      foreach($arrayData as $row){
+                    
+                ?>
+                <tr>
+                  <td style="display:none;"><input type="text" name="SiblingID[]" class="form-control" value="<?php echo (isset($row['SiblingID']))?$row['SiblingID']:'';?>" ></td>
+                  <td><input type="text" name="tableIndex[]"  >1</td>
+                  <td><input type="text" name="gender[]" class="form-control" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>" ></td>
+                  <td><input type="text" name="age[]" class="form-control" value="<?php echo (isset($row['Age']))?$row['Age']:'';?>" ></td>
+                  <td><input type="text" name="healthy[]" class="form-control" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>" ></td>
+                  <td><input type="text" name="alive[]" class="form-control" value="<?php echo (isset($row['Alive']))?$row['Alive']:'';?>" ></td>
+                  <td><input type="text" name="sameFatherMother[]" class="form-control" value="<?php echo (isset($row['SameParents']))?$row['SameParents']:'';?>" ></td>
+                  <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
+                </tr>
+                <?php  } } else { ?>
+
+                <tr>
+                <td style="display:none;"><input type="text" name="SiblingID[]" class="form-control"></td>
+                  <td><input type="text" name="tableIndex[]" >1</td>
+                  <td><input type="text" name="gender[]" class="form-control" ></td>
+                  <td><input type="text" name="age[]" class="form-control" ></td>
+                  <td><input type="text" name="healthy[]" class="form-control" ></td>
+                  <td><input type="text" name="alive[]" class="form-control" ></td>
+                  <td><input type="text" name="sameFatherMother[]" class="form-control" ></td>
+                  <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>      
+                </tr>
+                <?php } ?>
               </tbody> 
             </table>  
           </div>

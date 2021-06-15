@@ -6,6 +6,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $socialHistoryObj = new socialhistory();
         $socialData = $socialHistoryObj->getParams();
+        $socialHistoryObj->printAllSiblings();
 
         if(!$socialHistoryObj->checkSocialHistoryID()){
           $socialData['fk_ChildrenID']=$_COOKIE["childIDCookie"];

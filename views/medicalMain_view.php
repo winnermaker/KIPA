@@ -19,6 +19,7 @@
     <div class="container">
       <h1 class="mt-3">Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
+      <?php var_dump($medicalData); ?>
 
       <form action="medicalMain_con.php" method="post" class="needs-validation" novalidate>
         <input type="hidden" id="medicalMainID" name="medicalMainID" value="<?php echo (isset($medicalData['MedicalID']))?$medicalData['MedicalID']:'';?>" >
