@@ -6,11 +6,6 @@
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbarListOfPatients.php";
 
-        //var_dump($childData);
-        echo "----------------------------------" . "</br>";
-        //var_dump($childDataVacc);
-        echo "----------------------------------" . "</br>";
-        //var_dump($childDataReview);
     ?>
 
     <title>Children table</title>
@@ -70,7 +65,7 @@
                 <tbody id="tableBody">
                 <?php
                     $index = 1;
-                    foreach($childData as $key => $row){
+                    foreach($childData as $row){
                 ?>
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
