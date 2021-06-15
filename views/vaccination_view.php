@@ -16,7 +16,7 @@
         <form action="vaccination_con.php" method="post" class="needs-validation" novalidate>
           <input type="hidden" id="vaccinationID" name="vaccinationID">
 
-          <div class="table-responsive-lg mt-5">
+          <div class="table-responsive-lg mt-5" >
             <table class="table table-striped table-hover table-bordered" id="table">
               <thead class="table-dark">
                 <tr>
@@ -64,7 +64,7 @@
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">    
+                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
@@ -100,7 +100,7 @@
               var cell5 = row.insertCell(4);
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
-              
+
               cell1.innerHTML = '<input style="width:200px;" type="text" class="form-control" name="vaccineDataList[]">';
               cell2.innerHTML = '<input type="date" class="form-control" name="vaccDate1[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell3.innerHTML = '<input type="date" class="form-control" name="vaccDate2[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';

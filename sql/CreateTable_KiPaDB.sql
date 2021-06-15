@@ -273,3 +273,10 @@ create table if not exists MedicalGenFemale
     Pregnancy 			text,
 	foreign key (fk_PEXAMID) references medicalpexam(PEXAMID) on delete no action
     );
+
+    create table if not exists UserDetails
+    (
+    	UserID			int auto_increment	not null primary key,
+      username    varchar(50) not null,
+      password    varchar(100) not null
+    );
