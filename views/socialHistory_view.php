@@ -15,7 +15,7 @@
 
       <form action="socialHistory_con.php" method="post" class="needs-validation" novalidate>
 
-        <input type="hidden" id="socialHistoryID" name="socialHistoryID" value="<?php echo (isset($socialData['SocialID']))?$socialData['SocialID']:'';?>" >
+        <input type="hidden" id="socialHistoryID" name="socialHistoryID" value="<?php echo (isset($socialData['SocialID']))?$socialData['SocialID']:'';?>">
 
           <div class="row mt-5">
             <div class ="form-group col-2 ">
@@ -27,41 +27,41 @@
             </div>
             <div class="form-group col">
             <label for="livedWithWho" class="form-label">Lived with who?</label>
-            <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="1"> <?php echo (isset($socialData['LivedWithWho'])) ? htmlspecialchars($socialData['LivedWithWho']): '' ; ?> </textarea>
+            <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="1"><?php echo (isset($socialData['LivedWithWho']))?htmlspecialchars($socialData['LivedWithWho']):'';?></textarea>
             </div>
           </div>
           <div class="form-group form-row mt-3">
             <label for="livedWhere" class="form-label">Lived where?</label>
-            <textarea class="form-control" name="livedWhere" id="livedWhere" rows="2"> <?php echo (isset($socialData['LivedWhere'])) ? htmlspecialchars($socialData['LivedWhere']): '' ; ?> </textarea>
+            <textarea class="form-control" name="livedWhere" id="livedWhere" rows="2"><?php echo (isset($socialData['LivedWhere'])) ? htmlspecialchars($socialData['LivedWhere']):''; ?></textarea>
           </div>
 
           <div class="form-group form-row mt-3">
             <label for="parentsAlive" class="form-label">Parents alive? Died when?</label>
-            <textarea class="form-control" name="parentsAlive" id="parentsAlive" rows="2"> <?php echo (isset($socialData['ParentsAlive'])) ? htmlspecialchars($socialData['ParentsAlive']): '' ; ?> </textarea>
+            <textarea class="form-control" name="parentsAlive" id="parentsAlive" rows="2"><?php echo (isset($socialData['ParentsAlive'])) ? htmlspecialchars($socialData['ParentsAlive']):''; ?></textarea>
           </div>
 
           <div class="form-group form-row mt-3">
             <label for="parentslivetogether" class="form-label">Parents live together? Peacefully?</label>
-            <textarea class="form-control" name="parentslivetogether" id="parentslivetogether" rows="2"> <?php echo (isset($socialData['ParentsLiveTogether'])) ? htmlspecialchars($socialData['ParentsLiveTogether']): '' ; ?> </textarea>
+            <textarea class="form-control" name="parentslivetogether" id="parentslivetogether" rows="2"><?php echo (isset($socialData['ParentsLiveTogether'])) ? htmlspecialchars($socialData['ParentsLiveTogether']):''; ?></textarea>
           </div>
 
           <div class="form-group form-row mt-3">
             <label for="amountAndSourceOfIncome" class="form-label">Amount and Source of Income?</label>
-            <textarea class="form-control" name="amountAndSourceOfIncome" id="amountAndSourceOfIncome" rows="2"> <?php echo (isset($socialData['AmountAndSourceOfIncome'])) ? htmlspecialchars($socialData['AmountAndSourceOfIncome']): '' ; ?> </textarea>
+            <textarea class="form-control" name="amountAndSourceOfIncome" id="amountAndSourceOfIncome" rows="2"><?php echo (isset($socialData['AmountAndSourceOfIncome'])) ? htmlspecialchars($socialData['AmountAndSourceOfIncome']):''; ?></textarea>
           </div>
           <div class="form-group form-row mt-3">
             <label for="incomeForHowMany" class="form-label">Income for how many?</label>
-            <textarea class="form-control" name="incomeForHowMany" id="incomeForHowMany" rows="2"> <?php echo (isset($socialData['IncomeForHowMany'])) ? htmlspecialchars($socialData['IncomeForHowMany']): '' ; ?> </textarea>
+            <textarea class="form-control" name="incomeForHowMany" id="incomeForHowMany" rows="2"><?php echo (isset($socialData['IncomeForHowMany'])) ? htmlspecialchars($socialData['IncomeForHowMany']):''; ?></textarea>
           </div>
 
 
           <div class="form-group form-row mt-3">
             <label for="abuse" class="form-label">Abuse?</label>
-            <textarea class="form-control" name="abuse" id="abuse" rows="2"> <?php echo (isset($socialData['Abuse'])) ? htmlspecialchars($socialData['Abuse']): '' ; ?> </textarea>
+            <textarea class="form-control" name="abuse" id="abuse" rows="2"><?php echo (isset($socialData['Abuse'])) ? htmlspecialchars($socialData['Abuse']):''; ?></textarea>
           </div>
           <div class="form-group form-row mt-3">
             <label for="sexuallyActive" class="form-label">Sexually Active?</label>
-            <textarea class="form-control" name="sexuallyActive" id="sexuallyActive" rows="2"> <?php echo (isset($socialData['SexuallyActive'])) ? htmlspecialchars($socialData['SexuallyActive']): '' ; ?> </textarea>
+            <textarea class="form-control" name="sexuallyActive" id="sexuallyActive" rows="2"><?php echo (isset($socialData['SexuallyActive'])) ? htmlspecialchars($socialData['SexuallyActive']):''; ?></textarea>
           </div>
 
           <div class="row mt-3">
@@ -105,11 +105,11 @@
                 <tr>
                   <td style="display:none;"><input type="text" name="SiblingID[]" class="form-control" value="<?php echo (isset($row['SiblingID']))?$row['SiblingID']:'';?>" ></td>
                   <td name="tableIndex[]">1</td>
-                  <td><input type="text" name="gender[]" class="form-control" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>" ></td>
-                  <td><input type="text" name="age[]" class="form-control" value="<?php echo (isset($row['Age']))?$row['Age']:'';?>" ></td>
-                  <td><input type="text" name="healthy[]" class="form-control" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>" ></td>
-                  <td><input type="text" name="alive[]" class="form-control" value="<?php echo (isset($row['Alive']))?$row['Alive']:'';?>" ></td>
-                  <td><input type="text" name="sameFatherMother[]" class="form-control" value="<?php echo (isset($row['SameParents']))?$row['SameParents']:'';?>" ></td>
+                  <td><input type="text" name="gender[]" class="form-control" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>"></td>
+                  <td><input type="text" name="age[]" class="form-control" value="<?php echo (isset($row['Age']))?$row['Age']:'';?>"></td>
+                  <td><input type="text" name="healthy[]" class="form-control" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>"></td>
+                  <td><input type="text" name="alive[]" class="form-control" value="<?php echo (isset($row['Alive']))?$row['Alive']:'';?>"></td>
+                  <td><input type="text" name="sameFatherMother[]" class="form-control" value="<?php echo (isset($row['SameParents']))?$row['SameParents']:'';?>"></td>
                   <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
                 </tr>
                 <?php  } } else { ?>

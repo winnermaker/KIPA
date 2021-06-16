@@ -2,10 +2,11 @@
     include $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/patient_class.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
 
+
+
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         if(isset($_POST['filterRadios'])){
             $filterRadios = $_POST['filterRadios'];
-
             if($filterRadios === "option1"){
                 $childData = $controller->getChildDataForListOfPatients();
                 $medical = $controller->getMedicalDataForListOfPatients();
@@ -16,13 +17,21 @@
                     }
                   }
                 }
+                $check = 1;
             } else if($filterRadios === "option3"){
-                $childData = $controller->getAllChildernVaccSoon();
+                $childDataVaccSoon = $controller->getAllChildernVaccSoon();
+                $check = 3;
             } else if($filterRadios === "option2"){
-                $childData = $controller->getAllChildernReviewSoon();
+                $childDataReviewSoon = $controller->getAllChildernReviewSoon();
+                $check = 2;
             }
         }
     }
+
+    if ($_SERVER["REQUEST_METHOD"] == "GET"){
+        $childData = $controller->getChildDataForListOfPatients();
+    }
+
 
 
 
