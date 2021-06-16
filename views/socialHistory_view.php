@@ -68,7 +68,7 @@
             <fieldset class="col-2">
               <legend class="col-form-label">Siblings?</legend>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 1 )?'checked':'' ?> >
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 1 )?'checked':'' ?> checked >
                 <label class="form-check-label" for="siblingsYes">Yes</label>
               </div>
 
@@ -79,7 +79,7 @@
             </fieldset>
           </div>
 
-          <div class="form-row sticky-top mt-3" style="display:none" id="siblingsTable">
+          <div class="form-row sticky-top mt-3" id="siblingsTable">
             <table class="table table-striped table-hover table-bordered mt-5" name="table" id="table">
               <thead class="table-dark">
                 <tr>
