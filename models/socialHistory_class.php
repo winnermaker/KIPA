@@ -12,6 +12,7 @@
         private $abuse;
         private $sexuallyActive;
 
+        private $siblingID = array();
         private $siblings;
         public  $siblingsGender = array();
         private $siblingsAge = array();
@@ -33,6 +34,7 @@
             $this->abuse = !empty($_POST['abuse']) ? trim($_POST['abuse']) : null;
             $this->sexuallyActive = !empty($_POST['sexuallyActive']) ? trim($_POST['sexuallyActive']) : null;
 
+            $this->siblingID = !empty($_POST['SiblingID']) ? $_POST['SiblingID'] : null;
             $this->siblings = !empty($_POST['siblings']) ? $_POST['siblings'] : null;
             $this->getRadioValue($this->siblings);
             $this->siblingsGender = isset($_POST['gender']) ? $_POST['gender'] : null;
@@ -67,6 +69,7 @@
                 if(!is_null($this->siblingsGender[$i]) || !is_null($this->siblingsAge[$i]) || !is_null($this->siblingsHealthy[$i]) || !is_null($this->siblingsAlive[$i]) || !is_null($this->siblingsParents[$i])){
 
                     $this->allSiblings[] = [
+                    'siblingID' => $this->siblingID[$i],
                     'gender' => $this->siblingsGender[$i],
                     'age' => $this->siblingsAge[$i],
                     'healthy' => $this->siblingsHealthy[$i],

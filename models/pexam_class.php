@@ -66,10 +66,14 @@
         private $urin_haematuria;
         private $urin_dysuria;
         private $urin_enuresis;
+
+        private $male_ID;
         private $male_CircumsisedRadio;
         private $male_tannerStage;
         private $male_descensusOfTestes;
         private $male_remarks;
+
+        private $female_ID;
         private $female_circumcisedRadios;
         private $female_tannerStage;
         private $female_hymen;
@@ -168,6 +172,7 @@
             $this->skin_remarks = !empty($_POST['skin_remarks']) ? trim($_POST['skin_remarks']) : null;
             $this->generalRemarks = !empty($_POST['generalRemarks']) ? trim($_POST['generalRemarks']) : null;
 
+            $this->male_ID = !empty($_POST['genMaleID']) ? $_POST['genMaleID'] : null;
             $this->male_CircumsisedRadio = !empty($_POST['male_CircumsisedRadio']) ? $_POST['male_CircumsisedRadio'] : null;
             $this->getRadioValue($this->male_CircumsisedRadio);
             $this->male_tannerStage = !empty($_POST['male_tannerStage']) ? trim($_POST['male_tannerStage']) : null;
@@ -176,6 +181,7 @@
             $this->female_circumcisedRadios = !empty($_POST['female_circumcisedRadios']) ? $_POST['female_circumcisedRadios'] : null;
             $this->getRadioValue($this->female_circumcisedRadios);
 
+            $this->female_ID = !empty($_POST['genFemaleID']) ? $_POST['genFemaleID'] : null;
             $this->female_tannerStage = !empty($_POST['female_tannerStage']) ? trim($_POST['female_tannerStage']) : null;
             $this->female_hymen = !empty($_POST['female_hymen']) ? trim($_POST['female_hymen']) : null;
             $this->female_introitus = !empty($_POST['female_introitus']) ? trim($_POST['female_introitus']) : null;
@@ -288,6 +294,7 @@
         }
 
         public function paramsMaleToArray(){
+          $this->arrayPexamMale['genMaleID'] = $this->male_ID;
           $this->arrayPexamMale['circumcised'] = $this->male_CircumsisedRadio;
           $this->arrayPexamMale['TannerSt'] = $this->male_tannerStage;
           $this->arrayPexamMale['Descensus'] = $this->male_descensusOfTestes;
@@ -295,6 +302,7 @@
         }
 
         public function paramsFemaleToArray(){
+          $this->arrayPexamFemale['genFemaleID'] = $this->female_ID;
           $this->arrayPexamFemale['circumcised'] = $this->female_circumcisedRadios;
           $this->arrayPexamFemale['TannerSt'] = $this->female_tannerStage;
           $this->arrayPexamFemale['Hymen'] = $this->female_hymen;

@@ -1,7 +1,8 @@
 <?php
     class vaccination{
 
-        private $vaccinationID;
+        private $vaccinationID = array();
+        private $vaccDateID = array();
         private $vaccineDataList = array();
         private $firstVaccDate = array();
         private $secondVaccDate = array();
@@ -16,14 +17,15 @@
 
 
         public function __construct(){
-            $this->vaccinationID = !empty($_POST['vaccinationID']) ? $_POST['vaccinationID'] : null;
-            $this->vaccineDataList = !empty($_POST['vaccineDataList']) ? $_POST['vaccineDataList'] : null;
-            $this->firstVaccDate = !empty($_POST['vaccDate1']) ? $_POST['vaccDate1'] : null;
-            $this->secondVaccDate = !empty($_POST['vaccDate2']) ? $_POST['vaccDate2'] : null;
-            $this->thirdVaccDate = !empty($_POST['vaccDate3']) ? $_POST['vaccDate3'] : null;
-            $this->fourthVaccDate = !empty($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
-            $this->nextVaccDate = !empty($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
-            $this->vaccinationRemarks = !empty($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
+            $this->vaccinationID = isset($_POST['vaccinationID']) ? $_POST['vaccinationID'] : null;
+            $this->vaccDateID = isset($_POST['vaccDateID']) ? $_POST['vaccDateID'] : null;
+            $this->vaccineDataList = isset($_POST['vaccineDataList']) ? $_POST['vaccineDataList'] : null;
+            $this->firstVaccDate = isset($_POST['vaccDate1']) ? $_POST['vaccDate1'] : null;
+            $this->secondVaccDate = isset($_POST['vaccDate2']) ? $_POST['vaccDate2'] : null;
+            $this->thirdVaccDate = isset($_POST['vaccDate3']) ? $_POST['vaccDate3'] : null;
+            $this->fourthVaccDate = isset($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
+            $this->nextVaccDate = isset($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
+            $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
 
             $this->validateParams();
         }
@@ -43,7 +45,7 @@
             if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks)){
 
               $this->allVaccination[] = [
-                  'vaccID'=>$this->vaccinationID,
+                  'vaccID'=>$this->vaccinationID[$i],
                   'vaccine' => $this->vaccineDataList[$i],
                   'nextVaccDate' => $this->nextVaccDate[$i],
                   'VaccRemarks' => $this->vaccinationRemarks
@@ -54,6 +56,7 @@
             if(!is_null($this->firstVaccDate[$i]) || !is_null($this->secondVaccDate[$i]) || !is_null($this->thirdVaccDate[$i]) ||
                !is_null($this->fourthVaccDate[$i])){
               $this->allVaccinationDates[] = [
+                'vaccDateID' => $this->vaccDateID[$i],
                 'firstVaccDate' => $this->firstVaccDate[$i],
                 'secondVaccDate' => $this->secondVaccDate[$i],
                 'thirdVaccDate' => $this->thirdVaccDate[$i],

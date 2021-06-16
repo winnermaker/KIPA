@@ -419,6 +419,7 @@
                 <h3 class="mt-5">Genitals male</h3>
 
                 <div class="row mt-3">
+                <input type="hidden" id="genMaleID" name="genMaleID" value="<?php echo (isset($pexamDataM['GenMaleID']))?$pexamDataM['GenMaleID']:'';?>" >
                     <fieldset class="col-2">
                         <legend class="col-form-label">Circumcised</legend>
                         <div class="form-check form-check-inline">
@@ -457,6 +458,7 @@
                 <h3 class="mt-5">Genitals female</h3>
 
                 <div class="row mt-3">
+                    <input type="hidden" id="genFemaleID" name="genFemaleID" value="<?php echo (isset($pexamDataF['GenFemaleID']))?$pexamDataF['GenFemaleID']:'';?>" >
                     <fieldset class="col-2">
                         <legend class="col-form-label">Circumcised</legend>
                         <div class="form-check form-check-inline">

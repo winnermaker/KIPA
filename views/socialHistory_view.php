@@ -95,10 +95,7 @@
               </thead>
 
               <tbody name="tableBody" id="tableBody">
-              <?php
-
-
-                    
+              <?php  
 
                       $index = 1;
                       if(!empty($socialSibsData)){

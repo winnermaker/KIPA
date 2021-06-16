@@ -14,7 +14,6 @@
         <?php require 'formsHeadline.php' ?>
 
         <form action="vaccination_con.php" method="post" class="needs-validation" novalidate>
-          <input type="hidden" id="vaccinationID" name="vaccinationID">
 
           <div class="table-responsive-lg mt-5" >
             <table class="table table-striped table-hover table-bordered" id="table">
@@ -40,8 +39,8 @@
 
                 ?>
               <tr id="row">
-                <td style="display:none;"><input type="text" name="VaccID[]" class="form-control" value="<?php echo (isset($row['VaccID']))?$row['VaccID']:'';?>" ></td>
-                <td style="display:none;"><input type="text" name="VaccDateID[]" class="form-control" value="<?php echo (isset($row['VaccDateID']))?$row['VaccDateID']:'';?>" ></td>
+                <td style="display:none;"><input type="text" name="vaccinationID[]" class="form-control" value="<?php echo (isset($row['VaccID']))?$row['VaccID']:'';?>" ></td>
+                <td style="display:none;"><input type="text" name="vaccDateID[]" class="form-control" value="<?php echo (isset($row['VaccDateID']))?$row['VaccDateID']:'';?>" ></td>
                 <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
                     <datalist id="vaccinedatalistOptions">
                         <option value="CSM">

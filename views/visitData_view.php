@@ -32,6 +32,7 @@
               <?php if(isset($visitData)){
                       $index = 1;
                       foreach($visitData as $key => $row){
+                      
                 ?>
                 <tr>
                   <td style="display:none"><input type="text" name="visitID" value ="<?php echo (isset($row['visitID']))?$row['visitID']:'';?>" ></input></td>
