@@ -29,7 +29,7 @@
           }
         }
       }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-        if($_GET['childrenID'] !== "false"){
+        if($_GET['childrenID'] !== "false" && $_GET['childrenID'] != "undefined"){
           $socialData = $controller->getSocialHist($_GET['childrenID']);
           if((int)$socialData['siblings']){
             $socialSibsData = $controller->getSocialSibling($socialData['SocialID']);

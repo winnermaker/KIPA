@@ -77,6 +77,7 @@
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
                         <td name="childrenID" hidden><?php echo (isset($row['ChildrenID']))?$row['ChildrenID']:'';?></td>
+                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
                         <td name="firstName"><?php echo (isset($row['FirstName']))?$row['FirstName']:'';?></td>
                         <td name="lastName"><?php echo (isset($row['LastName']))?$row['LastName']:'';?></td>
                         <td name="callNames"><?php echo (isset($row['CallNames']))?$row['CallNames']:'';?></td>
@@ -86,7 +87,6 @@
                         <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
-                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
                         <td name="nextVaccDate"><?php echo (isset($row['nextVaccDate'])) ? date("d-m-Y", strtotime($row['nextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
@@ -119,10 +119,8 @@
           {
             $(element).attr('href', function() {
               var childrenID = $(this).closest("tr").find('td[name="childrenID"]').html();
-              var reviewOn = $(this).closest("tr").find('td[name="reviewOn"]').html();
-              var nextVaccDate = $(this).closest("tr").find('td[name="nextVaccDate"]').html();
               var medicalID = $(this).closest("tr").find('td[name="medicalID"]').html();
-              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID + '&reviewOn=' + reviewOn + '&nextVaccDate=' + nextVaccDate;
+              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID;
             });
           }
 </script>

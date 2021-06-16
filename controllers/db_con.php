@@ -108,9 +108,14 @@
       }
 
       function getChildDataForListOfPatients(){
-          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC";
+          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate FROM childrenmain ORDER BY childrenmain.ChildrenID DESC";
           $data = $this->pdo->query($sql)->fetchAll();
           return $data;
+      }
+      function getMedicalDataForListOfPatients(){
+        $sql = "SELECT DISTINCT childrenmain.ChildrenID, medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC";
+        $data = $this->pdo->query($sql)->fetchAll();
+        return $data;
       }
 
       function getChildDataForHeadline($childrenID){
@@ -255,7 +260,7 @@
       }
 
       function getVaccDates($vaccID){
-        $sql = "SELECT * FROM medicalvaccdate WHERE fk_VaccID = ?";
+        $sql = "SELECT VaccDateID, VaccDate FROM medicalvaccdate WHERE fk_VaccID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$vaccID]);
         $data = $smt->fetchAll();

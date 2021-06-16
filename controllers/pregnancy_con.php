@@ -36,7 +36,7 @@
           }
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $pregnancyData = $controller->getPregnancyMainData($_GET['medicalID']);
         $presentPregnancy = $controller->getPregnancyPresentData($pregnancyData['MotherID']);
         $previousData = $controller->getPregnancyPreviousData($pregnancyData['MotherID']);

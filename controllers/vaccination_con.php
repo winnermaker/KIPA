@@ -58,11 +58,12 @@
           }
         }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+      if($_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $vaccData = $controller->getVacc($_GET['medicalID']);
         for ($i=0; $i < count($vaccData); $i++) {
-          $vaccDates[$i] = $controller->getVaccDates($vaccData[$i]['VaccID']);
+          $vaccData[$i]['VaccDates'] = $controller->getVaccDates($vaccData[$i]['VaccID']);
         }
+        var_dump($vaccData[0]);
       }
     }
 
