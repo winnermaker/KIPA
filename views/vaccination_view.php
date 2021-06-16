@@ -81,7 +81,54 @@
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
 
               </tr>
-              <?php } } ?>
+              <?php } } else { ?>
+
+                <tr id="row">
+                <td style="display:none;"><input type="text" name="vaccinationID[]" class="form-control"></td>
+                <td style="display:none;"><input type="text" name="vaccDateID[]" class="form-control"></td>
+                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
+                    <datalist id="vaccinedatalistOptions">
+                        <option value="CSM">
+                        <option value="ATS">
+                        <option value="BCG">
+                    </datalist>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate1[]" id="VaccDate1" min="1900-04-01" max="2300-04-20">
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate2[]" id="VaccDate2" min="1900-04-01" max="2300-04-20">
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate3[]" id="VaccDate3" min="1900-04-01" max="2300-04-20">
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20">
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td>
+                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">
+                  <div class="invalid-feedback">
+                  Please pick a valid Date
+                  </div>
+                </td>
+                <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
+
+              </tr>
+
+              <?php } ?>
+
               </tbody>
             </table>
           </div>
