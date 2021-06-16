@@ -615,13 +615,13 @@
     <script>
         var gender = document.getElementById( "gender" ).innerText;
 
-        if(gender == "Male"){
+        if(gender == "m"){
             document.getElementById("maleGenitals").style.display = "block";
             document.getElementById("femaleGenitals").style.display = "none";
-        } else if(gender == "Female"){
+        } else if(gender == "f"){
             document.getElementById("femaleGenitals").style.display = "block";
             document.getElementById("maleGenitals").style.display = "none";
-        } else if(gender === "Other" || gender === "Others"){
+        } else if(gender === "x"){
             document.getElementById("maleGenitals").style.display = "block";
             document.getElementById("femaleGenitals").style.display = "block";
         } else {
