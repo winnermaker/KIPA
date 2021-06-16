@@ -38,7 +38,7 @@
 
             <div class="form-group col-4">
               <label class="form-label" for="nhiNumber">NHI Number</label>
-              <input type="text" class="form-control" name="nhiNumber" id="nhiNumber" value="<?php echo (isset($medicalData['NHINr']))?$medicalData['NHINr']:'';?>">
+              <input type="number" class="form-control" name="nhiNumber" id="nhiNumber" value="<?php echo (isset($medicalData['NHINr']))?$medicalData['NHINr']:'';?>">
             </div>
 
             <div class ="form-group col">

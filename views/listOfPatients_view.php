@@ -16,10 +16,10 @@
 
         <form action="listOfPatients_con.php" method="post">
             <div class="row mt-5">
-                <fieldset class="col">
+                <fieldset class="col-4">
                     <legend class="col-form-label">Filter Options:</legend>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="filterRadios" id="allPatients" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="filterRadios" id="allPatients" value="option1">
                             <label class="form-check-label" for="allPatients">All Patients</label>
                         </div>
 
@@ -32,15 +32,21 @@
                             <input class="form-check-input" type="radio" name="filterRadios" id="patientsNextVaccDate" value="option3">
                             <label class="form-check-label" for="patientsNextVaccDate">Vaccination Date</label>
                         </div>
+                        
                 </fieldset>
 
-                <div class="form-group offset-4 col ">
+                <div class="form-group col-1">
+                    <label for="submit"></label>
+                    <button type="submit" id="submit" style="font-size:15px;"  class="btn btn-success form-control mt-1">Filter</button>
+                </div>
+
+                <div class="form-group offset-2 col ">
                     <label for="searchInput"></label>
                     <input type="text" placeholder="Search" id="searchInput" class="form-control">
                 </div>
             </div>
         </form>
-        <div class="table-responsive-lg mt-3">
+        <div class="table-responsive-lg mt-4">
             <table class="table table-striped table-hover table-bordered" id="table">
                 <thead class="table-dark">
                     <tr>
@@ -64,8 +70,9 @@
 
                 <tbody id="tableBody">
                 <?php
-                    $index = 1;
-                    foreach($childData as $row){
+                    if(isset($childData)){
+                        $index = 1;
+                        foreach($childData as $row){
                 ?>
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
@@ -88,7 +95,7 @@
                         </td>
                         </td>
                     </tr>
-                    <?php $index++; }  ?>
+                    <?php $index++; } }  ?>
                 </tbody>
             </table>
         </div>
