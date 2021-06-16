@@ -265,7 +265,7 @@
 
       function login($table, $data){
         $username = $data['username'];
-        $password = $data['passowrd'];
+        $password = $data['password'];
 
         $returnArray = array();
         try
@@ -276,11 +276,10 @@
 
     			if($select_stmt->rowCount() > 0)
     			{
-    				if($username==$row["username"]) //check condition user taypable "username or email" are both match from database "username or email" after continue
+    				if($username==$row["username"])
     				{
-    					if(password_verify($password, $row["password"])) //check condition user taypable "password" are match from database "password" using password_verify() after continue
-    					{
-    						$_SESSION["user_login"] = $row["user_id"];
+    					if(password_verify($password, $row["password"])){
+    						$_SESSION["user_login"] = $row["UserID"];
                 $returnArray['loginMsg'] = "Successfully Login...";
     					}
     					else
@@ -304,6 +303,14 @@
     		}
         return $returnArray;
 
+      }
+
+      function welcome($table, $id){
+
+				$smt = $this->pdo->prepare("SELECT * FROM $table WHERE UserID=?");
+				$smt->execute([$id]);
+				$row=$smt->fetch();
+        return $row;
       }
 
       function registration($table, $data){

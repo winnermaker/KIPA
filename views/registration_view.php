@@ -16,11 +16,6 @@
             padding: 30px;
             text-align: center;
         }
-
-        .logoImage{
-            width:36%;
-        }
-
         .username{
             margin:auto;
         }
