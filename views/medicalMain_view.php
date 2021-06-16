@@ -1,25 +1,24 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
+    <?php
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
       ?>
   <style>
     .table{
-    
+
     }
   </style>
 
     <title>Medical Main</title>
   </head>
   <body>
-    
+
     <div class="container">
       <h1 class="mt-3">Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
-      <?php var_dump($medicalData); ?>
 
       <form action="medicalMain_con.php" method="post" class="needs-validation" novalidate>
         <input type="hidden" id="medicalMainID" name="medicalMainID" value="<?php echo (isset($medicalData['MedicalID']))?$medicalData['MedicalID']:'';?>" >
@@ -47,15 +46,15 @@
                     <input class="form-control" type="date" name="reviewOn" id="reviewOn" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($medicalData['ReviewOn']))?$medicalData['ReviewOn']:'';?>">
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>      
+                    </div>
             </div>
 
             <div class ="form-group col">
                     <label for="nextVaccDate" class="form-label">Next Vaccination Date</label>
-                    <input class="form-control" type="date"  id="nextVaccDate" disabled>        
+                    <input class="form-control" type="date"  id="nextVaccDate" disabled>
             </div>
-          
-          
+
+
         </div>
 
         <div class="form-group form-row mt-3">
@@ -71,7 +70,7 @@
         <div class="form-group form-row mt-3">
             <label for="plan" class="form-label" >Plan</label>
             <textarea class="form-control" name="plan" id="plan" rows="2"> <?php echo (isset($medicalData['Plan'])) ? htmlspecialchars($medicalData['Plan']): '' ; ?> </textarea>
-        </div> 
+        </div>
 
         <div class="form-group form-row mt-3">
             <label for="otherInformation" class="form-label">Other Information</label>
@@ -177,7 +176,7 @@
                     <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['HepBPosCheckDate']))?$childData['HepBPosCheckDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>      
+                    </div>
             </div>
 
             <fieldset class="col-2 offset-1" id="hepBtreated" disabled>
@@ -215,10 +214,10 @@
 
             <div class ="form-group col-3">
                     <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['HIVCheckDate']))?$childData['HIVCheckDate']:'';?>" > 
+                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['HIVCheckDate']))?$childData['HIVCheckDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>        
+                    </div>
             </div>
 
             <fieldset class="col-2 offset-1" id="hivTreated" disabled>
@@ -256,10 +255,10 @@
 
             <div class ="form-group col-3">
                     <label for="TbposCheckDate" class="form-label">Tb Check Date</label>
-                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($childData['HIVCheckDate']))?$childData['HIVCheckDate']:'';?>" disabled> 
+                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($childData['HIVCheckDate']))?$childData['HIVCheckDate']:'';?>" disabled>
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>        
+                    </div>
             </div>
 
             <fieldset class="col-2 offset-1" id="tbTreated" disabled>
@@ -298,10 +297,10 @@
 
             <div class ="form-group col-3">
                     <label for="STDposCheckDate" class="form-label">STD Check Date</label>
-                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['STDPosCheckDate']))?$childData['STDPosCheckDate']:'';?>" > 
+                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['STDPosCheckDate']))?$childData['STDPosCheckDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>        
+                    </div>
             </div>
 
             <fieldset class="col-2 offset-1" id="stdTreated" disabled>
@@ -340,10 +339,10 @@
 
             <div class ="form-group col-3">
                     <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
-                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['PregTestDate']))?$childData['PregTestDate']:'';?>" > 
+                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['PregTestDate']))?$childData['PregTestDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>        
+                    </div>
             </div>
           </div>
 
@@ -576,6 +575,6 @@
       document.getElementById("investigator").hidden = true;
       document.getElementById("investigatorName").hidden = true;
     </script>
-   
+
   </body>
 </html>

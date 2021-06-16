@@ -238,7 +238,7 @@
     		{
     			$select_stmt=$this->pdo->prepare("SELECT * FROM $table WHERE username=?");
     			$select_stmt->execute([$username]);
-    			$row=$select_stmt->fetch(PDO::FETCH_ASSOC);
+    			$row=$select_stmt->fetch();
 
     			if($select_stmt->rowCount() > 0)
     			{
@@ -281,8 +281,8 @@
             $sql = "SELECT username FROM userdetails WHERE username=?";
             $smt = $this->pdo->prepare($sql);
             $smt->execute([$data['username']]);
-            $row=$smt->fetch(PDO::FETCH_ASSOC);
-            if($row){
+            $row=$smt->fetch();
+            if($username==$row["username"]){
               $returnArray['error'] = "Sorry username already exists";
             }
             else if(!isset($returnArray['error']))

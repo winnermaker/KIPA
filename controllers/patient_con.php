@@ -6,7 +6,9 @@
         $patientObj = new patient();
         $controller->getAllChildern();
         if(!$patientObj->checkPatientID()){
-          $controller -> prepared_insert('childrenmain',$patientObj->getParams());
+          $id = $controller -> prepared_insert('childrenmain',$patientObj->getParams());
+          $data['fk_ChildrenID'] = $id;
+          $controller -> prepared_insert('medicalmain',$data);
         }else {
           $controller -> prepared_update('childrenmain',$patientObj->getParams());
         }

@@ -36,8 +36,10 @@
             }
           }
         }
-
-
+    }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
+      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+        $pregdata = $controller->getPregnancyMain($_GET['medicalID']);
+      }
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/pregnancy_view.php";
