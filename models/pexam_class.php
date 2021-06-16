@@ -291,7 +291,7 @@
           $this->arrayPexamMale['circumcised'] = $this->male_CircumsisedRadio;
           $this->arrayPexamMale['TannerSt'] = $this->male_tannerStage;
           $this->arrayPexamMale['Descensus'] = $this->male_descensusOfTestes;
-          $this->arrayPexamMale['male_remarks'] = $this->male_remarks;
+          $this->arrayPexamMale['remarks'] = $this->male_remarks;
         }
 
         public function paramsFemaleToArray(){
