@@ -13,9 +13,9 @@
     $loginObj = new login();
     $data = $loginObj->getParams();
     try {
-      $result = $controller->login();
+      $result = $controller->login('userdetails',$data);
       if(isset($result[''])){
-        header("refresh:2; welcome.php");			
+        header("refresh:2; welcome.php");
       }
     } catch (\Exception $e) {
 

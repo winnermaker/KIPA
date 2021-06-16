@@ -79,6 +79,21 @@
         $test = $this->pdo->prepare($sql)->execute($values);
       }
 
+      function unique_multidim_array($array, $key) {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+
+        foreach($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+        return $temp_array;
+      }
+
       function getAllChildern(){
         $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain ORDER BY ChildrenID DESC")->fetchAll();
         return $dataAllCildren;
@@ -134,9 +149,10 @@
       }
 
       function getAllChildernVaccSoon(){
-          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON childrenmain.ChildrenID = medicalmain.fk_CHildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID WHERE medicalvacc.nextVaccDate BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 28 DAY) ORDER BY medicalvacc.nextVaccDate";
+          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.MedicalID, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON childrenmain.ChildrenID = medicalmain.fk_CHildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID WHERE medicalvacc.nextVaccDate BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 28 DAY) ORDER BY medicalvacc.nextVaccDate";
           $data =  $this->pdo->query($sql)->fetchAll();
-          return $data;
+          $dataTest = $this->unique_multidim_array($data,'ChildrenID');
+          return $dataTest;
       }
 
       function getSocialHist($childrenID){
@@ -184,7 +200,25 @@
         return $data;
       }
 
-      function getPregnancyMain($medicalID){
+      function getGenMData($pexamID){
+        $sql = "SELECT * FROM medicalgenmale WHERE fk_PEXAMID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$pexamID]);
+        $data = $smt->fetch();
+
+        return $data;
+      }
+
+      function getGenFData($pexamID){
+        $sql = "SELECT * FROM medicalgenfemale WHERE fk_PEXAMID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$pexamID]);
+        $data = $smt->fetch();
+
+        return $data;
+      }
+
+      function getPregnancyMainData($medicalID){
         $sql = "SELECT * FROM medicalpregnancymain WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
@@ -193,7 +227,7 @@
         return $data;
       }
 
-      function getPregnancyPresent($motherID){
+      function getPregnancyPresentData($motherID){
         $sql = "SELECT * FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$motherID]);
@@ -202,7 +236,7 @@
         return $data;
       }
 
-      function getPregnancyPrevious($motherID){
+      function getPregnancyPreviousData($motherID){
         $sql = "SELECT * FROM medicalpregnancychilddata WHERE fk_MotherID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$motherID]);

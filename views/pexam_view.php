@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
+    <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
@@ -11,12 +11,12 @@
   <body>
     <div class="container">
         <h1 class="mt-3">Physical Examination</h1>
-        
+
 
         <form action="pexam_con.php" method="post" class="needs-validation" novalidate>
             <?php require 'formsHeadline.php' ?>
             <input type="hidden" id="pexamID" name="pexamID" value="<?php echo (isset($pexamData['PEXAMID']))?$pexamData['PEXAMID']:'';?>" >
-            
+
             <div class="row mt-5">
                 <div class ="form-group col">
                     <label for="examinationDate" class="form-label">Examination Date</label>
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            
+
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="jaundice" class="form-label">Jaundice</label>
@@ -226,7 +226,7 @@
                     <label for="cvs_heartrate" class="form-label">Heart Rate</label>
                     <input type="text" class="form-control" name="cvs_heartrate" id="cvs_heartrate" value="<?php echo (isset($pexamData['cvs_heartrate']))?$pexamData['cvs_heartrate']:'';?>" >
                 </div>
-                
+
                 <div class="form-group col-6">
                     <label for="cvs_BP" class="form-label">BP (mmHg)</label>
                     <input type="text" class="form-control" name="cvs_BP" id="cvs_BP" value="<?php echo (isset($pexamData['cvs_BP']))?$pexamData['cvs_BP']:'';?>" >
@@ -422,33 +422,33 @@
                     <fieldset class="col-2">
                         <legend class="col-form-label">Circumcised</legend>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="male_CircumsisedRadio" id="circumcisedRadioYes" value="option1" <?php echo (isset($pexamData['circumcised']) && $pexamData['circumcised'] === 1 )?'checked':'' ?> >
+                            <input class="form-check-input" type="radio" name="male_CircumsisedRadio" id="circumcisedRadioYes" value="option1" <?php echo (isset($pexamDataM['circumcised']) && $pexamDataM['circumcised'] == 1 )?'checked':'' ?> >
                             <label class="form-check-label" for="circumcisedRadioYes">Yes</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="male_CircumsisedRadio" id="circumcisedRadioNo" value="option2" <?php echo (isset($pexamData['circumcised']) && $pexamData['circumcised'] === 0 )?'checked':'' ?> >
+                            <input class="form-check-input" type="radio" name="male_CircumsisedRadio" id="circumcisedRadioNo" value="option2" <?php echo (isset($pexamDataM['circumcised']) && $pexamDataM['circumcised'] == 0 )?'checked':'' ?> >
                             <label class="form-check-label" for="circumcisedRadioNo">No</label>
                         </div>
                     </fieldset>
 
                     <div class="form-group offset-1 col">
                         <label for="male_tannerStage" class="form-label">Tanner stage</label>
-                        <input type="text" class="form-control" name="male_tannerStage" id="male_tannerStage" value="<?php echo (isset($pexamData['TannerSt']))?$pexamData['TannerSt']:'';?>" >
+                        <input type="text" class="form-control" name="male_tannerStage" id="male_tannerStage" value="<?php echo (isset($pexamDataM['TannerSt']))?$pexamDataM['TannerSt']:'';?>" >
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="male_descensusOfTestes" class="form-label">Descensus of testes</label>
-                        <textarea class="form-control" name="male_descensusOfTestes" id="male_descensusOfTestes" rows="2"><?php echo (isset($pexamData['Descensus'])) ? htmlspecialchars($pexamData['Descensus']): '' ; ?></textarea>
+                        <textarea class="form-control" name="male_descensusOfTestes" id="male_descensusOfTestes" rows="2"><?php echo (isset($pexamDataM['Descensus'])) ? htmlspecialchars($pexamDataM['Descensus']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="male_remarks" class="form-label">Remarks</label>
-                        <textarea class="form-control" name="male_remarks" id="male_remarks" rows="3"><?php echo (isset($pexamData['remarks'])) ? htmlspecialchars($pexamData['remarks']): '' ; ?></textarea>
+                        <textarea class="form-control" name="male_remarks" id="male_remarks" rows="3"><?php echo (isset($pexamDataM['remarks'])) ? htmlspecialchars($pexamDataM['remarks']): '' ; ?></textarea>
                     </div>
                 </div>
             </div>
@@ -460,33 +460,33 @@
                     <fieldset class="col-2">
                         <legend class="col-form-label">Circumcised</legend>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="female_circumcisedRadios" id="femalecircumcisedRadioYes" value="option1" <?php echo (isset($pexamData['circumcised']) && $pexamData['circumcised'] === 1 )?'checked':'' ?> >
+                            <input class="form-check-input" type="radio" name="female_circumcisedRadios" id="femalecircumcisedRadioYes" value="option1" <?php echo (isset($pexamDataF['circumcised']) && $pexamDataF['circumcised'] == 1 )?'checked':'' ?> >
                             <label class="form-check-label" for="femalecircumcisedRadioYes">Yes</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="female_circumcisedRadios" id="femalecircumcisedRadioNo" value="option2" <?php echo (isset($pexamData['circumcised']) && $pexamData['circumcised'] === 0 )?'checked':'' ?> >
+                            <input class="form-check-input" type="radio" name="female_circumcisedRadios" id="femalecircumcisedRadioNo" value="option2" <?php echo (isset($pexamDataF['circumcised']) && $pexamDataF['circumcised'] == 0 )?'checked':'' ?> >
                             <label class="form-check-label" for="femalecircumcisedRadioNo">No</label>
                         </div>
                     </fieldset>
 
                     <div class="form-group offset-1 col">
                         <label for="female_tannerStage" class="form-label">Tanner stage</label>
-                        <input type="text" class="form-control" name="female_tannerStage" id="female_tannerStage" value="<?php echo (isset($pexamData['TannerSt']))?$pexamData['TannerSt']:'';?>" >
+                        <input type="text" class="form-control" name="female_tannerStage" id="female_tannerStage" value="<?php echo (isset($pexamDataF['TannerSt']))?$pexamDataF['TannerSt']:'';?>" >
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_hymen" class="form-label">Hymen</label>
-                        <textarea class="form-control" name="female_hymen" id="female_hymen" rows="2"><?php echo (isset($pexamData['Hymen'])) ? htmlspecialchars($pexamData['Hymen']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_hymen" id="female_hymen" rows="2"><?php echo (isset($pexamDataF['Hymen'])) ? htmlspecialchars($pexamDataF['Hymen']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_introitus" class="form-label">Introitus</label>
-                        <textarea class="form-control" name="female_introitus" id="female_introitus" rows="2"><?php echo (isset($pexamData['Introitus'])) ? htmlspecialchars($pexamData['Introitus']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_introitus" id="female_introitus" rows="2"><?php echo (isset($pexamDataF['Introitus'])) ? htmlspecialchars($pexamDataF['Introitus']): '' ; ?></textarea>
                     </div>
                 </div>
 

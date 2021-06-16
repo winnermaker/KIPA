@@ -32,7 +32,7 @@
                             <input class="form-check-input" type="radio" name="filterRadios" id="patientsNextVaccDate" value="option3">
                             <label class="form-check-label" for="patientsNextVaccDate">Vaccination Date</label>
                         </div>
-                        
+
                 </fieldset>
 
                 <div class="form-group col-1">
@@ -87,7 +87,7 @@
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
                         <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
-                        <td name="nextVaccDate"><?php echo (isset($row['NextVaccDate'])) ? date("d-m-Y", strtotime($row['NextVaccDate'])) :'';?></td>
+                        <td name="nextVaccDate"><?php echo (isset($row['nextVaccDate'])) ? date("d-m-Y", strtotime($row['nextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
                                 <a href="patient_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-primary">Forms</button> </a>

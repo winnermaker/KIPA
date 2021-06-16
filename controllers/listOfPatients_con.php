@@ -8,9 +8,9 @@
 
             if($filterRadios === "option1"){
                 $childData = $controller->getChildDataForListOfPatients();
-            } else if($filterRadios === "option2"){
-                $childData = $controller->getAllChildernVaccSoon();
             } else if($filterRadios === "option3"){
+                $childData = $controller->getAllChildernVaccSoon();
+            } else if($filterRadios === "option2"){
                 $childData = $controller->getAllChildernReviewSoon();
             }
         }
