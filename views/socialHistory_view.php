@@ -98,19 +98,11 @@
               <?php
 
 
-                        $arrayData = array(
-                          0 => array(
-                            'Gender' => "Male",
-                            'Alive' => "Yes",
-                            'Healthy' => "Healthy yes",
-                            'SameParents' => "same mother",
-                            'Age' => "age"
-                          )
-                          );
+                    
 
                       $index = 1;
-                      if(!empty($arrayData)){
-                      foreach($arrayData as $row){
+                      if(!empty($socialSibsData)){
+                      foreach($socialSibsData as $row){
 
                 ?>
                 <tr>

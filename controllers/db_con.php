@@ -174,7 +174,7 @@
       }
 
       function getVisits($medicalID){
-        $sql = "SELECT visitID, visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
+        $sql = "SELECT visitID, fk_MedicalID, visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
         $data = $smt->fetchAll();

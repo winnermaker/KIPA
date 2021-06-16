@@ -33,7 +33,6 @@
           $socialData = $controller->getSocialHist($_GET['childrenID']);
           if((int)$socialData['siblings']){
             $socialSibsData = $controller->getSocialSibling($socialData['SocialID']);
-            echo "Test";
           }
         }
       }

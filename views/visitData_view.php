@@ -13,7 +13,7 @@
         <h1 class="mt-3 ">Visit Data</h1>
         <?php require 'formsHeadline.php' ?>
 
-        <div class="form-row sticky-top mt-3">   
+        <div class="form-row sticky-top mt-3">
             <table class="table table-striped table-hover table-bordered mt-5" id="table">
               <thead class="table-dark">
                 <tr>
@@ -27,38 +27,40 @@
              <!-- <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th> -->
                 </tr>
               </thead>
-              
+
               <tbody id="tableBody">
               <?php if(isset($visitData)){
                       $index = 1;
                       foreach($visitData as $key => $row){
                 ?>
                 <tr>
-                  <td name="childrenID" hidden><?php echo (isset($row['VisitID']))?$row['VisitID']:'';?></td>
-                  <td><input type="date" class="form-control" name="visitDate" value="<?php echo (isset($row['VisitDate']))?$row['VisitDate']:'';?>" disabled></input></td>
-                  <td><input type="text" class="form-control" name="visitType" value="<?php echo (isset($row['VisitType']))?$row['VisitType']:'';?>" disabled></input></td>
-                  <td><input type="text" class="form-control" name="examLocation" value="<?php echo (isset($row['ExLocation']))?$row['ExLocation']:'';?>" disabled></td>
-                  <td><input type="text" class="form-control" name="examCause" value="<?php echo (isset($row['ExCause']))?$row['ExCause']:'';?>" disabled></td>
+                  <td style="display:none"><input type="text" name="visitID" value ="<?php echo (isset($row['visitID']))?$row['visitID']:'';?>" ></input></td>
+                  <td style="display:none"><input type="text" name="childrenID" value ="<?php echo (isset($row['childrenID']))?$row['childrenID']:'';?>" ></input></td>
+                  <td style="display:none"><input type="text" name="medicalID" value="<?php echo (isset($row['fk_MedicalID']))?$row['fk_MedicalID']:'';?>" ></input></td>
+                  <td><input type="date" class="form-control" name="visitDate" value="<?php echo (isset($row['visitDate']))?$row['visitDate']:'';?>" disabled></input></td>
+                  <td><input type="text" class="form-control" name="visitType" value="<?php echo (isset($row['visitType']))?$row['visitType']:'';?>" disabled></input></td>
+                  <td><input type="text" class="form-control" name="examLocation" value="<?php echo (isset($row['exLocation']))?$row['exLocation']:'';?>" disabled></td>
+                  <td><input type="text" class="form-control" name="examCause" value="<?php echo (isset($row['exCause']))?$row['exCause']:'';?>" disabled></td>
                   <td><input type="date" class="form-control" name="reviewDate" value="<?php echo (isset($row['RVD']))?$row['RVD'] :'';?>" disabled></td>
                   <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a></td>
                 <!-- <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  -->
                 </tr>
                 <?php $index++; } } ?>
-              </tbody> 
-          </table>  
+              </tbody>
+          </table>
         </div>
     </div>
 
         <script>
             function createRow(){
               var table = document.getElementById("tableBody");
-            
+
               var row = table.insertRow(-1);
 
               var cell1 = row.insertCell(0);
-              var cell2 = row.insertCell(1);  
+              var cell2 = row.insertCell(1);
               var cell3 = row.insertCell(2);
-              var cell4 = row.insertCell(3); 
+              var cell4 = row.insertCell(3);
               var cell5 = row.insertCell(4);
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
@@ -66,9 +68,9 @@
               cell1.innerHTML = '<input type="date" class="form-control" name="visitDate">';
               cell2.innerHTML = '<input type="text" class="form-control" name="visitType">';
               cell3.innerHTML = '<input type="text" class="form-control" name="examLocation">';
-              cell4.innerHTML = '<input type="text" class="form-control" name="examCause">'; 
+              cell4.innerHTML = '<input type="text" class="form-control" name="examCause">';
               cell5.innerHTML = '<input type="date" class="form-control" name="reviewDate">';
-              cell6.innerHTML = '<a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a>'; 
+              cell6.innerHTML = '<a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a>';
               cell7.innerHTML = '<input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)">';
 
               $('input,textarea,select').addClass('border border-dark');
@@ -81,26 +83,24 @@
               document.getElementById('table').deleteRow(i);
           }
 
-          function removeCssClass() 
+          function removeCssClass()
         {
           var element = document.getElementById("formsTable");
           element.classList.remove("sticky-top");
         }
 
-        
+
           function addParamsToUrl(element)
           {
-            
+
             $(element).attr('href', function() {
-              var visitDate = $(this).closest("tr").find('input[name=visitDate]').val();
-              var visitType = $(this).closest("tr").find('input[name=visitType]').val();
-              var examLocation = $(this).closest("tr").find('input[name=examLocation]').val();
-              var examCause =  $(this).closest("tr").find('input[name=examCause]').val();
-              var reviewDate = $(this).closest("tr").find('input[name=reviewDate]').val();
-              return this.href + '?visitDate=' + visitDate + '&visitType=' + visitType + '&examLocation=' + examLocation + '&examCause=' + examCause + '&reviewDate=' + reviewDate;
+              var visitID = $(this).closest("tr").find('input[name=visitID]').val();
+              var medicalID = $(this).closest("tr").find('input[name=medicalID]').val();
+              var childrenID = $(this).closest("tr").find('input[name=childrenID]').val();
+              return this.href +'?visitID='+ visitID + '&medicalID='+ medicalID + '&childrenID=' + childrenID;
             });
           }
-      
+
 
 
 
