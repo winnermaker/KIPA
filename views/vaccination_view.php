@@ -31,7 +31,17 @@
               </thead>
 
               <tbody id="tableBody">
+              <?php
+                      $index = 1;
+                      if(!empty($vaccData)){
+                      for ($i=0; $i < count($vaccData) ; $i++) {
+
+                      
+
+                ?>
               <tr id="row">
+                <td style="display:none;"><input type="text" name="VaccID[]" class="form-control" value="<?php echo (isset($row['VaccID']))?$row['VaccID']:'';?>" ></td>
+                <td style="display:none;"><input type="text" name="VaccDateID[]" class="form-control" value="<?php echo (isset($row['VaccDateID']))?$row['VaccDateID']:'';?>" ></td>
                 <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
                     <datalist id="vaccinedatalistOptions">
                         <option value="CSM">
@@ -72,6 +82,7 @@
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
 
               </tr>
+              <?php } } ?>
               </tbody>
             </table>
           </div>

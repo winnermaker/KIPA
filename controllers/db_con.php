@@ -115,7 +115,7 @@
 
       function getChildDataForHeadline($childrenID){
         // select childata for headlines
-        $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
+        $stmt = $this->pdo->prepare("SELECT ChildrenID, FirstName, LastName, CallNames,Gender,DOB,EDOB FROM childrenmain WHERE ChildrenID=?");
         $stmt->execute([$childrenID]);
         $child = $stmt->fetch();
         return $child;

@@ -17,6 +17,7 @@
           <table class="table table-striped">
               <thead class="">
                 <tr>
+                  <th scope="col" class="">Children ID</th>
                   <th scope="col" class="">First name</th>
                   <th scope="col" class="">Last name</th>
                   <th scope="col" class="">Call name</th>
@@ -29,15 +30,16 @@
 
               <tbody>
                 <?php
-                  //$child = $controller->getChildDataForHeadline($_COOKIE["ChildIDCookie"]);
+                  $headData = $controller->getChildDataForHeadline($_COOKIE["childIDCookie"]);
                  ?>
-                <td>Mustermann</td>
-                <td>Mike</td>
-                <td>Mustermann</td>
-                <td id="gender">Other</td>
-                <td>29.10.1997</td>
-                <td>29.10.1997</td>
-                <td id="investigatorName">Drechsel-Atta</td>
+                <td><?php echo (isset($headData['ChildrenID']))?$headData['ChildrenID']:'';?></td>
+                <td><?php echo (isset($headData['FirstName']))?$headData['FirstName']:'';?></td>
+                <td><?php echo (isset($headData['LastName']))?$headData['LastName']:'';?></td>
+                <td><?php echo (isset($headData['CallNames']))?$headData['CallNames']:'';?></td>
+                <td id="gender"><?php echo (isset($headData['Gender']))?$headData['Gender']:'';?></td>
+                <td><?php echo (isset($headData['DOB']))? date("d-m-Y", strtotime($headData['DOB'])) :'';?></td>
+                <td><?php echo (isset($headData['EDOB']))? date("d-m-Y", strtotime($headData['EDOB'])) :'';?></td>
+                <td id="investigatorName"></td>
               </tbody>
           </table>
         </div>
