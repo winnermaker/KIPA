@@ -15,7 +15,6 @@
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
         $medicalData = $controller->getmedicaldata($_GET['childrenID']);
-
       }
     }
 

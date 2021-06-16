@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
+    <?php
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
@@ -23,7 +23,7 @@
                   <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($socialData['DateOfInvestigation']))?$socialData['DateOfInvestigation']:'';?>" required>
                   <div class="invalid-feedback">
                     Please chose a valid Date
-                    </div>      
+                    </div>
             </div>
             <div class="form-group col">
             <label for="livedWithWho" class="form-label">Lived with who?</label>
@@ -44,7 +44,7 @@
             <label for="parentslivetogether" class="form-label">Parents live together? Peacefully?</label>
             <textarea class="form-control" name="parentslivetogether" id="parentslivetogether" rows="2"> <?php echo (isset($socialData['ParentsLiveTogether'])) ? htmlspecialchars($socialData['ParentsLiveTogether']): '' ; ?> </textarea>
           </div>
-  
+
           <div class="form-group form-row mt-3">
             <label for="amountAndSourceOfIncome" class="form-label">Amount and Source of Income?</label>
             <textarea class="form-control" name="amountAndSourceOfIncome" id="amountAndSourceOfIncome" rows="2"> <?php echo (isset($socialData['AmountAndSourceOfIncome'])) ? htmlspecialchars($socialData['AmountAndSourceOfIncome']): '' ; ?> </textarea>
@@ -53,8 +53,8 @@
             <label for="incomeForHowMany" class="form-label">Income for how many?</label>
             <textarea class="form-control" name="incomeForHowMany" id="incomeForHowMany" rows="2"> <?php echo (isset($socialData['IncomeForHowMany'])) ? htmlspecialchars($socialData['IncomeForHowMany']): '' ; ?> </textarea>
           </div>
-         
-      
+
+
           <div class="form-group form-row mt-3">
             <label for="abuse" class="form-label">Abuse?</label>
             <textarea class="form-control" name="abuse" id="abuse" rows="2"> <?php echo (isset($socialData['Abuse'])) ? htmlspecialchars($socialData['Abuse']): '' ; ?> </textarea>
@@ -68,18 +68,18 @@
             <fieldset class="col-2">
               <legend class="col-form-label">Siblings?</legend>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] === 1 )?'checked':'' ?> >
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 1 )?'checked':'' ?> >
                 <label class="form-check-label" for="siblingsYes">Yes</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] === 0 )?'checked':'' ?> >
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 0 )?'checked':'' ?> >
                 <label class="form-check-label" for="siblingsNo">No</label>
               </div>
             </fieldset>
           </div>
 
-          <div class="form-row sticky-top mt-3" style="display:none" id="siblingsTable">   
+          <div class="form-row sticky-top mt-3" style="display:none" id="siblingsTable">
             <table class="table table-striped table-hover table-bordered mt-5" name="table" id="table">
               <thead class="table-dark">
                 <tr>
@@ -93,25 +93,17 @@
                   <th scope="col" class="sticky-top"><input type="button" onclick="createRow()" value="Add row" class="AddNew btn btn-primary"></th>
                 </tr>
               </thead>
-              
+
               <tbody name="tableBody" id="tableBody">
-              <?php     
-                        
-                          
-                        $arrayData = array(
-                          0 => array(
-                            'Gender' => "Male",
-                            'Alive' => "Yes",
-                            'Healthy' => "Healthy yes",
-                            'SameParents' => "same mother",
-                            'Age' => "age"
-                          )
-                          );  
+              <?php
+
+
+                    
 
                       $index = 1;
-                      if(!empty($arrayData)){
-                      foreach($arrayData as $row){
-                    
+                      if(!empty($socialSibsData)){
+                      foreach($socialSibsData as $row){
+
                 ?>
                 <tr>
                   <td style="display:none;"><input type="text" name="SiblingID[]" class="form-control" value="<?php echo (isset($row['SiblingID']))?$row['SiblingID']:'';?>" ></td>
@@ -133,13 +125,13 @@
                   <td><input type="text" name="healthy[]" class="form-control" ></td>
                   <td><input type="text" name="alive[]" class="form-control" ></td>
                   <td><input type="text" name="sameFatherMother[]" class="form-control" ></td>
-                  <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>      
+                  <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
                 </tr>
                 <?php } ?>
-              </tbody> 
-            </table>  
+              </tbody>
+            </table>
           </div>
-        
+
           <button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
 
       </form>
@@ -174,10 +166,10 @@
       $(document).ready(function() {
           $('input[name="siblings"]').click(function() {
           if($(this).attr('value') == 'option1') {
-                $('#siblingsTable').show();           
+                $('#siblingsTable').show();
           }
           else {
-                $('#siblingsTable').hide();   
+                $('#siblingsTable').hide();
           }
         });
       });
@@ -187,9 +179,9 @@
               var row = table.insertRow(-1);
 
               var cell1 = row.insertCell(0);
-              var cell2 = row.insertCell(1);  
+              var cell2 = row.insertCell(1);
               var cell3 = row.insertCell(2);
-              var cell4 = row.insertCell(3); 
+              var cell4 = row.insertCell(3);
               var cell5 = row.insertCell(4);
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
@@ -207,16 +199,16 @@
         }
 
         function deleteRow(row)
-          {   
+          {
               var table = document.getElementById("table");
               var i=row.parentNode.parentNode.rowIndex;
               document.getElementById('table').deleteRow(i);
 
               for (var i = 1; i< table.rows.length; i++){
                 table.rows[i].cells[0].innerHTML = i;
-            } 
+            }
           }
-        
+
           $('input,textarea,select').addClass('border border-dark');
     </script>
   </body>

@@ -6,7 +6,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pregnancyObj = new pregnancy();
         $pregdata = $pregnancyObj->getPregnancyMain();
-        $pregnancyObj->printPreviousPregnancy();
         var_dump($pregnancyObj->checkPreviousPregnancy());
         if (!$pregnancyObj->checkPregnancyID()) {
           $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
@@ -36,8 +35,12 @@
             }
           }
         }
-
-
+    }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
+      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+        $pregnancyData = $controller->getPregnancyMainData($_GET['medicalID']);
+        $presentPregnancy = $controller->getPregnancyPresentData($pregnancyData['MotherID']);
+        $previousData = $controller->getPregnancyPreviousData($pregnancyData['MotherID']);
+      }
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/pregnancy_view.php";

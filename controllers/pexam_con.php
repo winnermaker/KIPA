@@ -55,8 +55,9 @@
         }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
       if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
-        $pexamdata = $controller->getPexamData($_GET['medicalID']);
-        var_dump($pexamdata);
+        $pexamData = $controller->getPexamData($_GET['medicalID']);
+        $pexamDataM = $controller->getGenMData($pexamData['PEXAMID']);
+        $pexamDataF = $controller->getGenFData($pexamData['PEXAMID']);
       }
     }
 

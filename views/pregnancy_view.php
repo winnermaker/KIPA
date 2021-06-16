@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <?php 
+    <?php
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
@@ -12,7 +12,7 @@
     <div class="container">
         <h1 class="mt-3">Pregnancy</h1>
         <?php require 'formsHeadline.php' ?>
-        
+
 
         <form action="pregnancy_con.php" method="post" class="needs-validation" novalidate>
             <input type="hidden" id="pregnancyID" name="pregnancyID" value="<?php echo (isset($pregnancyData['MotherID']))?$pregnancyData['MotherID']:'';?>" >
@@ -23,7 +23,7 @@
                     <input class="form-control" type="date" name="entryDate" id="entryDate" min="1900-04-01" max="2300-04-20"  value="<?php echo (isset($pregnancyData['EntryDate']))?$pregnancyData['EntryDate']:'';?>" required>
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>       
+                    </div>
                 </div>
 
                 <div class="form-group col-2">
@@ -64,28 +64,28 @@
 
                 <div class ="form-group offset-1 col-2">
                     <label for="estimatedDateOfDelivery" class="form-label">Estimated Date of Delivery</label>
-                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($presentPregnancy['EstDelivery']))?$presentPregnancy['EstDelivery']:'';?>" >    
+                    <input class="form-control" type="date" name="estimatedDateOfDelivery" id="estimatedDateOfDelivery" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($presentPregnancy['EstDelivery']))?$presentPregnancy['EstDelivery']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
-                    </div>     
+                    </div>
                 </div>
 
                 <fieldset class="offset-1 col-4">
                 <legend class="col-form-label">Antenatal Clinic attendance</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioYes" value="option1" <?php echo (isset($presentPregnancy['AntClinicAttend']) && $presentPregnancy['AntClinicAttend'] === 1 )?'checked':'' ?> >
+                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioYes" value="option1" <?php echo (isset($presentPregnancy['AntClinicAttend']) && $presentPregnancy['AntClinicAttend'] == 1 )?'checked':'' ?> >
                         <label class="form-check-label" for="antenatalRadioYes">Yes</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioNo" value="option2" <?php echo (isset($presentPregnancy['AntClinicAttend']) && $presentPregnancy['AntClinicAttend'] === 0 )?'checked':'' ?> >
+                        <input class="form-check-input" type="radio" name="antenatalClinikAttendanceRadios" id="antenatalRadioNo" value="option2" <?php echo (isset($presentPregnancy['AntClinicAttend']) && $presentPregnancy['AntClinicAttend'] == 0 )?'checked':'' ?> >
                         <label class="form-check-label" for="antenatalRadioNo">No</label>
                     </div>
                 </fieldset>
 
             </div>
 
-            
+
             <div class="form-group form-row mt-3">
                 <label for="problems" class="form-label">Any problems during this pregnancy ?</label>
                 <textarea class="form-control" name="problems" id="problems" rows="2"><?php echo (isset($presentPregnancy['Problems'])) ? htmlspecialchars($presentPregnancy['Problems']): '' ; ?></textarea>
@@ -119,7 +119,7 @@
                         </div>
                     </fieldset>
 
-                    
+
                         <div class="form-group col">
                             <label class="form-label" for="name">Name</label>
                             <input type="text" class="form-control" name="name[]" id="name">
@@ -127,7 +127,7 @@
 
                         <div class ="form-group col-3">
                             <label for="dateofBirth" class="form-label">Date of Birth</label>
-                            <input class="form-control " type="text" name="dateofBirth[]"  id="dateofBirth">        
+                            <input class="form-control " type="text" name="dateofBirth[]"  id="dateofBirth">
                         </div>
 
                 </div>
@@ -182,7 +182,7 @@
                     <button type="button" id="addChild" class="btn btn-secondary col-2 me-2">Add new Child</button>
                     <button type="button" id='removeButton' class='remove btn btn-danger col-2'>Remove Child</button>
                 </div>
-                
+
             </div>
 
             <div name="newChild" id="newChild">
@@ -251,7 +251,7 @@
                 clone.find("textarea[name=childrenProblems]").prop("name", "childrenProblems[]");
                 clone.find("textarea[name=Remarks]").prop("name", "Remarks[]");
 
-                
+
                 clone.find("input,textarea").val("");
 
                 clone.find("input[id=malepregnancyRadio" + cloneId + "]").val("option1");
@@ -260,10 +260,10 @@
 
                 clone.find("input[id=healthyRadioYes" + cloneId + "]").val("option1");
                 clone.find("input[id=healthyRadioNo" + cloneId + "]").val("option2");
-                
+
                 cloneId++;
                 clone.appendTo("#newChild");
-               
+
             });
 
             $( "body" ).on('click', '.remove', function(){

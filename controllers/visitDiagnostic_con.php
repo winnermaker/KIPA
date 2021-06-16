@@ -12,12 +12,10 @@
         }else {
           $controller -> prepared_update('medicalvisits',$arrayVisitData);
         }
-
-
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "GET"){
-
+    }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
+      if($_GET['medicalID'] !== "false"){
+        $visitData = $controller->getVisitDiagnosticData($_GET['visitID']);
+      }
     }
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/visitDiagnostic_view.php";
 ?>

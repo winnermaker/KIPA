@@ -79,6 +79,21 @@
         $test = $this->pdo->prepare($sql)->execute($values);
       }
 
+      function unique_multidim_array($array, $key) {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+
+        foreach($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+        return $temp_array;
+      }
+
       function getAllChildern(){
         $dataAllCildren = $this->pdo->query("SELECT * FROM childrenmain ORDER BY ChildrenID DESC")->fetchAll();
         return $dataAllCildren;
@@ -134,9 +149,10 @@
       }
 
       function getAllChildernVaccSoon(){
-          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON childrenmain.ChildrenID = medicalmain.fk_CHildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID WHERE medicalvacc.nextVaccDate BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 28 DAY) ORDER BY medicalvacc.nextVaccDate";
+          $sql = "SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames, childrenmain.Gender, childrenmain.DOB, childrenmain.EDOB, childrenmain.AdmDate, childrenmain.DisDate, medicalmain.MedicalID, medicalvacc.nextVaccDate FROM childrenmain JOIN medicalmain ON childrenmain.ChildrenID = medicalmain.fk_CHildrenID JOIN medicalvacc ON medicalvacc.fk_MedicalID = medicalmain.MedicalID WHERE medicalvacc.nextVaccDate BETWEEN CURRENT_DATE() AND DATE_ADD(CURRENT_DATE(), INTERVAL 28 DAY) ORDER BY medicalvacc.nextVaccDate";
           $data =  $this->pdo->query($sql)->fetchAll();
-          return $data;
+          $dataTest = $this->unique_multidim_array($data,'ChildrenID');
+          return $dataTest;
       }
 
       function getSocialHist($childrenID){
@@ -158,7 +174,7 @@
       }
 
       function getVisits($medicalID){
-        $sql = "SELECT visitID, visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
+        $sql = "SELECT visitID, fk_MedicalID, visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
         $data = $smt->fetchAll();
@@ -184,7 +200,25 @@
         return $data;
       }
 
-      function getPregnancyMain($medicalID){
+      function getGenMData($pexamID){
+        $sql = "SELECT * FROM medicalgenmale WHERE fk_PEXAMID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$pexamID]);
+        $data = $smt->fetch();
+
+        return $data;
+      }
+
+      function getGenFData($pexamID){
+        $sql = "SELECT * FROM medicalgenfemale WHERE fk_PEXAMID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$pexamID]);
+        $data = $smt->fetch();
+
+        return $data;
+      }
+
+      function getPregnancyMainData($medicalID){
         $sql = "SELECT * FROM medicalpregnancymain WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$medicalID]);
@@ -193,7 +227,7 @@
         return $data;
       }
 
-      function getPregnancyPresent($motherID){
+      function getPregnancyPresentData($motherID){
         $sql = "SELECT * FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$motherID]);
@@ -202,7 +236,7 @@
         return $data;
       }
 
-      function getPregnancyPrevious($motherID){
+      function getPregnancyPreviousData($motherID){
         $sql = "SELECT * FROM medicalpregnancychilddata WHERE fk_MotherID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$motherID]);
@@ -231,22 +265,21 @@
 
       function login($table, $data){
         $username = $data['username'];
-        $password = $data['passowrd'];
+        $password = $data['password'];
 
         $returnArray = array();
         try
     		{
     			$select_stmt=$this->pdo->prepare("SELECT * FROM $table WHERE username=?");
     			$select_stmt->execute([$username]);
-    			$row=$select_stmt->fetch(PDO::FETCH_ASSOC);
+    			$row=$select_stmt->fetch();
 
     			if($select_stmt->rowCount() > 0)
     			{
-    				if($username==$row["username"]) //check condition user taypable "username or email" are both match from database "username or email" after continue
+    				if($username==$row["username"])
     				{
-    					if(password_verify($password, $row["password"])) //check condition user taypable "password" are match from database "password" using password_verify() after continue
-    					{
-    						$_SESSION["user_login"] = $row["user_id"];
+    					if(password_verify($password, $row["password"])){
+    						$_SESSION["user_login"] = $row["UserID"];
                 $returnArray['loginMsg'] = "Successfully Login...";
     					}
     					else
@@ -272,6 +305,14 @@
 
       }
 
+      function welcome($table, $id){
+
+				$smt = $this->pdo->prepare("SELECT * FROM $table WHERE UserID=?");
+				$smt->execute([$id]);
+				$row=$smt->fetch();
+        return $row;
+      }
+
       function registration($table, $data){
         try {
             $username = $data['username'];
@@ -281,8 +322,8 @@
             $sql = "SELECT username FROM userdetails WHERE username=?";
             $smt = $this->pdo->prepare($sql);
             $smt->execute([$data['username']]);
-            $row=$smt->fetch(PDO::FETCH_ASSOC);
-            if($row){
+            $row=$smt->fetch();
+            if($username==$row["username"]){
               $returnArray['error'] = "Sorry username already exists";
             }
             else if(!isset($returnArray['error']))

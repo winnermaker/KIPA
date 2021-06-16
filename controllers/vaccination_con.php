@@ -55,13 +55,15 @@
               $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
               $controller->prepared_update('medicalvaccdate',$data);
             }
-            if ($vaccdates[$i]['fifthVaccDate'] != "") {
-              $data['VaccDate'] = $vaccdates[$i]['fifthVaccDate'];
-              $controller->prepared_update('medicalvaccdate',$data);
-            }
           }
-
         }
+    }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
+      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false"){
+        $vaccData = $controller->getVacc($_GET['medicalID']);
+        for ($i=0; $i < count($vaccData); $i++) {
+          $vaccDates[$i] = $controller->getVaccDates($vaccData[$i]['VaccID']);
+        }
+      }
     }
 
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/vaccination_view.php";
