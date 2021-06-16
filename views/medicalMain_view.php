@@ -21,7 +21,7 @@
       <?php require 'formsHeadline.php' ?>
 
       <form action="medicalMain_con.php" method="post" class="needs-validation" novalidate>
-        <input type="hidden" id="medicalMainID" name="medicalMainID" value="<?php echo (isset($medicalData['MedicalID']))?$medicalData['MedicalID']:'';?>" >
+        <input type="hidden" id="medicalMainID" name="medicalMainID" value="<?php echo (isset($medicalData['MedicalID']))?$medicalData['MedicalID']:'';?>">
         <div class="row mt-5">
           <fieldset class="col-2">
             <legend class="col-form-label">NHI Registration</legend>
@@ -59,22 +59,22 @@
 
         <div class="form-group form-row mt-3">
             <label for="conditions" class="form-label">Conditions</label>
-            <textarea class="form-control" name="conditions" id="conditions" rows="2"><?php echo (isset($medicalData['Conditions'])) ? htmlspecialchars($medicalData['Conditions']): '' ; ?></textarea>
+            <textarea class="form-control" name="conditions" id="conditions" rows="2"><?php echo (isset($medicalData['Conditions'])) ? htmlspecialchars($medicalData['Conditions']):'';?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
             <label for="permanentPrescription" class="form-label">Permanent Prescription</label>
-            <textarea class="form-control" name="permanentPrescription" id="permanentPrescription" rows="2"><?php echo (isset($medicalData['PermMedication'])) ? htmlspecialchars($medicalData['PermMedication']): '' ; ?></textarea>
+            <textarea class="form-control" name="permanentPrescription" id="permanentPrescription" rows="2"><?php echo (isset($medicalData['PermMedication'])) ? htmlspecialchars($medicalData['PermMedication']):'';?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
             <label for="plan" class="form-label" >Plan</label>
-            <textarea class="form-control" name="plan" id="plan" rows="2"> <?php echo (isset($medicalData['Plan'])) ? htmlspecialchars($medicalData['Plan']): '' ; ?> </textarea>
+            <textarea class="form-control" name="plan" id="plan" rows="2"><?php echo (isset($medicalData['Plan'])) ? htmlspecialchars($medicalData['Plan']):'';?></textarea>
         </div>
 
         <div class="form-group form-row mt-3">
             <label for="otherInformation" class="form-label">Other Information</label>
-            <textarea class="form-control" name="otherInformation" id="otherInformation" rows="3"> <?php echo (isset($medicalData['OtherInfo'])) ? htmlspecialchars($medicalData['OtherInfo']): '' ; ?> </textarea>
+            <textarea class="form-control" name="otherInformation" id="otherInformation" rows="3"><?php echo (isset($medicalData['OtherInfo'])) ? htmlspecialchars($medicalData['OtherInfo']):'';?></textarea>
         </div>
 
         <div class="row mt-5">
@@ -156,12 +156,12 @@
             <fieldset class="col-4">
               <legend class="col-form-label">Hep.B pos.</legend>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 1 )?'checked':'' ?>  >
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 1 )?'checked':'' ?>>
                     <label class="form-check-label" for="HepBPosRadioYes">Yes</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNo" value="option2" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 0 )?'checked':'' ?>  >
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNo" value="option2" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 0 )?'checked':'' ?>>
                     <label class="form-check-label" for="HepBPosRadioNo">No</label>
                   </div>
 

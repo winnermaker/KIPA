@@ -15,7 +15,7 @@
         <div class="container">
             <h1 class="mt-3">Patient</h1>
 
-            <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>" >
+            <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
 
             <div class="form-row mt-5">
                 <fieldset>
@@ -118,7 +118,7 @@
 
                 <div class="form-group col">
                     <label class="form-label" for="customFile" >Upload Picture</label>
-                    <input type="file" class="form-control" name="customFile" id="customFile" value="<?php echo (isset($childData['Picture']))?$childData['Picture']:'';?>" />
+                    <input type="file" class="form-control" name="customFile" id="customFile" value="<?php echo (isset($childData['Picture']))?$childData['Picture']:'';?>"/>
                 </div>
             </div>
 
