@@ -133,11 +133,11 @@
         foreach ($dataAllCildren as $key => $row) {
           $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
           $childID = $row['ChildrenID'];
-          
+
           $arrayPatientNames[$childID] = [
             'names' => $string,
         ];
-    
+
         }
         return $arrayPatientNames;
       }

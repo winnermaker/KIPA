@@ -10,6 +10,8 @@ create table if not exists ChildrenMain
    AdmDate				date,
    DisDate				date,
    PicTaken				date,
+   PicName      text,
+   PicType    text,
    Picture		  BLOB
    );
 

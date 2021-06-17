@@ -6,21 +6,30 @@
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
     ?>
+
     <title>Patient</title>
 
   </head>
   <body>
-
-    <form action="patient_con.php"  method="post" class="needs-validation" novalidate>
+    <style>
+        .myimage{
+            padding: 15px;
+            float: right;
+        }
+    </style>
+    <?php echo '<div class="myimage"><img src="data:image/jpeg;base64,'.base64_encode($childData['Picture']).'"width="20%" height="20%"/></div>'; ?>
+    <form action="patient_con.php"  method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
             <h1 class="mt-3">Patient</h1>
 
             <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
+            <input type="hidden" id="PicName" name="PicName" value="<?php echo (isset($childData['PicName']))?$childData['PicName']:'';?>">
+            <input type="hidden" id="PicName" name="PicName" value="<?php echo (isset($childData['PicType']))?$childData['PicType']:'';?>">
 
             <div class="form-row mt-5">
                 <fieldset>
                 <legend class="col-form-label">Gender</legend>
-                    <div class="form-check form-check-inline">                                                                   
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1" required <?php echo (isset($childData['Gender']) && $childData['Gender'] ==='m')?'checked':'' ?>>
                         <label class="form-check-label" for="maleRadio">Male</label>
                     </div>
@@ -54,7 +63,7 @@
             <div class="form-row mt-3">
                 <div class="form-group col">
                     <label for="lastName" class="form-label">Last name</label>
-                    <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($childData['FirstName']))?$childData['LastName']:'';?>" placeholder="Mustermann" required>
+                    <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($childData['LastName']))?$childData['LastName']:'';?>" placeholder="Mustermann" required>
                     <div class="invalid-feedback">
                     Please choose a Last name
                     </div>
@@ -117,8 +126,8 @@
                 </div>
 
                 <div class="form-group col">
-                    <label class="form-label" for="customFile" >Upload Picture</label>
-                    <input type="file" class="form-control" name="customFile" id="customFile" value="<?php echo (isset($childData['Picture']))?$childData['Picture']:'';?>"/>
+                    <label class="form-label" for="customFile">Upload Picture</label>
+                    <input type="file" class="form-control" name="customFile" id="customFile"/>
                 </div>
             </div>
 

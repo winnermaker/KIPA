@@ -1,6 +1,5 @@
 <?php
 	require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
-	require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/welcome_view.php";
 
 	session_start();
 
@@ -16,5 +15,7 @@
 		$id = $_SESSION['user_login'];
 		$welcomeData = $controller->welcome('userdetails', $id);
 	}
+
+	require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/welcome_view.php";
 
  ?>
