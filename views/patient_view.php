@@ -17,7 +17,11 @@
             float: right;
         }
     </style>
-    <?php echo '<div class="myimage"><img src="data:image/jpeg;base64,'.base64_encode($childData['Picture']).'"width="20%" height="20%"/></div>'; ?>
+    <?php
+    if(isset($childData['Picture'])){
+      echo '<div class="myimage"><img src="data:image/jpeg;base64,'.base64_encode($childData['Picture']).'"width="20%" height="20%"/></div>';
+    }
+     ?>
     <form action="patient_con.php"  method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
             <h1 class="mt-3">Patient</h1>

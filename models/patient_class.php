@@ -30,7 +30,7 @@
             $this->pictureTakenOn =  !empty($_POST['pictureTakenOn']) ? $_POST['pictureTakenOn'] : null;
             $this->customFile =  !empty($_POST['customFile']) ? $_POST['customFile'] : null;
             $this->picName = !empty($_POST['PicName']) ? $_POST['PicName'] : null;
-            $this->picName = !empty($_POST['PicType']) ? $_POST['PicType'] : null;
+            $this->picType = !empty($_POST['PicType']) ? $_POST['PicType'] : null;
 
             $this->paramsToArray();
         }
@@ -59,8 +59,8 @@
             $this->arrayChild['DisDate'] = $this->dischargeDate;
             $this->arrayChild['PicTaken'] = $this->pictureTakenOn;
             $this->arrayChild['Picture'] = $this->customFile;
-            $this->arrayChild['PicName'] = $this->PicName;
-            $this->arrayChild['PicType'] = $this->PicType;
+            $this->arrayChild['PicName'] = $this->picName;
+            $this->arrayChild['PicType'] = $this->picType;
         }
 
         public function printParams(){
