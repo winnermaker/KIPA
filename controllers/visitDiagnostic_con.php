@@ -13,7 +13,7 @@
           $controller -> prepared_update('medicalvisits',$arrayVisitData);
         }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined"){
+      if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['visitID'] != "undefined" ){
         $visitData = $controller->getVisitDiagnosticData($_GET['visitID']);
       }
     }
