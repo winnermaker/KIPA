@@ -12,7 +12,7 @@ create table if not exists ChildrenMain
    PicTaken				date,
    PicName      text,
    PicType    text,
-   Picture		  BLOB
+   Picture		  mediumblob
    );
 
 create table if not exists SocialHistory

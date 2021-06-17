@@ -5,32 +5,44 @@
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
-    ?>
 
+        $image = isset($childData['Picture'])?'data:image/'.$childData['PicType'].';base64,'.base64_encode($childData['Picture']):'';
+?>
     <title>Patient</title>
 
   </head>
   <body>
     <style>
-        .myimage{
-            padding: 15px;
-            float: right;
+        .imgPic{
+          float: right;
+          border-style: none;
+
         }
     </style>
-    <?php
-    if(isset($childData['Picture'])){
-      echo '<div class="myimage"><img src="data:image/jpeg;base64,'.base64_encode($childData['Picture']).'"width="20%" height="20%"/></div>';
-    }
-     ?>
+
     <form action="patient_con.php"  method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
+            <div class="row  mt-3">
+              <div class="form-group col">
             <h1 class="mt-3">Patient</h1>
+            </div>
+            <?php if(isset($childData['Picture'])){  ?>
+            <div class="form-group col">
+              <input class="imgPic" type="image" id="imgPic" name="imgPic" alt="Patient Image" onclick="this.disabled = true" src="<?php echo $image; ?>"height="200" width="200">
+          </div>
+        <?php } ?>
+            </div>
+                <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
 
-            <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
-            <input type="hidden" id="PicName" name="PicName" value="<?php echo (isset($childData['PicName']))?$childData['PicName']:'';?>">
-            <input type="hidden" id="PicName" name="PicName" value="<?php echo (isset($childData['PicType']))?$childData['PicType']:'';?>">
 
-            <div class="form-row mt-5">
+                <input type="hidden" id="PicName" name="PicName" value="<?php echo (isset($childData['PicName']))?$childData['PicName']:'';?>">
+
+                <input type="hidden" id="PicType" name="PicType" value="<?php echo (isset($childData['PicType']))?$childData['PicType']:'';?>">
+
+
+
+
+            <div class="form-row">
                 <fieldset>
                 <legend class="col-form-label">Gender</legend>
                     <div class="form-check form-check-inline">
@@ -142,8 +154,7 @@
 
 
     <script>
-
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
         'use strict'
 

@@ -54,8 +54,10 @@
       //echo "File is not an image.";
       $uploadOk = 0;
     }
+    define('KB', 1024);
+    define('MB', 1048576);
     // Check file size
-    if ($_FILES["customFile"]["size"] > 500000) {
+    if ($_FILES["customFile"]["size"] > 16*MB) {
     //  echo "Sorry, your file is too large.";
       $uploadOk = 0;
     }
