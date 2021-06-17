@@ -35,7 +35,7 @@
                       if(!empty($vaccData)){
                       for ($i=0; $i < count($vaccData) ; $i++) {
 
-                      
+
 
                 ?>
               <tr id="row">
@@ -81,7 +81,7 @@
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
 
               </tr>
-              <?php } } ?>
+            <?php } } ?>
               </tbody>
             </table>
           </div>
