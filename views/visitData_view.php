@@ -29,7 +29,7 @@
               </thead>
 
               <tbody id="tableBody">
-              <?php if(isset($visitData)){
+              <?php if(!empty($visitData)){
                       $index = 1;
                       foreach($visitData as $key => $row){
                       
@@ -46,7 +46,22 @@
                   <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)"> <button class="btn btn-success">Diagnostic</button> </a></td>
                 <!-- <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  -->
                 </tr>
-                <?php $index++; } } ?>
+                <?php $index++; } } else { ?>
+
+                  <tr>
+                  <td style="display:none"><input type="text" name="visitID" ></input></td>
+                  <td style="display:none"><input type="text" name="childrenID"></input></td>
+                  <td style="display:none"><input type="text" name="medicalID" ></input></td>
+                  <td><input type="date" class="form-control" name="visitDate" disabled></input></td>
+                  <td><input type="text" class="form-control" name="visitType" disabled></input></td>
+                  <td><input type="text" class="form-control" name="examLocation" disabled></td>
+                  <td><input type="text" class="form-control" name="examCause" disabled></td>
+                  <td><input type="date" class="form-control" name="reviewDate" disabled></td>
+                  <td><a href="visitDiagnostic_con.php" onclick="addParamsToUrl(this)" disabled> <button disabled class="btn btn-success">Diagnostic</button> </a></td>
+                <!-- <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>  -->
+                </tr>
+
+                <?php } ?>
               </tbody>
           </table>
         </div>
