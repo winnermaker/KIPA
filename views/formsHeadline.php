@@ -48,5 +48,11 @@
               </tbody>
           </table>
         </div>
+        <script>
+           var gender = $('#gender').text();
+          if(gender === "m"){
+            $("#pregnancLink").hide();
+          }
+        </script>
   </body>
 </html>

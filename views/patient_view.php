@@ -179,6 +179,25 @@
     <script>
         $('input,textarea,select').addClass('border border-dark');
 
+        $(document).ready(function() {
+            var isChecked = $('#maleRadio').prop('checked');
+
+            if(isChecked){
+                $('#pregnancLink').hide();
+            } else{
+                $('#pregnancLink').show();
+            }
+
+          $('input[name="genderRadios"]').click(function() {
+          if($(this).attr('value') == 'option1') {
+                $('#pregnancLink').hide();
+          }
+          else {
+                $('#pregnancLink').show();
+          }
+        });
+      });
+
     </script>
   </body>
 </html>

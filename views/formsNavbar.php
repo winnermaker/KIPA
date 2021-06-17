@@ -26,7 +26,7 @@
           <a href="pexam_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Physical Examination</a>
         </li>
         <li class="nav-item">
-          <a href="pregnancy_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Pregnancy</a>
+          <a href="pregnancy_con.php" onclick="addParamsToUrl(this)" id="pregnancLink" class="nav-link text-dark"  role="tab" >Pregnancy</a>
         </li>
         <li class="nav-item">
           <a href="vaccination_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab">Vaccination</a>
