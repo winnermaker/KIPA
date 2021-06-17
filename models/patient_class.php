@@ -11,6 +11,8 @@
         private $dischargeDate;
         private $pictureTakenOn;
         private $customFile;
+        private $picName;
+        private $picType;
         private $arrayChild = array();
 
 
@@ -18,7 +20,6 @@
             $this->patientID = !empty($_POST['patientID']) ? $_POST['patientID'] : null;
             $this->gender = !empty($_POST['genderRadios']) ? $_POST['genderRadios'] : null;
             $this->getGenderRadioValue($this->gender);
-
             $this->firstName = !empty($_POST['firstName']) ? trim($_POST['firstName']) : null;
             $this->lastName =  !empty($_POST['lastName']) ? trim($_POST['lastName']) : null;
             $this->callName =  !empty($_POST['callName']) ? trim($_POST['callName']) : null;
@@ -28,6 +29,8 @@
             $this->dischargeDate =  !empty($_POST['dischargeDate']) ? $_POST['dischargeDate'] : null;
             $this->pictureTakenOn =  !empty($_POST['pictureTakenOn']) ? $_POST['pictureTakenOn'] : null;
             $this->customFile =  !empty($_POST['customFile']) ? $_POST['customFile'] : null;
+            $this->picName = !empty($_POST['PicName']) ? $_POST['PicName'] : null;
+            $this->picType = !empty($_POST['PicType']) ? $_POST['PicType'] : null;
 
             $this->paramsToArray();
         }
@@ -56,6 +59,8 @@
             $this->arrayChild['DisDate'] = $this->dischargeDate;
             $this->arrayChild['PicTaken'] = $this->pictureTakenOn;
             $this->arrayChild['Picture'] = $this->customFile;
+            $this->arrayChild['PicName'] = $this->picName;
+            $this->arrayChild['PicType'] = $this->picType;
         }
 
         public function printParams(){

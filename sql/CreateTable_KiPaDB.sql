@@ -10,7 +10,9 @@ create table if not exists ChildrenMain
    AdmDate				date,
    DisDate				date,
    PicTaken				date,
-   Picture		  BLOB
+   PicName      text,
+   PicType    text,
+   Picture		  mediumblob
    );
 
 create table if not exists SocialHistory

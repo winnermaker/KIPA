@@ -4,7 +4,7 @@
     <div class="container mt-3">
       <ul class="nav nav-pills nav-fill border border-dark " id="pills-tab" role="tablist">
         <li class="nav-item">
-          <a  href="patient_con.php" class="nav-link text-dark" role="tab" >Patients</a>
+          <a  href="patient_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark" role="tab" >Patients</a>
         </li>
         <li class="nav-item">
           <a href="medicalMain_con.php" onclick="addParamsToUrl(this)" class="nav-link text-dark"  role="tab" >Medical Main</a>
@@ -33,14 +33,14 @@
         </li>
       </ul>
     </div>
-    
+
     <script>
       function addParamsToUrl(element)
           {
             $(element).attr('href', function() {
               var medicalID = getUrlParameter('medicalID');
               var childrenID = getUrlParameter('childrenID');
-        
+
               return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID;
             });
           }
@@ -62,6 +62,6 @@
             return false;
         };
     </script>
-      
+
   </body>
 </html>

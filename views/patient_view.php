@@ -5,22 +5,47 @@
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
         require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/formsNavbar.php";
-    ?>
+
+        $image = isset($childData['Picture'])?'data:image/'.$childData['PicType'].';base64,'.base64_encode($childData['Picture']):'';
+?>
     <title>Patient</title>
 
   </head>
   <body>
+    <style>
+        .imgPic{
+          float: right;
+          border-style: none;
 
-    <form action="patient_con.php"  method="post" class="needs-validation" novalidate>
+        }
+    </style>
+
+    <form action="patient_con.php"  method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
+            <div class="row  mt-3">
+              <div class="form-group col">
             <h1 class="mt-3">Patient</h1>
+            </div>
+            <?php if(isset($childData['Picture'])){  ?>
+            <div class="form-group col">
+              <input class="imgPic" type="image" id="imgPic" name="imgPic" alt="Patient Image" onclick="this.disabled = true" src="<?php echo $image; ?>"height="200" width="200">
+          </div>
+        <?php } ?>
+            </div>
+                <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
 
-            <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
 
-            <div class="form-row mt-5">
+                <input type="hidden" id="PicName" name="PicName" value="<?php echo (isset($childData['PicName']))?$childData['PicName']:'';?>">
+
+                <input type="hidden" id="PicType" name="PicType" value="<?php echo (isset($childData['PicType']))?$childData['PicType']:'';?>">
+
+
+
+
+            <div class="form-row">
                 <fieldset>
                 <legend class="col-form-label">Gender</legend>
-                    <div class="form-check form-check-inline">                                                                   
+                    <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1" required <?php echo (isset($childData['Gender']) && $childData['Gender'] ==='m')?'checked':'' ?>>
                         <label class="form-check-label" for="maleRadio">Male</label>
                     </div>
@@ -54,7 +79,7 @@
             <div class="form-row mt-3">
                 <div class="form-group col">
                     <label for="lastName" class="form-label">Last name</label>
-                    <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($childData['FirstName']))?$childData['LastName']:'';?>" placeholder="Mustermann" required>
+                    <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($childData['LastName']))?$childData['LastName']:'';?>" placeholder="Mustermann" required>
                     <div class="invalid-feedback">
                     Please choose a Last name
                     </div>
@@ -117,8 +142,8 @@
                 </div>
 
                 <div class="form-group col">
-                    <label class="form-label" for="customFile" >Upload Picture</label>
-                    <input type="file" class="form-control" name="customFile" id="customFile" value="<?php echo (isset($childData['Picture']))?$childData['Picture']:'';?>"/>
+                    <label class="form-label" for="customFile">Upload Picture</label>
+                    <input type="file" class="form-control" name="customFile" id="customFile"/>
                 </div>
             </div>
 
@@ -129,8 +154,7 @@
 
 
     <script>
-
-        // Example starter JavaScript for disabling form submissions if there are invalid fields
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
         (function () {
         'use strict'
 
