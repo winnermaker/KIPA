@@ -129,7 +129,7 @@
       function getChildDataForSearch (){
         // select childdata for searchbar
         $arrayPatientNames = array();
-        $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM childrenmain")->fetchAll();
+        $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM childrenmain ORDER BY FirstName, LastName, CallNames ")->fetchAll();
         foreach ($dataAllCildren as $key => $row) {
           $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
           $childID = $row['ChildrenID'];
