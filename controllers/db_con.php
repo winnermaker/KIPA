@@ -128,8 +128,18 @@
 
       function getChildDataForSearch (){
         // select childdata for searchbar
-        $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM ChildernMain")->fetchAll();
-        return $dataAllCildren;
+        $arrayPatientNames = array();
+        $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM childrenmain")->fetchAll();
+        foreach ($dataAllCildren as $key => $row) {
+          $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
+          $childID = $row['ChildrenID'];
+          
+          $arrayPatientNames[$childID] = [
+            'names' => $string,
+        ];
+    
+        }
+        return $arrayPatientNames;
       }
 
       function getMedicalData($childrenID){

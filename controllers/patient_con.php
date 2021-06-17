@@ -12,6 +12,7 @@
         }
 
     } elseif($_SERVER["REQUEST_METHOD"] == "GET"){
+      print_r($_GET);
       if(isset($_GET['childrenID'])){
         $childData = $controller->getChildData($_GET['childrenID']);
         setcookie ("childIDCookie" , (int)$_GET['childrenID']);
