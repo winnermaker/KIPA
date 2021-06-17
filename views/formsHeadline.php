@@ -28,12 +28,13 @@
                 </tr>
               </thead>
 
-              <tbody>
-                <?php
+              <?php
                 if(isset($_GET['childrenID'])){
                     $headData = $controller->getChildDataForHeadline($_GET['childrenID']);                  
                 }
                  ?>
+              
+              <tbody>
                 <td><?php echo (isset($headData['ChildrenID']))?$headData['ChildrenID']:'';?></td>
                 <td><?php echo (isset($headData['FirstName']))?$headData['FirstName']:'';?></td>
                 <td><?php echo (isset($headData['LastName']))?$headData['LastName']:'';?></td>

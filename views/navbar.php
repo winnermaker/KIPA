@@ -27,30 +27,25 @@
               if(isset($arrayNames)){
                 foreach($arrayNames as $key => $value){
                   foreach ($value as $row) {
-                  echo  "<option value='$row' . '['names']' . />";
+                  echo  "<option value='$key $row' . '['names']' . />";
                     } 
                   }
                 }
             ?>
             </datalist>
 
-              <input type="submit" class="btn btn-success" value="Submit" onclick="addParamsToUrl()">
+            <button type="submit" class="btn btn-success">Search</button>
         </div>
         </form>
 
     </div>
     <script>
+ 
+  $("#form").on("submit", function(){
+    $("#form").attr('action', 'patient_con.php?id=');
 
-    function addParamsToUrl()
-          {
-            alert("hallo");
-            $(element).attr('href', function() {
-              var medicalID = getUrlParameter('medicalID');
-              var childrenID = getUrlParameter('childrenID');
-        
-              return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID;
-            });
-          }
+  })
+
 
 
   </script>
