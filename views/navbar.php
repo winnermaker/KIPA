@@ -6,6 +6,7 @@
       $arrayNames = $controller->getChildDataForSearch();
 
   ?>
+  <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -18,7 +19,7 @@
         </div>
       </div>
 
-        <form class="d-flex float-end" method="get" id="form"  action="patient_con.php" onsubmit="addParamsToUrl(this)" >
+        <form class="d-flex float-end" method="get" id="form"  action="patient_con.php" >
           <div class="input-group">
             <input class="form-control me-2" list="patientsdatalistOptions" size="40px;" id="namesDataList" placeholder="Type to search...">
             <datalist id='patientsdatalistOptions'>
@@ -33,15 +34,16 @@
             ?>
             </datalist>
 
-              <input type="submit" class="btn btn-success" value="Submit">
+              <input type="submit" class="btn btn-success" value="Submit" onclick="addParamsToUrl()">
         </div>
         </form>
 
     </div>
     <script>
 
-    function addParamsToUrl(this)
+    function addParamsToUrl()
           {
+            alert("hallo");
             $(element).attr('href', function() {
               var medicalID = getUrlParameter('medicalID');
               var childrenID = getUrlParameter('childrenID');
@@ -52,5 +54,6 @@
 
 
   </script>
+  </body>
   </nav>
 </html>
