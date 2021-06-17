@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+  <head>
   <?php
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
 
       $arrayNames = $controller->getChildDataForSearch();
 
   ?>
+  </head>
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -19,7 +21,7 @@
         </div>
       </div>
 
-        <form class="d-flex float-end" method="get" id="form"  action="patient_con.php" >
+        <form onsubmit="return validateForm();" class="d-flex float-end" method="get" id="searchbarForm">
           <div class="input-group">
             <input class="form-control me-2" list="patientsdatalistOptions" size="40px;" id="namesDataList" placeholder="Type to search...">
             <datalist id='patientsdatalistOptions'>
@@ -27,7 +29,7 @@
               if(isset($arrayNames)){
                 foreach($arrayNames as $key => $value){
                   foreach ($value as $row) {
-                  echo  "<option value='$key $row' . '['names']' . />";
+                    echo  "<option data-value='$key' value='$row'></option> ";
                     } 
                   }
                 }
@@ -35,19 +37,20 @@
             </datalist>
 
             <button type="submit" class="btn btn-success">Search</button>
-        </div>
+          </div>
         </form>
 
     </div>
     <script>
- 
-  $("#form").on("submit", function(){
-    $("#form").attr('action', 'patient_con.php?id=');
-
-  })
-
-
-
+      function validateForm() {
+          //alert('Validating form...');
+          var shownVal = document.getElementById("namesDataList").value;
+          var value2send = document.querySelector("#patientsdatalistOptions option[value='"+shownVal+"']").dataset.value;
+   
+          value = escape(value2send);
+          location.href = 'patient_con.php?childrenID=' + value;
+          return false;
+      }
   </script>
   </body>
   </nav>

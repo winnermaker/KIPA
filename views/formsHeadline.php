@@ -31,6 +31,8 @@
               <?php
                 if(isset($_GET['childrenID'])){
                     $headData = $controller->getChildDataForHeadline($_GET['childrenID']);                  
+                } else if(isset($_COOKIE["childIDCookie"])){
+                    $headData = $controller->getChildDataForHeadline($_COOKIE["childIDCookie"]);
                 }
                  ?>
               
