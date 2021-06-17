@@ -30,7 +30,9 @@
 
               <tbody>
                 <?php
-                  $headData = $controller->getChildDataForHeadline($_COOKIE["childIDCookie"]);
+                if(isset($_GET['childrenID'])){
+                    $headData = $controller->getChildDataForHeadline($_GET['childrenID']);                  
+                }
                  ?>
                 <td><?php echo (isset($headData['ChildrenID']))?$headData['ChildrenID']:'';?></td>
                 <td><?php echo (isset($headData['FirstName']))?$headData['FirstName']:'';?></td>

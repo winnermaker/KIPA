@@ -30,6 +30,14 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "GET"){
         $childData = $controller->getChildDataForListOfPatients();
+        $medical = $controller->getMedicalDataForListOfPatients();
+        foreach($childData as $key => $value){
+          foreach($medical as $value2){
+            if($value['ChildrenID'] === $value2['ChildrenID']){
+              $childData[$key]['MedicalID'] = $value2['MedicalID'];
+            }
+          }
+        }
     }
 
 

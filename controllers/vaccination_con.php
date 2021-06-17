@@ -39,7 +39,6 @@
           for($i=0; $i < count($vaccdata); $i++) {
             $controller->prepared_update('medicalvacc',$vaccdata[$i]);
           }
-
           for($i=0; $i < count($vaccdates); $i++) {
             $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
             $controller->prepared_update('medicalvaccdate',$data);
@@ -61,9 +60,12 @@
       if($_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $vaccData = $controller->getVacc($_GET['medicalID']);
         for ($i=0; $i < count($vaccData); $i++) {
-          $vaccData[$i]['VaccDates'] = $controller->getVaccDates($vaccData[$i]['VaccID']);
+          $vaccDates = $controller->getVaccDates($vaccData[$i]['VaccID']);
+          for ($k=0; $k < count($vaccDates); $k++) {
+            $vaccData[$i]['VaccDateID'] = $vaccDates[$k]['VaccDateID'];
+            $vaccData[$i]['VaccDate'.$k+1] = $vaccDates[$k]['VaccDate'];
+          }
         }
-        var_dump($vaccData[0]);
       }
     }
 

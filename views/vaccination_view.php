@@ -33,15 +33,12 @@
               <?php
                       $index = 1;
                       if(!empty($vaccData)){
-                      for ($i=0; $i < count($vaccData) ; $i++) {
-
-                      
-
+                        foreach ($vaccData as $row) {
                 ?>
               <tr id="row">
                 <td style="display:none;"><input type="text" name="vaccinationID[]" class="form-control" value="<?php echo (isset($row['VaccID']))?$row['VaccID']:'';?>" ></td>
                 <td style="display:none;"><input type="text" name="vaccDateID[]" class="form-control" value="<?php echo (isset($row['VaccDateID']))?$row['VaccDateID']:'';?>" ></td>
-                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
+                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search..." value="<?php echo (isset($row['Vaccine']))?$row['Vaccine']:'';?>">
                     <datalist id="vaccinedatalistOptions">
                         <option value="CSM">
                         <option value="ATS">
@@ -49,31 +46,31 @@
                     </datalist>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate1[]" id="VaccDate1" min="1900-04-01" max="2300-04-20">
+                  <input class="form-control" type="date" name="vaccDate1[]" id="VaccDate1" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($row['VaccDate1']))?$row['VaccDate1']:'';?>" >
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate2[]" id="VaccDate2" min="1900-04-01" max="2300-04-20">
+                  <input class="form-control" type="date" name="vaccDate2[]" id="VaccDate2" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($row['VaccDate2']))?$row['VaccDate2']:'';?>">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate3[]" id="VaccDate3" min="1900-04-01" max="2300-04-20">
+                  <input class="form-control" type="date" name="vaccDate3[]" id="VaccDate3" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($row['VaccDate3']))?$row['VaccDate3']:'';?>">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20">
+                  <input class="form-control" type="date" name="vaccDate4[]" id="VaccDate4" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($row['VaccDate4']))?$row['VaccDate4']:'';?>">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
                 </td>
                 <td>
-                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20">
+                  <input class="form-control" type="date" name="nextVaccDate[]" id="nextVaccDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($row['nextVaccDate']))?$row['nextVaccDate']:'';?>">
                   <div class="invalid-feedback">
                   Please pick a valid Date
                   </div>
@@ -81,7 +78,7 @@
                 <td><input type="button" class="btn btn-danger" value="Remove row"  onclick="deleteRow(this)"></td>
 
               </tr>
-              <?php } } else { ?>
+              <?php $index++;} } else { ?>
 
                 <tr id="row">
                 <td style="display:none;"><input type="text" name="vaccinationID[]" class="form-control"></td>
@@ -136,7 +133,7 @@
             <div class="row mt-3">
                   <div class="form-group form-row">
                       <label for="vaccinationRemarks" class="form-label">Vaccination Remarks</label>
-                      <textarea class="form-control" name="vaccinationRemarks" id="vaccinationRemarks" rows="4"></textarea>
+                      <textarea class="form-control" name="vaccinationRemarks" id="vaccinationRemarks" rows="4"><?php echo (isset($vaccData[0]['VaccRemarks'])) ? htmlspecialchars($vaccData[0]['VaccRemarks']):'';?></textarea>
                   </div>
             </div>
 
