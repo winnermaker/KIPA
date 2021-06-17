@@ -32,7 +32,7 @@
               <?php if(!empty($visitData)){
                       $index = 1;
                       foreach($visitData as $key => $row){
-                      
+
                 ?>
                 <tr>
                   <td style="display:none"><input type="text" name="visitID" value ="<?php echo (isset($row['visitID']))?$row['visitID']:'';?>" ></input></td>
@@ -106,16 +106,25 @@
         }
 
 
-          function addParamsToUrl(element)
+          /*function addParamsToUrl(element)
           {
 
             $(element).attr('href', function() {
-              var visitID = $(this).closest("tr").find('input[name=visitID]').val();
+
               var medicalID = $(this).closest("tr").find('input[name=medicalID]').val();
               var childrenID = $(this).closest("tr").find('input[name=childrenID]').val();
               return this.href +'?visitID='+ visitID + '&medicalID='+ medicalID + '&childrenID=' + childrenID;
             });
-          }
+          }*/
+          function addParamsToUrl(element)
+              {
+                $(element).attr('href', function() {
+                  var visitID = $(this).closest("tr").find('input[name=visitID]').val();
+                  var medicalID = getUrlParameter('medicalID');
+                  var childrenID = getUrlParameter('childrenID');
+                  return this.href + '?visitID='+ visitID + '&childrenID=' + childrenID  +  '&medicalID='+ medicalID;
+                });
+              }
 
 
 

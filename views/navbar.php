@@ -4,7 +4,7 @@
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
 
       $arrayNames = $controller->getChildDataForSearch();
-      
+
   ?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -27,7 +27,7 @@
                 foreach($arrayNames as $key => $value){
                   foreach ($value as $row) {
                   echo  "<option value='$row' . '['names']' . />";
-                    } 
+                    }
                   }
                 }
             ?>
@@ -45,7 +45,7 @@
             $(element).attr('href', function() {
               var medicalID = getUrlParameter('medicalID');
               var childrenID = getUrlParameter('childrenID');
-        
+
               return this.href + '?childrenID=' + childrenID  +  '&medicalID='+ medicalID;
             });
           }
@@ -54,5 +54,3 @@
   </script>
   </nav>
 </html>
-
-
