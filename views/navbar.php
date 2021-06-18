@@ -5,7 +5,7 @@
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
 
       $arrayNames = $controller->getChildDataForSearch();
-      
+
   ?>
   </head>
   <body>
@@ -30,7 +30,7 @@
                   foreach($arrayNames as $key => $value){
                     foreach ($value as $row) {
                       echo  "<option data-value='$key' value='$row'></option> ";
-                      } 
+                      }
                     }
                   }
               ?>
@@ -46,9 +46,9 @@
               //alert('Validating form...');
               var shownVal = document.getElementById("namesDataList").value;
               var value2send = document.querySelector("#patientsdatalistOptions option[value='"+shownVal+"']").dataset.value;
-      
+
               value = escape(value2send);
-              location.href = 'patient_con.php?childrenID=' + value;
+              location.href = 'patient_con.php?childrenID=' + value + '&medicalID=false';
               return false;
           }
         </script>

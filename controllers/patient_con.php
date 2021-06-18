@@ -30,7 +30,8 @@
       if(isset($_GET['childrenID'])){
         $childData = $controller->getChildData($_GET['childrenID']);
         setcookie ("childIDCookie" , (int)$_GET['childrenID']);
-        if(isset($_GET['medicalID'])){
+        if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && isset($_GET['medicalID'])){
+          echo "Test";
           setcookie ("medicalIDCookie" , (int)$_GET['medicalID']);
         }
         if(isset($childData['Picture'])){
