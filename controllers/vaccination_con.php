@@ -4,6 +4,7 @@
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
+      if(isset($_COOKIE["medicalIDCookie"])){
         $vaccinationObj = new vaccination();
         $vaccdata = $vaccinationObj->getParams();
         $vaccdates = $vaccinationObj->getParamsDates();
@@ -56,6 +57,7 @@
             }
           }
         }
+      }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
       if($_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $vaccData = $controller->getVacc($_GET['medicalID']);

@@ -5,52 +5,53 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();
         $pexamdata = $pexamObj->getParams();
+        if(isset($_COOKIE["medicalIDCookie"])){
+          if (!$pexamObj->checkPexamID()) {
+            $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
+            $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata);
 
-        if (!$pexamObj->checkPexamID()) {
-          $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-          $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata);
+            if($pexamObj->checkGenitals() == 0){
+                //female
+                $gendata = $pexamObj->getParamsFemale();
+                $gendata['fk_PEXAMID']=$pexamID;
+                $controller -> prepared_insert('MedicalGenFemale',$gendata);
 
-          if($pexamObj->checkGenitals() == 0){
-              //female
-              $gendata = $pexamObj->getParamsFemale();
-              $gendata['fk_PEXAMID']=$pexamID;
-              $controller -> prepared_insert('MedicalGenFemale',$gendata);
+            } elseif($pexamObj->checkGenitals() == 1){
+                //male
+                $gendata = $pexamObj->getParamsMale();
+                $gendata['fk_PEXAMID']=$pexamID;
+                $controller -> prepared_insert('MedicalGenMale',$gendata);
 
-          } elseif($pexamObj->checkGenitals() == 1){
-              //male
-              $gendata = $pexamObj->getParamsMale();
-              $gendata['fk_PEXAMID']=$pexamID;
-              $controller -> prepared_insert('MedicalGenMale',$gendata);
+            } elseif($pexamObj->checkGenitals() == 2){
+                //other
+                $gendata = $pexamObj->getParamsFemale();
+                $gendata['fk_PEXAMID']=$pexamID;
+                $controller -> prepared_insert('MedicalGenFemale',$gendata);
 
-          } elseif($pexamObj->checkGenitals() == 2){
-              //other
-              $gendata = $pexamObj->getParamsFemale();
-              $gendata['fk_PEXAMID']=$pexamID;
-              $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                $gendata = $pexamObj->getParamsMale();
+                $gendata['fk_PEXAMID']=$pexamID;
+                $controller -> prepared_insert('MedicalGenMale',$gendata);
+            }
+          }else {
+            $controller -> prepared_update('medicalpexam',$pexamdata);
 
-              $gendata = $pexamObj->getParamsMale();
-              $gendata['fk_PEXAMID']=$pexamID;
-              $controller -> prepared_insert('MedicalGenMale',$gendata);
-          }
-        }else {
-          $controller -> prepared_update('medicalpexam',$pexamdata);
+            if($pexamObj->checkGenitals() === 0){
+                //female
+                $pexamdata = $pexamObj->getParamsFemale();
+                $controller -> prepared_update('MedicalGenFemale',$pexamdata);
 
-          if($pexamObj->checkGenitals() === 0){
-              //female
-              $pexamdata = $pexamObj->getParamsFemale();
-              $controller -> prepared_update('MedicalGenFemale',$pexamdata);
+            } elseif($pexamObj->checkGenitals() === 1){
+                //male
+                $pexamdata = $pexamObj->getParamsMale();
+                $controller -> prepared_update('MedicalGenMale',$pexamdata);
 
-          } elseif($pexamObj->checkGenitals() === 1){
-              //male
-              $pexamdata = $pexamObj->getParamsMale();
-              $controller -> prepared_update('MedicalGenMale',$pexamdata);
-
-          } elseif($pexamObj->checkGenitals() === 2){
-              //other
-              $pexamdata = $pexamObj->getParamsFemale();
-              $controller -> prepared_update('MedicalGenFemale',$pexamdata);
-              $pexamdata = $pexamObj->getParamsMale();
-              $controller -> prepared_update('MedicalGenMale',$pexamdata);
+            } elseif($pexamObj->checkGenitals() === 2){
+                //other
+                $pexamdata = $pexamObj->getParamsFemale();
+                $controller -> prepared_update('MedicalGenFemale',$pexamdata);
+                $pexamdata = $pexamObj->getParamsMale();
+                $controller -> prepared_update('MedicalGenMale',$pexamdata);
+            }
           }
         }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
