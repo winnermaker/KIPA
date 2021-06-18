@@ -278,6 +278,15 @@
         return $data;
       }
 
+      function getCountVacDates($vaccID){
+        $sql = "SELECT COUNT(VaccDate) FROM medicalvaccdate WHERE fk_VaccID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$vaccID]);
+        $data = $smt->fetch();
+
+        return $data;
+      }
+
       function login($table, $data){
         $username = $data['username'];
         $password = $data['password'];
@@ -295,6 +304,7 @@
     				{
     					if(password_verify($password, $row["password"])){
     						$_SESSION["user_login"] = $row["UserID"];
+                $_SESSION['time'] = time();
                 $returnArray['loginMsg'] = "Successfully Login...";
     					}
     					else
@@ -338,7 +348,7 @@
             $smt = $this->pdo->prepare($sql);
             $smt->execute([$data['username']]);
             $row=$smt->fetch();
-            if($username==$row["username"]){
+            if($row){
               $returnArray['error'] = "Sorry username already exists";
             }
             else if(!isset($returnArray['error']))

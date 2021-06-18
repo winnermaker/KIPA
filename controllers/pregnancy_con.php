@@ -1,13 +1,16 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/pregnancy_class.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
 
+    if(!isset($_SESSION["user_login"])){
+      header("location: login_con.php");
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
       if(isset($_COOKIE["medicalIDCookie"])){
         $pregnancyObj = new pregnancy();
         $pregdata = $pregnancyObj->getPregnancyMain();
-        var_dump($pregnancyObj->checkPreviousPregnancy());
         if (!$pregnancyObj->checkPregnancyID()) {
           $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
           $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);

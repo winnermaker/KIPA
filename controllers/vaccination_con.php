@@ -1,6 +1,7 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/vaccination_class.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -40,7 +41,9 @@
           for($i=0; $i < count($vaccdata); $i++) {
             $controller->prepared_update('medicalvacc',$vaccdata[$i]);
           }
-          for($i=0; $i < count($vaccdates); $i++) {
+        for($i=0; $i < count($vaccdates); $i++) {
+            $data['VaccDateID'] = $vaccdates[$i]['vaccDateID'];
+            $data['fk_VaccID'] = $vaccdates[$i]['fk_VaccID'];
             $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
             $controller->prepared_update('medicalvaccdate',$data);
             if ($vaccdates[$i]['secondVaccDate'] != "") {
@@ -70,6 +73,5 @@
         }
       }
     }
-
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/vaccination_view.php";
 ?>

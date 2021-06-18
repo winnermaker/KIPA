@@ -1,6 +1,11 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/visit_class.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
+
+    if(!isset($_SESSION["user_login"])){
+      header("location: login_con.php");
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
       if(isset($_COOKIE["medicalIDCookie"])){

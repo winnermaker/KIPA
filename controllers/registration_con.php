@@ -12,7 +12,7 @@
         $result = $controller->registration("userdetails",$data);
         if(isset($result['registerMsg'])){
           $message = $result['registerMsg'];
-          echo "<script type='text/javascript'>alert('$message');</script>";
+          //echo "<script type='text/javascript'>alert('$message');</script>";
         }elseif (isset($result['error'])) {
           $message = $result['error'];
           echo "<script type='text/javascript'>alert('$message');</script>";

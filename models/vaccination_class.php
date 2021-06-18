@@ -57,6 +57,7 @@
                !is_null($this->fourthVaccDate[$i])){
               $this->allVaccinationDates[] = [
                 'vaccDateID' => $this->vaccDateID[$i],
+                'fk_VaccID'=>$this->vaccinationID[$i],
                 'firstVaccDate' => $this->firstVaccDate[$i],
                 'secondVaccDate' => $this->secondVaccDate[$i],
                 'thirdVaccDate' => $this->thirdVaccDate[$i],
@@ -111,6 +112,24 @@
             } else {
                 return false;
             }
+        }
+
+        public function checkDates(){
+          for ($i=0; $i < count($this->allVaccinationDates); $i++) {
+            if(!is_null($this->allVaccinationDates[$i]['firstVaccDate'])){
+              $returnlist[$i]['first'] = true;
+            }
+            if(!is_null($this->allVaccinationDates[$i]['secondVaccDate'])){
+              $returnlist[$i]['second'] = true;
+            }
+            if(!is_null($this->allVaccinationDates[$i]['thirdVaccDate'])){
+              $returnlist[$i]['third'] = true;
+            }
+            if(!is_null($this->allVaccinationDates[$i]['fourthVaccDate'])){
+              $returnlist[$i]['fourth'] = true;
+            }
+          }
+          return $returnlist;
         }
     }
 ?>

@@ -1,6 +1,7 @@
 <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/medicalMain_class.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
