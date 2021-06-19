@@ -29,13 +29,13 @@
               </thead>
 
               <?php
-                if(isset($_GET['childrenID'])){
-                    $headData = $controller->getChildDataForHeadline($_GET['childrenID']);                  
-                } else if(isset($_COOKIE["childIDCookie"])){
+                if(isset($_GET['childrenID'])&& $_GET['childrenID'] != "false" && $_GET['childrenID'] != "undefined"){
+                    $headData = $controller->getChildDataForHeadline($_GET['childrenID']);
+                } elseif(isset($_COOKIE["childIDCookie"])){
                     $headData = $controller->getChildDataForHeadline($_COOKIE["childIDCookie"]);
                 }
                  ?>
-              
+
               <tbody>
                 <td><?php echo (isset($headData['ChildrenID']))?$headData['ChildrenID']:'';?></td>
                 <td><?php echo (isset($headData['FirstName']))?$headData['FirstName']:'';?></td>

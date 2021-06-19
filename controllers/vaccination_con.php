@@ -9,20 +9,17 @@
         $vaccinationObj = new vaccination();
         $vaccdata = $vaccinationObj->getParams();
         $vaccdates = $vaccinationObj->getParamsDates();
-        $data = Array();
-
-        if (!$vaccinationObj->checkVaccinationID()) {
-          $fk_VaccID = array();
+        if (!$vaccinationObj->checkVaccinationID()){
           for($i=0; $i < count($vaccdata); $i++) {
             $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
             $fk_VaccID[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
           }
-
           for($i=0; $i < count($vaccdates); $i++) {
             $data['fk_VaccID'] = $fk_VaccID[$i];
-            $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
-            $controller->prepared_insert('medicalvaccdate',$data);
-
+            if($vaccdates[$i]['firstVaccDate'] != ""){
+              $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
+              $controller->prepared_insert('medicalvaccdate',$data);
+            }
             if ($vaccdates[$i]['secondVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
               $controller->prepared_insert('medicalvaccdate',$data);
@@ -38,25 +35,68 @@
           }
         }
         else {
-          for($i=0; $i < count($vaccdata); $i++) {
-            $controller->prepared_update('medicalvacc',$vaccdata[$i]);
+          for($a=0; $a < count($vaccdata); $a++) {
+            $insertorupdateVacc[$a] = false;
           }
-        for($i=0; $i < count($vaccdates); $i++) {
-            $data['VaccDateID'] = $vaccdates[$i]['vaccDateID'];
+          $count = (int) $controller->getCountVacc($_COOKIE["medicalIDCookie"]);
+          for ($k=0; $k < $count; $k++) {
+            $insertorupdateVacc[$k] = true;
+          }
+          var_dump($insertorupdateVacc);
+          for($i=0; $i < count($vaccdata); $i++) {
+            if($insertorupdateVacc[$i]){
+              $controller->prepared_update('medicalvacc',$vaccdata[$i]);
+            }else {
+              $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
+              $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+            }
+          }
+          for($i=0; $i < count($vaccdates); $i++) {
+            $insertorupdate = array("0"  => false, "1" => false, "2" => false, "3" => false);
+            $count = (int) $controller->getCountVacDates($vaccdates[$i]['fk_VaccID']);
+            for ($k=0; $k < $count; $k++) {
+                $insertorupdate[$k] = true;
+            }
             $data['fk_VaccID'] = $vaccdates[$i]['fk_VaccID'];
-            $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
-            $controller->prepared_update('medicalvaccdate',$data);
+            if ($vaccdates[$i]['firstVaccDate'] != "") {
+              $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
+              if($insertorupdate[0]){
+                $data = array('VaccDateID' => $vaccdates[$i]['vaccDateID'])+$data;
+                $controller->prepared_update('medicalvaccdate',$data);
+              }else {
+                unset($data['VaccDateID']);
+                $controller->prepared_insert('medicalvaccdate',$data);
+              }
+            }
             if ($vaccdates[$i]['secondVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
-              $controller->prepared_update('medicalvaccdate',$data);
+              if($insertorupdate[1]){
+                $data = array('VaccDateID' => $vaccdates[$i]['vaccDateID'])+$data; //add VaccDatID to top of array
+                $controller->prepared_update('medicalvaccdate',$data);
+              }else {
+                unset($data['VaccDateID']);
+                $controller->prepared_insert('medicalvaccdate',$data);
+              }
             }
             if ($vaccdates[$i]['thirdVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['thirdVaccDate'];
-              $controller->prepared_update('medicalvaccdate',$data);
+              if($insertorupdate[2]){
+                $data = array('VaccDateID' => $vaccdates[$i]['vaccDateID'])+$data;
+                $controller->prepared_update('medicalvaccdate',$data);
+              }else {
+                unset($data['VaccDateID']);
+                $controller->prepared_insert('medicalvaccdate',$data);
+              }
             }
             if ($vaccdates[$i]['fourthVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
-              $controller->prepared_update('medicalvaccdate',$data);
+              if($insertorupdate[3]){
+                $data = array('VaccDateID' => $vaccdates[$i]['vaccDateID'])+$data;
+                $controller->prepared_update('medicalvaccdate',$data);
+              }else {
+                unset($data['VaccDateID']);
+                $controller->prepared_insert('medicalvaccdate',$data);
+              }
             }
           }
         }

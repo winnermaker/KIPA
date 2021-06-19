@@ -36,47 +36,55 @@
 
       function prepared_insert($table, $data) {
         //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
-        $keys = array_keys($data);
-        $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
-        $fields = implode(",", $keys);
-        $table = $this ->escape_mysql_identifier($table);
-        $placeholders = str_repeat('?,', count($keys) - 1) . '?';
+        try{
+          $keys = array_keys($data);
+          $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+          $fields = implode(",", $keys);
+          $table = $this ->escape_mysql_identifier($table);
+          $placeholders = str_repeat('?,', count($keys) - 1) . '?';
 
-        $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
-        $this->pdo->prepare($sql)->execute(array_values($data));
+          $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
+          $this->pdo->prepare($sql)->execute(array_values($data));
+          //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
+          if($table == $this ->escape_mysql_identifier('childrenmain')){
+            $ID = $this->pdo->lastInsertId();
+            setcookie ("childIDCookie" , (int)$ID);
+          }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
+            $ID = $this->pdo->lastInsertId();
+            setcookie ("medicalIDCookie" , (int)$ID);
+          }
+          return $this->pdo->lastInsertId();
+        }catch(PDOException $e){
 
-        //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
-        if($table == $this ->escape_mysql_identifier('childrenmain')){
-          $ID = $this->pdo->lastInsertId();
-          setcookie ("childIDCookie" , (int)$ID);
-        }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
-          $ID = $this->pdo->lastInsertId();
-          setcookie ("medicalIDCookie" , (int)$ID);
         }
-        return $this->pdo->lastInsertId();
       }
 
       function prepared_update($table, $data) {
-        //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
-        $values = array_values($data);
-        $keys = array_keys($data);
+        try {
+          //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
+          $values = array_values($data);
+          $keys = array_keys($data);
 
-        $IDKey = $keys[0];
-        unset($keys[0]);
+          $IDKey = $keys[0];
+          unset($keys[0]);
 
-        $this->moveElement($values,0,count($values)-1);
+          $this->moveElement($values,0,count($values)-1);
 
-       $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
-       $IDKey = $this ->escape_mysql_identifier($IDKey);
+         $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+         $IDKey = $this ->escape_mysql_identifier($IDKey);
 
-        $keys = implode(" = ?, ", $keys);
-        $keys = $keys." = ?";
-        $IDKey = $IDKey." = ?";
-        $table = $this ->escape_mysql_identifier($table);
+          $keys = implode(" = ?, ", $keys);
+          $keys = $keys." = ?";
+          $IDKey = $IDKey." = ?";
+          $table = $this ->escape_mysql_identifier($table);
 
-        $sql = "UPDATE $table SET $keys WHERE $IDKey";
+          $sql = "UPDATE $table SET $keys WHERE $IDKey";
 
-        $test = $this->pdo->prepare($sql)->execute($values);
+          $test = $this->pdo->prepare($sql)->execute($values);
+
+        } catch (PDOException $e) {
+          echo $e->getMessage();
+        }
       }
 
       function unique_multidim_array($array, $key) {
@@ -188,6 +196,15 @@
         return $data;
       }
 
+      function getCountSocialSibling($socialID){
+        $sql = "SELECT COUNT(SiblingID) FROM socialsiblings WHERE fk_SocialID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$socialID]);
+        $data = $smt->fetch();
+
+        return $data[0];
+      }
+
       function getVisits($medicalID){
         $sql = "SELECT visitID, fk_MedicalID, visitDate, visitType, exLocation, exCause, RVD FROM medicalvisits WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
@@ -260,6 +277,15 @@
         return $data;
       }
 
+      function getCountPregnancyPreviousData($motherID){
+        $sql = "SELECT COUNT(ChildID) FROM medicalpregnancychilddata WHERE fk_MotherID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$motherID]);
+        $data = $smt->fetch();
+
+        return $data[0];
+      }
+
       function getVacc($medicalID){
         $sql = "SELECT * FROM medicalvacc WHERE fk_MedicalID = ?";
         $smt = $this->pdo->prepare($sql);
@@ -267,6 +293,15 @@
         $data = $smt->fetchAll();
 
         return $data;
+      }
+
+      function getCountVacc($medicalID){
+        $sql = "SELECT COUNT(VaccID) FROM medicalvacc WHERE fk_MedicalID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$medicalID]);
+        $data = $smt->fetch();
+
+        return $data[0];
       }
 
       function getVaccDates($vaccID){
@@ -284,7 +319,7 @@
         $smt->execute([$vaccID]);
         $data = $smt->fetch();
 
-        return $data;
+        return $data[0];
       }
 
       function login($table, $data){

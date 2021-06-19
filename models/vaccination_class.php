@@ -26,7 +26,6 @@
             $this->fourthVaccDate = isset($_POST['vaccDate4']) ? $_POST['vaccDate4'] : null;
             $this->nextVaccDate = isset($_POST['nextVaccDate']) ? $_POST['nextVaccDate'] : null;
             $this->vaccinationRemarks = isset($_POST['vaccinationRemarks']) ? $_POST['vaccinationRemarks'] : null;
-
             $this->validateParams();
         }
 
@@ -43,7 +42,6 @@
             $this->fourthVaccDate[$i] = !empty($this->fourthVaccDate[$i]) ? $this->fourthVaccDate[$i] : null;
 
             if(!is_null($this->vaccineDataList[$i]) || !is_null($this->nextVaccDate[$i]) || !is_null($this->vaccinationRemarks)){
-
               $this->allVaccination[] = [
                   'vaccID'=>$this->vaccinationID[$i],
                   'vaccine' => $this->vaccineDataList[$i],
@@ -51,7 +49,6 @@
                   'VaccRemarks' => $this->vaccinationRemarks
               ];
             }
-
 
             if(!is_null($this->firstVaccDate[$i]) || !is_null($this->secondVaccDate[$i]) || !is_null($this->thirdVaccDate[$i]) ||
                !is_null($this->fourthVaccDate[$i])){
@@ -91,10 +88,11 @@
         }
 
         public function checkVaccinationID(){
-            if(is_null($this->vaccinationID)){
-                return false;
-            } else {
+          //returns true if there is a vaccinationID already set
+            if($this->vaccinationID[0] != ""){
                 return true;
+            } else {
+                return false;
             }
         }
 
@@ -112,24 +110,6 @@
             } else {
                 return false;
             }
-        }
-
-        public function checkDates(){
-          for ($i=0; $i < count($this->allVaccinationDates); $i++) {
-            if(!is_null($this->allVaccinationDates[$i]['firstVaccDate'])){
-              $returnlist[$i]['first'] = true;
-            }
-            if(!is_null($this->allVaccinationDates[$i]['secondVaccDate'])){
-              $returnlist[$i]['second'] = true;
-            }
-            if(!is_null($this->allVaccinationDates[$i]['thirdVaccDate'])){
-              $returnlist[$i]['third'] = true;
-            }
-            if(!is_null($this->allVaccinationDates[$i]['fourthVaccDate'])){
-              $returnlist[$i]['fourth'] = true;
-            }
-          }
-          return $returnlist;
         }
     }
 ?>

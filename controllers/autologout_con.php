@@ -4,8 +4,9 @@ $inactive = 1800;
 ini_set('session.gc_maxlifetime', $inactive); // set the session max lifetime to 2 hours
 
 session_start();
-echo $_SESSION['time'];
 if (isset($_SESSION['time']) && (time() - $_SESSION['time'] > $inactive)) {
+  setcookie(childIDCookie, time() - 3600);
+  setcookie(medicalIDCookie, time() - 3600);
   session_unset();     // unset $_SESSION variable for this page
   session_destroy();   // destroy session data
   header("location:login_con.php"); //return to login page

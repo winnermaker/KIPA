@@ -12,7 +12,7 @@
     $patientObj = new patient();
     $controller->getAllChildern();
     $data = $patientObj->getParams();
-    if(isset($_FILES['customFile'])){
+    if($_FILES['customFile']['name'] != ""){
       $upload = fileUploadCheck($data);
       if($upload){
         $pic = file_get_contents($_FILES["customFile"]["tmp_name"]);
