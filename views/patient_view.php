@@ -46,17 +46,17 @@
                 <fieldset>
                 <legend class="col-form-label">Gender</legend>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1" required <?php echo (isset($childData['Gender']) && $childData['Gender'] ==='m')?'checked':'' ?>>
+                        <input class="form-check-input" type="radio" name="genderRadios" id="maleRadio" value="option1" required <?php echo (isset($childData['Gender']) && $childData['Gender'] == 'm')?'checked':'' ?>>
                         <label class="form-check-label" for="maleRadio">Male</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadios" id="femaleRadio" value="option2" <?php echo (isset($childData['Gender']) && $childData['Gender'] ==='f')?'checked':'' ?>>
+                        <input class="form-check-input" type="radio" name="genderRadios" id="femaleRadio" value="option2" <?php echo (isset($childData['Gender']) && $childData['Gender'] == 'f')?'checked':'' ?>>
                         <label class="form-check-label" for="femaleRadio">Female</label>
                     </div>
 
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderRadios" id="genderOtherRadio" value="option3" <?php echo (isset($childData['Gender']) && $childData['Gender'] ==='x')?'checked':'' ?>>
+                        <input class="form-check-input" type="radio" name="genderRadios" id="genderOtherRadio" value="option3" <?php echo (isset($childData['Gender']) && $childData['Gender'] == 'x')?'checked':'' ?>>
                         <label class="form-check-label" for="genderOtherRadio">Other</label>
                     </div>
 

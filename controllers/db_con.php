@@ -83,7 +83,7 @@
           $test = $this->pdo->prepare($sql)->execute($values);
 
         } catch (PDOException $e) {
-          echo $e->getMessage();
+          $e->getMessage();
         }
       }
 
@@ -266,6 +266,15 @@
         $data = $smt->fetch();
 
         return $data;
+      }
+
+      function getCountPregnancyPresentData($motherID){
+        $sql = "SELECT COUNT(PresPreagnancyID) FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$motherID]);
+        $data = $smt->fetch();
+
+        return $data[0];
       }
 
       function getPregnancyPreviousData($motherID){

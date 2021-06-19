@@ -191,7 +191,6 @@
         }
 
         public function checkPresentPregnancy(){
-          var_dump($this->problems);
             if( !is_null($this->gestationalAge) || !is_null($this->estimatedDateOfDelivery)  || !is_null($this->problems) || !is_null($this->pregnancyRemarks)){
                 return true;
             } else {
@@ -200,7 +199,6 @@
         }
 
         public function checkPreviousPregnancy(){
-          var_dump($this->arrayName[0]);
             if(!is_null($this->arrayName[0]) || !is_null($this->arrayDateOfBirth[0]) || !is_null($this->arrayEventsPregnancy[0]) || !is_null($this->arrayDurationOfLabor[0]) || !is_null($this->arraySpontCSforceps[0]) || !is_null($this->arrayChildrenProblems[0]) || !is_null($this->arrayRemarks[0])){
                 return true;
             } else {

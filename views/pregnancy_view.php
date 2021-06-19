@@ -100,21 +100,28 @@
             <h3 class="mt-5">Previous Pregnancies</h3>
 
             <div id="childs">
+              <?php
+
+                      $index = 0;
+                      if(!empty($previousData)){
+                      foreach($previousData as $row){
+
+                ?>
                 <div class="row mt-4">
                     <fieldset class="col-3">
                     <legend class="col-form-label">Gender</legend>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="malepregnancyRadio" value="option1">
+                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="malepregnancyRadio" value="option1" <?php echo (isset($row['Gender']) && $row['Gender'] == 'm')?'checked':'' ?>>
                             <label class="form-check-label" for="malepregnancyRadio">Male</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="femalepregnancyRadio" value="option2">
+                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="femalepregnancyRadio" value="option2"  <?php echo (isset($row['Gender']) && $row['Gender'] == 'f')?'checked':'' ?>>
                             <label class="form-check-label" for="femalepregnancyRadio">Female</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="otherpregnancyRadio" value="option2">
+                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="otherpregnancyRadio" value="option3"  <?php echo (isset($row['Gender']) && $row['Gender'] == 'x')?'checked':'' ?>>
                             <label class="form-check-label" for="otherpregnancyRadio">Other</label>
                         </div>
                     </fieldset>
@@ -122,12 +129,12 @@
 
                         <div class="form-group col">
                             <label class="form-label" for="name">Name</label>
-                            <input type="text" class="form-control" name="name[]" id="name">
+                            <input type="text" class="form-control" name="name[]" id="name" value="<?php echo (isset($row['Name']))?$row['Name']:'';?>">
                         </div>
 
                         <div class ="form-group col-3">
                             <label for="dateofBirth" class="form-label">Date of Birth</label>
-                            <input class="form-control " type="text" name="dateofBirth[]"  id="dateofBirth">
+                            <input class="form-control " type="text" name="dateofBirth[]"  id="dateofBirth" value="<?php echo (isset($row['DOB']))?$row['DOB']:'';?>">
                         </div>
 
                 </div>
@@ -135,19 +142,19 @@
                 <div class="row mt-3">
                     <div class="form-group col">
                         <label for="eventsDuringPregnancy" class="form-label">Events during pregnancy ?</label>
-                        <textarea class="form-control" name="eventsDuringPregnancy[]" id="eventsDuringPregnancy" rows="2"></textarea>
+                        <textarea class="form-control" name="eventsDuringPregnancy[]" id="eventsDuringPregnancy" rows="2"><?php echo (isset($row['EvDurP'])) ? htmlspecialchars($row['EvDurP']):''; ?></textarea>
                     </div>
 
                     <div class="form-group col">
                         <label for="durationOfLabor" class="form-label">Duration of labor ?</label>
-                        <textarea class="form-control" name="durationOfLabor[]" id="durationOfLabor" rows="2"></textarea>
+                        <textarea class="form-control" name="durationOfLabor[]" id="durationOfLabor" rows="2"><?php echo (isset($row['durLabor'])) ? htmlspecialchars($row['durLabor']):''; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group col">
                         <label for="spont_CS_forceps" class="form-label">Spontaneous/CS/forceps ?</label>
-                        <textarea class="form-control" name="spont_CS_forceps[]" id="spont_CS_forceps" rows="2"></textarea>
+                        <textarea class="form-control" name="spont_CS_forceps[]" id="spont_CS_forceps" rows="2"><?php echo (isset($row['spont_CS_forceps'])) ? htmlspecialchars($row['spont_CS_forceps']):''; ?></textarea>
                     </div>
                 </div>
 
@@ -155,26 +162,26 @@
                     <fieldset class="col-2">
                     <legend class="col-form-label">Healthy?</legend>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioYes" value="option1">
+                            <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioYes" value="option1" <?php echo (isset($row['Healthy']) && $row['Healthy'] == 1)?'checked':'' ?>>
                             <label class="form-check-label" for="healthyRadioYes">Yes</label>
                         </div>
 
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioNo" value="option2">
+                            <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioNo" value="option2" <?php echo (isset($row['Healthy']) && $row['Healthy'] == 1)?'checked':'' ?>>
                             <label class="form-check-label" for="healthyRadioNo">No</label>
                         </div>
                     </fieldset>
 
                     <div class="form-group col">
                         <label for="childrenProblems" class="form-label">Problems</label>
-                        <textarea class="form-control" name="childrenProblems[]" id="childrenProblems" rows="2"></textarea>
+                        <textarea class="form-control" name="childrenProblems[]" id="childrenProblems" rows="2"><?php echo (isset($row['Problems'])) ? htmlspecialchars($row['Problems']):''; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group col">
                         <label for="Remarks" class="form-label">Remarks</label>
-                        <textarea class="form-control" name="Remarks[]" id="Remarks" rows="4"></textarea>
+                        <textarea class="form-control" name="Remarks[]" id="Remarks" rows="4"><?php echo (isset($row['Remarks'])) ? htmlspecialchars($row['Remarks']):''; ?></textarea>
                     </div>
                 </div>
 
@@ -183,12 +190,95 @@
                     <button type="button" id='removeButton' class='remove btn btn-danger col-2'>Remove Child</button>
                 </div>
 
+
+          <?php $index++; }}else { ?>
+            <div class="row mt-4">
+                <fieldset class="col-3">
+                <legend class="col-form-label">Gender</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="malepregnancyRadio" value="option1" >
+                        <label class="form-check-label" for="malepregnancyRadio">Male</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="femalepregnancyRadio" value="option2" >
+                        <label class="form-check-label" for="femalepregnancyRadio">Female</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="otherpregnancyRadio" value="option3" >
+                        <label class="form-check-label" for="otherpregnancyRadio">Other</label>
+                    </div>
+                </fieldset>
+
+
+                    <div class="form-group col">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" class="form-control" name="name[]" id="name" >
+                    </div>
+
+                    <div class ="form-group col-3">
+                        <label for="dateofBirth" class="form-label">Date of Birth</label>
+                        <input class="form-control " type="text" name="dateofBirth[]"  id="dateofBirth">
+                    </div>
+
             </div>
 
-            <div name="newChild" id="newChild">
+            <div class="row mt-3">
+                <div class="form-group col">
+                    <label for="eventsDuringPregnancy" class="form-label">Events during pregnancy ?</label>
+                    <textarea class="form-control" name="eventsDuringPregnancy[]" id="eventsDuringPregnancy" rows="2"></textarea>
+                </div>
+
+                <div class="form-group col">
+                    <label for="durationOfLabor" class="form-label">Duration of labor ?</label>
+                    <textarea class="form-control" name="durationOfLabor[]" id="durationOfLabor" rows="2"></textarea>
+                </div>
             </div>
 
+            <div class="row mt-3">
+                <div class="form-group col">
+                    <label for="spont_CS_forceps" class="form-label">Spontaneous/CS/forceps ?</label>
+                    <textarea class="form-control" name="spont_CS_forceps[]" id="spont_CS_forceps" rows="2"></textarea>
+                </div>
+            </div>
 
+            <div class="row mt-3">
+                <fieldset class="col-2">
+                <legend class="col-form-label">Healthy?</legend>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioYes" value="option1">
+                        <label class="form-check-label" for="healthyRadioYes">Yes</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioNo" value="option2" >
+                        <label class="form-check-label" for="healthyRadioNo">No</label>
+                    </div>
+                </fieldset>
+
+                <div class="form-group col">
+                    <label for="childrenProblems" class="form-label">Problems</label>
+                    <textarea class="form-control" name="childrenProblems[]" id="childrenProblems" rows="2"></textarea>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="form-group col">
+                    <label for="Remarks" class="form-label">Remarks</label>
+                    <textarea class="form-control" name="Remarks[]" id="Remarks" rows="4"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row mt-5">
+                <button type="button" id="addChild" class="btn btn-secondary col-2 me-2">Add new Child</button>
+                <button type="button" id='removeButton' class='remove btn btn-danger col-2'>Remove Child</button>
+            </div>
+
+            <?php } ?>
+          </div>
+          <div name="newChild" id="newChild">
+          </div>
             <button type="submit" class="btn btn-primary mt-5 mb-3">Submit</button>
 
         </forqm>

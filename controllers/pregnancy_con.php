@@ -29,13 +29,31 @@
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);
           if ($pregnancyObj->checkPresentPregnancy()) {
-            $pregdata = $pregnancyObj->getPresentPregnancy();
-            $controller -> prepared_update('medicalpresentpregnancy',$pregdata);
+            $pregdataP = $pregnancyObj->getPresentPregnancy();
+            $count = (int) $controller->getCountPregnancyPresentData($pregdata['MotherID']);
+            if($count){
+              $controller -> prepared_update('medicalpresentpregnancy',$pregdataP);
+            }else {
+              $pregdataP['fk_MotherID'] =  $pregdata['MotherID'];
+              $controller -> prepared_insert('medicalpresentpregnancy',$pregdataP);
+            }
           }
           if ($pregnancyObj->checkPreviousPregnancy()) {
-            $pregdata = $pregnancyObj->getPreviousPregnancy();
-            for($i=0;$i<count($pregdata);$i++){
-              $controller -> prepared_update('medicalpregnancychilddata',$pregdata[$i]);
+            $pregdataP = $pregnancyObj->getPreviousPregnancy();
+            for($a=0; $a < count($pregdata); $a++) {
+              $insertorupdate[$a] = false;
+            }
+            $count = (int) $controller->getCountPregnancyPreviousData($pregdata['MotherID']);
+            for ($k=0; $k < $count; $k++) {
+              $insertorupdate[$k] = true;
+            }
+            for($i=0;$i<count($pregdataP);$i++){
+              if($insertorupdate[$i]){
+                $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
+              }else{
+                $pregdataP[$i]['fk_MotherID'] =  $pregdata['fk_MotherID'];
+                $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
+              }
             }
           }
         }
