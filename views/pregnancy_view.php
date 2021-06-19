@@ -100,6 +100,7 @@
             <h3 class="mt-5">Previous Pregnancies</h3>
 
             <div id="childs">
+
               <?php
 
                       $index = 0;
@@ -107,6 +108,7 @@
                       foreach($previousData as $row){
 
                 ?>
+                <input type="hidden" id="childID" name="presentPregnancyID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
                 <div class="row mt-4">
                     <fieldset class="col-3">
                     <legend class="col-form-label">Gender</legend>

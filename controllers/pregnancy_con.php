@@ -40,7 +40,8 @@
           }
           if ($pregnancyObj->checkPreviousPregnancy()) {
             $pregdataP = $pregnancyObj->getPreviousPregnancy();
-            for($a=0; $a < count($pregdata); $a++) {
+            $insertorupdate[0] = false;
+            for($a=0; $a < count($pregdataP); $a++) {
               $insertorupdate[$a] = false;
             }
             $count = (int) $controller->getCountPregnancyPreviousData($pregdata['MotherID']);
@@ -48,11 +49,15 @@
               $insertorupdate[$k] = true;
             }
             for($i=0;$i<count($pregdataP);$i++){
+              echo "<pre>";
+              print_r($pregdataP[$i]);
+              echo "</pre>";
               if($insertorupdate[$i]){
+                echo "Test";
                 $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
               }else{
-                $pregdataP[$i]['fk_MotherID'] =  $pregdata['fk_MotherID'];
-                $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
+                $pregdataP[$i]['fk_MotherID'] =  $pregdata['MotherID'];
+                $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
               }
             }
           }

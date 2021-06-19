@@ -36,6 +36,7 @@
         }
         else {
           $index = 0;
+          $insertorupdateVacc[0] = false;
           for($a=0; $a < count($vaccdata); $a++) {
             $insertorupdateVacc[$a] = false;
           }
