@@ -35,6 +35,7 @@
           }
         }
         else {
+          $index = 0;
           for($a=0; $a < count($vaccdata); $a++) {
             $insertorupdateVacc[$a] = false;
           }
@@ -42,15 +43,17 @@
           for ($k=0; $k < $count; $k++) {
             $insertorupdateVacc[$k] = true;
           }
-          var_dump($insertorupdateVacc);
           for($i=0; $i < count($vaccdata); $i++) {
             if($insertorupdateVacc[$i]){
               $controller->prepared_update('medicalvacc',$vaccdata[$i]);
             }else {
               $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
-              $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+              $fk_VaccIDUpdate[$index] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+              $index++;
             }
           }
+          $index = 0;
+          $used = false;
           for($i=0; $i < count($vaccdates); $i++) {
             $insertorupdate = array("0"  => false, "1" => false, "2" => false, "3" => false);
             $count = (int) $controller->getCountVacDates($vaccdates[$i]['fk_VaccID']);
@@ -65,6 +68,10 @@
                 $controller->prepared_update('medicalvaccdate',$data);
               }else {
                 unset($data['VaccDateID']);
+                if(!empty($fk_VaccIDUpdate)){
+                  $data['fk_VaccID'] = $fk_VaccIDUpdate[$index];
+                  $used = true;
+                }
                 $controller->prepared_insert('medicalvaccdate',$data);
               }
             }
@@ -75,6 +82,10 @@
                 $controller->prepared_update('medicalvaccdate',$data);
               }else {
                 unset($data['VaccDateID']);
+                if(!empty($fk_VaccIDUpdate)){
+                  $data['fk_VaccID'] = $fk_VaccIDUpdate[$index];
+                  $used = true;
+                }
                 $controller->prepared_insert('medicalvaccdate',$data);
               }
             }
@@ -85,6 +96,10 @@
                 $controller->prepared_update('medicalvaccdate',$data);
               }else {
                 unset($data['VaccDateID']);
+                if(!empty($fk_VaccIDUpdate)){
+                  $data['fk_VaccID'] = $fk_VaccIDUpdate[$index];
+                  $used = true;
+                }
                 $controller->prepared_insert('medicalvaccdate',$data);
               }
             }
@@ -95,7 +110,15 @@
                 $controller->prepared_update('medicalvaccdate',$data);
               }else {
                 unset($data['VaccDateID']);
+                if(!empty($fk_VaccIDUpdate)){
+                  $data['fk_VaccID'] = $fk_VaccIDUpdate[$index];
+                  $used = true;
+                }
                 $controller->prepared_insert('medicalvaccdate',$data);
+              }
+              if($used){
+                $index++;
+                $used = false;
               }
             }
           }

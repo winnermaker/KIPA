@@ -81,16 +81,17 @@
         }
 
         public function paramsToArray(){
-            $this->arrayParams['DateOfInvestigation'] = $this->dateOfInvestigation;
-            $this->arrayParams['LivedWithWho'] = $this->livedWithWho;
-            $this->arrayParams['LivedWhere'] =  $this->livedWhere;
-            $this->arrayParams['parentsAlive'] = $this->parentsAlive;
-            $this->arrayParams['ParentsLiveTogether'] = $this->parentslivetogether;
-            $this->arrayParams['AmountAndSourceOfIncome'] = $this->amountAndSourceOfIncome;
-            $this->arrayParams['IncomeForHowMany'] = $this->incomeForHowMany;
-            $this->arrayParams['Abuse'] = $this->abuse;
-            $this->arrayParams['SexuallyActive'] = $this->sexuallyActive;
-            $this->arrayParams['siblings'] = $this->siblings;
+          $this->arrayParams['SocialID'] = $this->socialHistoryID;
+          $this->arrayParams['DateOfInvestigation'] = $this->dateOfInvestigation;
+          $this->arrayParams['LivedWithWho'] = $this->livedWithWho;
+          $this->arrayParams['LivedWhere'] =  $this->livedWhere;
+          $this->arrayParams['parentsAlive'] = $this->parentsAlive;
+          $this->arrayParams['ParentsLiveTogether'] = $this->parentslivetogether;
+          $this->arrayParams['AmountAndSourceOfIncome'] = $this->amountAndSourceOfIncome;
+          $this->arrayParams['IncomeForHowMany'] = $this->incomeForHowMany;
+          $this->arrayParams['Abuse'] = $this->abuse;
+          $this->arrayParams['SexuallyActive'] = $this->sexuallyActive;
+          $this->arrayParams['siblings'] = $this->siblings;
         }
 
         public function printParams(){
