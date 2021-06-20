@@ -14,23 +14,24 @@
   <body>
     <style>
         .imgPic{
-          float: right;
-          border-style: none;
-
+          max-width: 200px;
+          max-height: 200px;
         }
     </style>
 
     <form action="patient_con.php"  method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
         <div class="container">
-            <div class="row  mt-3">
-              <div class="form-group col">
-            <h1 class="mt-3">Patient</h1>
-            </div>
-            <?php if(isset($childData['Picture'])){  ?>
-            <div class="form-group col">
-              <input class="imgPic" type="image" id="imgPic" name="imgPic" alt="Patient Image" onclick="this.disabled = true" src="<?php echo $image; ?>"height="200" width="200">
-          </div>
-        <?php } ?>
+            <div class="row mt-4">
+                <div class="form-group col">
+                    <h1>Patient</h1>
+                </div>
+
+                <?php if(isset($childData['Picture'])){  ?>
+                <div class="form-group col">
+                <input class="imgPic rounded float-end" type="image" id="imgPic" name="imgPic" alt="Patient Image" onclick="this.disabled = true" src="<?php echo $image; ?>">
+                </div>
+                <?php } ?>
+
             </div>
                 <input type="hidden" id="patientID" name="patientID" value="<?php echo (isset($childData['ChildrenID']))?$childData['ChildrenID']:'';?>">
 
