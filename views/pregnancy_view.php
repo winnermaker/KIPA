@@ -123,7 +123,7 @@
                       foreach($previousData as $row){
 
                 ?>
-                <input type="hidden" id="childID" name="presentPregnancyID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
+                <input type="iput" id="childID" name="presentPregnancyID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
                 <div class="row mt-4">
                     <fieldset class="col-3">
                     <legend class="col-form-label">Gender</legend>

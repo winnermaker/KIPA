@@ -12,30 +12,35 @@
         $pexamdata = $pexamObj->getParams();
         if(isset($_COOKIE["medicalIDCookie"])){
           if (!$pexamObj->checkPexamID()) {
-            $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-            $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata);
+            $check = $controller->checkIfEntryExsits('medicalpexam',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
+            if(!$check){
+              $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
+              $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata);
 
-            if($pexamObj->checkGenitals() == 0){
-                //female
-                $gendata = $pexamObj->getParamsFemale();
-                $gendata['fk_PEXAMID']=$pexamID;
-                $controller -> prepared_insert('MedicalGenFemale',$gendata);
+              if($pexamObj->checkGenitals() == 0){
+                  //female
+                  $gendata = $pexamObj->getParamsFemale();
+                  $gendata['fk_PEXAMID']=$pexamID;
+                  $controller -> prepared_insert('MedicalGenFemale',$gendata);
 
-            } elseif($pexamObj->checkGenitals() == 1){
-                //male
-                $gendata = $pexamObj->getParamsMale();
-                $gendata['fk_PEXAMID']=$pexamID;
-                $controller -> prepared_insert('MedicalGenMale',$gendata);
+              } elseif($pexamObj->checkGenitals() == 1){
+                  //male
+                  $gendata = $pexamObj->getParamsMale();
+                  $gendata['fk_PEXAMID']=$pexamID;
+                  $controller -> prepared_insert('MedicalGenMale',$gendata);
 
-            } elseif($pexamObj->checkGenitals() == 2){
-                //other
-                $gendata = $pexamObj->getParamsFemale();
-                $gendata['fk_PEXAMID']=$pexamID;
-                $controller -> prepared_insert('MedicalGenFemale',$gendata);
+              } elseif($pexamObj->checkGenitals() == 2){
+                  //other
+                  $gendata = $pexamObj->getParamsFemale();
+                  $gendata['fk_PEXAMID']=$pexamID;
+                  $controller -> prepared_insert('MedicalGenFemale',$gendata);
 
-                $gendata = $pexamObj->getParamsMale();
-                $gendata['fk_PEXAMID']=$pexamID;
-                $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $gendata = $pexamObj->getParamsMale();
+                  $gendata['fk_PEXAMID']=$pexamID;
+                  $controller -> prepared_insert('MedicalGenMale',$gendata);
+              }
+            }else {
+              echo "There already is a Physical Examination Entry for this Patient.";
             }
           }else {
             $controller -> prepared_update('medicalpexam',$pexamdata);

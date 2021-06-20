@@ -12,14 +12,19 @@
         $socialdata = $socialHistoryObj->getParams();
 
         if(!$socialHistoryObj->checkSocialHistoryID()){
-          $socialdata['fk_ChildrenID']=$_COOKIE["childIDCookie"];
-          $socialID = $controller -> prepared_insert('socialhistory',$socialdata);
-          if ($socialHistoryObj->checkSiblings()){
-            $sibsData = $socialHistoryObj->getAllSiblings();
-            for($i=0; $i < count($sibsData); $i++) {
-              $sibsData[$i]['fk_SocialID'] = $socialID;
-              $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+          $check = $controller->checkIfEntryExsits('socialhistory', $_COOKIE["childIDCookie"],'fk_ChildrenID');
+          if(!$check){
+            $socialdata['fk_ChildrenID']=$_COOKIE["childIDCookie"];
+            $socialID = $controller -> prepared_insert('socialhistory',$socialdata);
+            if ($socialHistoryObj->checkSiblings()){
+              $sibsData = $socialHistoryObj->getAllSiblings();
+              for($i=0; $i < count($sibsData); $i++) {
+                $sibsData[$i]['fk_SocialID'] = $socialID;
+                $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+              }
             }
+          }else {
+            echo "There is already a Social History Entry for this Patient.";
           }
         }
         else {

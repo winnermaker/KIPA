@@ -8,12 +8,14 @@
         $medicalObj = new medicalmain();
         $data = $medicalObj->getParams();
         if (!$medicalObj->checkMedicalMainID()) {
+          $check = $controller->checkIfEntryExsits('medicalmain', $_COOKIE["childIDCookie"], 'fk_ChildrenID');
           $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
-           if($controller -> prepared_insert('medicalmain',$data) !== false){
-             echo "Richtig Eingabe hat geklappt";
-           } else {
-             echo "Eingabe hat nicht geklappt";
-           }
+          if(!$check){
+            $controller -> prepared_insert('medicalmain',$data);
+          }else {
+            echo "There already is a Medical Main Entry for this Patient.";
+          }
+
         }else {
           $controller -> prepared_update('medicalmain',$data);
         }
