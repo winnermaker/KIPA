@@ -15,7 +15,7 @@
 
 
         <form action="pregnancy_con.php" method="post" class="needs-validation" novalidate>
-            <input type="hidden" id="pregnancyID" name="pregnancyID" value="<?php echo (isset($pregnancyData['MotherID']))?$pregnancyData['MotherID']:'';?>">
+            <input type="hidden" id="motherID" name="motherID" value="<?php echo (isset($pregnancyData['MotherID']))?$pregnancyData['MotherID']:'';?>">
 
             <div class="row mt-5">
                 <div class ="form-group col-2">

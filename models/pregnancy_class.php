@@ -1,7 +1,7 @@
 <?php
     class pregnancy{
 
-        private $pregnancyID;
+        private $motherID;
 
         private $entryDate;
         private $gravida;
@@ -33,7 +33,7 @@
         private $arrayPresentPregnancy = array();
 
         public function __construct(){
-            $this->pregnancyID = !empty($_POST['pregnancyID']) ? $_POST['pregnancyID'] : null;
+            $this->motherID = !empty($_POST['motherID']) ? $_POST['motherID'] : null;
             $this->entryDate = !empty($_POST['entryDate']) ? $_POST['entryDate'] : null;
             $this->gravida = !empty($_POST['gravida']) ? trim($_POST['gravida']) : null;
             $this->para = !empty($_POST['para']) ? trim($_POST['para']) : null;
@@ -88,7 +88,7 @@
         }
 
         public function pregnancyMainToArray(){
-            $this->arrayPregnancy['MotherID'] = $this->pregnancyID;
+            $this->arrayPregnancy['MotherID'] = $this->motherID;
             $this->arrayPregnancy['entryDate'] = $this->entryDate;
             $this->arrayPregnancy['gravida'] = $this->gravida;
             $this->arrayPregnancy['para'] = $this->para;
@@ -125,7 +125,7 @@
                 {
                 $this->arrayPreviousPregnancy[] = [
                   'ChildID' => $this->arrayChildID[$i],
-                  'fk_MotherID' => $this->pregnancyID,
+                  'fk_MotherID' => $this->motherID,
                   'gender' => $this->genderpregnancyRadios,
                   'name' => $this->arrayName[$i],
                   'DOB' => $this->arrayDateOfBirth[$i],
@@ -142,7 +142,7 @@
 
         public function presentPregnancyToArray(){
           $this->arrayPresentPregnancy['presentPregnancyID'] = $this->presentPregnancyID;
-          $this->arrayPresentPregnancy['fk_MotherID'] = $this->pregnancyID;
+          $this->arrayPresentPregnancy['fk_MotherID'] = $this->motherID;
           $this->arrayPresentPregnancy['gestationalAge'] = $this->gestationalAge;
           $this->arrayPresentPregnancy['EstDelivery'] = $this->estimatedDateOfDelivery;
           $this->arrayPresentPregnancy['AntClinicAttend'] = $this->antenatalClinikAttendanceRadios;
@@ -184,7 +184,7 @@
         }
 
         public function checkPregnancyID(){
-            if(is_null($this->pregnancyID)){
+            if(is_null($this->motherID)){
                 return false;
             } else {
                 return true;
