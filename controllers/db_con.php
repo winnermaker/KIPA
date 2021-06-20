@@ -138,13 +138,15 @@
       function getChildDataForSearch (){
         // select childdata for searchbar
         $arrayPatientNames = array();
-        $dataAllCildren = $this->pdo->query("SELECT ChildrenID, FirstName, LastName, CallNames FROM childrenmain ORDER BY FirstName, LastName, CallNames ")->fetchAll();
+        $dataAllCildren = $this->pdo->query("SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames ,medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
         foreach ($dataAllCildren as $key => $row) {
           $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
           $childID = $row['ChildrenID'];
+          $medicalID = $row['MedicalID'];
 
           $arrayPatientNames[$childID] = [
             'names' => $string,
+            'medicalID' => $medicalID,
         ];
 
         }

@@ -27,14 +27,16 @@
               <datalist id='patientsdatalistOptions'>
               <?php
                 if(isset($arrayNames)){
-                  foreach($arrayNames as $key => $value){
-                    foreach ($value as $row) {
-                      echo  "<option data-value='$key' value='$row'></option> ";
-                      }
-                    }
-                  }
+                  foreach($arrayNames as $key => $value){ 
               ?>
-              </datalist>
+                      <option data-value="<?php echo $key;?>" data-id="<?php echo $value['medicalID'];?>" value="<?php echo $value['names']; ?>"></option>
+                      
+                <?php
+                      }
+                  }
+                ?>
+                </datalist>
+              
 
               <button type="submit" class="btn btn-success">Search</button>
             </div>
@@ -45,10 +47,12 @@
           function validateForm() {
               //alert('Validating form...');
               var shownVal = document.getElementById("namesDataList").value;
-              var value2send = document.querySelector("#patientsdatalistOptions option[value='"+shownVal+"']").dataset.value;
+              var childrenID = document.querySelector("#patientsdatalistOptions option[value='"+shownVal+"']").dataset.value;
 
-              value = escape(value2send);
-              location.href = 'patient_con.php?childrenID=' + value + '&medicalID=false';
+              var medicalID = document.querySelector("#patientsdatalistOptions option[value='"+shownVal+"']").dataset.id;
+
+              value = escape(childrenID);
+              location.href = 'patient_con.php?childrenID=' + value + '&medicalID=' + medicalID;
               return false;
           }
         </script>
