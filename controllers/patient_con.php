@@ -27,8 +27,17 @@
       }
     }
       if(!$patientObj->checkPatientID()){
-        $controller -> prepared_insert('childrenmain',$data);
-      }else {
+
+        $lastInsertedID = $controller -> prepared_insert('childrenmain',$data);
+        if($lastInsertedID !== false){
+          $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+       }
+        else {
+          $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+       }
+
+    }
+      else {
         $controller -> prepared_update('childrenmain',$data);
       }
 

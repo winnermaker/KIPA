@@ -16,8 +16,13 @@
   </head>
   <body>
 
-    <div class="container">
-      <h1 class="mt-3">Medical Main</h1>
+    <div class="container mt-4">
+      <div class="form-group row" id="feedbackMessage">
+          <div class="col">
+            <?php echo (isset($result))?$result:''; ?>    
+          </div>
+      </div>
+      <h1>Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
 
       <form action="medicalMain_con.php" method="post" class="needs-validation" novalidate>
