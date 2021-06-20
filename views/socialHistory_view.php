@@ -68,12 +68,12 @@
             <fieldset class="col-2">
               <legend class="col-form-label">Siblings?</legend>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 1 )?'checked':'' ?> checked>
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsYes" value="option1" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 1 )?'checked':'' ?> >
                 <label class="form-check-label" for="siblingsYes">Yes</label>
               </div>
 
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 0 )?'checked':'' ?>  >
+                <input class="form-check-input" type="radio" name="siblings" id="siblingsNo" value="option2" <?php echo (isset($socialData['siblings']) && $socialData['siblings'] == 0 )?'checked':'' ?> >
                 <label class="form-check-label" for="siblingsNo">No</label>
               </div>
             </fieldset>
@@ -169,6 +169,19 @@
                 $('#siblingsTable').hide();
           }
         });
+
+          if($('#siblingsNo').prop('checked')){
+              $('#siblingsTable').hide();
+          }
+
+          if($('#siblingsYes').prop('checked')){
+            $('#siblingsTable').show();
+          }
+
+          if (!$("input[name='siblings']:checked").val()) {
+              $("#siblingsNo").prop('checked', true);
+              $('#siblingsTable').hide();
+            }
       });
 
         function createRow(){
