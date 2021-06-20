@@ -25,7 +25,7 @@
         else {
           $controller -> prepared_update('socialhistory',$socialdata);
           if ($socialHistoryObj->checkSiblings()) {
-            $sibsData = $socialHistoryObj->getAllSiblings
+            $sibsData = $socialHistoryObj->getAllSiblings;
             $insertorupdate[0] = false;
             for($a=0; $a < count($sibsData); $a++) {
               $insertorupdate[$a] = false;

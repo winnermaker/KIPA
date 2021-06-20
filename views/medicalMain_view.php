@@ -21,7 +21,7 @@
       <?php require 'formsHeadline.php' ?>
 
       <form action="medicalMain_con.php" method="post" class="needs-validation" novalidate>
-        <input type="hidden" id="medicalMainID" name="medicalMainID" value="<?php echo (isset($medicalData['MedicalID']))?$medicalData['MedicalID']:'';?>">
+        <input type="hidden" id="medicalMainID" name="medicalMainID" value="<?php echo (!empty($medicalData['MedicalID']))?$medicalData['MedicalID']:null;?>">
         <div class="row mt-5">
           <fieldset class="col-2">
             <legend class="col-form-label">NHI Registration</legend>
@@ -145,7 +145,7 @@
 
           <div class="form-group col-3">
               <label class="form-label" for="menstrualHistory">Menstrual History</label>
-              <input type="text" class="form-control" name="menstrualHistory" id="menstrualHistory" value="<?php echo (isset($childData['MenstrualHist']))?$childData['MenstrualHist']:'';?>" >
+              <input type="text" class="form-control" name="menstrualHistory" id="menstrualHistory" value="<?php echo (isset($medicalData['MenstrualHist']))?$medicalData['MenstrualHist']:'';?>" >
           </div>
 
         </div>
@@ -156,24 +156,24 @@
             <fieldset class="col-4">
               <legend class="col-form-label">Hep.B pos.</legend>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 1 )?'checked':'' ?>>
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioYes" value="option1" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 1 )?'checked':'' ?> >
                     <label class="form-check-label" for="HepBPosRadioYes">Yes</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNo" value="option2" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 0 )?'checked':'' ?>>
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNo" value="option2" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 0 )?'checked':'' ?> >
                     <label class="form-check-label" for="HepBPosRadioNo">No</label>
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option3" checked <?php echo (isset($medicalData['HepBPos']) && is_null($medicalData['HepBPos']) )?'checked':'' ?>  >
+                    <input class="form-check-input" type="radio" name="HepBPosRadios" id="HepBPosRadioNotDone" value="option3" <?php echo (isset($medicalData['HepBPos']) && $medicalData['HepBPos'] == 2 )?'checked':'' ?> >
                     <label class="form-check-label" for="HepBPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
-                    <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>1
-                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['HepBPosCheckDate']))?$childData['HepBPosCheckDate']:'';?>" >
+                    <label for="HepBPosCheckDate" class="form-label">Hep.B Check Date</label>
+                    <input class="form-control" type="date" name="HepBPosCheckDate"  id="HepBPosCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($medicalData['HepBPosCheckDate']))?$medicalData['HepBPosCheckDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>
@@ -182,12 +182,12 @@
             <fieldset class="col-2 offset-1" id="hepBtreated" disabled>
               <legend class="col-form-label">Hep.B treated</legend>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioYes" value="option1" <?php echo (isset($medicalData['HepBPosTreated']) && $medicalData['HepBPosTreated'] == 1 )?'checked':'' ?> >
+                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioYes" value="option1" <?php echo (isset($medicalData['HepBPosTreated']) && $medicalData['HepBPosTreated'] == 1 )?'checked':''?> >
                   <label class="form-check-label" for="HepBtreatedRadioYes">Yes</label>
                 </div>
 
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioNo" value="option2" <?php echo (isset($medicalData['HepBPosTreated']) && $medicalData['HepBPosTreated'] == 0 )?'checked':'' ?> >
+                  <input class="form-check-input" type="radio" name="HepBTreatedRadios" id="HepBtreatedRadioNo" value="option2" <?php echo (isset($medicalData['HepBPosTreated']) && $medicalData['HepBPosTreated'] == 0 )?'checked':''?> >
                   <label class="form-check-label" for="HepBtreatedRadioNo">No</label>
                 </div>
             </fieldset>
@@ -207,14 +207,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioNotDone" value="option3" checked <?php echo (isset($medicalData['HIVPos']) && is_null($medicalData['HIVPos']) )?'checked':'' ?> >
+                    <input class="form-check-input" type="radio" name="hivRadios" id="hivPosRadioNotDone" value="option3" <?php echo (isset($medicalData['HIVPos']) && $medicalData['HIVPos'] == 2 )?'checked':'' ?> >
                     <label class="form-check-label" for="hivPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="hivCheckDate" class="form-label">HIV Check Date</label>
-                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['HIVCheckDate']))?$childData['HIVCheckDate']:'';?>" >
+                    <input class="form-control" type="date" name="hivCheckDate"  id="hivCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($medicalData['HIVCheckDate']))?$medicalData['HIVCheckDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>
@@ -248,14 +248,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option3" checked <?php echo (isset($medicalData['TPos']) && is_null($medicalData['TPos']) )?'checked':'' ?> >
+                    <input class="form-check-input" type="radio" name="TbposRadios" id="TbPosRadioNotDone" value="option3" <?php echo (isset($medicalData['TPos']) && $medicalData['TPos'] == 2 )?'checked':'' ?> >
                     <label class="form-check-label" for="TbPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="TbposCheckDate" class="form-label">Tb Check Date</label>
-                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($childData['HIVCheckDate']))?$childData['HIVCheckDate']:'';?>" disabled>
+                    <input class="form-control" type="date" name="TbposCheckDate" id="TbposCheckDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($medicalData['HIVCheckDate']))?$medicalData['HIVCheckDate']:'';?>" disabled>
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>
@@ -290,14 +290,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioNotDone" value="option3" checked <?php echo (isset($medicalData['STDPos']) && is_null($medicalData['STDPos']) )?'checked':'' ?> >
+                    <input class="form-check-input" type="radio" name="stdposRadios" id="STDposRadioNotDone" value="option3" <?php echo (isset($medicalData['STDPos']) && $medicalData['STDPos'] == 2 )?'checked':'' ?> >
                     <label class="form-check-label" for="STDposRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="STDposCheckDate" class="form-label">STD Check Date</label>
-                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['STDPosCheckDate']))?$childData['STDPosCheckDate']:'';?>" >
+                    <input class="form-control" type="date" name="stdposCheckDate" id="STDposCheckDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($medicalData['STDPosCheckDate']))?$medicalData['STDPosCheckDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>
@@ -332,14 +332,14 @@
                   </div>
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option3" checked <?php echo (isset($medicalData['PregTestPos']) && is_null($medicalData['PregTestPos']))?'checked':'' ?> >
+                    <input class="form-check-input" type="radio" name="pregPosRadios" id="pregPosRadioNotDone" value="option3" <?php echo (isset($medicalData['PregTestPos']) && $medicalData['PregTestPos'] == 2)?'checked':'' ?> >
                     <label class="form-check-label" for="pregPosRadioNotDone">Not done</label>
                   </div>
             </fieldset>
 
             <div class ="form-group col-3">
                     <label for="PregTestDate" class="form-label">Pregnancy Test Date</label>
-                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($childData['PregTestDate']))?$childData['PregTestDate']:'';?>" >
+                    <input class="form-control" type="date" name="pregTestDate"  id="PregTestDate" min="1900-04-01" max="2300-04-20" disabled value="<?php echo (isset($medicalData['PregTestDate']))?$medicalData['PregTestDate']:'';?>" >
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>
@@ -361,14 +361,14 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option3" checked <?php echo (isset($medicalData['SickelCellPos']) && is_null($medicalData['SickelCellPos']))?'checked':'' ?> >
+                      <input class="form-check-input" type="radio" name="SickleCellPosRadios" id="SickleCellRadioNotDone" value="option3" <?php echo (isset($medicalData['SickelCellPos']) && $medicalData['SickelCellPos'] == 2)?'checked':'' ?> >
                       <label class="form-check-label" for="SickleCellRadioNotDone">Not done</label>
                     </div>
               </fieldset>
 
               <div class="form-group col-3">
                 <label for="sickleCellType" class="form-label">Sickle Cell Type</label>
-                <input type="text" class="form-control" name="sickleCellType" id="sickleCellType" value="<?php echo (isset($childData['SickelCellType']))?$childData['SickelCellType']:'';?>"  disabled>
+                <input type="text" class="form-control" name="sickleCellType" id="sickleCellType" maxlength="2" value="<?php echo (isset($medicalData['SickelCellType']))?$medicalData['SickelCellType']:'';?>"  disabled>
               </div>
           </div>
 
@@ -386,7 +386,7 @@
                     </div>
 
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option3" checked <?php echo (isset($medicalData['G6DP']) && is_null($medicalData['G6DP']))?'checked':'' ?>>
+                      <input class="form-check-input" type="radio" name="G6DPRadios" id="G6DPRadiosRadioNotDone" value="option3" <?php echo (isset($medicalData['G6DP']) && $medicalData['G6DP'] == 2)?'checked':'' ?>>
                       <label class="form-check-label" for="G6DPRadiosRadioNotDone">Not done</label>
                     </div>
               </fieldset>
@@ -417,17 +417,156 @@
             })
         })()
 
+          $(document).ready(function() {
+            $('input,textarea,select').addClass('border border-dark');
 
+            var gender = document.getElementById( "gender" ).innerText;
+            if(gender == "Male"){
+                document.getElementById("menstrualHistory").disabled = true;
+            } else if(gender == "Female"){
+                document.getElementById("menstrualHistory").disabled = false;
+            }
 
+            if (!$("input[name='HepBPosRadios']:checked").val()) {
+              $("#HepBPosRadioNotDone").prop('checked', true);
+            }
+      
+            if (!$("input[name='hivRadios']:checked").val()) {
+              $("#hivPosRadioNotDone").prop('checked', true);
+            } 
 
-        $('input,textarea,select').addClass('border border-dark');
+            if (!$("input[name='TbposRadios']:checked").val()) {
+              $("#TbPosRadioNotDone").prop('checked', true);
+            }
+        
+            if (!$("input[name='stdposRadios']:checked").val()) {
+              $("#STDposRadioNotDone").prop('checked', true);
+            }
+    
+            if (!$("input[name='pregPosRadios']:checked").val()) {
+              $("#pregPosRadioNotDone").prop('checked', true);
+            }
 
-        var gender = document.getElementById( "gender" ).innerText;
-        if(gender == "Male"){
-            document.getElementById("menstrualHistory").disabled = true;
-        } else if(gender == "Female"){
-            document.getElementById("menstrualHistory").disabled = false;
-        }
+            if (!$("input[name='SickleCellPosRadios']:checked").val()) {
+              $("#SickleCellRadioNotDone").prop('checked', true);
+            }
+
+            if (!$("input[name='G6DPRadios']:checked").val()) {
+              $("#G6DPRadiosRadioNotDone").prop('checked', true);
+            }
+
+            
+
+            if($('#HepBPosRadioYes').prop('checked')){
+              $('#HepBPosCheckDate').removeAttr("disabled");
+              $('#hepBtreated').removeAttr("disabled");
+            }
+
+            if($('#HepBPosRadioNo').prop('checked')){
+              $('#HepBtreatedRadioYes').prop('checked', false);
+              $('#HepBtreatedRadioNo').prop('checked', false);
+              $('#HepBPosCheckDate').removeAttr("disabled");
+              $('#hepBtreated').attr("disabled","disabled");
+            }
+
+            if($('#HepBPosRadioNotDone').prop('checked')){
+              $('#HepBtreatedRadioYes').prop('checked', false);
+              $('#HepBtreatedRadioNo').prop('checked', false);
+              $('#HepBPosCheckDate').val("");
+              $('#HepBPosCheckDate').attr("disabled","disabled");
+              $('#hepBtreated').attr("disabled","disabled");
+            }
+
+            if($('#hivPosRadioYes').prop('checked')){
+              $('#hivCheckDate').removeAttr("disabled");
+              $('#hivTreated').removeAttr("disabled");
+            }
+
+            if($('#hivPosRadioNo').prop('checked')){
+              $('#hivtreatedRadioYes').prop('checked', false);
+              $('#hivtreatedRadioNo').prop('checked', false);
+              $('#hivCheckDate').removeAttr("disabled");
+              $('#hivTreated').attr("disabled","disabled");
+            }
+
+            if($('#hivPosRadioNotDone').prop('checked')){
+              $('#hivtreatedRadioYes').prop('checked', false);
+              $('#hivtreatedRadioNo').prop('checked', false);
+              $('#hivCheckDate').val("");
+              $('#hivCheckDate').attr("disabled","disabled");
+              $('#hivTreated').attr("disabled","disabled");
+            }
+
+            if($('#TbPosRadioYes').prop('checked')){
+              $('#TbposCheckDate').removeAttr("disabled");
+              $('#tbTreated').removeAttr("disabled");
+            }
+
+            if($('#TbPosRadioNo').prop('checked')){
+              $('#TPosTreatedRadioYes').prop('checked', false);
+              $('#TPosTreatedRadioNo').prop('checked', false);
+              $('#TbposCheckDate').removeAttr("disabled");
+              $('#tbTreated').attr("disabled","disabled");
+            }
+
+            if($('#TbPosRadioNotDone').prop('checked')){
+              $('#TPosTreatedRadioYes').prop('checked', false);
+              $('#TPosTreatedRadioNo').prop('checked', false);
+              $('#TbposCheckDate').val("");
+              $('#TbposCheckDate').attr("disabled","disabled");
+              $('#tbTreated').attr("disabled","disabled");
+            }
+
+            if($('#STDposRadioYes').prop('checked')){
+              $('#STDposCheckDate').removeAttr("disabled");
+              $('#stdTreated').removeAttr("disabled");
+            }
+
+            if($('#STDposRadioNo').prop('checked')){
+              $('#STDposTreatedRadioYes').prop('checked', false);
+              $('#STDposTreatedRadioNo').prop('checked', false);
+              $('#STDposCheckDate').removeAttr("disabled");
+              $('#stdTreated').attr("disabled","disabled");
+            }
+
+            if($('#STDposRadioNotDone').prop('checked')){
+              $('#STDposTreatedRadioYes').prop('checked', false);
+              $('#STDposTreatedRadioNo').prop('checked', false);
+              $('#STDposCheckDate').val("");
+              $('#STDposCheckDate').attr("disabled","disabled");
+              $('#stdTreated').attr("disabled","disabled");
+            }
+
+            if($('#pregPosRadioYes').prop('checked')){
+              $('#PregTestDate').removeAttr("disabled");
+            }
+
+            if($('#pregPosRadioNo').prop('checked')){
+              $('#PregTestDate').removeAttr("disabled");
+            }
+
+            if($('#pregPosRadioNotDone').prop('checked')){
+              $('#PregTestDate').val("");
+              $('#PregTestDate').attr("disabled","disabled");
+            }
+
+            if($('#SickleCellRadioYes').prop('checked')){
+              $('#sickleCellType').removeAttr("disabled");
+            }
+
+            if($('#SickleCellRadioNo').prop('checked')){
+              $('#sickleCellType').val("");
+              $('#sickleCellType').attr("disabled","disabled");
+            }
+
+            if($('#SickleCellRadioNotDone').prop('checked')){
+              $('#sickleCellType').val("");
+              $('#sickleCellType').attr("disabled","disabled");
+            }
+           
+
+          });
+
 
         $(function () {
         $("input[name='nhiRadios']").click(function () {
@@ -439,6 +578,7 @@
             }
         });
     });
+
 
       $('#HepBPosRadioYes').click(function()
       {

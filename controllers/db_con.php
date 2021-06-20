@@ -53,10 +53,11 @@
             $ID = $this->pdo->lastInsertId();
             setcookie ("medicalIDCookie" , (int)$ID);
           }
-          return $this->pdo->lastInsertId();
         }catch(PDOException $e){
+          $e->getMessage();
 
         }
+        return $this->pdo->lastInsertId();
       }
 
       function prepared_update($table, $data) {

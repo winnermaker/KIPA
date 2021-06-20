@@ -29,26 +29,41 @@
                 <div class="form-group col-2">
                     <label class="form-label" for="gravida">Gravida</label>
                     <input type="number" class="form-control" name="gravida" id="gravida" value="<?php echo (isset($pregnancyData['Gravida']))?$pregnancyData['Gravida']: null;?>">
+                    <div class="invalid-feedback">
+                        Please only enter whole numbers
+                    </div>
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="para">Para</label>
                     <input type="number" class="form-control" name="para" id="para" value="<?php echo (isset($pregnancyData['Para']))?$pregnancyData['Para']: null;?>">
+                    <div class="invalid-feedback">
+                        Please only enter whole numbers
+                    </div>
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="alive">Alive</label>
                     <input type="number" class="form-control" name="alive" id="alive" value="<?php echo (isset($pregnancyData['alive']))?$pregnancyData['alive']:null;?>">
+                    <div class="invalid-feedback">
+                        Please only enter whole numbers
+                    </div>
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="dead">Dead</label>
                     <input type="number" class="form-control" name="dead" id="dead" value="<?php echo (isset($pregnancyData['dead']))?$pregnancyData['dead']:null;?>">
+                    <div class="invalid-feedback">
+                        Please only enter whole numbers
+                    </div>
                 </div>
 
                 <div class="form-group col-2">
                     <label class="form-label" for="top">TOP</label>
                     <input type="number" class="form-control" name="top" id="top" value="<?php echo (isset($pregnancyData['top']))?$pregnancyData['top']:null;?>">
+                    <div class="invalid-feedback">
+                        Please only enter whole numbers
+                    </div>
                 </div>
             </div>
 

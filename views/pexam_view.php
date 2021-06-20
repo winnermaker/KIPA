@@ -28,17 +28,17 @@
 
                 <div class="form-group col">
                     <label for="Weight" class="form-label">Weight (kg)</label>
-                    <input type="text" placeholder="" class="form-control" name="weight" id="Weight" value="<?php echo (isset($pexamData['weight']))?$pexamData['weight']:'';?>">
+                    <input type="number" step="any" placeholder="" class="form-control" name="weight" id="Weight" value="<?php echo (isset($pexamData['weight']))?$pexamData['weight']:'';?>">
                 </div>
 
                 <div class="form-group col">
                     <label for="Height" class="form-label">Height (cm)</label>
-                    <input type="text" placeholder="" class="form-control" name="height" id="Height" value="<?php echo (isset($pexamData['height']))?$pexamData['height']:'';?>">
+                    <input type="number" step="any" placeholder="" class="form-control" name="height" id="Height" value="<?php echo (isset($pexamData['height']))?$pexamData['height']:'';?>">
                 </div>
 
                 <div class="form-group col">
                     <label for="headcircumference" class="form-label">Head circumference (cm)</label>
-                    <input type="text" class="form-control" name="headcircumference" id="headcircumference" value="<?php echo (isset($pexamData['headcircumfrence']))?$pexamData['headcircumfrence']:'';?>">
+                    <input type="number" step="any" class="form-control" name="headcircumference" id="headcircumference" value="<?php echo (isset($pexamData['headcircumfrence']))?$pexamData['headcircumfrence']:'';?>">
                 </div>
             </div>
 
@@ -60,17 +60,17 @@
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="BMI" class="form-label">BMI</label>
-                    <input type="text" placeholder="" class="form-control" name="bmi" id="BMI" value="<?php echo (isset($pexamData['bmi']))?$pexamData['bmi']:'';?>">
+                    <input type="number" step="any" placeholder="" class="form-control" name="bmi" id="BMI" value="<?php echo (isset($pexamData['bmi']))?$pexamData['bmi']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="MUAC" class="form-label">MUAC (cm)</label>
-                    <input type="text" placeholder="" class="form-control" name="muac" id="MUAC" value="<?php echo (isset($pexamData['muac']))?$pexamData['muac']:'';?>">
+                    <input type="number" step="any" placeholder="" class="form-control" name="muac" id="MUAC" value="<?php echo (isset($pexamData['muac']))?$pexamData['muac']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="temperature" class="form-label">Temperature (Celsius)</label>
-                    <input type="text" placeholder="" class="form-control" name="temperature" id="temperature" value="<?php echo (isset($pexamData['temperature']))?$pexamData['temperature']:'';?>">
+                    <input type="number" step="any" placeholder="" class="form-control" name="temperature" id="temperature" value="<?php echo (isset($pexamData['temperature']))?$pexamData['temperature']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
@@ -495,56 +495,56 @@
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_discharge" class="form-label">Discharge</label>
-                        <textarea class="form-control" name="female_discharge" id="female_discharge" rows="2"><?php echo (isset($pexamData['Discharge'])) ? htmlspecialchars($pexamData['Discharge']):''; ?></textarea>
+                        <textarea class="form-control" name="female_discharge" id="female_discharge" rows="2"><?php echo (isset($pexamDataF['Discharge'])) ? htmlspecialchars($pexamDataF['Discharge']):''; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_breasts" class="form-label">Breasts</label>
-                        <textarea class="form-control" name="female_breasts" id="female_breasts" rows="2"><?php echo (isset($pexamData['Breasts'])) ? htmlspecialchars($pexamData['Breasts']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_breasts" id="female_breasts" rows="2"><?php echo (isset($pexamDataF['Breasts'])) ? htmlspecialchars($pexamDataF['Breasts']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_mastodynia" class="form-label">Mastodynia</label>
-                        <textarea class="form-control" name="female_mastodynia" id="female_mastodynia" rows="2"><?php echo (isset($pexamData['Mastodynia'])) ? htmlspecialchars($pexamData['Mastodynia']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_mastodynia" id="female_mastodynia" rows="2"><?php echo (isset($pexamDataF['Mastodynia'])) ? htmlspecialchars($pexamDataF['Mastodynia']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_period" class="form-label">Period</label>
-                        <textarea class="form-control" name="female_period" id="female_period" rows="2"><?php echo (isset($pexamData['Period'])) ? htmlspecialchars($pexamData['Period']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_period" id="female_period" rows="2"><?php echo (isset($pexamDataF['Period'])) ? htmlspecialchars($pexamDataF['Period']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_dysmenorrhoea" class="form-label">Dysmenorrhoea</label>
-                        <textarea class="form-control" name="female_dysmenorrhoea" id="female_dysmenorrhoea" rows="2"><?php echo (isset($pexamData['Dysmenorrhoea'])) ? htmlspecialchars($pexamData['Dysmenorrhoea']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_dysmenorrhoea" id="female_dysmenorrhoea" rows="2"><?php echo (isset($pexamDataF['Dysmenorrhoea'])) ? htmlspecialchars($pexamDataF['Dysmenorrhoea']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_dyspareunia" class="form-label">Dyspareunia</label>
-                        <textarea class="form-control" name="female_dyspareunia" id="female_dyspareunia" rows="2"><?php echo (isset($pexamData['Dyspareunia'])) ? htmlspecialchars($pexamData['Dyspareunia']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_dyspareunia" id="female_dyspareunia" rows="2"><?php echo (isset($pexamDataF['Dyspareunia'])) ? htmlspecialchars($pexamDataF['Dyspareunia']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_menarche" class="form-label">Menarche</label>
-                        <textarea class="form-control" name="female_menarche" id="female_menarche" rows="2"><?php echo (isset($pexamData['Menarche'])) ? htmlspecialchars($pexamData['Menarche']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_menarche" id="female_menarche" rows="2"><?php echo (isset($pexamDataF['Menarche'])) ? htmlspecialchars($pexamDataF['Menarche']): '' ; ?></textarea>
                     </div>
                 </div>
 
                 <div class="row mt-3">
                     <div class="form-group">
                         <label for="female_pregnancy" class="form-label">Pregnancy</label>
-                        <textarea class="form-control" name="female_pregnancy" id="female_pregnancy" rows="2"><?php echo (isset($pexamData['Pregnancy'])) ? htmlspecialchars($pexamData['Pregnancy']): '' ; ?></textarea>
+                        <textarea class="form-control" name="female_pregnancy" id="female_pregnancy" rows="2"><?php echo (isset($pexamDataF['Pregnancy'])) ? htmlspecialchars($pexamDataF['Pregnancy']): '' ; ?></textarea>
                     </div>
                 </div>
 

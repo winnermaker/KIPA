@@ -96,7 +96,7 @@
             } elseif($radioValue === "option2"){
                 $radioValue = false;
             } elseif($radioValue === "option3")
-                $radioValue = "Not Done";
+                $radioValue = 2;
             else{
                 $radioValue = null;
             }
@@ -118,7 +118,7 @@
             $this->arrayMedical['MenstrualHist'] = $this->menstrualHistory;
             $this->arrayMedical['HepBPos'] = $this->hepBPos;
             $this->arrayMedical['HepBPosCheckDate'] = $this->hepBPosCheckDate;
-            $this->arrayMedical['HepBPosCheckDate'] = $this->hepBTreated;
+            $this->arrayMedical['HepBPosTreated'] = $this->hepBTreated;
             $this->arrayMedical['HIVPos'] = $this->hivPos;
             $this->arrayMedical['HIVCheckDate'] = $this->hivCheckDate;
             $this->arrayMedical['HIVTreated'] = $this->hivTreated;

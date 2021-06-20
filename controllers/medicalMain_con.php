@@ -9,7 +9,11 @@
         $data = $medicalObj->getParams();
         if (!$medicalObj->checkMedicalMainID()) {
           $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
-          $controller -> prepared_insert('medicalmain',$data);
+           if($controller -> prepared_insert('medicalmain',$data) !== false){
+             echo "Richtig Eingabe hat geklappt";
+           } else {
+             echo "Eingabe hat nicht geklappt";
+           }
         }else {
           $controller -> prepared_update('medicalmain',$data);
         }
