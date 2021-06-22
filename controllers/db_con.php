@@ -255,6 +255,15 @@
         return $data;
       }
 
+      function getCountGenMData($pexamID){
+        $sql = "SELECT COUNT(GenMaleID) FROM medicalgenmale WHERE fk_PEXAMID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$pexamID]);
+        $data = $smt->fetch();
+
+        return $data[0];
+      }
+
       function getGenFData($pexamID){
         $sql = "SELECT * FROM medicalgenfemale WHERE fk_PEXAMID = ?";
         $smt = $this->pdo->prepare($sql);
@@ -262,6 +271,15 @@
         $data = $smt->fetch();
 
         return $data;
+      }
+
+      function getCountGenFData($pexamID){
+        $sql = "SELECT COUNT(GenFemaleID) FROM medicalgenfemale WHERE fk_PEXAMID = ?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$pexamID]);
+        $data = $smt->fetch();
+
+        return $data[0];
       }
 
       function getPregnancyMainData($medicalID){

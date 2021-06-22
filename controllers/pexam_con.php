@@ -46,21 +46,44 @@
             $controller -> prepared_update('medicalpexam',$pexamdata);
 
             if($pexamObj->checkGenitals() === 0){
-                //female
-                $pexamdata = $pexamObj->getParamsFemale();
-                $controller -> prepared_update('MedicalGenFemale',$pexamdata);
-
-            } elseif($pexamObj->checkGenitals() === 1){
-                //male
-                $pexamdata = $pexamObj->getParamsMale();
-                $controller -> prepared_update('MedicalGenMale',$pexamdata);
+              //female
+              $pexamdataF = $pexamObj->getParamsFemale();
+              $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
+              if($count){
+                $controller -> prepared_update('MedicalGenFemale',$pexamdataF);
+              }else {
+                $pexamdataF['fk_PEXAMID'] = $pexamdata['PEXAMID'];
+                $controller -> prepared_insert('MedicalGenFemale',$pexamdataF);
+              }
+            }elseif($pexamObj->checkGenitals() === 1){
+              //male
+              $pexamdataM = $pexamObj->getParamsMale();
+              $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
+              if($count){
+                $controller -> prepared_update('MedicalGenMale',$pexamdataM);
+              }else {
+                $pexamdataM['fk_PEXAMID'] = $pexamdata['PEXAMID'];
+                $controller -> prepared_insert('MedicalGenMale',$pexamdataM);
+              }
 
             } elseif($pexamObj->checkGenitals() === 2){
-                //other
-                $pexamdata = $pexamObj->getParamsFemale();
-                $controller -> prepared_update('MedicalGenFemale',$pexamdata);
-                $pexamdata = $pexamObj->getParamsMale();
-                $controller -> prepared_update('MedicalGenMale',$pexamdata);
+              //other
+              $pexamdataF = $pexamObj->getParamsFemale();
+              $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
+              if($count){
+                $controller -> prepared_update('MedicalGenFemale',$pexamdataF);
+              }else {
+                $pexamdataF['fk_PEXAMID'] = $pexamdata['PEXAMID'];
+                $controller -> prepared_insert('MedicalGenFemale',$pexamdataF);
+              }
+              $pexamdataM = $pexamObj->getParamsMale();
+              $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
+              if($count){
+                $controller -> prepared_update('MedicalGenMale',$pexamdataM);
+              }else {
+                $pexamdataM['fk_PEXAMID'] = $pexamdata['PEXAMID'];
+                $controller -> prepared_insert('MedicalGenMale',$pexamdataM);
+              }
             }
           }
         }
