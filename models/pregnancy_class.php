@@ -69,9 +69,9 @@
 
         private function getRadioValue(&$radioValue){
             if($radioValue === "option1"){
-                $radioValue = "Yes";
+                $radioValue = true;
             } elseif($radioValue === "option2"){
-                $radioValue = "No";
+                $radioValue = false;
             } else{
                 $radioValue = null;
             }
@@ -92,8 +92,8 @@
             for ($i=0; $i < count($this->arrayName); $i++) {
 
                 $this->arrayChildID = !empty($this->arrayChildID[$i]) ? trim($this->arrayChildID[$i]) : null;
-                $this->arrayGender = !empty($this->arrayGender[$i]) ? trim($this->arrayGender[$i]) : null;
-                $this->arrayHealthy = !empty($this->arrayHealthy[$i]) ? trim($this->arrayHealthy[$i]) : null;
+                $this->arrayGender[$i] = !empty($this->arrayGender[$i]) ? trim($this->arrayGender[$i]) : null;
+                $this->arrayHealthy[$i] = !empty($this->arrayHealthy[$i]) ? trim($this->arrayHealthy[$i]) : null;
                 $this->arrayName[$i] = !empty($this->arrayName[$i]) ? trim($this->arrayName[$i]) : null;
                 $this->arrayDateOfBirth[$i] = !empty($this->arrayDateOfBirth[$i]) ? trim($this->arrayDateOfBirth[$i]) : null;
                 $this->arrayEventsPregnancy[$i] = !empty($this->arrayEventsPregnancy[$i]) ? trim($this->arrayEventsPregnancy[$i]) : null;
