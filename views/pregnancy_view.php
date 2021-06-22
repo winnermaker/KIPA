@@ -121,27 +121,15 @@
                       $index = 0;
                       if(!empty($previousData)){
                       foreach($previousData as $row){
+                          var_dump($row);
 
                 ?>
                 <input type="iput" id="childID" name="presentPregnancyID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
                 <div class="row mt-4">
-                    <fieldset class="col-3">
-                    <legend class="col-form-label">Gender</legend>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="malepregnancyRadio" value="option1" <?php echo (isset($row['Gender']) && $row['Gender'] == 'm')?'checked':'' ?>>
-                            <label class="form-check-label" for="malepregnancyRadio">Male</label>
+                        <div class="form-group col-2">
+                            <label class="form-label" for="gender">Gender</label>
+                            <input type="text" class="form-control" name="gender[]" id="gender" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>">
                         </div>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="femalepregnancyRadio" value="option2"  <?php echo (isset($row['Gender']) && $row['Gender'] == 'f')?'checked':'' ?>>
-                            <label class="form-check-label" for="femalepregnancyRadio">Female</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="otherpregnancyRadio" value="option3"  <?php echo (isset($row['Gender']) && $row['Gender'] == 'x')?'checked':'' ?>>
-                            <label class="form-check-label" for="otherpregnancyRadio">Other</label>
-                        </div>
-                    </fieldset>
 
 
                         <div class="form-group col">
@@ -176,18 +164,10 @@
                 </div>
 
                 <div class="row mt-3">
-                    <fieldset class="col-2">
-                    <legend class="col-form-label">Healthy?</legend>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioYes" value="option1" <?php echo (isset($row['Healthy']) && $row['Healthy'] == 1)?'checked':'' ?>>
-                            <label class="form-check-label" for="healthyRadioYes">Yes</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioNo" value="option2" <?php echo (isset($row['Healthy']) && $row['Healthy'] == 1)?'checked':'' ?>>
-                            <label class="form-check-label" for="healthyRadioNo">No</label>
-                        </div>
-                    </fieldset>
+                    <div class="form-group col-2">
+                        <label class="form-label" for="healthy">Healthy</label>
+                        <input type="text" class="form-control" name="healthy[]" id="healthy" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>">
+                    </div>
 
                     <div class="form-group col">
                         <label for="childrenProblems" class="form-label">Problems</label>
@@ -210,23 +190,10 @@
 
           <?php $index++; }}else { ?>
             <div class="row mt-4">
-                <fieldset class="col-3">
-                <legend class="col-form-label">Gender</legend>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="malepregnancyRadio" value="option1" >
-                        <label class="form-check-label" for="malepregnancyRadio">Male</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="femalepregnancyRadio" value="option2" >
-                        <label class="form-check-label" for="femalepregnancyRadio">Female</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="genderpregnancyRadios0" id="otherpregnancyRadio" value="option3" >
-                        <label class="form-check-label" for="otherpregnancyRadio">Other</label>
-                    </div>
-                </fieldset>
+                <div class="form-group col-2">
+                    <label class="form-label" for="gender">Gender</label>
+                    <input type="text" class="form-control" name="gender[]" id="gender">
+                </div>
 
 
                     <div class="form-group col">
@@ -261,18 +228,10 @@
             </div>
 
             <div class="row mt-3">
-                <fieldset class="col-2">
-                <legend class="col-form-label">Healthy?</legend>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioYes" value="option1">
-                        <label class="form-check-label" for="healthyRadioYes">Yes</label>
-                    </div>
-
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="healthyRadios0" id="healthyRadioNo" value="option2" >
-                        <label class="form-check-label" for="healthyRadioNo">No</label>
-                    </div>
-                </fieldset>
+                <div class="form-group col-2">
+                    <label class="form-label" for="healthy">Healthy</label>
+                    <input type="text" class="form-control" name="healthy[]" id="healthy" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>">
+                </div>
 
                 <div class="form-group col">
                     <label for="childrenProblems" class="form-label">Problems</label>
@@ -333,23 +292,8 @@
             $("#addChild").click(function()
             {
                 var clone = $("#childs").clone(true);
-                clone.find("input[name=genderpregnancyRadios0]").prop("name", "genderpregnancyRadios" + cloneId);
-                clone.find("input[id=malepregnancyRadio]").prop("id", "malepregnancyRadio" + cloneId);
-                clone.find("label[for=malepregnancyRadio]").prop("for", "malepregnancyRadio" + cloneId);
-
-                clone.find("input[id=femalepregnancyRadio]").prop("id", "femalepregnancyRadio" + cloneId);
-                clone.find("label[for=femalepregnancyRadio]").prop("for", "femalepregnancyRadio" + cloneId);
-
-                clone.find("input[id=otherpregnancyRadio]").prop("id", "otherpregnancyRadio" + cloneId);
-                clone.find("label[for=otherpregnancyRadio]").prop("for", "otherpregnancyRadio" + cloneId);
-
-                clone.find("input[name=healthyRadios0]").prop("name", "healthyRadios" + cloneId);
-                clone.find("input[id=healthyRadioYes]").prop("id", "healthyRadioYes" + cloneId);
-                clone.find("label[for=healthyRadioYes]").prop("for", "healthyRadioYes" + cloneId);
-
-                clone.find("input[id=healthyRadioNo]").prop("id", "healthyRadioNo" + cloneId);
-                clone.find("label[for=healthyRadioNo]").prop("for", "healthyRadioNo" + cloneId);
-
+                clone.find("input[name=gender]").prop("name", "gender[]");
+                clone.find("input[name=healthy]").prop("name", "healthy[]");
                 clone.find("input[name=name]").prop("name", "name[]");
                 clone.find("input[name=dateofBirth]").prop("name", "dateofBirth[]");
                 clone.find("textarea[name=durationOfLabor]").prop("name", "durationOfLabor[]");
@@ -358,15 +302,34 @@
                 clone.find("textarea[name=childrenProblems]").prop("name", "childrenProblems[]");
                 clone.find("textarea[name=Remarks]").prop("name", "Remarks[]");
 
+                clone.find("input[id=gender]").prop("id", "gender" + cloneId);
+                clone.find("label[for=gender]").prop("for", "gender" + cloneId);
+
+                clone.find("input[id=healthy]").prop("id", "healthy" + cloneId);
+                clone.find("label[for=healthy]").prop("for", "healthy" + cloneId);
+
+                clone.find("input[id=name]").prop("id", "name" + cloneId);
+                clone.find("label[for=name]").prop("for", "name" + cloneId);
+
+                clone.find("input[id=dateofBirth]").prop("id", "dateofBirth" + cloneId);
+                clone.find("label[for=dateofBirth]").prop("for", "dateofBirth" + cloneId);
+
+                clone.find("textarea[id=durationOfLabor]").prop("id", "durationOfLabor" + cloneId);
+                clone.find("label[for=durationOfLabor]").prop("for", "durationOfLabor" + cloneId);
+
+                clone.find("textarea[id=eventsDuringPregnancy]").prop("id", "eventsDuringPregnancy" + cloneId);
+                clone.find("label[for=eventsDuringPregnancy]").prop("for", "eventsDuringPregnancy" + cloneId);
+
+                clone.find("textarea[id=spont_CS_forceps]").prop("id", "spont_CS_forceps" + cloneId);
+                clone.find("label[for=spont_CS_forceps]").prop("for", "spont_CS_forceps" + cloneId);
+
+                clone.find("textarea[id=childrenProblems]").prop("id", "childrenProblems" + cloneId);
+                clone.find("label[for=childrenProblems]").prop("for", "childrenProblems" + cloneId);
+
+                clone.find("textarea[id=Remarks]").prop("id", "Remarks" + cloneId);
+                clone.find("label[for=Remarks]").prop("for", "Remarks" + cloneId);
 
                 clone.find("input,textarea").val("");
-
-                clone.find("input[id=malepregnancyRadio" + cloneId + "]").val("option1");
-                clone.find("input[id=femalepregnancyRadio" + cloneId + "]").val("option2");
-                clone.find("input[id=otherpregnancyRadio" + cloneId + "]").val("option3");
-
-                clone.find("input[id=healthyRadioYes" + cloneId + "]").val("option1");
-                clone.find("input[id=healthyRadioNo" + cloneId + "]").val("option2");
 
                 cloneId++;
                 clone.appendTo("#newChild");

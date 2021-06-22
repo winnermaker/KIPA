@@ -141,8 +141,8 @@ create table if not exists MedicalPregnancyChildData
     EvDurP				text,
     durLabor			text,
     spont_CS_forceps	text,
-    Gender				char,
-    Healthy				boolean,
+    Gender				text,
+    Healthy				text,
     Problems			text,
     Remarks 			text,
     foreign key (fk_MotherID) references medicalpregnancymain(MotherID) on delete no action

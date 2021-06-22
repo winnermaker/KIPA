@@ -18,8 +18,8 @@
         private $pregnancyRemarks;
 
         private $arrayChildID = array();
-        private $genderpregnancyRadios;
-        private $healthyRadios;
+        private $arrayGender = array();
+        private $arrayHealthy = array();
         private $arrayName = array();
         private $arrayDateOfBirth = array();
         private $arrayEventsPregnancy = array();
@@ -50,6 +50,8 @@
             $this->pregnancyRemarks = !empty($_POST['pregnancyRemarks']) ? trim($_POST['pregnancyRemarks']) : null;
 
             $this->arrayChildID = isset($_POST['childID']) ? $_POST['childID'] : null;
+            $this->arrayGender = isset($_POST['gender']) ? $_POST['gender'] : null;
+            $this->arrayHealthy = isset($_POST['healthy']) ? $_POST['healthy'] : null;
             $this->arrayName = isset($_POST['name']) ? $_POST['name'] : null;
             $this->arrayDateOfBirth = isset($_POST['dateofBirth']) ? $_POST['dateofBirth'] : null;
             $this->arrayEventsPregnancy = isset($_POST['eventsDuringPregnancy']) ? $_POST['eventsDuringPregnancy'] : null;
@@ -63,18 +65,6 @@
             $this->validatePreviousPregnancy();
             $this->presentPregnancyToArray();
 
-        }
-
-        private function getGenderRadioValue(&$radioValue){
-            if($radioValue === "option1"){
-                $radioValue = "m";
-            } elseif($radioValue === "option2"){
-                $radioValue = "f";
-            } elseif($radioValue === "option3")
-                $radioValue = "x";
-            else{
-                $radioValue = null;
-            }
         }
 
         private function getRadioValue(&$radioValue){
@@ -100,16 +90,10 @@
 
         public function validatePreviousPregnancy(){
             for ($i=0; $i < count($this->arrayName); $i++) {
-                $gender = "genderpregnancyRadios" . $i;
-                $healthy = "healthyRadios" . $i;
-
-                $this->genderpregnancyRadios = !empty($_POST[$gender]) ? $_POST[$gender] : null;
-                $this->getGenderRadioValue($this->genderpregnancyRadios);
-
-                $this->healthyRadios = !empty($_POST[$healthy]) ? $_POST[$healthy] : null;
-                $this->getRadioValue($this->healthyRadios);
 
                 $this->arrayChildID = !empty($this->arrayChildID[$i]) ? trim($this->arrayChildID[$i]) : null;
+                $this->arrayGender = !empty($this->arrayGender[$i]) ? trim($this->arrayGender[$i]) : null;
+                $this->arrayHealthy = !empty($this->arrayHealthy[$i]) ? trim($this->arrayHealthy[$i]) : null;
                 $this->arrayName[$i] = !empty($this->arrayName[$i]) ? trim($this->arrayName[$i]) : null;
                 $this->arrayDateOfBirth[$i] = !empty($this->arrayDateOfBirth[$i]) ? trim($this->arrayDateOfBirth[$i]) : null;
                 $this->arrayEventsPregnancy[$i] = !empty($this->arrayEventsPregnancy[$i]) ? trim($this->arrayEventsPregnancy[$i]) : null;
@@ -121,18 +105,18 @@
                 if(!is_null($this->arrayName[$i]) || !is_null($this->arrayDateOfBirth[$i]) ||
                     !is_null($this->arrayEventsPregnancy[$i]) || !is_null($this->arrayDurationOfLabor[$i]) ||
                     !is_null($this->arraySpontCSforceps[$i]) || !is_null($this->arrayChildrenProblems[$i]) ||
-                    !is_null($this->arrayRemarks[$i]) || !is_null($this->genderpregnancyRadios) || !is_null($this->healthyRadios))
+                    !is_null($this->arrayRemarks[$i]) || !is_null($this->arrayGender[$i]) || !is_null($this->arrayHealthy[$i]))
                 {
                 $this->arrayPreviousPregnancy[] = [
                   'ChildID' => $this->arrayChildID[$i],
                   'fk_MotherID' => $this->motherID,
-                  'gender' => $this->genderpregnancyRadios,
+                  'gender' => $this->arrayGender[$i],
                   'name' => $this->arrayName[$i],
                   'DOB' => $this->arrayDateOfBirth[$i],
                   'EvDurP' => $this->arrayEventsPregnancy[$i],
                   'durLabor' => $this->arrayDurationOfLabor[$i],
                   'spont_CS_forceps' => $this->arraySpontCSforceps[$i],
-                  'healthy' => $this->healthyRadios,
+                  'healthy' => $this->arrayHealthy[$i],
                   'problems' => $this->arrayChildrenProblems[$i],
                   'remarks' => $this->arrayRemarks[$i],
                 ];
