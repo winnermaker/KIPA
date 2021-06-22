@@ -141,9 +141,9 @@
         }
 
         public function presentPregnancyToArray(){
-          $this->arrayPresentPregnancy['presentPregnancyID'] = $this->presentPregnancyID;
+          $this->arrayPresentPregnancy['PresPreagnancyID'] = $this->presentPregnancyID;
           $this->arrayPresentPregnancy['fk_MotherID'] = $this->motherID;
-          $this->arrayPresentPregnancy['gestationalAge'] = $this->gestationalAge;
+          $this->arrayPresentPregnancy['GestationalAge'] = $this->gestationalAge;
           $this->arrayPresentPregnancy['EstDelivery'] = $this->estimatedDateOfDelivery;
           $this->arrayPresentPregnancy['AntClinicAttend'] = $this->antenatalClinikAttendanceRadios;
           $this->arrayPresentPregnancy['Problems'] = $this->problems;
