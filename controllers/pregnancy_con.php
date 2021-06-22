@@ -12,19 +12,24 @@
         $pregnancyObj = new pregnancy();
         $pregdata = $pregnancyObj->getPregnancyMain();
         if (!$pregnancyObj->checkPregnancyID()) {
-          $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-          $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
-          if ($pregnancyObj->checkPresentPregnancy()) {
-            $pregdata = $pregnancyObj->getPresentPregnancy();
-            $pregdata['fk_MotherID'] = $motherID;
-            $controller -> prepared_insert('medicalpresentpregnancy',$pregdata);
-          }
-          if ($pregnancyObj->checkPreviousPregnancy()) {
-            $pregdata = $pregnancyObj->getPreviousPregnancy();
-            for($i=0;$i<count($pregdata);$i++){
-              $pregdata[$i]['fk_MotherID'] = $motherID;
-              $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i]);
+          $check = $controller->checkIfEntryExsits('medicalpregnancymain',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
+          if(!$check){
+            $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
+            $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
+            if ($pregnancyObj->checkPresentPregnancy()) {
+              $pregdata = $pregnancyObj->getPresentPregnancy();
+              $pregdata['fk_MotherID'] = $motherID;
+              $controller -> prepared_insert('medicalpresentpregnancy',$pregdata);
             }
+            if ($pregnancyObj->checkPreviousPregnancy()) {
+              $pregdata = $pregnancyObj->getPreviousPregnancy();
+              for($i=0;$i<count($pregdata);$i++){
+                $pregdata[$i]['fk_MotherID'] = $motherID;
+                $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i]);
+              }
+            }
+          }else {
+            echo "There already is a Pregnancy Entry for this Patient.";
           }
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);
@@ -49,11 +54,7 @@
               $insertorupdate[$k] = true;
             }
             for($i=0;$i<count($pregdataP);$i++){
-              echo "<pre>";
-              print_r($pregdataP[$i]);
-              echo "</pre>";
               if($insertorupdate[$i]){
-                echo "Test";
                 $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
               }else{
                 $pregdataP[$i]['fk_MotherID'] =  $pregdata['MotherID'];

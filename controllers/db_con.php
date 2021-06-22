@@ -44,7 +44,7 @@
           $placeholders = str_repeat('?,', count($keys) - 1) . '?';
 
           $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
-          $this->pdo->prepare($sql)->execute(array_values($data));
+          $insert = $this->pdo->prepare($sql)->execute(array_values($data));
           //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
           if($table == $this ->escape_mysql_identifier('childrenmain')){
             $ID = $this->pdo->lastInsertId();
@@ -53,8 +53,14 @@
             $ID = $this->pdo->lastInsertId();
             setcookie ("medicalIDCookie" , (int)$ID);
           }
+
+          if($insert){
+            echo "Your Entry was inserted. <br>";
+          } else {
+            echo "Something went wrong while inserting your entry.<br>";
+          }
         }catch(PDOException $e){
-          $e->getMessage();
+          echo "Something went wrong while inserting your entry.".$e->getMessage()."<br>";
 
         }
         return $this->pdo->lastInsertId();
@@ -80,11 +86,16 @@
           $table = $this ->escape_mysql_identifier($table);
 
           $sql = "UPDATE $table SET $keys WHERE $IDKey";
+          $update = $this->pdo->prepare($sql)->execute($values);
 
-          $test = $this->pdo->prepare($sql)->execute($values);
+          if($update){
+            echo "Your entry was updated <br>";
+          } else {
+            echo "Something went wrong while updating your entry.<br>";
+          }
 
         } catch (PDOException $e) {
-          $e->getMessage();
+          echo "Something went wrong while updating your entry.".$e->getMessage()."<br>";
         }
       }
 
@@ -414,6 +425,15 @@
         } catch (PDOException $e) {
 
         }
+      }
+
+      function checkIfEntryExsits($table, $IDValue, $IDKey) {
+        $sql = "SELECT * FROM $table WHERE $IDKey=?";
+        $smt = $this->pdo->prepare($sql);
+        $smt->execute([$IDValue]);
+        $row=$smt->fetch();
+
+        return $row;
       }
 }
   $controller = new DBCon();
