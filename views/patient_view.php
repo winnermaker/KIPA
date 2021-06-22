@@ -20,8 +20,14 @@
     </style>
 
     <form action="patient_con.php"  method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-        <div class="container">
-            <div class="row mt-4">
+        <div class="container mt-4">
+            <div class="form-group row" id="feedbackMessage">
+                <div class="col">
+                    <?php echo (isset($result))?$result:''; ?>    
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="form-group col">
                     <h1>Patient</h1>
                 </div>
@@ -61,18 +67,16 @@
                         <label class="form-check-label" for="genderOtherRadio">Other</label>
                     </div>
 
-                    <div class="invalid-feedback">
-                    Please choose a Gender
-                    </div>
+        
                 </fieldset>
             </div>
 
             <div class="form-row mt-3">
                 <div class ="form-group col">
                     <label for="firstName" class="form-label">First name</label>
-                    <input type="text" class="form-control"  name="firstName" id="firstName" value="<?php echo (isset($childData['FirstName']))?$childData['FirstName']:'';?>" placeholder="Max" required>
+                    <input type="text" class="form-control"  name="firstName" id="firstName" value="<?php echo (isset($childData['FirstName']))?$childData['FirstName']:'';?>" required>
                     <div class="invalid-feedback">
-                    Please choose a Call name
+                    Please enter a First name
                     </div>
                 </div>
             </div>
@@ -80,9 +84,9 @@
             <div class="form-row mt-3">
                 <div class="form-group col">
                     <label for="lastName" class="form-label">Last name</label>
-                    <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($childData['LastName']))?$childData['LastName']:'';?>" placeholder="Mustermann" required>
+                    <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo (isset($childData['LastName']))?$childData['LastName']:'';?>" required>
                     <div class="invalid-feedback">
-                    Please choose a Last name
+                    Please enter a Last name
                     </div>
                 </div>
             </div>
@@ -90,9 +94,9 @@
             <div class="form-row mt-3">
                 <div class ="form-group col">
                     <label for="callName" class="form-label">Call name</label>
-                    <input type="text" class="form-control" name="callName" id="callName" value="<?php echo (isset($childData['CallNames']))?$childData['CallNames']:'';?>" placeholder="Mike" required >
+                    <input type="text" class="form-control" name="callName" id="callName" value="<?php echo (isset($childData['CallNames']))?$childData['CallNames']:'';?>" required >
                     <div class="invalid-feedback">
-                    Please choose a Call name
+                    Please enter a Call name
                     </div>
                 </div>
             </div>
