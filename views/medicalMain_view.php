@@ -19,7 +19,7 @@
     <div class="container mt-4">
       <div class="form-group row" id="feedbackMessage">
           <div class="col">
-            <?php echo (isset($result))?$result:''; ?>    
+            <?php echo (isset($result))?$result:''; ?>
           </div>
       </div>
       <h1>Medical Main</h1>
@@ -43,7 +43,7 @@
 
             <div class="form-group col-4">
               <label class="form-label" for="nhiNumber">NHI Number</label>
-              <input type="number" class="form-control" name="nhiNumber" id="nhiNumber" value="<?php echo (isset($medicalData['NHINr']))?$medicalData['NHINr']:'';?>">
+              <input type="number" class="form-control" name="nhiNumber" id="nhiNumber" min="0" value="<?php echo (isset($medicalData['NHINr']))?$medicalData['NHINr']:'';?>">
             </div>
 
             <div class ="form-group col">
@@ -435,19 +435,19 @@
             if (!$("input[name='HepBPosRadios']:checked").val()) {
               $("#HepBPosRadioNotDone").prop('checked', true);
             }
-      
+
             if (!$("input[name='hivRadios']:checked").val()) {
               $("#hivPosRadioNotDone").prop('checked', true);
-            } 
+            }
 
             if (!$("input[name='TbposRadios']:checked").val()) {
               $("#TbPosRadioNotDone").prop('checked', true);
             }
-        
+
             if (!$("input[name='stdposRadios']:checked").val()) {
               $("#STDposRadioNotDone").prop('checked', true);
             }
-    
+
             if (!$("input[name='pregPosRadios']:checked").val()) {
               $("#pregPosRadioNotDone").prop('checked', true);
             }
@@ -460,7 +460,7 @@
               $("#G6DPRadiosRadioNotDone").prop('checked', true);
             }
 
-            
+
 
             if($('#HepBPosRadioYes').prop('checked')){
               $('#HepBPosCheckDate').removeAttr("disabled");
@@ -568,7 +568,7 @@
               $('#sickleCellType').val("");
               $('#sickleCellType').attr("disabled","disabled");
             }
-           
+
 
           });
 

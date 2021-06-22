@@ -25,19 +25,12 @@
         $data['PicType'] = null;
       }
     }
-      if(!$patientObj->checkPatientID()){
-
-        $lastInsertedID = $controller -> prepared_insert('childrenmain',$data);
-        if($lastInsertedID !== false){
-          $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
-       }
-        else {
-          $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-       }
-
+    if(!$patientObj->checkPatientID()){
+        $res = $controller -> prepared_insert('childrenmain',$data);
+        $result = $res['insert'];
     }
-      else {
-        $controller -> prepared_update('childrenmain',$data);
+    else{
+        $result = $controller -> prepared_update('childrenmain',$data);
       }
 
   }elseif($_SERVER["REQUEST_METHOD"] == "GET"){

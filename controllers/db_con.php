@@ -45,7 +45,7 @@
 
           $sql = "INSERT INTO $table ($fields) VALUES ($placeholders)";
           $insert = $this->pdo->prepare($sql)->execute(array_values($data));
-          //cookies to save ChildrenID ar MedicalID to use for foreign key inserts later
+
           if($table == $this ->escape_mysql_identifier('childrenmain')){
             $ID = $this->pdo->lastInsertId();
             setcookie ("childIDCookie" , (int)$ID);
@@ -55,15 +55,17 @@
           }
 
           if($insert){
-            echo "Your Entry was inserted. <br>";
-          } else {
-            echo "Something went wrong while inserting your entry.<br>";
+            $result['insert'] ='<div class="alert alert-success">The record was successfully inserted.<br></div>';
+          }
+          else{
+            $result['insert'] ='<div class="alert alert-danger"> The record was not inserted.<br></div>';
           }
         }catch(PDOException $e){
-          echo "Something went wrong while inserting your entry.".$e->getMessage()."<br>";
+          $result['insert'] = "The record was not inserted.".$e->getMessage()."<br>";
 
         }
-        return $this->pdo->lastInsertId();
+        $result['lastID'] = $this->pdo->lastInsertId();
+        return $result;
       }
 
       function prepared_update($table, $data) {
@@ -77,26 +79,26 @@
 
           $this->moveElement($values,0,count($values)-1);
 
-         $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
-         $IDKey = $this ->escape_mysql_identifier($IDKey);
+          $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
+          $IDKey = $this ->escape_mysql_identifier($IDKey);
 
           $keys = implode(" = ?, ", $keys);
           $keys = $keys." = ?";
           $IDKey = $IDKey." = ?";
           $table = $this ->escape_mysql_identifier($table);
-
           $sql = "UPDATE $table SET $keys WHERE $IDKey";
           $update = $this->pdo->prepare($sql)->execute($values);
 
           if($update){
-            echo "Your entry was updated <br>";
-          } else {
-            echo "Something went wrong while updating your entry.<br>";
+            $result='<div class="alert alert-success">The record was successfully updated.<br></div>';
           }
-
+          else{
+            $result='<div class="alert alert-danger"> The record was not updated.<br></div>';
+          }
         } catch (PDOException $e) {
-          echo "Something went wrong while updating your entry.".$e->getMessage()."<br>";
+          $result = "The record was not updated.".$e->getMessage()."<br>";
         }
+        return $result;
       }
 
       function unique_multidim_array($array, $key) {
@@ -301,7 +303,7 @@
       }
 
       function getCountPregnancyPresentData($motherID){
-        $sql = "SELECT COUNT(PresPreagnancyID) FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
+        $sql = "SELECT COUNT(PresPregnancyID) FROM medicalpresentpregnancy WHERE fk_MotherID = ?";
         $smt = $this->pdo->prepare($sql);
         $smt->execute([$motherID]);
         $data = $smt->fetch();

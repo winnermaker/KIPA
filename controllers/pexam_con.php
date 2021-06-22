@@ -15,55 +15,63 @@
             $check = $controller->checkIfEntryExsits('medicalpexam',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
             if(!$check){
               $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-              $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata);
+              $res = $controller -> prepared_insert('medicalpexam',$pexamdata);
+              $pexamID = $res['lastID'];
+              $result = $res['insert'];
 
               if($pexamObj->checkGenitals() == 0){
                   //female
                   $gendata = $pexamObj->getParamsFemale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                  $res = $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                  $result = $res['insert'];
 
               } elseif($pexamObj->checkGenitals() == 1){
                   //male
                   $gendata = $pexamObj->getParamsMale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $res = $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $result = $res['insert'];
 
               } elseif($pexamObj->checkGenitals() == 2){
                   //other
                   $gendata = $pexamObj->getParamsFemale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                  $res = $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                  $result = $res['insert'];
 
                   $gendata = $pexamObj->getParamsMale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $res = $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $result = $res['insert'];
               }
             }else {
               echo "There already is a Physical Examination Entry for this Patient.";
             }
           }else {
-            $controller -> prepared_update('medicalpexam',$pexamdata);
+            $result = $controller -> prepared_update('medicalpexam',$pexamdata);
 
             if($pexamObj->checkGenitals() === 0){
               //female
               $pexamdataF = $pexamObj->getParamsFemale();
               $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
               if($count){
-                $controller -> prepared_update('MedicalGenFemale',$pexamdataF);
+                $result = $controller -> prepared_update('MedicalGenFemale',$pexamdataF);
               }else {
                 $pexamdataF['fk_PEXAMID'] = $pexamdata['PEXAMID'];
-                $controller -> prepared_insert('MedicalGenFemale',$pexamdataF);
+                $res = $controller -> prepared_insert('MedicalGenFemale',$pexamdataF);
+                $result = $res['insert'];
               }
             }elseif($pexamObj->checkGenitals() === 1){
               //male
               $pexamdataM = $pexamObj->getParamsMale();
               $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
               if($count){
-                $controller -> prepared_update('MedicalGenMale',$pexamdataM);
+                $result = $controller -> prepared_update('MedicalGenMale',$pexamdataM);
               }else {
                 $pexamdataM['fk_PEXAMID'] = $pexamdata['PEXAMID'];
-                $controller -> prepared_insert('MedicalGenMale',$pexamdataM);
+                $res = $controller -> prepared_insert('MedicalGenMale',$pexamdataM);
+                $result = $res['insert'];
               }
 
             } elseif($pexamObj->checkGenitals() === 2){
@@ -71,18 +79,20 @@
               $pexamdataF = $pexamObj->getParamsFemale();
               $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
               if($count){
-                $controller -> prepared_update('MedicalGenFemale',$pexamdataF);
+                $result = $controller -> prepared_update('MedicalGenFemale',$pexamdataF);
               }else {
                 $pexamdataF['fk_PEXAMID'] = $pexamdata['PEXAMID'];
-                $controller -> prepared_insert('MedicalGenFemale',$pexamdataF);
+                $res = $controller -> prepared_insert('MedicalGenFemale',$pexamdataF);
+                $result = $res['insert'];
               }
               $pexamdataM = $pexamObj->getParamsMale();
               $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
               if($count){
-                $controller -> prepared_update('MedicalGenMale',$pexamdataM);
+                $result = $controller -> prepared_update('MedicalGenMale',$pexamdataM);
               }else {
                 $pexamdataM['fk_PEXAMID'] = $pexamdata['PEXAMID'];
-                $controller -> prepared_insert('MedicalGenMale',$pexamdataM);
+                $res = $controller -> prepared_insert('MedicalGenMale',$pexamdataM);
+                $result = $res['insert'];
               }
             }
           }

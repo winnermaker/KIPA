@@ -15,17 +15,21 @@
           $check = $controller->checkIfEntryExsits('medicalpregnancymain',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
           if(!$check){
             $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-            $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
+            $res = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
+            $motherID = $res['lastID'];
+            $result = $res['insert'];
             if ($pregnancyObj->checkPresentPregnancy()) {
-              $pregdata = $pregnancyObj->getPresentPregnancy();
-              $pregdata['fk_MotherID'] = $motherID;
-              $controller -> prepared_insert('medicalpresentpregnancy',$pregdata);
+              $pregdataPres = $pregnancyObj->getPresentPregnancy();
+              $pregdataPres['fk_MotherID'] = $motherID;
+              $res = $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
+              $result = $res['insert'];
             }
             if ($pregnancyObj->checkPreviousPregnancy()) {
-              $pregdata = $pregnancyObj->getPreviousPregnancy();
+              $pregdataP = $pregnancyObj->getPreviousPregnancy();
               for($i=0;$i<count($pregdata);$i++){
-                $pregdata[$i]['fk_MotherID'] = $motherID;
-                $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i]);
+                $pregdataP[$i]['fk_MotherID'] = $motherID;
+                $res = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
+                $result = $res['insert'];
               }
             }
           }else {
@@ -34,13 +38,13 @@
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);
           if ($pregnancyObj->checkPresentPregnancy()) {
-            $pregdataP = $pregnancyObj->getPresentPregnancy();
+            $pregdataPres = $pregnancyObj->getPresentPregnancy();
             $count = (int) $controller->getCountPregnancyPresentData($pregdata['MotherID']);
             if($count){
-              $controller -> prepared_update('medicalpresentpregnancy',$pregdataP);
+              $controller -> prepared_update('medicalpresentpregnancy',$pregdataPres);
             }else {
-              $pregdataP['fk_MotherID'] =  $pregdata['MotherID'];
-              $controller -> prepared_insert('medicalpresentpregnancy',$pregdataP);
+              $pregdataPres['fk_MotherID'] =  $pregdata['MotherID'];
+              $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
             }
           }
           if ($pregnancyObj->checkPreviousPregnancy()) {

@@ -5,7 +5,6 @@
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
 
       $arrayNames = $controller->getChildDataForSearch();
-
   ?>
   </head>
   <body>
@@ -17,7 +16,7 @@
               <img src="/kipa/views/img/logo2.png" class="pb-1"  alt="logo" width="50" height="35">
             </a>
             <a class="nav-link text-white" href="listOfPatients_con.php">List of Patients</a>
-            <a class="nav-link text-white" href="patient_con.php">Forms</a>
+            <a class="nav-link text-white" href="patient_con.php" onclick="clearCookies()">Forms</a>
           </div>
         </div>
 
@@ -27,16 +26,16 @@
               <datalist id='patientsdatalistOptions'>
               <?php
                 if(isset($arrayNames)){
-                  foreach($arrayNames as $key => $value){ 
+                  foreach($arrayNames as $key => $value){
               ?>
                       <option data-value="<?php echo $key;?>" data-id="<?php echo $value['medicalID'];?>" value="<?php echo $value['names']; ?>"></option>
-                      
+
                 <?php
                       }
                   }
                 ?>
                 </datalist>
-              
+
 
               <button type="submit" class="btn btn-success">Search</button>
             </div>
@@ -55,6 +54,13 @@
               location.href = 'patient_con.php?childrenID=' + value + '&medicalID=' + medicalID;
               return false;
           }
+        </script>
+        <script>
+        function clearCookies(){
+          document.cookie = 'childIDCookie' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+          document.cookie = 'medicalIDCookie' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+         }
+
         </script>
     </nav>
   </body>

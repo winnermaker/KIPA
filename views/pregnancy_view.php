@@ -8,12 +8,15 @@
     ?>
     <title>Pregnancy</title>
   </head>
-  <body onload="createButton()">
+  <body>
     <div class="container">
+      <div class="form-group row" id="feedbackMessage">
+          <div class="col">
+            <?php echo (isset($result))?$result:''; ?>
+          </div>
+      </div>
         <h1 class="mt-3">Pregnancy</h1>
         <?php require 'formsHeadline.php' ?>
-
-
         <form action="pregnancy_con.php" method="post" class="needs-validation" novalidate>
             <input type="hidden" id="motherID" name="motherID" value="<?php echo (isset($pregnancyData['MotherID']))?$pregnancyData['MotherID']:'';?>">
 
@@ -69,7 +72,7 @@
 
             <h3 class="mt-5">Present Pregnancy</h3>
 
-            <input type="hidden" id="presentPregnancyID" name="presentPregnancyID" value="<?php echo (isset($presentPregnancy['PresPreagnancyID']))?$presentPregnancy['PresPreagnancyID']:'';?>">
+            <input type="hidden" id="presentPregnancyID" name="presentPregnancyID" value="<?php echo (isset($presentPregnancy['PresPregnancyID']))?$presentPregnancy['PresPregnancyID']:'';?>">
 
             <div class="row mt-4">
                 <div class="form-group col-3">
@@ -121,14 +124,12 @@
                       $index = 0;
                       if(!empty($previousData)){
                       foreach($previousData as $row){
-                          var_dump($row);
-
                 ?>
-                <input type="iput" id="childID" name="presentPregnancyID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
+                <input type="iput" id="childID" name="childID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
                 <div class="row mt-4">
                         <div class="form-group col-2">
                             <label class="form-label" for="gender">Gender</label>
-                            <input type="text" class="form-control" name="gender[]" id="gender" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>">
+                            <input type="text" class="form-control" name="gender[]" id="gender" maxlength="1" value="<?php echo (isset($row['Gender']))?$row['Gender']:'';?>">
                         </div>
 
 
@@ -192,7 +193,7 @@
             <div class="row mt-4">
                 <div class="form-group col-2">
                     <label class="form-label" for="gender">Gender</label>
-                    <input type="text" class="form-control" name="gender[]" id="gender">
+                    <input type="text" class="form-control" name="gender[]" id="gender"  maxlength="1">
                 </div>
 
 

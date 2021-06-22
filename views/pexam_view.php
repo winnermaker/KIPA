@@ -10,11 +10,15 @@
   </head>
   <body>
     <div class="container">
+      <div class="form-group row" id="feedbackMessage">
+          <div class="col">
+            <?php echo (isset($result))?$result:''; ?>
+          </div>
+      </div>      
         <h1 class="mt-3">Physical Examination</h1>
-
-
         <form action="pexam_con.php" method="post" class="needs-validation" novalidate>
             <?php require 'formsHeadline.php' ?>
+
             <input type="hidden" id="pexamID" name="pexamID" value="<?php echo (isset($pexamData['PEXAMID']))?$pexamData['PEXAMID']:'';?>">
 
             <div class="row mt-5">

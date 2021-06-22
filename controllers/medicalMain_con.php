@@ -11,13 +11,14 @@
           $check = $controller->checkIfEntryExsits('medicalmain', $_COOKIE["childIDCookie"], 'fk_ChildrenID');
           $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
           if(!$check){
-            $controller -> prepared_insert('medicalmain',$data);
+            $res = $controller -> prepared_insert('medicalmain',$data);
+            $result = $res['insert'];
           }else {
             echo "There already is a Medical Main Entry for this Patient.";
           }
 
         }else {
-          $controller -> prepared_update('medicalmain',$data);
+          $result = $controller -> prepared_update('medicalmain',$data);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
