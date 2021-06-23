@@ -15,7 +15,9 @@
           $check = $controller->checkIfEntryExsits('socialhistory', $_COOKIE["childIDCookie"],'fk_ChildrenID');
           if(!$check){
             $socialdata['fk_ChildrenID']=$_COOKIE["childIDCookie"];
-            $socialID = $controller -> prepared_insert('socialhistory',$socialdata);
+            $res = $controller -> prepared_insert('socialhistory',$socialdata);
+            $socialID = $res['lastID'];
+            $result = $res['insert'];
             if ($socialHistoryObj->checkSiblings()){
               $sibsData = $socialHistoryObj->getAllSiblings();
               for($i=0; $i < count($sibsData); $i++) {

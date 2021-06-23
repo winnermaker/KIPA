@@ -12,7 +12,9 @@
         if (!$vaccinationObj->checkVaccinationID()){
           for($i=0; $i < count($vaccdata); $i++) {
             $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
-            $fk_VaccID[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+            $res[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
+            $fk_VaccID[$i] = $res[$i]['lastID'];
+            $result = $res[$i]['insert'];
           }
           for($i=0; $i < count($vaccdates); $i++) {
             $data['fk_VaccID'] = $fk_VaccID[$i];
