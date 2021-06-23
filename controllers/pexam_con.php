@@ -14,6 +14,9 @@
           if (!$pexamObj->checkPexamID()) {
             $check = $controller->checkIfEntryExsits('medicalpexam',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
             if(!$check){
+              $insert = false;
+              $insertMale = false;
+              $insertFemale = false;
               $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
               $res = $controller -> prepared_insert('medicalpexam',$pexamdata);
               $pexamID = $res['lastID'];
@@ -45,6 +48,15 @@
                   $res = $controller -> prepared_insert('MedicalGenMale',$gendata);
                   $result = $res['insert'];
               }
+
+                if(($insert) && ($insertMale || $insertFemale)){
+                  $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+                } elseif(!$insert){
+                  $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+                } elseif($insert){
+                  $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+                }
+
             }else {
               $result = '<div class="alert alert-danger"> There already is a Physical Examination Entry for this Patient.<br></div>';
             }

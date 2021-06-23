@@ -167,7 +167,7 @@
                 <div class="row mt-3">
                     <div class="form-group col-2">
                         <label class="form-label" for="healthy">Healthy</label>
-                        <input type="text" class="form-control" name="healthy[]" id="healthy" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>">
+                        <textarea class="form-control" name="healthy[]" id="healthy" rows="2"><?php echo (isset($row['Healthy'])) ? htmlspecialchars($row['Healthy']):''; ?></textarea>
                     </div>
 
                     <div class="form-group col">
@@ -231,7 +231,7 @@
             <div class="row mt-3">
                 <div class="form-group col-2">
                     <label class="form-label" for="healthy">Healthy</label>
-                    <input type="text" class="form-control" name="healthy[]" id="healthy" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>">
+                    <textarea class="form-control" name="healthy[]" id="healthy" rows="2"><?php echo (isset($row['Healthy'])) ? htmlspecialchars($row['Healthy']):''; ?></textarea>
                 </div>
 
                 <div class="form-group col">

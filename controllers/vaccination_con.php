@@ -10,6 +10,15 @@
         $vaccdata = $vaccinationObj->getParams();
         $vaccdates = $vaccinationObj->getParamsDates();
         if (!$vaccinationObj->checkVaccinationID()){
+          $insertData = false;
+          $insertFirstData = false;
+          $insertSecData = false;
+          $insertThirdData = false;
+          $insertFourthData = false;
+
+          $arrayCheckData = array();
+          $arrayCheckDates = array();
+
           for($i=0; $i < count($vaccdata); $i++) {
             $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
             $res[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
@@ -20,20 +29,30 @@
             $data['fk_VaccID'] = $fk_VaccID[$i];
             if($vaccdates[$i]['firstVaccDate'] != ""){
               $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data);
+              $controller->prepared_insert('medicalvaccdate',$data,$insertFirstData);
+              array_push($arrayCheckDates,$insertFirstData);
             }
             if ($vaccdates[$i]['secondVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data);
+              $controller->prepared_insert('medicalvaccdate',$data,$insertSecData);
+              array_push($arrayCheckDates,$insertSecData);
             }
             if ($vaccdates[$i]['thirdVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['thirdVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data);
+              $controller->prepared_insert('medicalvaccdate',$data,$insertThirdData);
+              array_push($arrayCheckDates,$insertThirdData);
             }
             if ($vaccdates[$i]['fourthVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data);
+              $controller->prepared_insert('medicalvaccdate',$data,$insertFourthData);
+              array_push($arrayCheckDates,$insertFourthData);
             }
+          }
+
+          if(!in_array(true,$arrayCheckData) && !in_array(true,$arrayCheckDates)){
+            $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+          } elseif(!in_array(false,$arrayCheckData)){
+            $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
           }
         }
         else {

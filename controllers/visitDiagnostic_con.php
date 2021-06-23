@@ -13,8 +13,17 @@
         $arrayVisitData = $visitObj->getParams();
 
         if (!$visitObj->checkVisitID()) {
+          $insert = false;
           $arrayVisitData['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-          $controller -> prepared_insert('medicalvisits',$arrayVisitData);
+          $controller -> prepared_insert('medicalvisits',$arrayVisitData,$insert);
+
+          if($insert){    
+            $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+          }
+          else {
+            $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+          }
+          
         }else {
           $controller -> prepared_update('medicalvisits',$arrayVisitData);
         }
