@@ -9,17 +9,6 @@
     <title>Vaccination</title>
   </head>
   <body onload="removeCssClass();">
-<<<<<<< HEAD
-    <div class="container mt-4">
-
-      <div class="form-group row" id="feedbackMessage">
-          <div class="col">
-              <?php echo (isset($result))?$result:''; ?>    
-          </div>
-      </div>
-
-        <h1>Vaccination</h1>
-=======
     <div class="container">
       <div class="form-group row" id="feedbackMessage">
           <div class="col">
@@ -27,7 +16,6 @@
           </div>
       </div>
         <h1 class="mt-3 ">Vaccination</h1>
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
         <?php require 'formsHeadline.php' ?>
 
         <form action="vaccination_con.php" method="post" class="needs-validation" novalidate>

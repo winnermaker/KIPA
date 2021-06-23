@@ -19,11 +19,7 @@
     <div class="container mt-4">
       <div class="form-group row" id="feedbackMessage">
           <div class="col">
-<<<<<<< HEAD
-              <?php echo (isset($result))?$result:''; ?>    
-=======
             <?php echo (isset($result))?$result:''; ?>
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
           </div>
       </div>
       
