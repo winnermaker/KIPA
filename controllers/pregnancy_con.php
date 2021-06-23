@@ -42,11 +42,7 @@
               $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
             }
           }else {
-<<<<<<< HEAD
-            $result='<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.</div>';
-=======
             $result = '<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.<br></div>';
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
           }
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);
