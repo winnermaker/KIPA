@@ -34,7 +34,7 @@
         return "`".str_replace("`", "``", $field)."`";
       }
 
-      function prepared_insert($table, $data) {
+      function prepared_insert($table, $data,&$insert) {
         //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
         try{
           $keys = array_keys($data);
@@ -52,12 +52,6 @@
           }elseif($table == $this ->escape_mysql_identifier('medicalmain')){
             $ID = $this->pdo->lastInsertId();
             setcookie ("medicalIDCookie" , (int)$ID);
-          }
-
-          if($insert){
-            echo "Your Entry was inserted. <br>";
-          } else {
-            echo "Something went wrong while inserting your entry.<br>";
           }
         }catch(PDOException $e){
           echo "Something went wrong while inserting your entry.".$e->getMessage()."<br>";

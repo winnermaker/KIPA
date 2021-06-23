@@ -14,22 +14,31 @@
         if (!$pregnancyObj->checkPregnancyID()) {
           $check = $controller->checkIfEntryExsits('medicalpregnancymain',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
           if(!$check){
+            $insertMain = false;
+            $insertPresent = false;
+            $insertPrevious = false;
             $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-            $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
+            $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata,$insertMain);
             if ($pregnancyObj->checkPresentPregnancy()) {
               $pregdata = $pregnancyObj->getPresentPregnancy();
               $pregdata['fk_MotherID'] = $motherID;
-              $controller -> prepared_insert('medicalpresentpregnancy',$pregdata);
+              $controller -> prepared_insert('medicalpresentpregnancy',$pregdata,$insertPresent);
             }
             if ($pregnancyObj->checkPreviousPregnancy()) {
               $pregdata = $pregnancyObj->getPreviousPregnancy();
               for($i=0;$i<count($pregdata);$i++){
                 $pregdata[$i]['fk_MotherID'] = $motherID;
-                $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i]);
+                $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i],$insertPrevious);
               }
             }
+
+            if(!$insertMain && !$insertPresent && !$insertPrevious){
+              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+            } elseif($insertMain || $insertPresent || $insertPrevious){
+              $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+            }
           }else {
-            echo "There already is a Pregnancy Entry for this Patient.";
+            $result='<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.</div>';
           }
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);

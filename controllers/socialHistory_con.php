@@ -14,17 +14,34 @@
         if(!$socialHistoryObj->checkSocialHistoryID()){
           $check = $controller->checkIfEntryExsits('socialhistory', $_COOKIE["childIDCookie"],'fk_ChildrenID');
           if(!$check){
+            $insertData = false;
+            $insertSiblings = false;
+            $arrayCheckInsert = array();
+
             $socialdata['fk_ChildrenID']=$_COOKIE["childIDCookie"];
-            $socialID = $controller -> prepared_insert('socialhistory',$socialdata);
+            $socialID = $controller -> prepared_insert('socialhistory',$socialdata,$insertData);
             if ($socialHistoryObj->checkSiblings()){
               $sibsData = $socialHistoryObj->getAllSiblings();
               for($i=0; $i < count($sibsData); $i++) {
                 $sibsData[$i]['fk_SocialID'] = $socialID;
-                $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+                $controller->prepared_insert('socialsiblings',$sibsData[$i],$insertSiblings);
+
+                array_push($arrayCheckInsert,$insertSiblings);
               }
             }
+
+            if($insertData && !in_array(false,$arrayCheckInsert)){
+              $result='<div class="alert alert-success">Perfect !!! The record for Social Data and Siblings was successfully inserted</div>';
+             } else if(!$insertData && !in_array(true,$arrayCheckInsert)){
+              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+            }  else if ($insertData){
+              $result='<div class="alert alert-success">Perfect !!! The record for Social Data was successfully inserted</div>';
+            } else if(!$insertData){
+              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+            }
+
           }else {
-            echo "There is already a Social History Entry for this Patient.";
+            $result='<div class="alert alert-danger">There is already a Social History Entry for this Patient.</div>';
           }
         }
         else {

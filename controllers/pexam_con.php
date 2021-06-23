@@ -14,33 +14,45 @@
           if (!$pexamObj->checkPexamID()) {
             $check = $controller->checkIfEntryExsits('medicalpexam',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
             if(!$check){
+              $insert = false;
+              $insertMale = false;
+              $insertFemale = false;
               $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-              $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata);
+              $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata,$insert);
 
               if($pexamObj->checkGenitals() == 0){
                   //female
                   $gendata = $pexamObj->getParamsFemale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                  $controller -> prepared_insert('MedicalGenFemale',$gendata,$insertFemale);
 
               } elseif($pexamObj->checkGenitals() == 1){
                   //male
                   $gendata = $pexamObj->getParamsMale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $controller -> prepared_insert('MedicalGenMale',$gendata,$insertMale);
 
               } elseif($pexamObj->checkGenitals() == 2){
                   //other
                   $gendata = $pexamObj->getParamsFemale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenFemale',$gendata);
+                  $controller -> prepared_insert('MedicalGenFemale',$gendata,$insertFemale);
 
                   $gendata = $pexamObj->getParamsMale();
                   $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenMale',$gendata);
+                  $controller -> prepared_insert('MedicalGenMale',$gendata,$insertMale);
               }
+
+                if(($insert) && ($insertMale || $insertFemale)){
+                  $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+                } elseif(!$insert){
+                  $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
+                } elseif($insert){
+                  $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
+                }
+
             }else {
-              echo "There already is a Physical Examination Entry for this Patient.";
+              $result='<div class="alert alert-danger">There already is a Physical Examination Entry for this Patient.</div>';
             }
           }else {
             $controller -> prepared_update('medicalpexam',$pexamdata);

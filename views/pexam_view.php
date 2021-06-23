@@ -9,8 +9,15 @@
     <title>Physical Examination</title>
   </head>
   <body>
-    <div class="container">
-        <h1 class="mt-3">Physical Examination</h1>
+    <div class="container mt-4">
+
+        <div class="form-group row" id="feedbackMessage">
+            <div class="col">
+                <?php echo (isset($result))?$result:''; ?>    
+            </div>
+        </div>
+
+        <h1>Physical Examination</h1>
 
 
         <form action="pexam_con.php" method="post" class="needs-validation" novalidate>

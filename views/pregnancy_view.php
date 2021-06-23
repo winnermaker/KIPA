@@ -9,8 +9,14 @@
     <title>Pregnancy</title>
   </head>
   <body onload="createButton()">
-    <div class="container">
-        <h1 class="mt-3">Pregnancy</h1>
+    <div class="container mt-4">
+
+        <div class="form-group row" id="feedbackMessage">
+            <div class="col">
+                <?php echo (isset($result))?$result:''; ?>    
+            </div>
+        </div>
+        <h1>Pregnancy</h1>
         <?php require 'formsHeadline.php' ?>
 
 
@@ -166,7 +172,7 @@
                 <div class="row mt-3">
                     <div class="form-group col-2">
                         <label class="form-label" for="healthy">Healthy</label>
-                        <input type="text" class="form-control" name="healthy[]" id="healthy" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>">
+                        <textarea class="form-control" name="healthy[]" id="healthy" rows="2"><?php echo (isset($row['Healthy'])) ? htmlspecialchars($row['Healthy']):''; ?></textarea>
                     </div>
 
                     <div class="form-group col">
@@ -230,7 +236,7 @@
             <div class="row mt-3">
                 <div class="form-group col-2">
                     <label class="form-label" for="healthy">Healthy</label>
-                    <input type="text" class="form-control" name="healthy[]" id="healthy" value="<?php echo (isset($row['Healthy']))?$row['Healthy']:'';?>">
+                    <textarea class="form-control" name="healthy[]" id="healthy" rows="2"><?php echo (isset($row['Healthy'])) ? htmlspecialchars($row['Healthy']):''; ?></textarea>
                 </div>
 
                 <div class="form-group col">
