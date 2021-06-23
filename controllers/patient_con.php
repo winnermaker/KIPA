@@ -26,15 +26,18 @@
       }
     }
     if(!$patientObj->checkPatientID()){
-        $res = $controller -> prepared_insert('childrenmain',$data);
-        $result = $res['insert'];
+      if (isset($_COOKIE['medicalIDCookie'])) {
+          setcookie('medicalIDCookie',"" ,time() - 3600);
+      }
+      $res = $controller -> prepared_insert('childrenmain',$data);
+      $result = $res['insert'];
     }
     else{
         $result = $controller -> prepared_update('childrenmain',$data);
       }
 
   }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-    if(isset($_GET['childrenID'])){
+    if(isset($_GET['childrenID'])&& $_GET['childrenID'] != 'false' && $_GET['childrenID'] != "undefined"){
       $childData = $controller->getChildData($_GET['childrenID']);
       setcookie ("childIDCookie" , (int)$_GET['childrenID']);
       if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && isset($_GET['medicalID'])){

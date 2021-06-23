@@ -14,7 +14,7 @@
             $res = $controller -> prepared_insert('medicalmain',$data);
             $result = $res['insert'];
           }else {
-            echo "There already is a Medical Main Entry for this Patient.";
+            $result = '<div class="alert alert-danger">There already is a Medical Main Entry for this Patient.<br></div>';
           }
 
         }else {

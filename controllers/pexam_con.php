@@ -46,7 +46,7 @@
                   $result = $res['insert'];
               }
             }else {
-              echo "There already is a Physical Examination Entry for this Patient.";
+              $result = '<div class="alert alert-danger"> There already is a Physical Examination Entry for this Patient.<br></div>';
             }
           }else {
             $result = $controller -> prepared_update('medicalpexam',$pexamdata);
@@ -96,6 +96,8 @@
               }
             }
           }
+        }else {
+          $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Physical Examination Record.<br></div>';
         }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
       if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
