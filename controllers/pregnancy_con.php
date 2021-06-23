@@ -18,17 +18,34 @@
             $insertPresent = false;
             $insertPrevious = false;
             $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
+<<<<<<< HEAD
             $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata,$insertMain);
             if ($pregnancyObj->checkPresentPregnancy()) {
               $pregdata = $pregnancyObj->getPresentPregnancy();
               $pregdata['fk_MotherID'] = $motherID;
               $controller -> prepared_insert('medicalpresentpregnancy',$pregdata,$insertPresent);
+=======
+            $res = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
+            $motherID = $res['lastID'];
+            $result = $res['insert'];
+            if ($pregnancyObj->checkPresentPregnancy()) {
+              $pregdataPres = $pregnancyObj->getPresentPregnancy();
+              $pregdataPres['fk_MotherID'] = $motherID;
+              $res = $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
+              $result = $res['insert'];
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
             }
             if ($pregnancyObj->checkPreviousPregnancy()) {
-              $pregdata = $pregnancyObj->getPreviousPregnancy();
+              $pregdataP = $pregnancyObj->getPreviousPregnancy();
               for($i=0;$i<count($pregdata);$i++){
+<<<<<<< HEAD
                 $pregdata[$i]['fk_MotherID'] = $motherID;
                 $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i],$insertPrevious);
+=======
+                $pregdataP[$i]['fk_MotherID'] = $motherID;
+                $res = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
+                $result = $res['insert'];
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
               }
             }
 
@@ -38,18 +55,22 @@
               $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
             }
           }else {
+<<<<<<< HEAD
             $result='<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.</div>';
+=======
+            $result = '<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.<br></div>';
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
           }
         }else {
           $controller -> prepared_update('medicalpregnancymain',$pregdata);
           if ($pregnancyObj->checkPresentPregnancy()) {
-            $pregdataP = $pregnancyObj->getPresentPregnancy();
+            $pregdataPres = $pregnancyObj->getPresentPregnancy();
             $count = (int) $controller->getCountPregnancyPresentData($pregdata['MotherID']);
             if($count){
-              $controller -> prepared_update('medicalpresentpregnancy',$pregdataP);
+              $controller -> prepared_update('medicalpresentpregnancy',$pregdataPres);
             }else {
-              $pregdataP['fk_MotherID'] =  $pregdata['MotherID'];
-              $controller -> prepared_insert('medicalpresentpregnancy',$pregdataP);
+              $pregdataPres['fk_MotherID'] =  $pregdata['MotherID'];
+              $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
             }
           }
           if ($pregnancyObj->checkPreviousPregnancy()) {
@@ -72,6 +93,8 @@
             }
           }
         }
+      }else {
+        $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Pregnancy Record.<br></div>';
       }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){

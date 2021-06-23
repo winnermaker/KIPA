@@ -11,6 +11,7 @@
           $check = $controller->checkIfEntryExsits('medicalmain', $_COOKIE["childIDCookie"], 'fk_ChildrenID');
           $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
           if(!$check){
+<<<<<<< HEAD
             $insert = false;
             $controller -> prepared_insert('medicalmain',$data,$insert);
 
@@ -23,10 +24,16 @@
             
           }else {
             $result='<div class="alert alert-danger">There already is a Medical Main Entry for this Patient.</div>';
+=======
+            $res = $controller -> prepared_insert('medicalmain',$data);
+            $result = $res['insert'];
+          }else {
+            $result = '<div class="alert alert-danger">There already is a Medical Main Entry for this Patient.<br></div>';
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
           }
 
         }else {
-          $controller -> prepared_update('medicalmain',$data);
+          $result = $controller -> prepared_update('medicalmain',$data);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){

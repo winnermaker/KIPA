@@ -18,11 +18,18 @@
       <input type="hidden" id="visitID" name="visitID" value="<?php echo (isset($visitData['VisitID']))?$visitData['VisitID']:'';?>" >
       <div class="container">
         <div class="form-group row" id="feedbackMessage">
+<<<<<<< HEAD
           <div class="col">
               <?php echo (isset($result))?$result:''; ?>    
           </div>
         </div>
         
+=======
+            <div class="col">
+              <?php echo (isset($result))?$result:''; ?>
+            </div>
+        </div>
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
         <h1 class="mt-3">Diagnostic Data</h1>
         <?php require 'formsHeadline.php' ?>
 

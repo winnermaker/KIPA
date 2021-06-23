@@ -19,7 +19,11 @@
     <div class="container mt-4">
       <div class="form-group row" id="feedbackMessage">
           <div class="col">
+<<<<<<< HEAD
               <?php echo (isset($result))?$result:''; ?>    
+=======
+            <?php echo (isset($result))?$result:''; ?>
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
           </div>
       </div>
       
@@ -44,7 +48,7 @@
 
             <div class="form-group col-4">
               <label class="form-label" for="nhiNumber">NHI Number</label>
-              <input type="number" class="form-control" name="nhiNumber" id="nhiNumber" value="<?php echo (isset($medicalData['NHINr']))?$medicalData['NHINr']:'';?>">
+              <input type="number" class="form-control" name="nhiNumber" id="nhiNumber" min="0" value="<?php echo (isset($medicalData['NHINr']))?$medicalData['NHINr']:'';?>">
             </div>
 
             <div class ="form-group col">
@@ -436,19 +440,19 @@
             if (!$("input[name='HepBPosRadios']:checked").val()) {
               $("#HepBPosRadioNotDone").prop('checked', true);
             }
-      
+
             if (!$("input[name='hivRadios']:checked").val()) {
               $("#hivPosRadioNotDone").prop('checked', true);
-            } 
+            }
 
             if (!$("input[name='TbposRadios']:checked").val()) {
               $("#TbPosRadioNotDone").prop('checked', true);
             }
-        
+
             if (!$("input[name='stdposRadios']:checked").val()) {
               $("#STDposRadioNotDone").prop('checked', true);
             }
-    
+
             if (!$("input[name='pregPosRadios']:checked").val()) {
               $("#pregPosRadioNotDone").prop('checked', true);
             }
@@ -461,7 +465,7 @@
               $("#G6DPRadiosRadioNotDone").prop('checked', true);
             }
 
-            
+
 
             if($('#HepBPosRadioYes').prop('checked')){
               $('#HepBPosCheckDate').removeAttr("disabled");
@@ -569,7 +573,7 @@
               $('#sickleCellType').val("");
               $('#sickleCellType').attr("disabled","disabled");
             }
-           
+
 
           });
 

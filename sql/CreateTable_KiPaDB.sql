@@ -38,7 +38,7 @@ create table if not exists SocialHistory
        SiblingID			int auto_increment	not null primary key,
        	fk_SocialID		int not null,
        Age					text,
-       Gender				text,
+       Gender				char,
        Alive				text,
        Healthy				text,
        SameParents				text,
@@ -141,7 +141,7 @@ create table if not exists MedicalPregnancyChildData
     EvDurP				text,
     durLabor			text,
     spont_CS_forceps	text,
-    Gender				text,
+    Gender				char,
     Healthy				text,
     Problems			text,
     Remarks 			text,
@@ -150,7 +150,7 @@ create table if not exists MedicalPregnancyChildData
 
 create table if not exists MedicalPresentPregnancy
 (
-	PresPreagnancyID 	int auto_increment	not null primary key,
+	PresPregnancyID 	int auto_increment	not null primary key,
     fk_MotherID 		int not null,
     GestationalAge		text,
     EstDelivery			date,

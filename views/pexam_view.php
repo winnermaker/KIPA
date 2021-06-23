@@ -9,6 +9,7 @@
     <title>Physical Examination</title>
   </head>
   <body>
+<<<<<<< HEAD
     <div class="container mt-4">
 
         <div class="form-group row" id="feedbackMessage">
@@ -20,8 +21,18 @@
         <h1>Physical Examination</h1>
 
 
+=======
+    <div class="container">
+      <div class="form-group row" id="feedbackMessage">
+          <div class="col">
+            <?php echo (isset($result))?$result:''; ?>
+          </div>
+      </div>      
+        <h1 class="mt-3">Physical Examination</h1>
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
         <form action="pexam_con.php" method="post" class="needs-validation" novalidate>
             <?php require 'formsHeadline.php' ?>
+
             <input type="hidden" id="pexamID" name="pexamID" value="<?php echo (isset($pexamData['PEXAMID']))?$pexamData['PEXAMID']:'';?>">
 
             <div class="row mt-5">

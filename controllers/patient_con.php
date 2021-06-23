@@ -25,6 +25,7 @@
         $data['PicType'] = null;
       }
     }
+<<<<<<< HEAD
       if(!$patientObj->checkPatientID()){
         $insert = false;
         $lastInsertedID = $controller -> prepared_insert('childrenmain',$data,$insert);
@@ -36,13 +37,21 @@
           $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
         }
 
+=======
+    if(!$patientObj->checkPatientID()){
+      if (isset($_COOKIE['medicalIDCookie'])) {
+          setcookie('medicalIDCookie',"" ,time() - 3600);
+      }
+      $res = $controller -> prepared_insert('childrenmain',$data);
+      $result = $res['insert'];
+>>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
     }
-      else {
-        $controller -> prepared_update('childrenmain',$data);
+    else{
+        $result = $controller -> prepared_update('childrenmain',$data);
       }
 
   }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-    if(isset($_GET['childrenID'])){
+    if(isset($_GET['childrenID'])&& $_GET['childrenID'] != 'false' && $_GET['childrenID'] != "undefined"){
       $childData = $controller->getChildData($_GET['childrenID']);
       setcookie ("childIDCookie" , (int)$_GET['childrenID']);
       if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && isset($_GET['medicalID'])){

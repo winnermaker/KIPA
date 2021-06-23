@@ -77,7 +77,6 @@
                     <tr>
                         <th scope="row"><?php echo $index; ?></th>
                         <td name="childrenID" hidden><?php echo (isset($row['ChildrenID']))?$row['ChildrenID']:'';?></td>
-                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
                         <td name="firstName"><?php echo (isset($row['FirstName']))?$row['FirstName']:'';?></td>
                         <td name="lastName"><?php echo (isset($row['LastName']))?$row['LastName']:'';?></td>
                         <td name="callNames"><?php echo (isset($row['CallNames']))?$row['CallNames']:'';?></td>
@@ -87,6 +86,7 @@
                         <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
+                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'false';?></td>
                         <td name="nextVaccDate"><?php echo (isset($row['nextVaccDate'])) ? date("d-m-Y", strtotime($row['nextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
@@ -99,10 +99,10 @@
                         </script>
                         </td>
                     </tr>
-                    <?php $index++; } 
+                    <?php $index++; }
                     } else if(isset($childDataReviewSoon)){
                         $index = 1;
-                        foreach($childDataReviewSoon as $row){   
+                        foreach($childDataReviewSoon as $row){
                     ?>
 
                     <tr>
@@ -117,7 +117,7 @@
                         <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
-                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
+                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'false';?></td>
                         <td name="nextVaccDate"><?php echo (isset($row['nextVaccDate'])) ? date("d-m-Y", strtotime($row['nextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
@@ -130,7 +130,7 @@
                         </script>
                     </tr>
 
-                    <?php $index++; } 
+                    <?php $index++; }
                         } else if(isset($childDataVaccSoon)) {
                             $index = 1;
                             foreach($childDataVaccSoon as $row){
@@ -148,7 +148,7 @@
                         <td name="admDate"><?php echo (isset($row['AdmDate'])) ? date("d-m-Y", strtotime($row['AdmDate'])) :'';?></td>
                         <td name="disDate"><?php echo (isset($row['DisDate'])) ? date("d-m-Y", strtotime($row['DisDate'])) :'';?></td>
                         <td name="reviewOn"><?php echo (isset($row['ReviewOn']))? date("d-m-Y", strtotime($row['ReviewOn'])) :'';?></td>
-                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'';?></td>
+                        <td name="medicalID" hidden><?php echo (isset($row['MedicalID']))?$row['MedicalID']:'false';?></td>
                         <td name="nextVaccDate"><?php echo (isset($row['nextVaccDate'])) ? date("d-m-Y", strtotime($row['nextVaccDate'])) :'';?></td>
                         <td>
                             <div style="">
@@ -190,13 +190,13 @@
             if($('#patientsReviewDate').is(':checked')){
                 $('#allPatients').prop('checked', false);
                 $('#patientsReviewDate').prop('checked', true);
-                $('#patientsNextVaccDate').prop('checked', false); 
+                $('#patientsNextVaccDate').prop('checked', false);
             }
 
             if($('#patientsNextVaccDate').is(':checked')){
                 $('#allPatients').prop('checked', false);
                 $('#patientsReviewDate').prop('checked', false);
-                $('#patientsNextVaccDate').prop('checked', true); 
+                $('#patientsNextVaccDate').prop('checked', true);
             }
         };
 

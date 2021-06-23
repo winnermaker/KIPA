@@ -29,8 +29,6 @@
   <body>
     <form action="registration_con.php" method="post">
             <div class="container mt-5">
-
-
                     <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="330" height="150" >
                     <h2 class="mt-3 col">Registration</h2>
                     <input type="hidden" id="userID" name="userID">

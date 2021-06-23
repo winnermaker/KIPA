@@ -145,6 +145,9 @@
           }
         }
       }
+      else {
+        $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Vaccination Record.<br></div>';
+      }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
       if($_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $vaccData = $controller->getVacc($_GET['medicalID']);
