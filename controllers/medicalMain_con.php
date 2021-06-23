@@ -11,25 +11,10 @@
           $check = $controller->checkIfEntryExsits('medicalmain', $_COOKIE["childIDCookie"], 'fk_ChildrenID');
           $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
           if(!$check){
-<<<<<<< HEAD
-            $insert = false;
-            $controller -> prepared_insert('medicalmain',$data,$insert);
-
-            if($insert){    
-              $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
-            }
-            else {
-              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-            }
-            
-          }else {
-            $result='<div class="alert alert-danger">There already is a Medical Main Entry for this Patient.</div>';
-=======
             $res = $controller -> prepared_insert('medicalmain',$data);
             $result = $res['insert'];
           }else {
             $result = '<div class="alert alert-danger">There already is a Medical Main Entry for this Patient.<br></div>';
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
           }
 
         }else {

@@ -18,47 +18,28 @@
               $insertMale = false;
               $insertFemale = false;
               $pexamdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-<<<<<<< HEAD
-              $pexamID = $controller -> prepared_insert('medicalpexam',$pexamdata,$insert);
-=======
               $res = $controller -> prepared_insert('medicalpexam',$pexamdata);
               $pexamID = $res['lastID'];
               $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
 
               if($pexamObj->checkGenitals() == 0){
                   //female
                   $gendata = $pexamObj->getParamsFemale();
                   $gendata['fk_PEXAMID']=$pexamID;
-<<<<<<< HEAD
-                  $controller -> prepared_insert('MedicalGenFemale',$gendata,$insertFemale);
-=======
                   $res = $controller -> prepared_insert('MedicalGenFemale',$gendata);
                   $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
 
               } elseif($pexamObj->checkGenitals() == 1){
                   //male
                   $gendata = $pexamObj->getParamsMale();
                   $gendata['fk_PEXAMID']=$pexamID;
-<<<<<<< HEAD
-                  $controller -> prepared_insert('MedicalGenMale',$gendata,$insertMale);
-=======
                   $res = $controller -> prepared_insert('MedicalGenMale',$gendata);
                   $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
 
               } elseif($pexamObj->checkGenitals() == 2){
                   //other
                   $gendata = $pexamObj->getParamsFemale();
                   $gendata['fk_PEXAMID']=$pexamID;
-<<<<<<< HEAD
-                  $controller -> prepared_insert('MedicalGenFemale',$gendata,$insertFemale);
-
-                  $gendata = $pexamObj->getParamsMale();
-                  $gendata['fk_PEXAMID']=$pexamID;
-                  $controller -> prepared_insert('MedicalGenMale',$gendata,$insertMale);
-=======
                   $res = $controller -> prepared_insert('MedicalGenFemale',$gendata);
                   $result = $res['insert'];
 
@@ -66,7 +47,6 @@
                   $gendata['fk_PEXAMID']=$pexamID;
                   $res = $controller -> prepared_insert('MedicalGenMale',$gendata);
                   $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
               }
 
                 if(($insert) && ($insertMale || $insertFemale)){
@@ -78,11 +58,7 @@
                 }
 
             }else {
-<<<<<<< HEAD
-              $result='<div class="alert alert-danger">There already is a Physical Examination Entry for this Patient.</div>';
-=======
               $result = '<div class="alert alert-danger"> There already is a Physical Examination Entry for this Patient.<br></div>';
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
             }
           }else {
             $result = $controller -> prepared_update('medicalpexam',$pexamdata);

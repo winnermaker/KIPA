@@ -53,8 +53,6 @@
             $ID = $this->pdo->lastInsertId();
             setcookie ("medicalIDCookie" , (int)$ID);
           }
-<<<<<<< HEAD
-=======
 
           if($insert){
             $result['insert'] ='<div class="alert alert-success">The record was successfully inserted.<br></div>';
@@ -62,7 +60,6 @@
           else{
             $result['insert'] ='<div class="alert alert-danger"> The record was not inserted.<br></div>';
           }
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
         }catch(PDOException $e){
           $result['insert'] = "The record was not inserted.".$e->getMessage()."<br>";
 

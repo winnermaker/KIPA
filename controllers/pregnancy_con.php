@@ -18,13 +18,6 @@
             $insertPresent = false;
             $insertPrevious = false;
             $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-<<<<<<< HEAD
-            $motherID = $controller -> prepared_insert('medicalpregnancymain',$pregdata,$insertMain);
-            if ($pregnancyObj->checkPresentPregnancy()) {
-              $pregdata = $pregnancyObj->getPresentPregnancy();
-              $pregdata['fk_MotherID'] = $motherID;
-              $controller -> prepared_insert('medicalpresentpregnancy',$pregdata,$insertPresent);
-=======
             $res = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
             $motherID = $res['lastID'];
             $result = $res['insert'];
@@ -33,19 +26,13 @@
               $pregdataPres['fk_MotherID'] = $motherID;
               $res = $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
               $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
             }
             if ($pregnancyObj->checkPreviousPregnancy()) {
               $pregdataP = $pregnancyObj->getPreviousPregnancy();
               for($i=0;$i<count($pregdata);$i++){
-<<<<<<< HEAD
-                $pregdata[$i]['fk_MotherID'] = $motherID;
-                $controller -> prepared_insert('medicalpregnancychilddata',$pregdata[$i],$insertPrevious);
-=======
                 $pregdataP[$i]['fk_MotherID'] = $motherID;
                 $res = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
                 $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
               }
             }
 

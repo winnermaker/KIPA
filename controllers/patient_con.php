@@ -25,26 +25,12 @@
         $data['PicType'] = null;
       }
     }
-<<<<<<< HEAD
-      if(!$patientObj->checkPatientID()){
-        $insert = false;
-        $lastInsertedID = $controller -> prepared_insert('childrenmain',$data,$insert);
-
-        if($insert){    
-          $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
-        }
-        else {
-          $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-        }
-
-=======
     if(!$patientObj->checkPatientID()){
       if (isset($_COOKIE['medicalIDCookie'])) {
           setcookie('medicalIDCookie',"" ,time() - 3600);
       }
       $res = $controller -> prepared_insert('childrenmain',$data);
       $result = $res['insert'];
->>>>>>> 0115c6fec9da3d53d84f42789cc3553b9530ea39
     }
     else{
         $result = $controller -> prepared_update('childrenmain',$data);
