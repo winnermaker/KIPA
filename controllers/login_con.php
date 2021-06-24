@@ -20,7 +20,7 @@
         $message = $result['error'];
         echo "<script type='text/javascript'>alert('$message');</script>";
       }
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
 
     }
   }
