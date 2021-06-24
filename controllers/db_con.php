@@ -34,7 +34,7 @@
         return "`".str_replace("`", "``", $field)."`";
       }
 
-      function prepared_insert($table, $data,&$insert) {
+      function prepared_insert($table, $data) {
         //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
         try{
           $keys = array_keys($data);
