@@ -9,7 +9,7 @@
     <title>Pregnancy</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container mt-4">
       <div class="form-group row" id="feedbackMessage">
           <div class="col">
             <?php echo (isset($result))?$result:''; ?>

@@ -14,10 +14,6 @@
         if(!$socialHistoryObj->checkSocialHistoryID()){
           $check = $controller->checkIfEntryExsits('socialhistory', $_COOKIE["childIDCookie"],'fk_ChildrenID');
           if(!$check){
-            $insertData = false;
-            $insertSiblings = false;
-            $arrayCheckInsert = array();
-
             $socialdata['fk_ChildrenID']=$_COOKIE["childIDCookie"];
             $res = $controller -> prepared_insert('socialhistory',$socialdata);
             $socialID = $res['lastID'];
@@ -26,22 +22,9 @@
               $sibsData = $socialHistoryObj->getAllSiblings();
               for($i=0; $i < count($sibsData); $i++) {
                 $sibsData[$i]['fk_SocialID'] = $socialID;
-                $controller->prepared_insert('socialsiblings',$sibsData[$i],$insertSiblings);
-
-                array_push($arrayCheckInsert,$insertSiblings);
+                $controller->prepared_insert('socialsiblings',$sibsData[$i]);
               }
             }
-
-            if($insertData && !in_array(false,$arrayCheckInsert)){
-              $result='<div class="alert alert-success">Perfect !!! The record for Social Data and Siblings was successfully inserted</div>';
-             } else if(!$insertData && !in_array(true,$arrayCheckInsert)){
-              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-            }  else if ($insertData){
-              $result='<div class="alert alert-success">Perfect !!! The record for Social Data was successfully inserted</div>';
-            } else if(!$insertData){
-              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-            }
-
           }else {
             $result='<div class="alert alert-danger">There is already a Social History Entry for this Patient.</div>';
           }
@@ -69,7 +52,7 @@
           }
         }
       }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-        if($_GET['childrenID'] !== "false" && $_GET['childrenID'] != "undefined"){
+        if(isset($_GET['childrenID']) && $_GET['childrenID'] !== "false" && $_GET['childrenID'] != "undefined"){
           $socialData = $controller->getSocialHist($_GET['childrenID']);
           if(isset($socialData['siblings']) && $socialData['siblings']){
             $socialSibsData = $controller->getSocialSibling($socialData['SocialID']);

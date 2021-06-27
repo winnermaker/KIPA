@@ -10,15 +10,6 @@
         $vaccdata = $vaccinationObj->getParams();
         $vaccdates = $vaccinationObj->getParamsDates();
         if (!$vaccinationObj->checkVaccinationID()){
-          $insertData = false;
-          $insertFirstData = false;
-          $insertSecData = false;
-          $insertThirdData = false;
-          $insertFourthData = false;
-
-          $arrayCheckData = array();
-          $arrayCheckDates = array();
-
           for($i=0; $i < count($vaccdata); $i++) {
             $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
             $res[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
@@ -29,30 +20,20 @@
             $data['fk_VaccID'] = $fk_VaccID[$i];
             if($vaccdates[$i]['firstVaccDate'] != ""){
               $data['VaccDate'] = $vaccdates[$i]['firstVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data,$insertFirstData);
-              array_push($arrayCheckDates,$insertFirstData);
+              $controller->prepared_insert('medicalvaccdate',$data);
             }
             if ($vaccdates[$i]['secondVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['secondVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data,$insertSecData);
-              array_push($arrayCheckDates,$insertSecData);
+              $controller->prepared_insert('medicalvaccdate',$data);
             }
             if ($vaccdates[$i]['thirdVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['thirdVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data,$insertThirdData);
-              array_push($arrayCheckDates,$insertThirdData);
+              $controller->prepared_insert('medicalvaccdate',$data);
             }
             if ($vaccdates[$i]['fourthVaccDate'] != "") {
               $data['VaccDate'] = $vaccdates[$i]['fourthVaccDate'];
-              $controller->prepared_insert('medicalvaccdate',$data,$insertFourthData);
-              array_push($arrayCheckDates,$insertFourthData);
+              $controller->prepared_insert('medicalvaccdate',$data);
             }
-          }
-
-          if(!in_array(true,$arrayCheckData) && !in_array(true,$arrayCheckDates)){
-            $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-          } elseif(!in_array(false,$arrayCheckData)){
-            $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
           }
         }
         else {
@@ -150,7 +131,7 @@
         $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Vaccination Record.<br></div>';
       }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
+      if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $vaccData = $controller->getVacc($_GET['medicalID']);
         for ($i=0; $i < count($vaccData); $i++) {
           $vaccDates = $controller->getVaccDates($vaccData[$i]['VaccID']);

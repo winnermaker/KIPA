@@ -15,15 +15,8 @@
         if (!$visitObj->checkVisitID()) {
           $insert = false;
           $arrayVisitData['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
-          $controller -> prepared_insert('medicalvisits',$arrayVisitData,$insert);
+          $controller -> prepared_insert('medicalvisits',$arrayVisitData);
 
-          if($insert){    
-            $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
-          }
-          else {
-            $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-          }
-          
         }else {
           $controller -> prepared_update('medicalvisits',$arrayVisitData);
         }
@@ -32,7 +25,7 @@
         $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Visit Record.<br></div>';
       }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['visitID'] != "undefined" ){
+      if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['visitID'] != "undefined" ){
         $visitData = $controller->getVisitDiagnosticData($_GET['visitID']);
       }
     }

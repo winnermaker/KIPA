@@ -35,9 +35,7 @@
                   }
                 ?>
                 </datalist>
-
-
-              <button type="submit" class="btn btn-success">Search</button>
+              <button type="submit" class="btn btn-success" onclick="clearCookies()">Search</button>
             </div>
           </form>
 

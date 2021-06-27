@@ -22,7 +22,7 @@
 
         .logout{
           margin: auto;
-          padding: 10px;
+          padding: 20px;
           font-size: 25px;
         }
 
@@ -52,7 +52,7 @@
     <div class="logout">
       <a href="logout_con.php" class="logoutBtn">Logout</a>
     </div>
-    
+
     <div class="container mt-5">
       <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="330" height="150" >
       <h2 class="text mt-3 col">Welcome to Kinderparadise Database Application</h2>

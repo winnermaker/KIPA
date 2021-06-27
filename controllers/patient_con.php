@@ -37,7 +37,7 @@
       }
 
   }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-    if(isset($_GET['childrenID'])&& $_GET['childrenID'] != 'false' && $_GET['childrenID'] != "undefined"){
+    if(isset($_GET['childrenID']) && $_GET['childrenID'] != 'false' && $_GET['childrenID'] != "undefined"){
       $childData = $controller->getChildData($_GET['childrenID']);
       setcookie ("childIDCookie" , (int)$_GET['childrenID']);
       if($_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && isset($_GET['medicalID'])){

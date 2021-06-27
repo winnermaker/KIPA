@@ -21,7 +21,7 @@
           $result = $controller -> prepared_update('medicalmain',$data);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
+      if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $medicalData = $controller->getmedicaldata($_GET['childrenID']);
       }
     }

@@ -14,9 +14,6 @@
         if (!$pregnancyObj->checkPregnancyID()) {
           $check = $controller->checkIfEntryExsits('medicalpregnancymain',$_COOKIE["medicalIDCookie"],'fk_MedicalID');
           if(!$check){
-            $insertMain = false;
-            $insertPresent = false;
-            $insertPrevious = false;
             $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
             $res = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
             $motherID = $res['lastID'];
@@ -34,12 +31,6 @@
                 $res = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
                 $result = $res['insert'];
               }
-            }
-
-            if(!$insertMain && !$insertPresent && !$insertPrevious){
-              $result='<div class="alert alert-danger">Wrong!!! The record could not be inserted</div>';
-            } elseif($insertMain || $insertPresent || $insertPrevious){
-              $result='<div class="alert alert-success">Perfect !!! The record was successfully inserted</div>';
             }
           }else {
             $result = '<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.<br></div>';
@@ -80,7 +71,7 @@
         $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Pregnancy Record.<br></div>';
       }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
-      if($_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
+      if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $pregnancyData = $controller->getPregnancyMainData($_GET['medicalID']);
         if(!empty($pregnancyData)){
           $presentPregnancy = $controller->getPregnancyPresentData($pregnancyData['MotherID']);

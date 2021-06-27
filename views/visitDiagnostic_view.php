@@ -16,7 +16,7 @@
   <body>
     <form action="visitDiagnostic_con.php" method="post" class="needs-validation" novalidate>
       <input type="hidden" id="visitID" name="visitID" value="<?php echo (isset($visitData['VisitID']))?$visitData['VisitID']:'';?>" >
-      <div class="container">
+      <div class="container mt-4">
         <div class="form-group row" id="feedbackMessage">
             <div class="col">
               <?php echo (isset($result))?$result:''; ?>

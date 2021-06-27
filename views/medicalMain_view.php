@@ -22,7 +22,7 @@
             <?php echo (isset($result))?$result:''; ?>
           </div>
       </div>
-      
+
       <h1>Medical Main</h1>
       <?php require 'formsHeadline.php' ?>
 

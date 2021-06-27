@@ -60,6 +60,7 @@
 
         public function validateSiblings(){
             for ($i=0; $i < count($this->siblingsGender) ; $i++) {
+                $this->siblingID[$i] = !empty($this->siblingID[$i])  ? trim($this->siblingID[$i]) : null;
                 $this->siblingsGender[$i] = !empty($this->siblingsGender[$i])  ? trim($this->siblingsGender[$i]) : null;
                 $this->siblingsAge[$i] = !empty($this->siblingsAge[$i]) ? trim($this->siblingsAge[$i]) : null;
                 $this->siblingsHealthy[$i] = !empty($this->siblingsHealthy[$i]) ? trim($this->siblingsHealthy[$i]) : null;

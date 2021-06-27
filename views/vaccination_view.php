@@ -9,7 +9,7 @@
     <title>Vaccination</title>
   </head>
   <body onload="removeCssClass();">
-    <div class="container">
+    <div class="container mt-4">
       <div class="form-group row" id="feedbackMessage">
           <div class="col">
             <?php echo (isset($result))?$result:''; ?>
@@ -43,7 +43,7 @@
               <tr id="row">
                 <td style="display:none;"><input type="text" name="vaccinationID[]" class="form-control" value="<?php echo (isset($row['VaccID']))?$row['VaccID']:'';?>" ></td>
                 <td style="display:none;"><input type="text" name="vaccDateID[]" class="form-control" value="<?php echo (isset($row['VaccDateID']))?$row['VaccDateID']:'';?>" ></td>
-                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search..." value="<?php echo (isset($row['Vaccine']))?$row['Vaccine']:'';?>">
+                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search..." value="<?php echo (isset($row['Vaccine']))?$row['Vaccine']:'';?>" required>
                     <datalist id="vaccinedatalistOptions">
                         <option value="CSM">
                         <option value="ATS">
@@ -88,7 +88,7 @@
                 <tr id="row">
                 <td style="display:none;"><input type="text" name="vaccinationID[]" class="form-control"></td>
                 <td style="display:none;"><input type="text" name="vaccDateID[]" class="form-control"></td>
-                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search...">
+                <td><input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search..." required>
                     <datalist id="vaccinedatalistOptions">
                         <option value="CSM">
                         <option value="ATS">
@@ -160,7 +160,7 @@
               var cell6 = row.insertCell(5);
               var cell7 = row.insertCell(6);
 
-              cell1.innerHTML = '<input style="width:200px;" type="text" class="form-control" name="vaccineDataList[]">';
+              cell1.innerHTML = '<input style="width:200px;" class="form-control" list="vaccinedatalistOptions" name="vaccineDataList[]" id="vaccineDataList" placeholder="Type to search..." required>';
               cell2.innerHTML = '<input type="date" class="form-control" name="vaccDate1[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell3.innerHTML = '<input type="date" class="form-control" name="vaccDate2[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
               cell4.innerHTML = '<input type="date" class="form-control" name="vaccDate3[]" min="1900-04-01" max="2300-04-20"><div class="invalid-feedback">Please pick a valid Date</div>';
