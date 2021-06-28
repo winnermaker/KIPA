@@ -1,47 +1,54 @@
 create table if not exists ChildrenMain
 (
-   ChildrenID			int auto_increment	not null primary key, 
-   FirstName			varchar(100),
-   LastName				varchar(100),
-   CallNames			varchar(100),
+   ChildrenID			int auto_increment	not null primary key,
+   FirstName			text,
+   LastName				text,
+   CallNames			text,
    DOB					date,
    EDOB					date,
    Gender				char,
    AdmDate				date,
    DisDate				date,
    PicTaken				date,
-   Picture				text -- evtl BLOB
+   PicName      text,
+   PicType    text,
+   Picture		  mediumblob
    );
-   
+
 create table if not exists SocialHistory
 (
 	SocialID			int auto_increment	not null primary key,
-	fk_ChildrenID		int,
-    SocialDate			date,
+	fk_ChildrenID		int not null,
+    DateOfInvestigation			date,
     LivedWithWho		text,
     LivedWhere			text,
     ParentsAlive		text,
-    ParentsDiedWhen		text,
     ParentsLiveTogether	text,
     ParentsLivePeace	text,
-    ProfessSourceIncome	text,
+    AmountAndSourceOfIncome	text,
     IncomeForHowMany	text,
-    HowManySiblings		text,
-    SiblingsGender 		text,
-    SiblingsAge 		text,
-    SibAliveHealthy		text,
-    OneFatherOneMother	text,
-    NxtOfKin_Caretaker	text,
     Abuse				text,
     SexuallyActive		text,
-    FamilyPlanning		text,
+    siblings    boolean,
     foreign key (fk_ChildrenID) references childrenmain(ChildrenID) on delete no action
     );
-    
+
+    create table if not exists SocialSiblings
+    (
+       SiblingID			int auto_increment	not null primary key,
+       	fk_SocialID		int not null,
+       Age					text,
+       Gender				char,
+       Alive				text,
+       Healthy				text,
+       SameParents				text,
+       foreign key (fk_SocialID) references SocialHistory(SocialID) on delete no action
+       );
+
 create table if not exists MedicalMain
- ( 
+ (
 	MedicalID			int auto_increment	not null primary key,
-    fk_CHildrenID		int,
+    fk_CHildrenID		int not null,
     ImmuniCompl			boolean,
     Plan				text,
     HIVPos				boolean,
@@ -61,63 +68,61 @@ create table if not exists MedicalMain
     SickelCellPos		boolean,
     SickelCellType		char(2),
     G6DP				boolean,
-	Allergies			boolean,
     PregnancyHist		boolean,
     PregTestPos			boolean,
     PregTestDate		date,
     PhysicalAbuse		boolean,
-    SexualAnuse			boolean,
+    SexualAbuse			boolean,
+    SubstanceAbuse  boolean,
     Conditions			text,
     PermMedication		text,
-    NextVaccDate		date,
     ReviewOn			date,
-    Menarche			text,
+    OtherInfo   text,
+    MenstrualHist			text,
 	foreign key (fk_CHildrenID) references ChildrenMain(ChildrenID) on delete no action
     );
-    
+
 create table if not exists MedicalVisits
- ( 
+ (
 	VisitID				int auto_increment	not null primary key,
-    fk_MedicalID		int,
+    fk_MedicalID		int not null,
     VisitDate			date,
-	VisitType			varchar(200),
-    ExLocation			varchar(200),
-    ExCause				varchar(200),
-    PresComplaint		varchar(200),
-    HistPresComplaint	varchar(200),
+	VisitType			text,
+    ExLocation			text,
+    ExCause				text,
+    PresComplaint		text,
+    HistPresComplaint	text,
     PE					text,
     Plan				text,
     RVD					date,
     Medication			text,
     Remarks				text,
-    Therapy				text,
     Diagnosis			text,
-    DateAdd				date,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
-    );  
-  
+    );
+
 create table if not exists MedicalVacc
 (
   VaccID				int auto_increment	not null primary key,
-  fk_MedicalID			int,
+  fk_MedicalID			int not null,
   VaccRemarks			text,
-  Vaccine				varchar(100),
-  nxtVaccDate			date,
-  foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action  
+  Vaccine				text,
+  nextVaccDate			date,
+  foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
   );
 
 create table if not exists MedicalVaccDate
 (
 	VaccDateID			int auto_increment	not null primary key,
-    fk_VaccID			int,
+    fk_VaccID			int not null,
 	VaccDate			date,
     foreign key (fk_VaccID) references MedicalVacc(VaccID) on delete no action
     );
-    
+
  create table if not exists MedicalPregnancyMain
  (
 	MotherID			int auto_increment 	not null primary key,
-    fk_MedicalID		int,
+    fk_MedicalID		int not null,
 	EntryDate			date,
     Gravida				int,
     Para				int,
@@ -130,13 +135,13 @@ create table if not exists MedicalVaccDate
 create table if not exists MedicalPregnancyChildData
 (
 	ChildID				int auto_increment	not null primary key,
-    fk_MotherID 		int,
+    fk_MotherID 		int not null,
     DOB					text,
     Name				text,
     EvDurP				text,
     durLabor			text,
     spont_CS_forceps	text,
-    Gender				char(1),
+    Gender				char,
     Healthy				text,
     Problems			text,
     Remarks 			text,
@@ -145,12 +150,11 @@ create table if not exists MedicalPregnancyChildData
 
 create table if not exists MedicalPresentPregnancy
 (
-	PresPreagnancyID 	int auto_increment	not null primary key,
-    fk_MotherID 		int,
-    preg				text,
+	PresPregnancyID 	int auto_increment	not null primary key,
+    fk_MotherID 		int not null,
     GestationalAge		text,
     EstDelivery			date,
-    AntClinicAttend		text,
+    AntClinicAttend		boolean,
     Problems			text,
     Remarks				text,
 	foreign key (fk_MotherID) references medicalpregnancymain(MotherID) on delete no action
@@ -159,16 +163,16 @@ create table if not exists MedicalPresentPregnancy
 create table if not exists MedicalPEXAM
 (
 	PEXAMID				int auto_increment	not null primary key,
-    fk_MedicalID		int,
-    PEXAMDate			date,
+    fk_MedicalID		int not null,
+    ExaminationDate			date,
     generalCond			text,
-    weight				decimal,
-    height				decimal,
+    weight				decimal(7,3),
+    height				decimal(7,3),
     nutritcondition		text,
-    temperature			decimal,
+    temperature			decimal(7,3),
     edema				text,
-    bmi					decimal,
-    muac				decimal,
+    bmi					decimal(7,3),
+    muac				decimal(7,3),
     hydration			text,
     pallor				text,
     jaundice			text,
@@ -176,7 +180,7 @@ create table if not exists MedicalPEXAM
     clubbing 			text,
     dactylitis 			text,
     fontanel 			text,
-    headcircumfrence    decimal,
+    headcircumfrence    decimal(7,3),
     eyes 				text,
     pupilreact			text,
     ears 				text,
@@ -185,7 +189,7 @@ create table if not exists MedicalPEXAM
     tonsils 			text,
     oral 				text,
     thyroid 			text,
-    
+
     chest_RR 			text,
     chest_AE 			text,
     chest_BS 			text,
@@ -193,22 +197,22 @@ create table if not exists MedicalPEXAM
     chest_percussion	text,
     chest_flaring 		text,
     chest_subInterCosta	text,
-    
+
     cvs_heartrate		text,
     cvs_pulse			text,
-    cvs_HS_1_2			text,
+    cvs_HSII			text,
     cvs_Murmurs			text,
     cvs_ApexBeat		text,
     cvs_BP				text,
-    
-    cns_gcs				text,
-    cns_neck			text, 
+
+    cns_cgs				text,
+    cns_neck			text,
     cns_reflexes		text,
-    cns_oriental 		text,
+    cns_orientation 		text,
     cns_speech  		text,
     cns_sensation 		text,
     cns_milestone 		text,
-    
+
     gas_tenderness 		text,
     gas_rebound 		text,
     gas_hernia			text,
@@ -218,9 +222,9 @@ create table if not exists MedicalPEXAM
     gas_spleen 			text,
     gas_bm 				text,
     gas_stool  			text,
-    anus				text,
-    sphincter			text,
-    
+    gas_anus				text,
+    gas_sphincter			text,
+
     urin_kidneys 		text,
     urin_frequency		text,
     urin_dysuria		text,
@@ -228,35 +232,37 @@ create table if not exists MedicalPEXAM
     urin_nycturia 		text,
     urin_enuresis		text,
     urin_urgency 		text,
-    
+
     musc_tone			text,
     musc_gait			text,
     musc_remarks		text,
-    
+
     skin_turgor 		text,
     skin_scars 			text,
     skin_remarks		text,
-    
-    remarks				text,
+
+    generalRemarks				text,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
     );
 
 create table if not exists MedicalGenMale
 (
 	GenMaleID			int auto_increment	not null primary key,
-    fk_PEXAMID			int,
-    circumcised			text,
+    fk_PEXAMID			int not null,
+    circumcised			boolean,
     TannerSt 			text,
     Descensus 			text,
+    remarks       text,
 	foreign key (fk_PEXAMID) references medicalpexam(PEXAMID) on delete no action
     );
 
 create table if not exists MedicalGenFemale
 (
 	GenFemaleID			int auto_increment	not null primary key,
-    fk_PEXAMID			int,
-    circumcised			text,
+    fk_PEXAMID			int not null,
+    circumcised			boolean,
     TannerSt 			text,
+    Hymen       text,
     Introitus			text,
     Discharge 			text,
     Breasts 			text,
@@ -267,4 +273,11 @@ create table if not exists MedicalGenFemale
     Menarche 			text,
     Pregnancy 			text,
 	foreign key (fk_PEXAMID) references medicalpexam(PEXAMID) on delete no action
+    );
+
+    create table if not exists UserDetails
+    (
+    	UserID			int auto_increment	not null primary key,
+      username    varchar(50) not null,
+      password    varchar(100) not null
     );
