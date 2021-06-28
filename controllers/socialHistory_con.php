@@ -17,20 +17,21 @@
             $socialdata['fk_ChildrenID']=$_COOKIE["childIDCookie"];
             $res = $controller -> prepared_insert('socialhistory',$socialdata);
             $socialID = $res['lastID'];
-            $result = $res['insert'];
+            $result['social'] = $res['insert'];
             if ($socialHistoryObj->checkSiblings()){
               $sibsData = $socialHistoryObj->getAllSiblings();
               for($i=0; $i < count($sibsData); $i++) {
                 $sibsData[$i]['fk_SocialID'] = $socialID;
-                $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+                $res[$i] = $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+                $result['socialSibs'.$i] = $res[$i]['insert'];
               }
             }
           }else {
-            $result='<div class="alert alert-danger">There is already a Social History Entry for this Patient.</div>';
+            $result['error'] ='<div class="alert alert-danger">There is already a Social History Entry for this Patient.</div>';
           }
         }
         else {
-          $controller -> prepared_update('socialhistory',$socialdata);
+          $result['social'] = $controller -> prepared_update('socialhistory',$socialdata);
           if ($socialHistoryObj->checkSiblings()) {
             $sibsData = $socialHistoryObj->getAllSiblings;
             $insertorupdate[0] = false;
@@ -43,12 +44,19 @@
             }
             for($i=0; $i < count($sibsData); $i++) {
               if ($insertorupdate[$i]) {
-                $controller->prepared_update('socialsiblings',$sibsData[$i]);
+                $result['socialSibs'.$i] = $controller->prepared_update('socialsiblings',$sibsData[$i]);
               }else {
                 $sibsData[$i]['fk_SocialID'] = $socialdata['SocialID'];
-                $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+                $res[$i] = $controller->prepared_insert('socialsiblings',$sibsData[$i]);
+                $result['socialSibs'.$i] = $res[$i]['insert'];
               }
             }
+          }
+        }
+        if(isset($_COOKIE["childIDCookie"])){
+          $socialData = $controller->getSocialHist($_COOKIE["childIDCookie"]);
+          if(isset($socialData['siblings']) && $socialData['siblings']){
+            $socialSibsData = $controller->getSocialSibling($socialData['SocialID']);
           }
         }
       }elseif($_SERVER["REQUEST_METHOD"] == "GET"){

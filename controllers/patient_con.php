@@ -31,11 +31,13 @@
       }
       $res = $controller -> prepared_insert('childrenmain',$data);
       $result = $res['insert'];
-      $childData = $controller->getChildData($res['lastID']);
     }
     else{
         $result = $controller -> prepared_update('childrenmain',$data);
       }
+    if(isset($_COOKIE["childIDCookie"])){
+      $childData = $controller->getChildData($_COOKIE["childIDCookie"]);
+    }
 
   }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
     if(isset($_GET['childrenID']) && $_GET['childrenID'] != 'false' && $_GET['childrenID'] != "undefined"){
@@ -55,20 +57,19 @@
       //echo "File is an image - " . $check["mime"] . ".";
       $uploadOk = 1;
     } else {
-      echo "File is not an image.";
+      $result = '<div class="alert alert-danger"> The File you are trying to upload is not an image.<br></div>';
       $uploadOk = 0;
     }
-    define('KB', 1024);
     define('MB', 1048576);
     // Check file size
     if ($_FILES["customFile"]["size"] > 16*MB) {
-     echo "Sorry, your file is too large.";
+        $result = '<div class="alert alert-danger"> The File you are trying to upload is to large. It can not be bigger than 16 MB<br></div>';
       $uploadOk = 0;
     }
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
     && $imageFileType != "gif" ) {
-      echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $result = '<div class="alert alert-danger"> Only JPG, JPEG, PNG & GIF files are allowed.<br></div>';
       $uploadOk = 0;
     }
     return $uploadOk;

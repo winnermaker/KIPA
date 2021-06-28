@@ -14,7 +14,7 @@
             $vaccdata[$i]['fk_MedicalID'] = $_COOKIE["medicalIDCookie"];
             $res[$i] = $controller->prepared_insert('medicalvacc',$vaccdata[$i]);
             $fk_VaccID[$i] = $res[$i]['lastID'];
-            $result = $res[$i]['insert'];
+            $result['vacc'] = $res[$i]['insert'];
           }
           for($i=0; $i < count($vaccdates); $i++) {
             $data['fk_VaccID'] = $fk_VaccID[$i];
@@ -128,7 +128,16 @@
         }
       }
       else {
-        $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Vaccination Record.<br></div>';
+        $result['error'] = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Vaccination Record.<br></div>';
+      }
+      if (isset($_COOKIE["medicalIDCookie"])) {
+        $vaccData = $controller->getVacc($_COOKIE["medicalIDCookie"]);
+        for ($i=0; $i < count($vaccData); $i++) {
+          $vaccDates = $controller->getVaccDates($vaccData[$i]['VaccID']);
+          for ($k=0; $k < count($vaccDates); $k++) {
+            $vaccData[$i]['VaccDateID'] = $vaccDates[$k]['VaccDateID'];
+            $vaccData[$i]['VaccDate'.$k+1] = $vaccDates[$k]['VaccDate'];
+          }
       }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
       if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){

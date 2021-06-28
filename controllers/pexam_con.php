@@ -102,6 +102,13 @@
         }else {
           $result['error'] = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Physical Examination Record.<br></div>';
         }
+        if (isset($_COOKIE["medicalIDCookie"])) {
+          $pexamData = $controller->getPexamData($_COOKIE["medicalIDCookie"]);
+          if(!empty($pexamData)){
+            $pexamDataM = $controller->getGenMData($pexamData['PEXAMID']);
+            $pexamDataF = $controller->getGenFData($pexamData['PEXAMID']);
+          }
+        }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET") {
       if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $pexamData = $controller->getPexamData($_GET['medicalID']);

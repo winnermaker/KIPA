@@ -7,7 +7,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $medicalObj = new medicalmain();
         $data = $medicalObj->getParams();
-        if (!$medicalObj->checkMedicalMainID()) {
+        if (!$medicalObj->checkMedicalMainID()){
           $check = $controller->checkIfEntryExsits('medicalmain', $_COOKIE["childIDCookie"], 'fk_ChildrenID');
           $data['fk_ChildrenID'] = $_COOKIE["childIDCookie"];
           if(!$check){
@@ -19,6 +19,9 @@
 
         }else {
           $result = $controller -> prepared_update('medicalmain',$data);
+        }
+        if(isset($_COOKIE("childIDCookie"))){
+          $medicalData = $controller->getmedicaldata($_COOKIE["childIDCookie"]);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){

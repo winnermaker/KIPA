@@ -17,34 +17,35 @@
             $pregdata['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
             $res = $controller -> prepared_insert('medicalpregnancymain',$pregdata);
             $motherID = $res['lastID'];
-            $result = $res['insert'];
+            $result['preg'] = $res['insert'];
             if ($pregnancyObj->checkPresentPregnancy()) {
               $pregdataPres = $pregnancyObj->getPresentPregnancy();
               $pregdataPres['fk_MotherID'] = $motherID;
               $res = $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
-              $result = $res['insert'];
+              $result['present'] = $res['insert'];
             }
             if ($pregnancyObj->checkPreviousPregnancy()) {
               $pregdataP = $pregnancyObj->getPreviousPregnancy();
               for($i=0;$i<count($pregdata);$i++){
                 $pregdataP[$i]['fk_MotherID'] = $motherID;
-                $res = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
-                $result = $res['insert'];
+                $res[$i] = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
+                $result['previous'.$i] = $res[$i]['insert'];
               }
             }
           }else {
-            $result = '<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.<br></div>';
+            $result['error'] = '<div class="alert alert-danger">There already is a Pregnancy Entry for this Patient.<br></div>';
           }
         }else {
-          $controller -> prepared_update('medicalpregnancymain',$pregdata);
+          $result['preg'] = $controller -> prepared_update('medicalpregnancymain',$pregdata);
           if ($pregnancyObj->checkPresentPregnancy()) {
             $pregdataPres = $pregnancyObj->getPresentPregnancy();
             $count = (int) $controller->getCountPregnancyPresentData($pregdata['MotherID']);
             if($count){
-              $controller -> prepared_update('medicalpresentpregnancy',$pregdataPres);
+              $result['present'] = $controller -> prepared_update('medicalpresentpregnancy',$pregdataPres);
             }else {
               $pregdataPres['fk_MotherID'] =  $pregdata['MotherID'];
-              $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
+              $res = $controller -> prepared_insert('medicalpresentpregnancy',$pregdataPres);
+              $result['present'] = $res['insert'];
             }
           }
           if ($pregnancyObj->checkPreviousPregnancy()) {
@@ -59,16 +60,24 @@
             }
             for($i=0;$i<count($pregdataP);$i++){
               if($insertorupdate[$i]){
-                $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
+                $result['previous'.$i] = $controller -> prepared_update('medicalpregnancychilddata',$pregdataP[$i]);
               }else{
                 $pregdataP[$i]['fk_MotherID'] =  $pregdata['MotherID'];
-                $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
+                $res[$i] = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
+                $result['previous'.$i] = $res[$i]['insert'];
               }
             }
           }
         }
       }else {
         $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Pregnancy Record.<br></div>';
+      }
+      if (isset($_COOKIE["medicalIDCookie"])) {
+        $pregnancyData = $controller->getPregnancyMainData($_COOKIE["medicalIDCookie"]);
+        if(!empty($pregnancyData)){
+          $presentPregnancy = $controller->getPregnancyPresentData($pregnancyData['MotherID']);
+          $previousData = $controller->getPregnancyPreviousData($pregnancyData['MotherID']);
+        }
       }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
       if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['childrenID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
