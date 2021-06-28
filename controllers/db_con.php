@@ -61,7 +61,7 @@
             $result['insert'] ='<div class="alert alert-danger"> The record was not inserted.<br></div>';
           }
         }catch(PDOException $e){
-          $result['insert'] = "The record was not inserted.".$e->getMessage()."<br>";
+          $result['insert'] = '<div class="alert alert-danger"> The record was not inserted.'.$e->getMessage().'<br></div>';
 
         }
         $result['lastID'] = $this->pdo->lastInsertId();
@@ -96,7 +96,7 @@
             $result='<div class="alert alert-danger"> The record was not updated.<br></div>';
           }
         } catch (PDOException $e) {
-          $result = "The record was not updated.".$e->getMessage()."<br>";
+          $result = '<div class="alert alert-danger"> The record was not updated.'.$e->getMessage().'<br></div>';
         }
         return $result;
       }

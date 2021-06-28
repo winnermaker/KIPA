@@ -31,6 +31,7 @@
       }
       $res = $controller -> prepared_insert('childrenmain',$data);
       $result = $res['insert'];
+      $childData = $controller->getChildData($res['lastID']);
     }
     else{
         $result = $controller -> prepared_update('childrenmain',$data);
