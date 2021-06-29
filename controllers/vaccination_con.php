@@ -149,7 +149,8 @@
             $vaccData[$i]['VaccDate'.$k+1] = $vaccDates[$k]['VaccDate'];
           }
       }
-    }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
+    }
+  } elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
       if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] != "false" && $_GET['childrenID'] != "false" &&  $_GET['medicalID'] != "undefined" && $_GET['childrenID'] != "undefined"){
         $vaccData = $controller->getVacc($_GET['medicalID']);
         for ($i=0; $i < count($vaccData); $i++) {

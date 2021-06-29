@@ -20,7 +20,7 @@
         }else {
           $result = $controller -> prepared_update('medicalmain',$data);
         }
-        if(isset($_COOKIE("childIDCookie"))){
+        if(isset($_COOKIE["childIDCookie"])){
           $medicalData = $controller->getmedicaldata($_COOKIE["childIDCookie"]);
         }
     }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
