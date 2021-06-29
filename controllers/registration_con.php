@@ -13,6 +13,7 @@
         if(isset($result['registerMsg'])){
           $message = $result['registerMsg'];
           echo "<script type='text/javascript'>alert('$message');</script>";
+          header("location:login_con.php"); //return to login page
         }elseif (isset($result['error'])) {
           $message = $result['error'];
           echo "<script type='text/javascript'>alert('$message');</script>";
