@@ -74,7 +74,7 @@
 
                 <div class="form-group col-3">
                     <label for="temperature" class="form-label">Temperature (Celsius)</label>
-                    <input type="number" step="any" placeholder="" class="form-control" name="temperature" id="temperature" value="<?php echo (isset($pexamData['temperature']))?$pexamData['temperature']:'';?>">
+                    <input type="number" step="0.01" placeholder="" class="form-control" name="temperature" id="temperature" value="<?php echo (isset($pexamData['temperature']))?$pexamData['temperature']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
