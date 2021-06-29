@@ -26,7 +26,7 @@
             }
             if ($pregnancyObj->checkPreviousPregnancy()) {
               $pregdataP = $pregnancyObj->getPreviousPregnancy();
-              for($i=0;$i<count($pregdata);$i++){
+              for($i=0;$i<count($pregdataP);$i++){
                 $pregdataP[$i]['fk_MotherID'] = $motherID;
                 $res[$i] = $controller -> prepared_insert('medicalpregnancychilddata',$pregdataP[$i]);
                 $result['previous'.$i] = $res[$i]['insert'];

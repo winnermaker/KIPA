@@ -125,7 +125,7 @@
                       if(!empty($previousData)){
                       foreach($previousData as $row){
                 ?>
-                <input type="hidden" id="childID" name="childID" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
+                <input type="hidden" id="childID" name="childID[]" value="<?php echo (isset($row['ChildID']))?$row['ChildID']:'';?>">
                 <div class="row mt-4">
                         <div class="form-group col-2">
                             <label class="form-label" for="gender">Gender</label>
@@ -190,6 +190,8 @@
 
 
           <?php $index++; }}else { ?>
+
+            <input type="hidden" id="childID" name="childID[]">
             <div class="row mt-4">
                 <div class="form-group col-2">
                     <label class="form-label" for="gender">Gender</label>

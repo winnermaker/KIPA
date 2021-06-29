@@ -91,7 +91,7 @@
         public function validatePreviousPregnancy(){
             for ($i=0; $i < count($this->arrayName); $i++) {
 
-                $this->arrayChildID = !empty($this->arrayChildID[$i]) ? trim($this->arrayChildID[$i]) : null;
+                $this->arrayChildID[$i] = !empty($this->arrayChildID[$i]) ? trim($this->arrayChildID[$i]) : null;
                 $this->arrayGender[$i] = !empty($this->arrayGender[$i]) ? trim($this->arrayGender[$i]) : null;
                 $this->arrayHealthy[$i] = !empty($this->arrayHealthy[$i]) ? trim($this->arrayHealthy[$i]) : null;
                 $this->arrayName[$i] = !empty($this->arrayName[$i]) ? trim($this->arrayName[$i]) : null;
