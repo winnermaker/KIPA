@@ -22,9 +22,6 @@
           $result = $controller -> prepared_update('medicalvisits',$arrayVisitData);
         }
       }
-      if (isset($_COOKIE["medicalIDCookie"])) {
-        $visitData = $controller->getVisitDiagnosticData($_COOKIE["medicalIDCookie"]);
-      }
       else {
         $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Visit Record.<br></div>';
       }
