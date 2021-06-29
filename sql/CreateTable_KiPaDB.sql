@@ -24,7 +24,6 @@ create table if not exists SocialHistory
     LivedWhere			text,
     ParentsAlive		text,
     ParentsLiveTogether	text,
-    ParentsLivePeace	text,
     AmountAndSourceOfIncome	text,
     IncomeForHowMany	text,
     Abuse				text,

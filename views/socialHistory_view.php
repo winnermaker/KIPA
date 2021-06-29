@@ -202,7 +202,7 @@
               var cell7 = row.insertCell(6);
 
               cell1.innerHTML = '<td name="tableIndex[]">' + row.rowIndex + '</td>' ;
-              cell2.innerHTML = '<input type="text" class="form-control bg-black" name="gender[]">';
+              cell2.innerHTML = '<input type="text" class="form-control bg-black" maxlength="1" name="gender[]">';
               cell3.innerHTML = '<input type="text" class="form-control" name="age[]">';
               cell4.innerHTML = '<input type="text" class="form-control" name="healthy[]">';
               cell5.innerHTML = '<input type="text" class="form-control" name="alive[]">';
