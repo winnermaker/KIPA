@@ -7,6 +7,10 @@
     header("location: login_con.php");
   }
 
+  if(isset($_COOKIE["childIDCookie"])){
+    $childData = $controller->getChildData($_COOKIE["childIDCookie"]);
+  }
+
   if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $patientObj = new patient();
     $controller->getAllChildern();
@@ -31,14 +35,14 @@
       }
       $res = $controller -> prepared_insert('childrenmain',$data);
       $result = $res['insert'];
+      $childData = $controller->getChildData($res['lastID']);
     }
     else{
         $result = $controller -> prepared_update('childrenmain',$data);
+        if(isset($_COOKIE["childIDCookie"])){
+          $childData = $controller->getChildData($_COOKIE["childIDCookie"]);
+        }
       }
-    if(isset($_COOKIE["childIDCookie"])){
-      $childData = $controller->getChildData($_COOKIE["childIDCookie"]);
-    }
-
   }elseif($_SERVER["REQUEST_METHOD"] == "GET"){
     if(isset($_GET['childrenID']) && $_GET['childrenID'] != 'false' && $_GET['childrenID'] != "undefined"){
       $childData = $controller->getChildData($_GET['childrenID']);

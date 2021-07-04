@@ -4,6 +4,10 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
 
 
+    if(isset($_COOKIE["childIDCookie"])){
+      $medicalData = $controller->getmedicaldata($_COOKIE["childIDCookie"]);
+    }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $medicalObj = new medicalmain();
         $data = $medicalObj->getParams();

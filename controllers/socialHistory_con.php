@@ -6,6 +6,12 @@
     if(!isset($_SESSION["user_login"])){
       header("location: login_con.php");
     }
+    if(isset($_COOKIE["childIDCookie"])){
+      $socialData = $controller->getSocialHist($_COOKIE["childIDCookie"]);
+      if(isset($socialData['siblings']) && $socialData['siblings']){
+        $socialSibsData = $controller->getSocialSibling($socialData['SocialID']);
+      }
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $socialHistoryObj = new socialhistory();

@@ -6,6 +6,13 @@
     if(!isset($_SESSION["user_login"])){
       header("location: login_con.php");
     }
+    if (isset($_COOKIE["medicalIDCookie"])) {
+      $pexamData = $controller->getPexamData($_COOKIE["medicalIDCookie"]);
+      if(!empty($pexamData)){
+        $pexamDataM = $controller->getGenMData($pexamData['PEXAMID']);
+        $pexamDataF = $controller->getGenFData($pexamData['PEXAMID']);
+      }
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $pexamObj = new pexam();

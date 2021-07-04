@@ -3,6 +3,21 @@
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
 
+    if(!isset($_SESSION["user_login"])){
+      header("location: login_con.php");
+    }
+
+    if (isset($_COOKIE["medicalIDCookie"])) {
+      $vaccData = $controller->getVacc($_COOKIE["medicalIDCookie"]);
+      for ($i=0; $i < count($vaccData); $i++) {
+        $vaccDates = $controller->getVaccDates($vaccData[$i]['VaccID']);
+        for ($k=0; $k < count($vaccDates); $k++) {
+          $vaccData[$i]['VaccDateID'] = $vaccDates[$k]['VaccDateID'];
+          $vaccData[$i]['VaccDate'.$k+1] = $vaccDates[$k]['VaccDate'];
+        }
+      }
+    }
+
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
       if(isset($_COOKIE["medicalIDCookie"])){

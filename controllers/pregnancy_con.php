@@ -6,6 +6,13 @@
     if(!isset($_SESSION["user_login"])){
       header("location: login_con.php");
     }
+    if (isset($_COOKIE["medicalIDCookie"])) {
+      $pregnancyData = $controller->getPregnancyMainData($_COOKIE["medicalIDCookie"]);
+      if(!empty($pregnancyData)){
+        $presentPregnancy = $controller->getPregnancyPresentData($pregnancyData['MotherID']);
+        $previousData = $controller->getPregnancyPreviousData($pregnancyData['MotherID']);
+      }
+    }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
       if(isset($_COOKIE["medicalIDCookie"])){
