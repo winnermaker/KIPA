@@ -49,7 +49,7 @@
             $this->problems = !empty($_POST['problems']) ? trim($_POST['problems']) : null;
             $this->pregnancyRemarks = !empty($_POST['pregnancyRemarks']) ? trim($_POST['pregnancyRemarks']) : null;
 
-            $this->arrayChildID = isset($_POST['childID']) ? $_POST['childID'] : null;
+            $this->arrayChildID = !empty($_POST['childID']) ? $_POST['childID'] : null;
             $this->arrayGender = isset($_POST['gender']) ? $_POST['gender'] : null;
             $this->arrayHealthy = isset($_POST['healthy']) ? $_POST['healthy'] : null;
             $this->arrayName = isset($_POST['name']) ? $_POST['name'] : null;

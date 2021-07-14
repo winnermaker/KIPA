@@ -26,7 +26,7 @@
         $result = '<div class="alert alert-danger"> You need to enter a Medical Main Record before submitting a Visit Record.<br></div>';
       }
     }elseif ($_SERVER["REQUEST_METHOD"] == "GET"){
-      if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['visitID'] != "undefined" ){
+      if(isset($_GET['medicalID']) && isset($_GET['childrenID']) && $_GET['medicalID'] !== "false" && $_GET['medicalID'] != "undefined" && $_GET['visitID'] != "undefined" && isset($_GET['visitID']) ){
         $visitData = $controller->getVisitDiagnosticData($_GET['visitID']);
       }
     }
