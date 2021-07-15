@@ -55,7 +55,7 @@
 
     <div class="container mt-5">
       <img src="/kipa/views/img/loginImg.png" class="logoImage" alt="" width="330" height="150" >
-      <h2 class="text mt-3 col">Welcome to Kinderparadise Database Application</h2>
+      <h2 class="text mt-3 col">Welcome to Kinder Paradise Database Application</h2>
     </div>
   </body>
 </html>
