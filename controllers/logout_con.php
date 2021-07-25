@@ -10,7 +10,7 @@
     }
 
     session_unset();     // unset $_SESSION variable for this page
-    session_destroy();
+    session_destroy();  // destroy session data
 
 
 ?>
