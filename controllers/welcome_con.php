@@ -7,13 +7,11 @@
 		header("location: login_con.php");
 	}
 
-
-
 	if(isset($_SESSION['user_login']))
 	{
 		$id = $_SESSION['user_login'];
 		$welcomeData = $controller->welcome('userdetails', $id);
 	}
-
+	
 	require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/welcome_view.php";
  ?>

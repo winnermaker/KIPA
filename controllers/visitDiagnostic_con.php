@@ -13,7 +13,6 @@
         $arrayVisitData = $visitObj->getParams();
 
         if (!$visitObj->checkVisitID()) {
-          $insert = false;
           $arrayVisitData['fk_MedicalID']=$_COOKIE["medicalIDCookie"];
           $res = $controller -> prepared_insert('medicalvisits',$arrayVisitData);
           $result = $res['insert'];

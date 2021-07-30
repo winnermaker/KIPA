@@ -75,7 +75,7 @@
             }elseif($pexamObj->checkGenitals() === 1){
               //male
               $pexamdataM = $pexamObj->getParamsMale();
-              $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
+              $count = (int) $controller->getCountGenMData($pexamdata['PEXAMID']);
               if($count){
                 $result['genm'] = $controller -> prepared_update('MedicalGenMale',$pexamdataM);
               }else {
@@ -96,7 +96,7 @@
                 $result['genf'] = $res['insert'];
               }
               $pexamdataM = $pexamObj->getParamsMale();
-              $count = (int) $controller->getCountGenFData($pexamdata['PEXAMID']);
+              $count = (int) $controller->getCountGenMData($pexamdata['PEXAMID']);
               if($count){
                 $result['genm'] = $controller -> prepared_update('MedicalGenMale',$pexamdataM);
               }else {

@@ -29,6 +29,7 @@ create table if not exists SocialHistory
     Abuse				text,
     SexuallyActive		text,
     siblings    boolean,
+    investigator    text,
     foreign key (fk_ChildrenID) references childrenmain(ChildrenID) on delete no action
     );
 
@@ -165,13 +166,13 @@ create table if not exists MedicalPEXAM
     fk_MedicalID		int not null,
     ExaminationDate			date,
     generalCond			text,
-    weight				float,
-    height				float,
+    weight				decimal(4,1),
+    height				decimal(4,1),
     nutritcondition		text,
-    temperature			float,
+    temperature			decimal(4,1),
     edema				text,
-    bmi					float,
-    muac				float,
+    bmi					decimal(4,1),
+    muac				decimal(4,1),
     hydration			text,
     pallor				text,
     jaundice			text,
@@ -179,7 +180,7 @@ create table if not exists MedicalPEXAM
     clubbing 			text,
     dactylitis 			text,
     fontanel 			text,
-    headcircumfrence    float,
+    headcircumfrence    decimal(4,1),
     eyes 				text,
     pupilreact			text,
     ears 				text,
@@ -241,6 +242,7 @@ create table if not exists MedicalPEXAM
     skin_remarks		text,
 
     generalRemarks				text,
+    investigator        text,
     foreign key (fk_MedicalID) references MedicalMain(MedicalID) on delete no action
     );
 

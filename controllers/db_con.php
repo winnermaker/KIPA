@@ -55,7 +55,50 @@
           }
 
           if($insert){
-            $result['insert'] ='<div class="alert alert-success">The record was successfully inserted.<br></div>';
+            switch ($table) {
+              case 'medicalpexam':
+                $result['insert'] ='<div class="alert alert-success">The Physical Examination record was successfully inserted.<br></div>';
+                break;
+              case 'medicalgenfemale':
+                $result['insert'] ='<div class="alert alert-success">The Genitals female record was successfully inserted.<br></div>';
+                break;
+              case 'medicalgenmale':
+                $result['insert'] ='<div class="alert alert-success">The Genitals male record was successfully inserted.<br></div>';
+                break;
+              case 'medicalpregnancymain':
+                $result['insert'] ='<div class="alert alert-success">The Pregnancy record was successfully inserted.<br></div>';
+                break;
+              case 'medicalpresentpregnancy':
+                $result['insert'] ='<div class="alert alert-success">The Present Pregnancy record was successfully inserted.<br></div>';
+                break;
+              case 'medicalpregnancychilddata':
+                $result['insert'] ='<div class="alert alert-success">The Previous Pregnancy record was successfully inserted.<br></div>';
+                break;
+              case 'medicalvacc':
+                $result['insert'] ='<div class="alert alert-success">The Vaccination record was successfully inserted.<br></div>';
+                break;
+              case 'medicalvaccdate':
+                $result['insert'] ='<div class="alert alert-success">The Vaccination Date record was successfully inserted.<br></div>';
+                break;
+              case 'socialhistory':
+                $result['insert'] ='<div class="alert alert-success">The Social History record was successfully inserted.<br></div>';
+                break;
+              case 'socialsiblings':
+                $result['insert'] ='<div class="alert alert-success">The Siblings record was successfully inserted.<br></div>';
+                break;
+              case 'childrenmain':
+                $result['insert'] ='<div class="alert alert-success">The Patient record was successfully inserted.<br></div>';
+                break;
+              case 'medicalmain':
+                $result['insert'] ='<div class="alert alert-success">The Medical Main record was successfully inserted.<br></div>';
+                break;
+              case 'medicalvisits':
+                $result['insert'] ='<div class="alert alert-success">The Visits Diagnostic Data record was successfully inserted.<br></div>';
+                break;
+              default:
+                $result['insert'] ='<div class="alert alert-success">The record was successfully inserted.<br></div>';
+                break;
+            }
           }
           else{
             $result['insert'] ='<div class="alert alert-danger"> The record was not inserted.<br></div>';
@@ -90,7 +133,50 @@
           $update = $this->pdo->prepare($sql)->execute($values);
 
           if($update){
-            $result='<div class="alert alert-success">The record was successfully updated.<br></div>';
+            switch ($table) {
+              case 'medicalpexam':
+                $result['insert'] ='<div class="alert alert-success">The Physical Examination record was successfully updated.<br></div>';
+                break;
+              case 'medicalgenfemale':
+                $result['insert'] ='<div class="alert alert-success">The Genitals female record was successfully updated.<br></div>';
+                break;
+              case 'medicalgenmale':
+                $result['insert'] ='<div class="alert alert-success">The Genitals male record was successfully updated.<br></div>';
+                break;
+              case 'medicalpregnancymain':
+                $result['insert'] ='<div class="alert alert-success">The Pregnancy record was successfully updated.<br></div>';
+                break;
+              case 'medicalpresentpregnancy':
+                $result['insert'] ='<div class="alert alert-success">The Present Pregnancy record was successfully updated.<br></div>';
+                break;
+              case 'medicalpregnancychilddata':
+                $result['insert'] ='<div class="alert alert-success">The Previous Pregnancy record was successfully updated.<br></div>';
+                break;
+              case 'medicalvacc':
+                $result['insert'] ='<div class="alert alert-success">The Vaccination record was successfully updated.<br></div>';
+                break;
+              case 'medicalvaccdate':
+                $result['insert'] ='<div class="alert alert-success">The Vaccination Date record was successfully updated.<br></div>';
+                break;
+              case 'socialhistory':
+                $result['insert'] ='<div class="alert alert-success">The Social History record was successfully updated.<br></div>';
+                break;
+              case 'socialsiblings':
+                $result['insert'] ='<div class="alert alert-success">The Siblings record was successfully updated.<br></div>';
+                break;
+              case 'childrenmain':
+                $result['insert'] ='<div class="alert alert-success">The Patient record was successfully updated.<br></div>';
+                break;
+              case 'medicalmain':
+                $result['insert'] ='<div class="alert alert-success">The Medical Main record was successfully updated.<br></div>';
+                break;
+              case 'medicalvisits':
+                $result['insert'] ='<div class="alert alert-success">The Visits Diagnostic Data record was successfully updated.<br></div>';
+                break;
+              default:
+              $result='<div class="alert alert-success">The record was successfully updated.<br></div>';
+                break;
+            }
           }
           else{
             $result='<div class="alert alert-danger"> The record was not updated.<br></div>';

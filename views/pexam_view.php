@@ -38,17 +38,17 @@
 
                 <div class="form-group col">
                     <label for="Weight" class="form-label">Weight (kg)</label>
-                    <input type="number" step="0.01"  min="0" placeholder="" class="form-control" name="weight" id="Weight" value="<?php echo (isset($pexamData['weight']))?$pexamData['weight']:'';?>">
+                    <input type="number" step="0.1"  min="0" placeholder="" class="form-control" name="weight" id="Weight" value="<?php echo (isset($pexamData['weight']))?$pexamData['weight']:'';?>">
                 </div>
 
                 <div class="form-group col">
                     <label for="Height" class="form-label">Height (cm)</label>
-                    <input type="number" step="0.01" min="0" placeholder="" class="form-control" name="height" id="Height" value="<?php echo (isset($pexamData['height']))?$pexamData['height']:'';?>">
+                    <input type="number" step="0.1" min="0" placeholder="" class="form-control" name="height" id="Height" value="<?php echo (isset($pexamData['height']))?$pexamData['height']:'';?>">
                 </div>
 
                 <div class="form-group col">
                     <label for="headcircumference" class="form-label">Head circumference (cm)</label>
-                    <input type="number" step="0.01" min="0" class="form-control" name="headcircumference" id="headcircumference" value="<?php echo (isset($pexamData['headcircumfrence']))?$pexamData['headcircumfrence']:'';?>">
+                    <input type="number" step="0.1" min="0" class="form-control" name="headcircumference" id="headcircumference" value="<?php echo (isset($pexamData['headcircumfrence']))?$pexamData['headcircumfrence']:'';?>">
                 </div>
             </div>
 
@@ -70,17 +70,17 @@
             <div class="row mt-3">
                 <div class="form-group col-3">
                     <label for="BMI" class="form-label">BMI</label>
-                    <input type="number" step="0.01" min="0" placeholder="" class="form-control" name="bmi" id="BMI" value="<?php echo (isset($pexamData['bmi']))?$pexamData['bmi']:'';?>">
+                    <input type="number" step="0.1" min="0" placeholder="" class="form-control" name="bmi" id="BMI" value="<?php echo (isset($pexamData['bmi']))?$pexamData['bmi']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="MUAC" class="form-label">MUAC (cm)</label>
-                    <input type="number" step="0.01" min="0" placeholder="" class="form-control" name="muac" id="MUAC" value="<?php echo (isset($pexamData['muac']))?$pexamData['muac']:'';?>">
+                    <input type="number" step="0.1" min="0" placeholder="" class="form-control" name="muac" id="MUAC" value="<?php echo (isset($pexamData['muac']))?$pexamData['muac']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
                     <label for="temperature" class="form-label">Temperature (Celsius)</label>
-                    <input type="number" step="0.01" placeholder="" class="form-control" name="temperature" id="temperature" value="<?php echo (isset($pexamData['temperature']))?$pexamData['temperature']:'';?>">
+                    <input type="number" step="0.1" placeholder="" class="form-control" name="temperature" id="temperature" value="<?php echo (isset($pexamData['temperature']))?$pexamData['temperature']:'';?>">
                 </div>
 
                 <div class="form-group col-3">
