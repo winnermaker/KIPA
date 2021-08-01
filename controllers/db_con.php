@@ -35,7 +35,9 @@
       }
 
       function prepared_insert($table, $data) {
-        //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
+        //generic insert function 
+        //$table = the name of the table to insert data in 
+        //$data = the date that should be inserted in DB
         try{
           $tableold = $table;
           $keys = array_keys($data);
@@ -114,7 +116,9 @@
 
       function prepared_update($table, $data) {
         try {
-          //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
+          //generic update function 
+          //$table = the name of the table to update data in 
+          //$data = the date that should be updated in DB
           $tableold = $table;
           $values = array_values($data);
           $keys = array_keys($data);
