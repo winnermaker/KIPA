@@ -8,7 +8,7 @@
 
     ?>
 
-    <title>Children table</title>
+    <title>List of Patients</title>
   </head>
   <body>
     <div class="container">
