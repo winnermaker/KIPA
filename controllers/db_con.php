@@ -249,7 +249,9 @@
     function getChildDataForSearch (){
       // select childdata for searchbar
       $arrayPatientNames = array();
-      $dataAllCildren = $this->pdo->query("SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames ,medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
+      $dataAllCildren = $this->pdo->query("SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames,medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
+      $dataAllCildrenNoMedical = $this->pdo->query("SELECT DISTINCT ChildrenID, FirstName, LastName, CallNames FROM childrenmain ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
+      
       foreach ($dataAllCildren as $key => $row) {
         $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
         $childID = $row['ChildrenID'];
@@ -502,49 +504,40 @@
 
       }
     }
+
     function login($table, $data){
       $username = $data['username'];
       $password = $data['password'];
-
       $returnArray = array();
       try
       {
         $select_stmt=$this->pdo->prepare("SELECT * FROM $table WHERE username=?");
         $select_stmt->execute([$username]);
         $row=$select_stmt->fetch();
-
         if($select_stmt->rowCount() > 0)
         {
-          if($username==$row["username"])
-          {
+          if($username==$row["username"]){
             if(password_verify($password, $row["password"])){
               $_SESSION["user_login"] = $row["UserID"];
               $_SESSION['time'] = time();
               $returnArray['loginMsg'] = "Successfully Login...";
-            }
-            else
-            {
+            }else{
               $returnArray['error']="wrong password";
             }
-          }
-          else
-          {
+          }else{
             $returnArray['error']="wrong username";
           }
-        }
-        else
-        {
+        }else{
           $returnArray['error']="wrong username";
         }
       }
-      catch(PDOException $e)
-      {
+      catch(PDOException $e){
         $e->getMessage();
       }
       return $returnArray;
-
     }
   }
+
   $controller = new DBCon();
   $controller -> connectToDB();
  ?>
