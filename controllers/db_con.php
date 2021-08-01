@@ -37,6 +37,7 @@
       function prepared_insert($table, $data) {
         //generic insert function $table = the name of the table to insert data in, $data = the date that should be inserted in DB
         try{
+          $tableold = $table;
           $keys = array_keys($data);
           $keys = array_map( array( $this, 'escape_mysql_identifier' ), $keys );
           $fields = implode(",", $keys);
@@ -55,7 +56,7 @@
           }
 
           if($insert){
-            switch ($table) {
+            switch ($tableold) {
               case 'medicalpexam':
                 $result['insert'] ='<div class="alert alert-success">The Physical Examination record was successfully inserted.<br></div>';
                 break;
@@ -114,6 +115,7 @@
       function prepared_update($table, $data) {
         try {
           //generic update function $table = the name of the table to update data in, $data = the date that should be updated in DB
+          $tableold = $table;
           $values = array_values($data);
           $keys = array_keys($data);
 
@@ -133,48 +135,48 @@
           $update = $this->pdo->prepare($sql)->execute($values);
 
           if($update){
-            switch ($table) {
+            switch ($tableold) {
               case 'medicalpexam':
-                $result['insert'] ='<div class="alert alert-success">The Physical Examination record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Physical Examination record was successfully updated.<br></div>';
                 break;
               case 'medicalgenfemale':
-                $result['insert'] ='<div class="alert alert-success">The Genitals female record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Genitals female record was successfully updated.<br></div>';
                 break;
               case 'medicalgenmale':
-                $result['insert'] ='<div class="alert alert-success">The Genitals male record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Genitals male record was successfully updated.<br></div>';
                 break;
               case 'medicalpregnancymain':
-                $result['insert'] ='<div class="alert alert-success">The Pregnancy record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Pregnancy record was successfully updated.<br></div>';
                 break;
               case 'medicalpresentpregnancy':
-                $result['insert'] ='<div class="alert alert-success">The Present Pregnancy record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Present Pregnancy record was successfully updated.<br></div>';
                 break;
               case 'medicalpregnancychilddata':
-                $result['insert'] ='<div class="alert alert-success">The Previous Pregnancy record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Previous Pregnancy record was successfully updated.<br></div>';
                 break;
               case 'medicalvacc':
-                $result['insert'] ='<div class="alert alert-success">The Vaccination record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Vaccination record was successfully updated.<br></div>';
                 break;
               case 'medicalvaccdate':
-                $result['insert'] ='<div class="alert alert-success">The Vaccination Date record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Vaccination Date record was successfully updated.<br></div>';
                 break;
               case 'socialhistory':
-                $result['insert'] ='<div class="alert alert-success">The Social History record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Social History record was successfully updated.<br></div>';
                 break;
               case 'socialsiblings':
-                $result['insert'] ='<div class="alert alert-success">The Siblings record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Siblings record was successfully updated.<br></div>';
                 break;
               case 'childrenmain':
-                $result['insert'] ='<div class="alert alert-success">The Patient record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Patient record was successfully updated.<br></div>';
                 break;
               case 'medicalmain':
-                $result['insert'] ='<div class="alert alert-success">The Medical Main record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Medical Main record was successfully updated.<br></div>';
                 break;
               case 'medicalvisits':
-                $result['insert'] ='<div class="alert alert-success">The Visits Diagnostic Data record was successfully updated.<br></div>';
+                $result ='<div class="alert alert-success">The Visits Diagnostic Data record was successfully updated.<br></div>';
                 break;
               default:
-              $result='<div class="alert alert-success">The record was successfully updated.<br></div>';
+              $result ='<div class="alert alert-success">The record was successfully updated.<br></div>';
                 break;
             }
           }
