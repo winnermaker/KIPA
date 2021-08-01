@@ -212,13 +212,14 @@
     }
 
     function getAllChildern(){
+      //select a particular child by id
       $sql = "SELECT * FROM childrenmain ORDER BY ChildrenID DESC";
       $dataAllCildren = $this->pdo->query($sql)->fetchAll();
       return $dataAllCildren;
     }
 
     function getChildData($childrenID){
-      // select a particular child by id
+      //select a particular child by id
       $sql = $this->pdo->prepare("SELECT * FROM childrenmain WHERE ChildrenID=?");
       $sql->execute([$childrenID]);
       $child = $sql->fetch();
@@ -230,6 +231,7 @@
         $data = $this->pdo->query($sql)->fetchAll();
         return $data;
     }
+
     function getMedicalDataForListOfPatients(){
       $sql = "SELECT DISTINCT childrenmain.ChildrenID, medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC";
       $data = $this->pdo->query($sql)->fetchAll();
@@ -256,7 +258,7 @@
         $arrayPatientNames[$childID] = [
           'names' => $string,
           'medicalID' => $medicalID,
-      ];
+        ];
 
       }
       return $arrayPatientNames;
@@ -461,6 +463,45 @@
       return $data[0];
     }
 
+    function checkIfEntryExsits($table, $IDValue, $IDKey) {
+      $sql = "SELECT * FROM $table WHERE $IDKey=?";
+      $smt = $this->pdo->prepare($sql);
+      $smt->execute([$IDValue]);
+      $row=$smt->fetch();
+
+      return $row;
+    }
+
+    function registration($table, $data){
+      try {
+          $username = $data['username'];
+          $password = $data['password'];
+          $returnArray = array();
+
+          $sql = "SELECT username FROM userdetails WHERE username=?";
+          $smt = $this->pdo->prepare($sql);
+          $smt->execute([$data['username']]);
+          $row=$smt->fetch();
+          if($row){
+            $returnArray['error'] = "Sorry username already exists";
+          }
+          else if(!isset($returnArray['error']))
+          {
+            $data['password'] = password_hash($password, PASSWORD_DEFAULT); //encrypt password using password_hash()
+
+            $id = $this->prepared_insert($table, $data);
+            $returnArray['ID'] = $id;
+
+            if($id){
+              $returnArray['registerMsg'] = "Register Successfully..... Please Click On Login Account Link";
+            }
+          }
+          return $returnArray;
+
+      } catch (PDOException $e) {
+
+      }
+    }
     function login($table, $data){
       $username = $data['username'];
       $password = $data['password'];
@@ -502,46 +543,6 @@
       }
       return $returnArray;
 
-    }
-
-    function registration($table, $data){
-      try {
-          $username = $data['username'];
-          $password = $data['password'];
-          $returnArray = array();
-
-          $sql = "SELECT username FROM userdetails WHERE username=?";
-          $smt = $this->pdo->prepare($sql);
-          $smt->execute([$data['username']]);
-          $row=$smt->fetch();
-          if($row){
-            $returnArray['error'] = "Sorry username already exists";
-          }
-          else if(!isset($returnArray['error']))
-          {
-            $data['password'] = password_hash($password, PASSWORD_DEFAULT); //encrypt password using password_hash()
-
-            $id = $this->prepared_insert($table, $data);
-            $returnArray['ID'] = $id;
-
-            if($id){
-              $returnArray['registerMsg'] = "Register Successfully..... Please Click On Login Account Link";
-            }
-          }
-          return $returnArray;
-
-      } catch (PDOException $e) {
-
-      }
-    }
-
-    function checkIfEntryExsits($table, $IDValue, $IDKey) {
-      $sql = "SELECT * FROM $table WHERE $IDKey=?";
-      $smt = $this->pdo->prepare($sql);
-      $smt->execute([$IDValue]);
-      $row=$smt->fetch();
-
-      return $row;
     }
   }
   $controller = new DBCon();
