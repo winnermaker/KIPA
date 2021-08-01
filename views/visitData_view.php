@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+  <link rel="icon" href="/kipa/views/img/logo2.png">
     <?php
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/libary.html";
       require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/views/navbar.php";
