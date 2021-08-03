@@ -249,9 +249,17 @@
     function getChildDataForSearch (){
       // select childdata for searchbar
       $arrayPatientNames = array();
-      $dataAllCildren = $this->pdo->query("SELECT DISTINCT childrenmain.ChildrenID, childrenmain.FirstName, childrenmain.LastName, childrenmain.CallNames,medicalmain.MedicalID FROM childrenmain JOIN medicalmain ON medicalmain.fk_CHildrenID = childrenmain.ChildrenID ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
-      $dataAllCildrenNoMedical = $this->pdo->query("SELECT DISTINCT ChildrenID, FirstName, LastName, CallNames FROM childrenmain ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
-      
+      $medical = $this->getMedicalDataForListOfPatients();
+      $dataAllCildren = $this->pdo->query("SELECT DISTINCT ChildrenID, FirstName, LastName, CallNames FROM childrenmain ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
+      foreach($dataAllCildren as $key => $value){
+        foreach($medical as $value2){
+          if($value['ChildrenID'] === $value2['ChildrenID']){
+            $dataAllCildren[$key]['MedicalID'] = $value2['MedicalID'];
+          }else{
+            $dataAllCildren[$key]['MedicalID'] = null;
+          }
+        }
+      }
       foreach ($dataAllCildren as $key => $row) {
         $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
         $childID = $row['ChildrenID'];
