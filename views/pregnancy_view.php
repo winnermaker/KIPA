@@ -124,7 +124,7 @@
 
             <h3 class="mt-5">Previous Pregnancies</h3>
 
-            <div id="childs">
+            <div id="children">
 
               <?php
 
@@ -240,7 +240,7 @@
             <div class="row mt-3">
                 <div class="form-group col-2">
                     <label class="form-label" for="healthy">Healthy</label>
-                    <textarea class="form-control" name="healthy[]" id="healthy" rows="2"><?php echo (isset($row['Healthy'])) ? htmlspecialchars($row['Healthy']):''; ?></textarea>
+                    <textarea class="form-control" name="healthy[]" id="healthy" rows="2"></textarea>
                 </div>
 
                 <div class="form-group col">
@@ -301,7 +301,7 @@
         {
             $("#addChild").click(function()
             {
-                var clone = $("#childs").clone(true);
+                var clone = $("#children").clone(true);
                 clone.find("input[name=gender]").prop("name", "gender[]");
                 clone.find("input[name=healthy]").prop("name", "healthy[]");
                 clone.find("input[name=name]").prop("name", "name[]");
@@ -349,7 +349,7 @@
             $( "body" ).on('click', '.remove', function(){
                 var elements = document.getElementsByClassName("remove");
                 if(elements.length > 1){
-                    $(this).closest('#childs').remove();
+                    $(this).closest('#children').remove();
                 }
             });
         });
