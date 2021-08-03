@@ -1,6 +1,6 @@
 <?php
-  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
-  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/models/login_class.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controller/db_con.php";
+  require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/model/login_class.php";
 
   session_start();
 

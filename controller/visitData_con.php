@@ -1,6 +1,6 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/db_con.php";
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controllers/autologout_con.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controller/db_con.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/kipa/controller/autologout_con.php";
 
     if(!isset($_SESSION["user_login"])){
       header("location: login_con.php");
