@@ -24,7 +24,6 @@
                   <th scope="col" class="">Gender</th>
                   <th scope="col" class="">Date of Birth</th>
                   <th scope="col" class="">Est. Date of Birth</th>
-                  <th id="investigator" scope="col" class="">Investigator</th>
                 </tr>
               </thead>
 
@@ -44,7 +43,6 @@
                 <td id="gender"><?php echo (isset($headData['Gender']))?$headData['Gender']:'';?></td>
                 <td><?php echo (isset($headData['DOB']))? date("d-m-Y", strtotime($headData['DOB'])) :'';?></td>
                 <td><?php echo (isset($headData['EDOB']))? date("d-m-Y", strtotime($headData['EDOB'])) :'';?></td>
-                <td id="investigatorName"></td>
               </tbody>
           </table>
         </div>

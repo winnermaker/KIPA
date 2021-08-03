@@ -11,6 +11,7 @@
         private $incomeForHowMany;
         private $abuse;
         private $sexuallyActive;
+        private $investigator;
 
         private $siblingID = array();
         private $siblings;
@@ -25,6 +26,7 @@
         public function __construct(){
             $this->socialHistoryID = !empty($_POST['socialHistoryID']) ? $_POST['socialHistoryID'] : null;
             $this->dateOfInvestigation = !empty($_POST['dateOfInvestigation']) ? $_POST['dateOfInvestigation'] : null;
+            $this->investigator = !empty($_POST['investigator']) ? $_POST['investigator'] : null;
             $this->livedWithWho = !empty($_POST['livedWithWho']) ? trim($_POST['livedWithWho']) : null;
             $this->livedWhere = !empty($_POST['livedWhere']) ? trim($_POST['livedWhere']) : null;
             $this->parentsAlive = !empty($_POST['parentsAlive']) ? trim($_POST['parentsAlive']) : null;
@@ -84,6 +86,7 @@
         public function paramsToArray(){
           $this->arrayParams['SocialID'] = $this->socialHistoryID;
           $this->arrayParams['DateOfInvestigation'] = $this->dateOfInvestigation;
+          $this->arrayParams['investigator'] = $this->investigator;
           $this->arrayParams['LivedWithWho'] = $this->livedWithWho;
           $this->arrayParams['LivedWhere'] =  $this->livedWhere;
           $this->arrayParams['parentsAlive'] = $this->parentsAlive;

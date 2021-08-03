@@ -29,14 +29,19 @@
             <input type="hidden" id="pexamID" name="pexamID" value="<?php echo (isset($pexamData['PEXAMID']))?$pexamData['PEXAMID']:'';?>">
 
             <div class="row mt-5">
-                <div class ="form-group col">
+                <div class ="form-group col-2">
                     <label for="examinationDate" class="form-label">Examination Date</label>
                     <input class="form-control" type="date" name="examinationDate" id="examinationDate" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($pexamData['ExaminationDate']))?$pexamData['ExaminationDate']:'';?>">
                     <div class="invalid-feedback">
                     Please pick a valid Date
                     </div>
                 </div>
-
+                <div class="form-group col-3">
+                    <label for="investigator" class="form-label">Investigator</label>
+                    <input type="text" class="form-control" name="investigator" id="investigator" value="<?php echo (isset($pexamData['investigator']))?$pexamData['investigator']:'';?>">
+                </div>
+            </div>
+            <div class="row mt-3">
                 <div class="form-group col">
                     <label for="Weight" class="form-label">Weight (kg)</label>
                     <input type="number" step="0.1"  min="0" placeholder="" class="form-control" name="weight" id="Weight" value="<?php echo (isset($pexamData['weight']))?$pexamData['weight']:'';?>">
@@ -61,7 +66,6 @@
             </div>
 
             <div class="row mt-3">
-
                 <div class="form-group col ">
                     <label for="nutritcondition" class="form-label">Nutritional Condition</label>
                     <input type="text" placeholder="" class="form-control" name="nutritcondition" id="nutritcondition" value="<?php echo (isset($pexamData['nutritcondition']))?$pexamData['nutritcondition']:'';?>">

@@ -66,6 +66,7 @@
         private $urin_haematuria;
         private $urin_dysuria;
         private $urin_enuresis;
+        private $investigator;
 
         private $male_ID;
         private $male_CircumsisedRadio;
@@ -102,6 +103,7 @@
 
             $this->pexamID = !empty($_POST['pexamID']) ? $_POST['pexamID'] : null;
             $this->examinationDate = !empty($_POST['examinationDate']) ? $_POST['examinationDate'] : null;
+            $this->investigator = !empty($_POST['investigator']) ? $_POST['investigator'] : null;
             $this->weight = !empty($_POST['weight']) ? trim($_POST['weight']) : null;
             $this->height = !empty($_POST['height']) ? trim($_POST['height']) : null;
             $this->headcircumference = !empty($_POST['headcircumference']) ? trim($_POST['headcircumference']) : null;
@@ -214,6 +216,7 @@
         public function paramsToArray(){
             $this->arrayPexam['PEXAMID'] = $this->pexamID;
             $this->arrayPexam['ExaminationDate'] = $this->examinationDate;
+            $this->arrayPexam['investigator'] = $this->investigator;
             $this->arrayPexam['weight'] = $this->weight;
             $this->arrayPexam['height'] = $this->height;
             $this->arrayPexam['headcircumfrence'] = $this->headcircumference;

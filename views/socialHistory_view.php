@@ -31,16 +31,20 @@
 
           <div class="row mt-5">
             <div class ="form-group col-2 ">
-                  <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
-                  <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($socialData['DateOfInvestigation']))?$socialData['DateOfInvestigation']:'';?>" required>
-                  <div class="invalid-feedback">
+                <label for="dateOfInvestigation" class="form-label">Date of Investigation</label>
+                <input class="form-control" type="date" name="dateOfInvestigation" id="dateOfInvestigation" min="1900-04-01" max="2300-04-20" value="<?php echo (isset($socialData['DateOfInvestigation']))?$socialData['DateOfInvestigation']:'';?>" required>
+                <div class="invalid-feedback">
                     Please chose a valid Date
-                    </div>
+                </div>
             </div>
-            <div class="form-group col">
-            <label for="livedWithWho" class="form-label">Lived with who?</label>
-            <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="1"><?php echo (isset($socialData['LivedWithWho']))?htmlspecialchars($socialData['LivedWithWho']):'';?></textarea>
+            <div class="form-group col-3">
+              <label for="investigator" class="form-label">Investigator</label>
+              <input type="text" class="form-control"  name="investigator" id="investigator" value="<?php echo (isset($socialData['investigator']))?$socialData['investigator']:'';?>">
             </div>
+          </div>
+          <div class="form-group form-row mt-3">
+              <label for="livedWithWho" class="form-label">Lived with who?</label>
+              <textarea class="form-control" name="livedWithWho" id="livedWithWho" rows="2"><?php echo (isset($socialData['LivedWithWho']))?htmlspecialchars($socialData['LivedWithWho']):'';?></textarea>
           </div>
           <div class="form-group form-row mt-3">
             <label for="livedWhere" class="form-label">Lived where?</label>
