@@ -251,15 +251,22 @@
       $arrayPatientNames = array();
       $medical = $this->getMedicalDataForListOfPatients();
       $dataAllCildren = $this->pdo->query("SELECT DISTINCT ChildrenID, FirstName, LastName, CallNames FROM childrenmain ORDER BY childrenmain.ChildrenID DESC")->fetchAll();
-      foreach($dataAllCildren as $key => $value){
-        foreach($medical as $value2){
-          if($value['ChildrenID'] === $value2['ChildrenID']){
-            $dataAllCildren[$key]['MedicalID'] = $value2['MedicalID'];
-          }else{
-            $dataAllCildren[$key]['MedicalID'] = null;
+      if(!empty($medical)){
+        foreach($dataAllCildren as $key => $value){
+          foreach($medical as $value2){
+            if($value['ChildrenID'] === $value2['ChildrenID']){
+              $dataAllCildren[$key]['MedicalID'] = $value2['MedicalID'];
+            }else{
+              $dataAllCildren[$key]['MedicalID'] = null;
+            }
           }
         }
+      }else{
+        foreach($dataAllCildren as $key => $value){
+          $dataAllCildren[$key]['MedicalID'] = null;  
+        }
       }
+      
       foreach ($dataAllCildren as $key => $row) {
         $string = $row['FirstName'] . " " . $row['LastName'] . " " . $row['CallNames'];
         $childID = $row['ChildrenID'];
